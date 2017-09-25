@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:smokestack",
+		"data": 8
+	},
+	"pattern": [
+		" c ",
+		" # ",
+		" # "
+	],
+	"key": {
+		"c": {
+			"item": "minecraft:coal",
+			"data": 1
+		},
+		"#": {
+			"item": "factorytech:metal",
+			"data": 0
+		}
+	}
+}

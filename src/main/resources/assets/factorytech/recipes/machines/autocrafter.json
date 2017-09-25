@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:autocrafter"
+	},
+	"pattern": [
+	"ixi",
+	"ipi",
+	"ccc"
+	],
+	"key": {
+		"i": {
+			"item": "minecraft:iron_ingot"
+		},
+		"x": {
+			"item": "minecraft:crafting_table"
+		},
+		"p": {
+			"item": "minecraft:piston"
+		},
+		"c": {
+			"item": "#copper_ingot"
+		}	
+	}
+}

@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:upgrade",
+        "data": 0
+    },
+    "pattern": [
+        "pgp",
+        "gqg",
+        "pgp"
+    ],
+    "key": {
+        "p": {
+            "item": "#planks"
+        },
+        "g": {
+            "item": "factorytech:ore_dust",
+            "data": 7
+        },
+        "q": {
+            "item": "factorytech:circuit_intermediate",
+            "data": 8
+        }
+    }
+}

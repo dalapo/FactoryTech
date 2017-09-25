@@ -1,0 +1,28 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:stabilizer"
+    },
+    "pattern": [
+        "m m",
+        "oco",
+        "dbd"
+    ],
+    "key": {
+        "m": {
+            "item": "#magnet"
+        },
+        "o": {
+            "item": "minecraft:obsidian"
+        },
+        "c": {
+            "item": "#circ4"
+        },
+        "d": {
+            "item": "minecraft:diamond"
+        },
+        "b": {
+            "item": "#battery"
+        }
+    }
+}

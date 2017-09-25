@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:fluiddrill"
+    },
+    "pattern": [
+        " m ",
+        "npn",
+        "ndn"
+    ],
+    "key": {
+        "m": {
+            "item": "#motor"
+        },
+        "n": {
+            "item": "#nickel_ingot"
+        },
+        "p": {
+            "item": "factorytech:pipe"
+        },
+        "d": {
+            "item": "#drill"
+        }
+    }
+}

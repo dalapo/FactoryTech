@@ -1,0 +1,32 @@
+{
+	"forge_marker": 1,
+	"defaults":
+	{
+		"model": "factorytech:smokestack_bricks"
+	},
+	"variants":
+	{
+		"normal": [{}],
+		"inventory": [{}],
+		"bricks": { "model": "factorytech:sstack_bricks"},
+		"bricks_sand": { "model": "factorytech:sstack_bsand"},
+		"bricks_soulsand": { "model": "factorytech:sstack_bssand"},
+		"bricks_charcoal": { "model": "factorytech:sstack_bchar"},
+		"bricks_ash": { "model": "factorytech:sstack_bash"},
+		"stone": { "model": "factorytech:sstack_stone"},
+		"stone_bricks": { "model": "factorytech:sstack_sbricks"},
+		"iron_block": { "model": "factorytech:sstack_iron"},
+		"sheet_metal": { "model": "factorytech:sstack_smetal"},
+		"smokestacktype": {
+			"bricks": { "model": "factorytech:sstack_bricks"},
+			"bricks_sand": { "model": "factorytech:sstack_bsand"},
+			"bricks_soulsand": { "model": "factorytech:sstack_bssand"},
+			"bricks_charcoal": { "model": "factorytech:sstack_bchar"},
+			"bricks_ash": { "model": "factorytech:sstack_bash"},
+			"stone": { "model": "factorytech:sstack_stone"},
+			"stone_bricks": { "model": "factorytech:sstack_sbricks"},
+			"iron_block": { "model": "factorytech:sstack_iron"},
+			"sheet_metal": { "model": "factorytech:sstack_smetal"}
+		}
+	}
+}

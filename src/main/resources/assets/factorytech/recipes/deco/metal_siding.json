@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:metal",
+		"data": 4,
+		"count": 3
+	},
+	"pattern": [
+	" m ",
+	"nmn",
+	" m "
+	],
+	"key": {
+		"m": {
+			"item": "factorytech:metal",
+			"data": 2
+		},
+		"n": {
+			"item": "minecraft:iron_nugget"
+		}
+	}
+}

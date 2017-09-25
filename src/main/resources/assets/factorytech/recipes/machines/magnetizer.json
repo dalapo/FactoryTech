@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:magnetizer"
+	},
+	"pattern": [
+	"w w",
+	"mss",
+	"ggg"
+	],
+	"key": {
+		"w": {
+			"item": "#wire"
+		},
+		"m": {
+			"item": "#motor"
+		},
+		"s": {
+			"item": "#shaft"
+		},
+		"g": {
+			"item": "minecraft:gold_ingot"
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:bricks",
+		"data": 1
+	},
+	"pattern": [
+	" b ",
+	"bdb",
+	" b "
+	],
+	"key": {
+		"b": {
+			"item": "minecraft:brick"
+		},
+		"d": {
+			"item": "minecraft:dirt",
+			"data": 0
+		}
+	}
+}

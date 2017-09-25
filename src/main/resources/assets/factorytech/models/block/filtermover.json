@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "factorytech:blocks/filtermover",
+		"down": "factorytech:blocks/filtermover",
+		"up": "factorytech:blocks/filtermover",
+		"east": "factorytech:blocks/filtermover",
+		"west": "factorytech:blocks/filtermover",
+		"north": "#front",
+		"south": "#back"
+	}
+}

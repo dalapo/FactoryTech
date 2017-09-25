@@ -1,0 +1,175 @@
+tile.factorytech:factorytech.saw.name=Chop Saw
+tile.factorytech:factorytech.metalcutter.name=Metal Cutting Machine
+tile.factorytech:factorytech.potionmixer.name=Potion Mixer
+tile.factorytech:factorytech.disruptor.name=Mob Disruptor
+tile.factorytech:factorytech.conveyor.name=Transport Rollers
+tile.factorytech:factorytech.elevator.name=Fan Lift
+tile.factorytech:factorytech.stackmover.name=Stack Mover
+tile.factorytech:factorytech.filtermover.name=Filtered Stack Mover
+tile.factorytech:factorytech.bulkmover.name=Bulk Stack Mover
+tile.factorytech:factorytech.comparatorEx.name=Exact Redstone Comparator
+tile.factorytech:factorytech.oredrill.name=Drill Grinder
+tile.factorytech:factorytech.grindstone.name=Grindstone
+tile.factorytech:factorytech.htfurnace.name=Electric Furnace
+tile.factorytech:factorytech.autocrafter.name=Autocrafting Unit
+tile.factorytech:factorytech.autopuller.name=Auto Ejector
+tile.factorytech:factorytech.hatch.name=Insertion Hatch
+tile.factorytech:factorytech.itempusher.name=Pulse Piston
+tile.factorytech:factorytech.itemredis.name=Item Redistributor
+tile.factorytech:factorytech.mecharm.name=Mechanical Arm
+tile.factorytech:factorytech.sequenceplacer.name=Sequential Placer
+tile.factorytech:factorytech.pipe.name=Pipe
+tile.factorytech:factorytech.tankblock.name=Stationary Tank
+tile.factorytech:factorytech.fluidpuller.name=Extraction Pump
+tile.factorytech:factorytech.crucible.name=Crucible
+tile.factorytech:factorytech.agitator.name=Fluid Agitator
+tile.factorytech:factorytech.fluiddrill.name=Fluid Extraction Drill
+tile.factorytech:factorytech.centrifuge.name=Centrifuge
+tile.factorytech:factorytech.compressor.name=Compression Chamber
+tile.factorytech:factorytech.circuitscribe.name=Circuit Scribe
+tile.factorytech:factorytech.autominer.name=Mining Machine
+tile.factorytech:factorytech.electroplater.name=Industrial Electroplater
+tile.factorytech:factorytech.fridge.name=Refrigeration Unit
+tile.factorytech:factorytech.woodcutter.name=Woodcutter
+tile.factorytech:factorytech.stabilizer.name=Stabilization Table
+tile.factorytech:factorytech.propfurnace.name=Propane Furnace
+tile.factorytech:factorytech.spawner.name=Biosynthesis Unit
+tile.factorytech:factorytech.charger.name=Core Charger
+tile.factorytech:factorytech.magnetizer.name=Magnetizer
+tile.factorytech:factorytech.energizer.name=Universal Supercharger
+tile.factorytech:factorytech.magnetblock.name=Stationary Magnet
+tile.factorytech:factorytech.watercollector.name=Water Collector
+tile.factorytech:factorytech.iondisperser.name=Negative Ion Disperser
+tile.factorytech:factorytech.teslacoil.name=Tesla Coil
+tile.factorytech:factorytech.crate.name=Crate
+tile.factorytech:factorytech.scaffold.name=Scaffolding
+tile.factorytech:factorytech.disassembler.name=Mob Disassembler
+tile.factorytech:factorytech.sluice.name=River Grate
+tile.factorytech:factorytech.ore:0.name=Native Copper Ore
+tile.factorytech:factorytech.ore:1.name=Nickel Ore
+tile.factorytech:factorytech.bricks:0.name=Sand Bricks
+tile.factorytech:factorytech.bricks:1.name=Earthy Bricks
+tile.factorytech:factorytech.bricks:2.name=Charred Bricks
+tile.factorytech:factorytech.bricks:3.name=Ashen Bricks
+tile.factorytech:factorytech.metal:0.name=Patterned Sheet Metal
+tile.factorytech:factorytech.metal:1.name=Riveted Sheet Metal
+tile.factorytech:factorytech.metal:2.name=Smooth Sheet Metal
+tile.factorytech:factorytech.metal:3.name=Rusted Sheet Metal
+tile.factorytech:factorytech.metal:4.name=Sheet Metal Siding
+tile.factorytech:factorytech.metal:5.name=Caution Striped Sheet Metal
+tile.factorytech:factorytech.oreblock:0.name=Block of Copper
+tile.factorytech:factorytech.oreblock:1.name=Block of Nickel
+tile.factorytech:factorytech.oreblock:2.name=Cupronickel Alloy Block
+tile.factorytech:factorytech.oreblock:3.name=Block of Invar
+smokestack:0.name=Brick Smokestack
+smokestack:1.name=Sand Brick Smokestack
+smokestack:2.name=Earthy Brick Smokestack
+smokestack:3.name=Charred Brick Smokestack
+smokestack:4.name=Ashen Brick Smokestack
+smokestack:5.name=Stone Smokestack
+smokestack:6.name=Stone Brick Smokestack
+smokestack:7.name=Solid Iron Smokestack
+smokestack:8.name=Sheet Metal Smokestack
+
+factorytech.part:0.name=Saw Blade
+factorytech.part:1.name=Basic Gear
+factorytech.part:2.name=Standard Wire
+factorytech.part:3.name=Nickel Cutting Blade
+factorytech.part:4.name=Mixing Blades
+factorytech.part:5.name=Shaft
+factorytech.part:6.name=Advanced Motor
+factorytech.part:7.name=Drill
+factorytech.part:8.name=Heating Element
+factorytech.part:9.name=Quartz Circuit Board (Pattern 1)
+factorytech.part:10.name=Quartz Circuit Board (Pattern 2)
+factorytech.part:11.name=Quartz Circuit Board (Pattern 3)
+factorytech.part:12.name=Quartz Circuit Board (Pattern 4)
+factorytech.part:13.name=Standard Magnet
+factorytech.part:14.name=Battery
+factorytech.part:15.name=Focusing Lens
+factorytech.part:16.name=Integrated Piston
+factorytech.part:17.name=Energy Core
+factorytech.part:18.name=Wooden Mesh
+
+factorytech.salvage:0.name=Dull Saw Blade
+factorytech.salvage:1.name=Broken Gear
+factorytech.salvage:2.name=Burnt Wire
+factorytech.salvage:3.name=Dull Cutting Blade
+factorytech.salvage:4.name=Dull Drill
+factorytech.salvage:5.name=Used Heating Element
+factorytech.salvage:6.name=Shorted Circuit Board
+factorytech.salvage:7.name=Dead Battery
+factorytech.salvage:8.name=Worn Piston
+factorytech.salvage:9.name=Depleted Energy Core
+factorytech.salvage:10.name=Shorted Motor
+factorytech.salvage:11.name=Warped Shaft
+
+factorytech.ingot:0.name=Copper Ingot
+factorytech.ingot:1.name=Nickel Ingot
+factorytech.ingot:2.name=Cupronickel Alloy Ingot
+factorytech.ingot:3.name=Invar Ingot
+factorytech.ore_dust:0.name=Ground Iron Ore
+factorytech.ore_dust:1.name=Ground Gold Ore
+factorytech.ore_dust:2.name=Ground Copper Ore
+factorytech.ore_dust:3.name=Ground Nickel Ore
+factorytech.ore_dust:4.name=Copper Nugget
+factorytech.ore_dust:5.name=Nickel Nugget
+factorytech.ore_dust:6.name=Iron Dust
+factorytech.ore_dust:7.name=Gold Dust
+factorytech.ore_dust:8.name=Copper Dust
+factorytech.ore_dust:9.name=Nickel Dust
+factorytech.ore_dust:10.name=Copper/Nickel Mixture
+factorytech.ore_dust:11.name=Iron/Nickel Mixture
+factorytech.ore_dust:12.name=Lapis Powder
+factorytech.intermediate:0.name=Obsidian Vessel
+factorytech.intermediate:1.name=Prepared Shell
+factorytech.intermediate:2.name=Empty Battery Shell
+factorytech.intermediate:3.name=Monster Dust
+factorytech.intermediate:4.name=Basic Motor
+factorytech.core_unfinished.name=Unprimed Energy Core
+factorytech.craftstopper.name=Crafting Slot Blocker
+factorytech.wrench.name=Monkey Wrench
+factorytech.handbook.name=Blueprint Collection
+
+# Machine runs and consumes parts faster
+factorytech.upgrade:0.name=Machine Upgrade: Overclock
+# Machine runs and consumes parts more slowly
+factorytech.upgrade:1.name=Machine Upgrade: Underclock
+# World-affecting machines affect a larger area (No effect on processors)
+factorytech.upgrade:2.name=Machine Upgrade: Radius
+# Part consumption chance doubles immediately but never increases further
+factorytech.upgrade:3.name=Machine Upgrade: Consistency
+# More likely to successfully salvage a broken part for repair
+factorytech.upgrade:4.name=Machine Upgrade: Efficiency
+
+
+factorytech.circuit_intermediate:0.name=Etched Quartz Plate (Pattern 1)
+factorytech.circuit_intermediate:1.name=Etched Quartz Plate (Pattern 2)
+factorytech.circuit_intermediate:2.name=Etched Quartz Plate (Pattern 3)
+factorytech.circuit_intermediate:3.name=Etched Quartz Plate (Pattern 4)
+factorytech.circuit_intermediate:4.name=Filled Quartz Plate (Pattern 1)
+factorytech.circuit_intermediate:5.name=Filled Quartz Plate (Pattern 2)
+factorytech.circuit_intermediate:6.name=Filled Quartz Plate (Pattern 3)
+factorytech.circuit_intermediate:7.name=Filled Quartz Plate (Pattern 4)
+factorytech.circuit_intermediate:8.name=Blank Quartz Plate
+
+factorytech.tank:0.name=Empty Tank
+factorytech.tank:1.name=Compressed Air Tank
+factorytech.tank:2.name=Water Tank
+factorytech.tank:3.name=Compressed Propane Tank
+factorytech.tank:4.name=H2SO4 Tank
+
+factorytech.fluidreader.name=Magnifying Glass
+item.factorytech.bacon.name=Industrial-Strength Bacon
+
+itemGroup.factorytech=Factory Tech
+
+fluid.sulphur=Liquid Sulphur
+fluid.h2so4=Sulphuric Acid
+fluid.propane=Propane
+fluid.glowstone=Liquefied Glowstone
+fluid.energite=Energite
+
+death.attack.acid=%1$s stepped in H2SO4 thinking it was H2O
+death.attack.machine=%1$s was disassembled alive
+death.attack.tesla=%1$s made a truly shocking discovery

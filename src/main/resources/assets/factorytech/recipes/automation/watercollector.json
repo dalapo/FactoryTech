@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:watercollector"
+	},
+	"pattern": [
+		"sps",
+		"g g",
+		"sgs"
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:stick"
+		},
+		"p": {
+			"item": "factorytech:fluidpuller"
+		},
+		"g": {
+			"item": "#mesh"
+		}
+	}
+}

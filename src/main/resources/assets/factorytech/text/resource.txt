@@ -1,0 +1,13 @@
+$title Copper
+Valued for its malleability and conductivity, copper is used in pipes and electrical components. It can be found below Y=48 about as commonly as iron.
+$end
+$title Nickel
+Nickel is similar to iron in many ways, but is harder and tougher. It is useful as a pure metal, but can also be alloyed with iron or copper. It occurs uncommonly below Y=24.
+$end
+$title Monster Dust
+This unsettling powder seems to be derived from monsters. Killing them by normal means does not yield any, but the Mob Disassembler can harvest one pile per monster processed.
+It can be mixed with liquefied Glowstone to produce Energite.
+$end
+$title Energite
+The reaction of Glowstone with Monster Dust produces substantial latent energy. It reacts strongly to electric current and magnetic fields, and is the key component of Energy Cores.
+$end

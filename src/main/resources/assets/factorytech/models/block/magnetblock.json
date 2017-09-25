@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "factorytech:blocks/magnet_tb",
+		"down": "factorytech:blocks/magnet_tb",
+		"up": "factorytech:blocks/magnet_tb",
+		"east": "factorytech:blocks/magnet_side",
+		"west": "factorytech:blocks/magnet_side",
+		"north": "factorytech:blocks/magnet_side",
+		"south": "factorytech:blocks/magnet_side"
+	}
+}

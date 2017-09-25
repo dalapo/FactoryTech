@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:metal",
+		"data": 3,
+		"count": 8
+	},
+	"pattern": [
+	"mmm",
+	"mwm",
+	"mmm"
+	],
+	"key": {
+		"m": {
+			"item": "factorytech:metal",
+			"data": 2
+		},
+		"w": {
+			"item": "minecraft:water_bucket"
+		}
+	}
+}

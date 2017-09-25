@@ -1,0 +1,20 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:hatch",
+		"count": 4
+	},
+	"pattern": [
+		"i i",
+		" h ",
+		"i i"
+	],
+	"key": {
+		"i": {
+			"item": "minecraft:iron_ingot"
+		},
+		"h": {
+			"item": "minecraft:hopper"
+		}
+	}
+}

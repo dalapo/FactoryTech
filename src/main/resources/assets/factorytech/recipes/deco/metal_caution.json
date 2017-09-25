@@ -1,0 +1,27 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:metal",
+		"data": 5,
+		"count": 7
+	},
+	"pattern": [
+	"mmm",
+	"bmy",
+	"mmm"
+	],
+	"key": {
+		"m": {
+			"item": "factorytech:metal",
+			"data": 0
+		},
+		"b": {
+			"item": "minecraft:dye",
+			"data": 0
+		},
+		"y": {
+			"item": "minecraft:dye",
+			"data": 11
+		}
+	}
+}

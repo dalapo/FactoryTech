@@ -1,0 +1,5 @@
+s = raw_input("Enter image file: ")
+fo = open(s + ".json", "w", 0)
+fo.write("{\n\t\"parent\": \"block/cube_all\",\n")
+fo.write("\t\"textures\": {\n\t\t\"all\": \"factorytech:blocks/" + s + "\"\n")
+fo.write("\t}\n}")

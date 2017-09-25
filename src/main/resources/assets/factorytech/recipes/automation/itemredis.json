@@ -1,0 +1,31 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:itemredis"
+	},
+	"pattern": [
+		"whw",
+		"rpg",
+		"wlw"
+	],
+	"key": {
+		"w": {
+			"item": "#planks"
+		},
+		"h": {
+			"item": "minecraft:hopper"
+		},
+		"r": {
+			"item": "minecraft:redstone"
+		},
+		"p": {
+			"item": "#piston"
+		},
+		"g": {
+			"item": "minecraft:glowstone_dust"
+		},
+		"l": {
+			"item": "#lapis"
+		}
+	}
+}

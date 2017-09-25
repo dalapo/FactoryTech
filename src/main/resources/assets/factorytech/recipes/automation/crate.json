@@ -1,0 +1,19 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:crate"
+    },
+    "pattern": [
+        "psp",
+        "p p",
+        "psp"
+    ],
+    "key": {
+        "p": {
+            "item": "#planks"
+        },
+        "s": {
+            "item": "minecraft:stick"
+        }
+    }
+}

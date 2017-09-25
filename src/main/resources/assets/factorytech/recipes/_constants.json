@@ -1,0 +1,280 @@
+[
+	{
+	"ingredient": {
+		"item": "minecraft:stone",
+		"data": 0
+	},
+	"name": "stone"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "plankWood"
+	},
+	"name": "planks"
+	},
+	{
+	"ingredient": {
+	   "type": "forge:ore_dict",
+	   "ore": "logWood"
+	},
+	"name": "log"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "ingotCopper"
+	},
+	"name": "copper_ingot"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "ingotNickel"
+	},
+	"name": "nickel_ingot"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "ingotCupronickel"
+	},
+	"name": "cupronickel_ingot"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "ingotInvar"
+	},
+	"name": "invar_ingot"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "blockCopper"
+	},
+	"name": "copper_block"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "blockNickel"
+	},
+	"name": "nickel_block"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "blockCupronickel"
+	},
+	"name": "cupronickel_block"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "blockInvar"
+	},
+	"name": "invar_block"
+	},
+	{
+	"ingredient": {
+		"item": "minecraft:iron_nugget"
+	},
+	"name": "iron_nugget"
+	},
+	{
+	"ingredient": {
+		"item": "minecraft:gold_nugget"
+	},
+	"name": "gold_nugget"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "nuggetCopper"
+	},
+	"name": "copper_nugget"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "nuggetNickel"
+	},
+	"name": "nickel_nugget"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "dustIron"
+	},
+	"name": "iron_dust"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "dustGold"
+	},
+	"name": "gold_dust"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "dustCopper"
+	},
+	"name": "copper_dust"
+	},
+	{
+	"ingredient": {
+		"type": "forge:ore_dict",
+		"ore": "dustNickel"
+	},
+	"name": "nickel_dust"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 0
+	},
+	"name": "saw"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 1
+	},
+	"name": "gear"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 2
+	},
+	"name": "wire"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 3
+	},
+	"name": "blade"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 4
+	},
+	"name": "mixer"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 5
+	},
+	"name": "shaft"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 6
+	},
+	"name": "motor"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 7
+	},
+	"name": "drill"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 8
+	},
+	"name": "heat_elem"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 9
+	},
+	"name": "circ1"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 10
+	},
+	"name": "circ2"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 11
+	},
+	"name": "circ3"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 12
+	},
+	"name": "circ4"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 13
+	},
+	"name": "magnet"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 14
+	},
+	"name": "battery"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 15
+	},
+	"name": "lens"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 16
+	},
+	"name": "piston"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 17
+	},
+	"name": "core"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:part",
+		"data": 18
+	},
+	"name": "mesh"
+	},
+	{
+	"ingredient": {
+		"item": "minecraft:dye",
+		"data": 4
+	},
+	"name": "lapis"
+	},
+	{
+	"ingredient": {
+	   "item": "factorytech:intermediate",
+	   "data": 4
+	},
+	"name": "basic_motor"
+	}
+]

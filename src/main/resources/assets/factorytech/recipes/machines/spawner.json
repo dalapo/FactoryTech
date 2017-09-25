@@ -1,0 +1,26 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:spawner"
+    },
+    "pattern": [
+        "mcm",
+        "obo",
+        "o o"
+    ],
+    "key": {
+        "m": {
+            "item": "factorytech:intermediate",
+            "data": 3
+        },
+        "c": {
+            "item": "#core"
+        },
+        "o": {
+            "item": "minecraft:obsidian"
+        },
+        "b": {
+            "item": "#circ2"
+        }
+    }
+}

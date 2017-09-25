@@ -1,0 +1,19 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:magnetblock"
+    },
+    "pattern": [
+        "rmr",
+        "rmr",
+        "rmr"
+    ],
+    "key": {
+        "r": {
+            "item": "minecraft:redstone"
+        },
+        "m": {
+            "item": "#magnet"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:part",
+        "data": 16
+    },
+    "pattern": [
+        " s ",
+        " i ",
+        "iri"
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:wooden_slab",
+            "data": 0
+        },
+        "i": {
+            "item": "#invar_nugget"
+        },
+        "r": {
+            "item": "minecraft:redstone"
+        }
+    }
+}

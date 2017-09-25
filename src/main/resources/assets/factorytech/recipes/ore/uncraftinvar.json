@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"result": {
+		"item": "factorytech:ingot",
+		"data": 3,
+		"count": 9
+	},
+	"ingredients": [
+		{
+			"item": "#invar_block"
+		}
+	]
+}

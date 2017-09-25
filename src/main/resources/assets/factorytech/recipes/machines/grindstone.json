@@ -1,0 +1,29 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:grindstone"
+	},
+	"pattern": [
+	"l  ",
+	"wgs",
+	"mww"
+	],
+	"key": {
+		"w": {
+			"item": "#planks"
+		},
+		"g": {
+			"item": "#gear"
+		},
+		"s": {
+			"item": "#stone"
+		},
+		"l": {
+			"item": "minecraft:stone_slab",
+			"data": 0
+		},
+		"m": {
+		    "item": "#basic_motor"
+		}
+	}
+}

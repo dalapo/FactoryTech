@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:iondisperser"
+    },
+    "pattern": [
+    " d ",
+    "gcg",
+    "obo"
+    ],
+    "key": {
+        "d": {
+            "item": "minecraft:diamond"
+        },
+        "g": {
+            "item": "factorytech:ore_dust",
+            "data": 12
+        },
+        "c": {
+            "item": "#core"
+        },
+        "o": {
+            "item": "minecraft:obsidian"
+        },
+        "b": {
+            "item": "#battery"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:sluice"
+	},
+	"pattern": [
+		"w w",
+		"wgw",
+		"sss"
+	],
+	"key": {
+		"w": {
+			"item": "#planks"
+		},
+		"g": {
+			"item": "#mesh"
+		},
+		"s": {
+			"item": "minecraft:wooden_slab",
+			"data": 0
+		}
+	}
+}

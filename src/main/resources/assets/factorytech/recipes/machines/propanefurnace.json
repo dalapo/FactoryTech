@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:propfurnace"
+    },
+    "pattern": [
+        " pp",
+        "tpf",
+        "iii"
+    ],
+    "key": {
+        "p": {
+            "item": "factorytech:pipe"
+        },
+        "t": {
+            "item": "factorytech:tankblock"
+        },
+        "f": {
+            "item": "minecraft:furnace"
+        },
+        "i": {
+            "item": "#invar_ingot"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:oredrill"
+	},
+	"pattern": [
+	"wmw",
+	"sds",
+	"iii"
+	],
+	"key": {
+		"w": {
+			"item": "#planks"
+		},
+		"m": {
+			"item": "#motor"
+		},
+		"s": {
+			"item": "#stone"
+		},
+		"d": {
+			"item": "#drill"
+		},
+		"i": {
+			"item": "minecraft:iron_ingot"
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:autocrafter"
+	},
+	"pattern": [
+	"wiw",
+	"wiw",
+	"bbb"
+	],
+	"key": {
+		"w": {
+		  "item": "#wire"
+	    },
+	    "i": {
+	       "item": "#invar_ingot"
+	    },
+	    "b": { 
+	       "item": "#battery"
+	    }	
+	}
+}

@@ -1,0 +1,20 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:tank",
+        "data": 0
+    },
+    "pattern": [
+        " i ",
+        "i g",
+        "iii"
+    ],
+    "key": {
+        "i": {
+            "item": "#invar_ingot"
+        },
+        "g": {
+            "item": "minecraft:glass"
+        }
+    }
+}
