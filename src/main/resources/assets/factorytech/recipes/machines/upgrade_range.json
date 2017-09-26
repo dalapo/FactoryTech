@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:upgrade",
+        "data": 0
+    },
+    "pattern": [
+        "pgp",
+        "gqg",
+        "pgp"
+    ],
+    "key": {
+        "p": {
+            "item": "#cupronickel_ingot"
+        },
+        "g": {
+            "item": "#magnet"
+        },
+        "q": {
+            "item": "#circ4"
+        }
+    }
+}

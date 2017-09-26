@@ -29,7 +29,7 @@ public class ItemRegistry {
 	public static ItemBase salvagePart;
 	public static ItemBase circuitIntermediate;
 	public static ItemFluidReader fluidGauge;
-	public static ItemFood bacon;
+//	public static ItemFood bacon;
 	public static ItemBase oreProduct;
 	public static ItemBase ingot;
 	public static ItemBase tank;
@@ -38,7 +38,7 @@ public class ItemRegistry {
 //	public static ItemBase corePart;
 	public static ItemBase upgrade;
 	public static ItemCoreStage coreUnfinished;
-	public static ItemPressureGun pressureGun;
+	public static ItemBase pressureGun;
 	
 	public static Item getItem(String name)
 	{
@@ -57,7 +57,7 @@ public class ItemRegistry {
 		items.add(salvagePart = new ItemBase("salvage", 12));
 		items.add(circuitIntermediate = new ItemBase("circuit_intermediate", 9));
 		items.add(fluidGauge = new ItemFluidReader("fluidreader"));
-		items.add(bacon = (ItemFood) new ItemFood(4, 0.6F, false).setUnlocalizedName(NameList.MODID + "." + "bacon").setRegistryName("bacon"));
+//		items.add(bacon = (ItemFood) new ItemFood(4, 0.6F, false).setUnlocalizedName(NameList.MODID + "." + "bacon").setRegistryName("bacon"));
 		
 		/**
 		 * 0-3: Impure dusts (iron, gold, copper, nickel)
@@ -66,13 +66,12 @@ public class ItemRegistry {
 		 */
 		items.add(oreProduct = (ItemBase)new ItemBase("ore_dust", 13).setCreativeTab(CreativeTabs.MATERIALS));
 		items.add(ingot = (ItemBase)new ItemBase("ingot", 4).setCreativeTab(CreativeTabs.MATERIALS));
-		items.add(tank = (ItemBase)new ItemBase("tank", 5));
-		
+		items.add(tank = (ItemBase)new ItemBase("tank", 5).setHasInformation());
 		items.add(intermediate = (ItemBase)new ItemBase("intermediate", 5).setCreativeTab(CreativeTabs.MISC));
 		items.add(craftStopper = (ItemBase)new ItemBase("craftstopper").setMaxStackSize(1));
 		items.add(coreUnfinished = new ItemCoreStage("core_unfinished"));
 		items.add(upgrade = new ItemBase("upgrade", 5));
-		items.add(pressureGun = new ItemPressureGun("pressuregun"));
+		items.add(pressureGun = new ItemPressureGun("pressuregun").setHasInformation());
 	}
 	
 	@SideOnly(Side.CLIENT)

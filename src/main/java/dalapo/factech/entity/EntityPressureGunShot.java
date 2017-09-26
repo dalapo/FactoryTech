@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
@@ -49,7 +50,7 @@ public class EntityPressureGunShot extends EntityArrow
 		}
 		catch (ArrayIndexOutOfBoundsException e)
 		{
-			Logger.info("Array index out of bounds: " + fluidType);
+			Logger.warn("Array index out of bounds: " + fluidType);
 			projType = EnumPressureGun.AIR;
 		}
 	}
@@ -76,7 +77,7 @@ public class EntityPressureGunShot extends EntityArrow
 		if (raytrace.entityHit instanceof EntityLiving)
 		{
 			EntityLiving entityHit = (EntityLiving)raytrace.entityHit;
-			if (projType.damage > 0)
+			if (projType.damage > 0 && !(entityHit instanceof EntitySquid))
 			{
 				entityHit.attackEntityFrom(new DamageSource("fluidgun"), projType.damage);
 			}
@@ -236,7 +237,7 @@ public class EntityPressureGunShot extends EntityArrow
 		AIR("air", 0, 3.0F, 4, 0.2, false),
 		WATER("water", 1, 1.0F, 10, 0, false),
 		PROPANE("propane", 5, 0.5F, 5, 0.15, true),
-		H2SO4("h2so4", 8, 0.8F, 6, 0.1, false);
+		H2SO4("h2so4", 8, 0.25F, 6, 0.1, false);
 		
 		private EnumPressureGun(String name, int damage, float knockback, int range, double spread, boolean fire)
 		{

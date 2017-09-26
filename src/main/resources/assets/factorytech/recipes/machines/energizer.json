@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:energizer"
+    },
+    "pattern": [
+        "ooo",
+        "1c4",
+        "ooo"
+    ],
+    "key": {
+        "o": {
+            "item": "minecraft:obsidian"
+        },
+        "1": {
+            "item": "#circ1"
+        },
+        "4": {
+            "item": "#circ4"
+        },
+        "c": {
+            "item": "#core"
+        }
+    }
+}

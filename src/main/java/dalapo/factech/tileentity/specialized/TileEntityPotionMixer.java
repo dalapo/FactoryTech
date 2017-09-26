@@ -25,8 +25,8 @@ public class TileEntityPotionMixer extends TileEntityMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MIXER, 0.05F, 1.05F);
-		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.05F, 1.01F);
+		partsNeeded[0] = new MachinePart(PartList.MIXER, 0.05F, 1.05F, 0);
+		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.05F, 1.01F, 0.4F, 0);
 	}
 	
 	@Override

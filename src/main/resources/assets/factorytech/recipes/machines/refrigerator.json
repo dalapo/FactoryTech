@@ -1,0 +1,28 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:fridge"
+    },
+    "pattern": [
+        "ncs",
+        "ppi",
+        "ncs"
+    ],
+    "key": {
+        "n": {
+            "item": "#piston"
+        },
+        "c": {
+            "item": "#circ3"
+        },
+        "p": {
+            "item": "factorytech:pipe"
+        },
+        "i": {
+            "item": "#invar_block"
+        },
+        "s": {
+            "item": "minecraft:snowball"
+        }
+    }
+}

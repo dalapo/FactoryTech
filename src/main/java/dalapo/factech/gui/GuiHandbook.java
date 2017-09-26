@@ -32,7 +32,9 @@ public class GuiHandbook extends GuiScreen
 	private int xSize = 256;
 	private int ySize = 160;
 	private boolean drawGrid = false;
+	private boolean drawBoard = false;
 	private ItemStack[][] recipe;
+	private boolean[][] board;
 	private ItemStack result;
 	GuiButton[] buttons = new GuiButton[10];
 	
@@ -109,6 +111,11 @@ public class GuiHandbook extends GuiScreen
 		addButton(buttons[8] = new GuiButton(8, guiLeft + 34, guiTop + 136, 30, 20, "X"));
 		addButton(buttons[9] = new GuiButton(9, guiLeft + 64, guiTop + 136, 30, 20, "->"));
 		refresh();
+	}
+	
+	private boolean[][] getCircuitBoard(int pattern)
+	{
+		return GuiCircuitScribe.getBoard(pattern);
 	}
 	
 	private void showRecipes()
@@ -215,11 +222,24 @@ public class GuiHandbook extends GuiScreen
 				{
 					title = str.substring(7);
 					drawGrid = false;
+					drawBoard = false;
 				}
 				else if (str.startsWith("$recipe"))
 				{
 					recipes.add(CraftingManager.getRecipe(new ResourceLocation(NameList.MODID, str.substring(8))));
 					drawGrid = true;
+				}
+				else if (str.startsWith("$pattern"))
+				{
+					try {
+						board = getCircuitBoard(Integer.parseInt(str.substring(9)));
+					}
+					catch (NumberFormatException e)
+					{
+						e.printStackTrace();
+						continue;
+					}
+					drawBoard = true;
 				}
 				else if (str.equals("$end"))
 				{
@@ -261,6 +281,25 @@ public class GuiHandbook extends GuiScreen
 				}
 			}
 			FacGuiHelper.renderItemStack(result, guiLeft + 94 + GRID_X_OFFSET, guiTop + 18 + GRID_Y_OFFSET);
+		}
+		if (drawBoard)
+		{
+			int boardLeft = guiLeft + 64;
+			int boardTop = guiTop + 120;
+			for (int x=0; x<board.length*16; x+=16)
+			{
+				for (int y=0; y<board[x/16].length*16; y+=16)
+				{
+					if (board[x/16][y/16])
+					{
+						drawRect(boardLeft+x, boardTop-y, boardLeft+x+16, boardTop-y-16, 0xFF808080);
+					}
+					else
+					{
+						drawRect(boardLeft+x, boardTop-y, boardLeft+x+16, boardTop-y-16, 0xFFFFFFFF);
+					}
+				}
+			}
 		}
 		for (GuiButton b : buttonList)
 		{

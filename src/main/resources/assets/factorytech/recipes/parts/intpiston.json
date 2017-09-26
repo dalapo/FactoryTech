@@ -15,7 +15,7 @@
             "data": 0
         },
         "i": {
-            "item": "#invar_nugget"
+            "item": "minecraft:iron_nugget"
         },
         "r": {
             "item": "minecraft:redstone"

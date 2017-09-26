@@ -66,7 +66,6 @@ public class MachineRecipes {
 		}
 		SAW.put(new ItemStack(Blocks.PLANKS, 1, 32767), new ItemStack(Items.STICK, 3));
 		SAW.put(new ItemStack(Blocks.QUARTZ_BLOCK, 1, 32767), new ItemStack(ItemRegistry.circuitIntermediate, 1, 8));
-		SAW.put(new ItemStack(Items.COOKED_PORKCHOP, 1), new ItemStack(ItemRegistry.bacon, 3));
 		
 		GRINDSTONE.put(new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.ordinal()), new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.ordinal()));
 		GRINDSTONE.put(new ItemStack(ItemRegistry.salvagePart, 1, 4), new ItemStack(ItemRegistry.machinePart, 1, PartList.DRILL.ordinal()));
@@ -75,8 +74,9 @@ public class MachineRecipes {
 		GRINDSTONE.put(new ItemStack(ItemRegistry.salvagePart, 1, 3), new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.ordinal()));
 		GRINDSTONE.put(new ItemStack(ItemRegistry.salvagePart, 1, 0), new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.ordinal()));
 		
-		CRUCIBLE.put(new ItemStack(Blocks.ICE, 1), new FluidStack(FluidRegistry.WATER, 1000)); // Placeholder to confirm functionality
-		CRUCIBLE.put(new ItemStack(Blocks.NETHERRACK, 1), new FluidStack(FluidRegistry.LAVA, 200));
+		CRUCIBLE.put(new ItemStack(Blocks.ICE, 1), new FluidStack(FluidRegistry.WATER, 1000));
+		CRUCIBLE.put(new ItemStack(Blocks.COBBLESTONE, 1), new FluidStack(FluidRegistry.LAVA, 50));
+		CRUCIBLE.put(new ItemStack(Blocks.NETHERRACK, 1), new FluidStack(FluidRegistry.LAVA, 500));
 		CRUCIBLE.put(new ItemStack(Items.GLOWSTONE_DUST, 1), new FluidStack(ModFluidRegistry.glowstone, 100));
 		
 		METALCUTTER.put(new ItemStack(Items.IRON_INGOT), new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.ordinal()));

@@ -130,6 +130,7 @@ factorytech.core_unfinished.name=Unprimed Energy Core
 factorytech.craftstopper.name=Crafting Slot Blocker
 factorytech.wrench.name=Monkey Wrench
 factorytech.handbook.name=Blueprint Collection
+factorytech.pressuregun.name=Fluid Pressure Gun
 
 # Machine runs and consumes parts faster
 factorytech.upgrade:0.name=Machine Upgrade: Overclock
@@ -173,3 +174,4 @@ fluid.energite=Energite
 death.attack.acid=%1$s stepped in H2SO4 thinking it was H2O
 death.attack.machine=%1$s was disassembled alive
 death.attack.tesla=%1$s made a truly shocking discovery
+death.attack.fluidgun=%1$s was doused with chemicals

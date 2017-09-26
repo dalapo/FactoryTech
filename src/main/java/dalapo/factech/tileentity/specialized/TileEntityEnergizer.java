@@ -6,6 +6,7 @@ import dalapo.factech.reference.PartList;
 import dalapo.factech.reference.StateList;
 import dalapo.factech.tileentity.TileEntityBasicInventory;
 import dalapo.factech.tileentity.TileEntityMachine;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,6 +49,8 @@ public class TileEntityEnergizer extends TileEntityBasicInventory implements ITi
 				age = 0;
 				if (getStackInSlot(0).isEmpty())
 				{
+					EntityItem ei = new EntityItem(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, new ItemStack(ItemRegistry.salvagePart, 1, 9));
+					world.spawnEntity(ei);
 					hasCore = false;
 				}
 				else

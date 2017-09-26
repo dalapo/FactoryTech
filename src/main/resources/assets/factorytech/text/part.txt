@@ -43,6 +43,9 @@ $end
 $title Circuit Board
 The Circuit Board is one of the most important parts described in this manual, and is used in virtually all complex machines. Producing them is a multi-step process that will be described on the next page. When they burn out, the board can be smelted to clean it, destroying the copper but refreshing the board.
 $end
+$title Circuit Board Production
+First, a Block of Quartz must be cut up in a Chop Saw. This yields four Blank Quartz Plates. Then, a Circuit Scribe must be programmed with one of four patterns to etch onto the plate, and a plate must be processed on it. Once a pattern has been cut, the grooves must be filled with pure copper dust (NOT copper ore dust), and the filled circuit board must be smelted to finish it.
+$end
 $title Circuit Pattern 1
 $pattern 0
 $end
@@ -55,15 +58,12 @@ $end
 $title Circuit Pattern 4
 $pattern 3
 $end
-$title Circuit Board Production
-First, a Block of Quartz must be cut up in a Chop Saw. This yields four Blank Quartz Plates. Then, a Circuit Scribe must be programmed with one of four patterns to etch onto the plate, and a plate must be processed on it. Once a pattern has been cut, the grooves must be filled with pure copper dust (NOT copper ore dust), and the filled circuit board must be smelted to finish it.
-$end
 $title Magnet
 Magnets are used in many machines that interact with the world. In addition, they are a crucial component of charging and stabilizing Energy Cores. They are also unique in that, since their only effect from use is de-magnetizing, you can reclaim the Iron Ingot 100% of the time in all machines that use them.
 Automatically collecting them may be wise.
 $end
 $title Battery
-Most machines can run off of simple Redstone power, but some require a substantial electrical current. Batteries are created by first crafting the empty shell, and then using a Compression Chamber to fill them with sulphuric acid. Once depleted, some of them can be emptied to reuse the shell.
+Most machines can run off of simple Redstone power, but some require a substantial electrical current. Batteries are created by first crafting the empty shell, and then using a Compression Chamber to fill them with sulphuric acid. Adding a copper and a gold nugget to a dead battery refurbishes the shell.
 $end
 $title Focusing Lens
 Focusing lenses can be obtained by putting a Glass block on a Grindstone. Currently, their only use is to make the Magnifying Glass.

@@ -39,6 +39,10 @@ $title Item Redistributor
 $recipe automation/itemredis
 The Item Redistributor redirects items dropped into its top to one of its sides, according to a ratio specified by its GUI. You can also select whether to treat a stack as a single entity, or to split it.
 $end
+$title Sequential Placer
+$recipe automation/sequenceplacer
+The Sequence Placer has an internal storage of 18 blocks. It places one, in the order they are, each time it receives a Redstone signal.
+$end
 $title Pipe
 $recipe automation/pipe
 Copper pipes are the primary method of moving liquids around. Thankfully, they don't seem to melt no matter how hot the fluid inside is.

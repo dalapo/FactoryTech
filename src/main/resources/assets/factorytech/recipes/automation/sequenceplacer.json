@@ -1,0 +1,26 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:sequenceplacer"
+    },
+    "pattern": [
+        "ppp",
+        "qnd",
+        "ppp"
+    ],
+    "key": {
+        "p": {
+            "item": "#planks"
+        },
+        "n": {
+            "item": "#piston"
+        },
+        "d": {
+            "item": "minecraft:dispenser"
+        },
+        "q": {
+            "item": "minecraft:quartz_block",
+            "data": 0
+        }
+    }
+}

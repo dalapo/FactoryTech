@@ -68,6 +68,10 @@ $recipe machines/autominer
 The Mining Machine will automatically dig a wide hole down to bedrock, outputting all block drops. It works similarly to other models, though it is a bit more... "interesting"... than some others. By default it digs a 7x7 hole; a Range upgrade increases this to 15x15.
 Parts required (any side): Drill, Circuit Board (Pattern 1), Advanced Motor
 $end
+$title Industrial Electroplater
+$recipe machines/electroplater
+The Industrial Electroplater dissolves materials in sulphuric acid and then uses an electric current to plate them onto wires. It can electroplate ore dusts to double them again as well as turning Redstone into Glowstone and sand into quartz.
+$end
 $title Mob Disassembler
 $recipe machines/disassembler
 The Mob Disassembler rapidly damages any creature (save for Players) that stands on top of it; in addition, mobs killed by it will drop much more loot than normal. Some may even drop loot they normally couldn't.
@@ -93,6 +97,7 @@ Concrete Powder + Water -> Concrete
 Redstone + Sulphur -> Blaze Powder
 $end
 $title Refrigeration Unit
+$recipe machines/refrigerator
 The Refrigerator cools liquids until they solidify, freezing water into ice and lava into obsidian. Oddly enough, it can also convert propane into coal.
 Parts requried (back): Integrated Piston, Advanced Motor, Circuit Board (Pattern 3)
 $end
@@ -137,4 +142,8 @@ $title Tesla Coil
 $recipe machines/teslacoil
 This machine builds up electric charge to zap mobs and players, making it a powerful form of base defence. Any creature wearing a full suit of Chainmail armour is immune to it as the chainmail forms a Faraday cage.
 Parts required (any side): Battery, Wire
+$end
+$title Universal Supercharger
+$recipe machines/energizer
+The Universal Supercharger can be placed adjacent to any machine to make it run twice as fast. To function, it requires a steady supply of Energy Cores.
 $end

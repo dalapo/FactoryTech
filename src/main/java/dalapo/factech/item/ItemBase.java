@@ -1,15 +1,20 @@
 package dalapo.factech.item;
 
+import java.util.List;
+
 import dalapo.factech.init.TabRegistry;
 import dalapo.factech.reference.NameList;
 import dalapo.factech.reference.PartList;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,12 +24,15 @@ public class ItemBase extends Item {
 	protected final String name;
 	private final int subtypes;
 	
+	protected boolean hasInformation;
+	
 	public ItemBase(String name, int subtypes)
 	{
 		super();
 //		setCreativeTab(TabRegistry.FACTECH);
 		this.name = name;
 		this.subtypes = subtypes > 1 ? subtypes : 1;
+		this.hasInformation = false;
 		if (subtypes > 1)
 		{
 			hasSubtypes = true;
@@ -33,6 +41,27 @@ public class ItemBase extends Item {
 		setUnlocalizedName(NameList.MODID + "." + name);
 		setRegistryName(name);
 //		GameRegistry.register(this);
+	}
+	
+	public ItemBase setHasInformation()
+	{
+		hasInformation = true;
+		return this;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack is, World world, List<String> list, ITooltipFlag flags)
+	{
+		if (hasInformation)
+		{
+			actuallyAddInformation(is, world, list, flags);
+		}
+	}
+	
+	protected void actuallyAddInformation(ItemStack is, World world, List<String> list, ITooltipFlag flags)
+	{
+		// Noop in ItemBase
 	}
 	
 	public ItemBase(String name)

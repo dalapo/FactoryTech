@@ -1,0 +1,26 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:intermediate",
+        "data": 2
+    },
+    "pattern": [
+        "igi",
+        "iwi",
+        "ici"
+    ],
+    "key": {
+        "i": {
+            "item": "minecraft:iron_nugget"
+        },
+        "g": {
+            "item": "#gold_dust"
+        },
+        "w": {
+            "item": "#wire"
+        },
+        "c": {
+            "item": "#copper_dust"
+        }
+    }
+}

@@ -13,12 +13,15 @@ $recipe machines/upgrade_underclock
 This upgrade makes the machine work half as fast, but raises the number of operations each part has before being able to break, and then makes them less likely to break after that.
 $end
 $title Upgrade: Range
+$recipe machines/upgrade_range
 For machines that interact with the world around them, the Range upgrade increases their effective radius. It does not affect machines such as the Drill Grinder which do not interact with the world.
 $end
 $title Upgrade: Consistency
+$recipe machines/upgrade_consistency
 The Consistency upgrade doubles the amount of operations each part can do without being able to break, but makes them break immediately after that.
 $end
 $title Upgrade: Efficiency
+$recipe machines/upgrade_efficiency
 The Efficiency upgrade increases the chance that broken parts in a machine can be salvaged.
 $end
 $title Brick variants

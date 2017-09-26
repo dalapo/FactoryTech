@@ -26,8 +26,8 @@ public class TileEntityTeslaCoil extends TileEntityAreaMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.BATTERY, 0.3F, 1.05F);
-		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.2F, 1.1F);
+		partsNeeded[0] = new MachinePart(PartList.BATTERY, 0.3F, 1.05F, 0.9F, 2);
+		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.2F, 1.1F, 0.2F, 4);
 	}
 
 	@Override

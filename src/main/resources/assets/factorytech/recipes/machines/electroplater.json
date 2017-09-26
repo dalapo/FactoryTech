@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:electroplater"
+    },
+    "pattern": [
+        "www",
+        "btb",
+        "iii"
+    ],
+    "key": {
+        "w": {
+            "item": "#wire"
+        },
+        "b": {
+            "item": "#battery"
+        },
+        "t": {
+            "item": "factorytech:tankblock"
+        },
+        "i": {
+            "item": "#invar_ingot"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:pressuregun"
+    },
+    "pattern": [
+        "nt ",
+        "ppp",
+        "ci "
+    ],
+    "key": {
+        "n": {
+            "item": "#piston"
+        },
+        "t": {
+            "item": "factorytech:tank",
+            "data": 0
+        },
+        "p": {
+            "item": "factorytech:pipe"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "c": {
+            "item": "#circ4"
+        }
+    }
+}

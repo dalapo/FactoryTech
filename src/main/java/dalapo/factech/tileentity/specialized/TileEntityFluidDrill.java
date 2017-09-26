@@ -2,6 +2,7 @@ package dalapo.factech.tileentity.specialized;
 
 import java.util.Random;
 
+import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ModFluidRegistry;
@@ -12,6 +13,7 @@ import dalapo.factech.tileentity.TileEntityFluidMachine;
 import dalapo.factech.tileentity.TileEntityMachineNoOutput;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.chunk.Chunk;
@@ -38,14 +40,15 @@ public class TileEntityFluidDrill extends TileEntityFluidMachine {
 		drillSulphur = rand.nextBoolean();
 		mbPerOperation = rand.nextInt(150) + 10;
 		if (rand.nextInt(4) == 0) mbPerOperation += rand.nextInt(100);
+		getHasWork();
 //		PacketHandler.sendToAll(new PlayerChatPacket(String.format("Sulphur: %s; %s mB per operation", drillSulphur, mbPerOperation)));
 	}
 
 	@Override
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.DRILL, 0.2F, 1.2F, 0.4F, 5);
-		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_1, 0.1F, 1.4F);
-		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.2F, 1.1F);
+		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_1, 0.1F, 1.4F, 0.6F, 4);
+		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.2F, 1.1F, 0.6F, 4);
 	}
 	
 	@Override
@@ -55,9 +58,23 @@ public class TileEntityFluidDrill extends TileEntityFluidMachine {
 	}
 	
 	@Override
+	public void getHasWork()
+	{
+		for (int i=1; i<pos.getY(); i++)
+		{
+			if (world.isAirBlock(FacMathHelper.withOffsetAndDist(pos, EnumFacing.DOWN, i)))
+			{
+				hasWork = false;
+				hasWork = true;
+			}
+		}
+		hasWork = true;
+	}
+	
+	@Override
 	public boolean canRun()
 	{
-		return super.canRun() && tanks[0].getFluidAmount() <= (10000 - mbPerOperation);
+		return super.canRun() && tanks[0].getFluidAmount() <= (10000 - mbPerOperation) && hasWork;
 	}
 	
 	@Override

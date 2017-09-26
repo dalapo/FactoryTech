@@ -1,9 +1,12 @@
 package dalapo.factech.item;
 
+import java.util.List;
+
 import dalapo.factech.entity.EntityPressureGunShot;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.ItemRegistry;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,9 +46,35 @@ public class ItemPressureGun extends ItemBase
 	}
 	
 	@Override
+	protected void actuallyAddInformation(ItemStack is, World world, List<String> list, ITooltipFlag flags)
+	{
+		int tank = getTankID(is);
+		String str = "Active fluid: ";
+		switch (tank)
+		{
+		case -1:
+			str += "None";
+			break;
+		case 0:
+			str += "Air";
+			break;
+		case 1:
+			str += "Water";
+			break;
+		case 2:
+			str += "Propane";
+			break;
+		case 3:
+			str += "H2SO4";
+			break;
+		}
+		list.add(str);
+	}
+	
+	@Override
 	public int getMaxItemUseDuration(ItemStack is)
 	{
-		return 40;
+		return 20;
 	}
 	
 	@Override

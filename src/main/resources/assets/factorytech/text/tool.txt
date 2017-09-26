@@ -1,5 +1,5 @@
 $title Monkey Wrench
-The Monkey Wrench is the universal tool for adjusting machines. This usually means rotating the machine to face you when you right-click it with a wrench.
+The Monkey Wrench is the universal tool for adjusting machines. It's just not quite clear how.
 $end
 $title Magnifying Glass
 $recipe magglass
@@ -10,6 +10,7 @@ $recipe automation/craftblocker
 Crafting Slot Blockers can be put into the grid of the Autocrafter. They are ignored by it but still take up an inventory slot in order to ease automation.
 $end
 $title Pressure Gun
+$recipe pressuregun
 The Pressure Gun uses filled tanks of fluid as a weapon.
 Air: High knockback, low range
 Water: Medium knockback, low damage, long range
