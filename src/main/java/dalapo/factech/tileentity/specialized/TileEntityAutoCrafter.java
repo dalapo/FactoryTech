@@ -166,7 +166,7 @@ public class TileEntityAutoCrafter extends TileEntityMachine {
 	
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		return (index == 11);
+		return (index >= 9);
 	}
 	
 	@Override

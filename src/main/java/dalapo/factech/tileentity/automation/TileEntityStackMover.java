@@ -47,7 +47,6 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 		{
 			if (!isPowered && isSignal)
 			{
-				Logger.info("About to enter transferStack()");
 				if (((BlockStackMover)world.getBlockState(getPos()).getBlock()).tier == 2) transferStacks();
 				else transferStack();
 				isPowered = true;
@@ -200,10 +199,11 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 		super.readFromNBT(nbt);
 	}
 
+	// Returns an empty array
 	// The Stack Mover's inventory (filter) does not interact with automation in any way
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		return null;
+		return new int[] {};
 	}
 
 	@Override

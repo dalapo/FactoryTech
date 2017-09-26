@@ -43,7 +43,8 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		SIDE,
 		TOP,
 		BOTTOM,
-		ANY
+		ANY,
+		NONE
 	}
 	
 	protected MachinePart[] partsNeeded;
@@ -462,6 +463,9 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		boolean isPartSide = false;
 		switch (partSide)
 		{
+		case NONE:
+			isPartSide = false;
+			break;
 		case ANY:
 			isPartSide = true;
 			break;
