@@ -21,7 +21,6 @@ import dalapo.factech.tileentity.specialized.TileEntityCentrifuge;
 
 public class TesrCentrifuge extends TesrMachine<TileEntityCentrifuge>
 {
-
 	public TesrCentrifuge(boolean directional) {
 		super(directional);
 	}

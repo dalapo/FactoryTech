@@ -1,7 +1,7 @@
 {
 	"type": "forge:ore_shaped",
 	"result": {
-		"item": "factorytech:autocrafter"
+		"item": "factorytech:teslacoil"
 	},
 	"pattern": [
 	"wiw",

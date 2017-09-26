@@ -79,7 +79,6 @@ Parts required (bottom): Saw Blade, Circuit Board (Pattern 3), Battery
 $end
 $title Fluid Drill
 $recipe machines/fluiddrill
-$recipe parts/tankitem
 The Fluid Drill digs a narrow, deep hole into the Earth and extracts either sulphur or propane, depending on where you place it. To function there cannot be any air or non-natural blocks between it and Bedrock.
 Parts required (any side): Drill, Circuit Board (Pattern 2), Integrated Piston
 $end
@@ -103,6 +102,7 @@ Parts requried (back): Integrated Piston, Advanced Motor, Circuit Board (Pattern
 $end
 $title Compression Chamber
 $recipe machines/compressionchamber
+$recipe parts/tankitem
 The Compression Chamber compresses fluids to be stored in tanks; this can be done with water, propane, and sulphuric acid. In addition, attempting to fill a tank when the Compression Chamber's own tank is empty will instead fill it with compressed air. Finally, it is also used to fill Energy Core shells with Energite.
 Parts required (back): Integrated Piston, Advanced Motor, Circuit Board (Pattern 4)
 $end
