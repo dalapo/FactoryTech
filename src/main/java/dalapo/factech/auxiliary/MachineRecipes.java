@@ -60,9 +60,13 @@ public class MachineRecipes {
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 6), new ItemStack(ItemRegistry.circuitIntermediate, 1, 8), 1);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 11), new ItemStack(Items.IRON_NUGGET, 6), 1);
 		
-		for (int i=0; i<6; i++)
+		for (int i=0; i<4; i++)
 		{
 			SAW.put(new ItemStack(Blocks.LOG, 1, i), new ItemStack(Blocks.PLANKS, 6, i));
+		}
+		for (int i=0; i<2; i++)
+		{
+			SAW.put(new ItemStack(Blocks.LOG2, 1, i), new ItemStack(Blocks.PLANKS, 6, i+4));
 		}
 		SAW.put(new ItemStack(Blocks.PLANKS, 1, 32767), new ItemStack(Items.STICK, 3));
 		SAW.put(new ItemStack(Blocks.QUARTZ_BLOCK, 1, 32767), new ItemStack(ItemRegistry.circuitIntermediate, 1, 8));
@@ -158,16 +162,13 @@ public class MachineRecipes {
 			for (ItemStack is : OreDictionary.getOres("ore" + type))
 			{
 				if (is.getUnlocalizedName().indexOf("factorytech") == -1 &&
-						!is.getItem().getRegistryName().getResourceDomain().equals("minecraft")) // Avoid duplicate recipes
+					!is.getItem().getRegistryName().getResourceDomain().equals("minecraft") &&
+					!OreDictionary.getOres("dust" + type).isEmpty()) // Avoid duplicate recipes
 				{
 					ItemStack result = OreDictionary.getOres("dust" + type).get(0).copy();
 					result.setCount(2);
 					Logger.info(String.format("Adding Grinder recipe %s -> %s", is, result));
 					OREDRILL.put(is.copy(), result);
-				}
-				else
-				{
-					Logger.info("Skipping own recipe to grind " + is);
 				}
 			}
 		}

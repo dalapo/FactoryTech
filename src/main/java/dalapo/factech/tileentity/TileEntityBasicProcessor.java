@@ -35,7 +35,7 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 	{
 		@Nonnull ItemStack is = getOutput(getInput(0));
 		if (!is.isEmpty() &&
-				(FacStackHelper.matchStacksWithWildcard(is, getOutput()) || getOutput().isEmpty()) &&
+				(FacStackHelper.matchOreDict(is, getOutput()) || getOutput().isEmpty()) &&
 				is.getCount() + getOutput().getCount() <= 64) hasWork = true;
 		else hasWork = false;
 //		Logger.info(String.format("hasWork: %s", hasWork));
@@ -61,7 +61,7 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 		{
 			ItemStack in = entry.getKey().copy();
 			ItemStack out = entry.getValue().copy();
-			if (FacStackHelper.matchStacksWithWildcard(in, is) && in.getCount() <= is.getCount())
+			if ((FacStackHelper.matchOreDict(in, is) && in.getCount() <= is.getCount()))
 			{
 				return out;
 			}

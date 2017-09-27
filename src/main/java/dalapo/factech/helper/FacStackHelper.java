@@ -6,6 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class FacStackHelper {
 	private FacStackHelper() {}
@@ -74,6 +75,12 @@ public class FacStackHelper {
 	{
 		if (a.isItemEqual(b)) return true;
 		return (a.getItem().equals(b.getItem()) && (a.getItemDamage() == 32767 || b.getItemDamage() == 32767));
+	}
+	
+	public static boolean matchOreDict(ItemStack a, ItemStack b)
+	{
+		if (a.isEmpty() || b.isEmpty()) return false;
+		return matchStacksWithWildcard(a, b) || FacMathHelper.matchAny(OreDictionary.getOreIDs(a), OreDictionary.getOreIDs(b));
 	}
 	
 	public static boolean areItemsEqualAllowEmpty(@Nonnull ItemStack a, @Nonnull ItemStack b)

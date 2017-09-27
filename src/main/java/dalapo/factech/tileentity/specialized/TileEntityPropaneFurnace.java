@@ -62,7 +62,7 @@ public class TileEntityPropaneFurnace extends TileEntityMachine {
 		Map<ItemStack, ItemStack> recipes = FurnaceRecipes.instance().getSmeltingList();
 		for (Entry<ItemStack, ItemStack> smelt : recipes.entrySet())
 		{
-			if (FacStackHelper.matchStacksWithWildcard(smelt.getKey(), getInput(0)))
+			if (FacStackHelper.matchOreDict(smelt.getKey(), getInput(0)))
 			{
 //				Logger.info(smelt.getValue());
 				return smelt.getValue().copy();

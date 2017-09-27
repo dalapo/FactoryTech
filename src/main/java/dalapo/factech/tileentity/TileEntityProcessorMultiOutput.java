@@ -77,7 +77,7 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 		{
 			ItemStack in = entry.getKey().copy();
 			ItemStack[] out = new ItemStack[entry.getValue().length];
-			if (in.isItemEqual(is) && in.getCount() <= is.getCount())
+			if (FacStackHelper.matchOreDict(in, is) && in.getCount() <= is.getCount())
 			{
 				for (int i=0; i<out.length; i++)
 				{

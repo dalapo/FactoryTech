@@ -19,20 +19,6 @@ public class FacGuiHelper {
 	{
 		return "factorytech:textures/gui/" + baseName + ".png";
 	}
-	public static int getUIFromString(String str)
-	{
-		switch (str)
-		{
-		case "saw":
-			return 0;
-		case "wirecutter":
-			return 1;
-		case "metalmill":
-			return 2;
-			// etc.
-		}
-		return -1;
-	}
 	
 	public static void setColor(int color)
 	{
