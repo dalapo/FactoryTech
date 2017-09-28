@@ -30,7 +30,7 @@ public class TileEntityDisruptor extends TileEntityAreaMachine {
 		partsNeeded[0] = new MachinePart(PartList.CORE, 0.1F, 1.2F, 0.8F, 6);
 		partsNeeded[1] = new MachinePart(PartList.MAGNET, new ItemStack(Items.IRON_INGOT), 0.2F, 1.25F, 1F, 8);
 		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_3, 0.2F, 1.25F, 0.6F, 4);
-		partsNeeded[3] = new MachinePart(PartList.PISTON, 0.15F, 1.3F);
+		partsNeeded[3] = new MachinePart(PartList.PISTON, 0.15F, 1.3F, 0.8F, 6);
 	}
 	
 	@Override

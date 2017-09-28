@@ -51,7 +51,7 @@ public class TileEntityCircuitScribe extends TileEntityBasicProcessor {
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.15F, 1.2F, 0.8F, 12);
 		partsNeeded[1] = new MachinePart(PartList.BLADE, 0.2F, 1.05F, 0.2F, 4);
-		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.1F, 1.2F, 0.5F, 8);
+		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.1F, 1.2F, 0.6F, 8);
 	}
 
 	@Override

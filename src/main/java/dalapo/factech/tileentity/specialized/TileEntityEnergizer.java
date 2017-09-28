@@ -49,12 +49,12 @@ public class TileEntityEnergizer extends TileEntityBasicInventory implements ITi
 				age = 0;
 				if (getStackInSlot(0).isEmpty())
 				{
-					EntityItem ei = new EntityItem(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, new ItemStack(ItemRegistry.salvagePart, 1, 9));
-					world.spawnEntity(ei);
 					hasCore = false;
 				}
 				else
 				{
+					EntityItem ei = new EntityItem(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, new ItemStack(ItemRegistry.salvagePart, 1, 9));
+					world.spawnEntity(ei);
 					decrStackSize(0, 1);
 				}
 				world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);

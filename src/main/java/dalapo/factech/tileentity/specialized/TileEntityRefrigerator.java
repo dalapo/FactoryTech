@@ -25,7 +25,7 @@ public class TileEntityRefrigerator extends TileEntityFluidMachine {
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.PISTON, 0.2F, 1.15F, 0.7F, 5);
 		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.3F, 1.1F, 0.75F, 4);
-		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_2, 0.2F, 1.3F, 0.5F, 8);
+		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_2, 0.2F, 1.3F, 0.6F, 8);
 	}
 	
 	@Override

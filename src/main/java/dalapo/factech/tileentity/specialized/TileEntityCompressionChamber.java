@@ -79,7 +79,7 @@ public class TileEntityCompressionChamber extends TileEntityFluidMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.PISTON, 0.15F, 1.2F, 0.3F, 8);
+		partsNeeded[0] = new MachinePart(PartList.PISTON, 0.15F, 1.2F, 0.66F, 8);
 		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.2F, 1.05F, 0.6F, 8);
 	}
 

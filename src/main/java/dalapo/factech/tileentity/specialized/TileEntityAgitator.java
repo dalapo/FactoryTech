@@ -93,7 +93,7 @@ public class TileEntityAgitator extends TileEntityFluidMachine {
 	@Override
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.MIXER, 0.2F, 1.2F, 15);
-		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.1F, 1.3F, 0.4F, 6);
+		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.1F, 1.3F, 0.7F, 6);
 		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_3, 0.25F, 1.15F, 0.6F, 4);
 	}
 

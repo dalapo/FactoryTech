@@ -42,7 +42,7 @@ public class TileEntityDisassembler extends TileEntityMachineNoOutput {
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.SAW, 0.2F, 1.1F, 0.4F, 6);
 		partsNeeded[1] = new MachinePart(PartList.BATTERY, 0.25F, 1.01F, 0.9F, 4);
-		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_2, 0.1F, 1.2F, 0.5F, 8);
+		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_2, 0.1F, 1.2F, 0.6F, 5);
 	}
 
 	private List<ItemStack> getSpecialDrops(Class<? extends EntityMob> mobType)

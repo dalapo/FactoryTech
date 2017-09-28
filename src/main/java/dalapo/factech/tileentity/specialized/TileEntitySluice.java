@@ -62,7 +62,7 @@ public class TileEntitySluice extends TileEntityMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 3), 0.1F, 1.2F, 0.75F, 4);
+		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 2), 0.1F, 1.2F, 0.75F, 4);
 	}
 
 	@Override

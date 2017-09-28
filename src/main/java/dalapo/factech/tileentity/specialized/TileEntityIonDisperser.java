@@ -34,8 +34,8 @@ public class TileEntityIonDisperser extends TileEntityAreaMachine {
 	@Override
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.CORE, 0.05F, 1.01F, 0.75F, 0);
-		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_2, 0.1F, 1.1F, 0.5F, 4);
-		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_3, 0.1F, 1.1F, 0.5F, 4);
+		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_2, 0.1F, 1.1F, 0.6F, 4);
+		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_3, 0.1F, 1.1F, 0.6F, 4);
 		partsNeeded[3] = new MachinePart(PartList.BATTERY, 0.15F, 1.1F, 0.9F, 10);
 	}
 

@@ -29,7 +29,7 @@ public class TileEntityHTFurnace extends TileEntityBasicProcessor {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.1F, 1.3F, 0.2F, 12);
+		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.1F, 1.3F, 0.75F, 12);
 		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.25F, 1.0F, 0.7F, 5);
 	}
 

@@ -48,7 +48,7 @@ public class TileEntityFluidDrill extends TileEntityFluidMachine {
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.DRILL, 0.2F, 1.2F, 0.4F, 5);
 		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_1, 0.1F, 1.4F, 0.6F, 4);
-		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.2F, 1.1F, 0.6F, 4);
+		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.2F, 1.1F, 0.8F, 4);
 	}
 	
 	@Override
