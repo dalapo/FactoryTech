@@ -35,7 +35,7 @@ Parts required (bottom): Advanced Motor, Drill, Wire
 $end
 $title Magnetizer
 $recipe machines/magnetizer
-The Magnetizer's one and only job is to magnetize iron ingots. To do this, it rotates them at extreme speeds while subjecting them to an alternating current field. In addition to the normal machine parts, it requires an constant, alternating on/off Redstone signal to run.
+The Magnetizer's one and only job is to magnetize iron ingots. To do this, it rotates them at extreme speeds while subjecting them to an alternating current field. In addition to the normal machine parts, it requires a constant, alternating on/off Redstone signal to run.
 Parts required (bottom): Advanced Motor, Wire
 $end
 $title Electric Furnace

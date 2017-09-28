@@ -4,6 +4,7 @@ tile.factorytech:factorytech.potionmixer.name=Potion Mixer
 tile.factorytech:factorytech.disruptor.name=Mob Disruptor
 tile.factorytech:factorytech.conveyor.name=Transport Rollers
 tile.factorytech:factorytech.elevator.name=Fan Lift
+tile.factorytech:factorytech.bottomhatch.name=Lift Receiver
 tile.factorytech:factorytech.stackmover.name=Stack Mover
 tile.factorytech:factorytech.filtermover.name=Filtered Stack Mover
 tile.factorytech:factorytech.bulkmover.name=Bulk Stack Mover
@@ -165,10 +166,21 @@ item.factorytech.bacon.name=Industrial-Strength Bacon
 
 itemGroup.factorytech=Factory Tech
 
+factorytech:jei.saw=Chop Saw
+factorytech:jei.drillgrinder=Drill Grinder
+factorytech:jei.electroplater=Electroplater
+factorytech:jei.agitator=Fluid Agitator
+factorytech:jei.grindstone=Grindstone
+factorytech:jei.metalcutter=Metal Cutter
+factorytech:jei.centrifuge=Centrifuge
+factorytech:jei.elecfurnace=Electric Furnace
+factorytech:jei.crucible=Crucible
+factorytech:jei.fridge=Refrigerator
+
 fluid.sulphur=Liquid Sulphur
 fluid.h2so4=Sulphuric Acid
 fluid.propane=Propane
-fluid.glowstone=Liquefied Glowstone
+fluid.ftglowstone=Liquefied Glowstone
 fluid.energite=Energite
 
 death.attack.acid=%1$s stepped in H2SO4 thinking it was H2O

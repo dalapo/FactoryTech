@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.init.ModFluidRegistry;
 import dalapo.factech.reference.PartList;
@@ -17,6 +18,7 @@ import dalapo.factech.tileentity.TileEntityMachine;
 // Apparently, electrorefining doesn't work on iron or nickel. Oh well. I'm not above bending the rules a bit.
 public class TileEntityElectroplater extends TileEntityFluidMachine {
 	
+	private int outputNum = 0;
 	public TileEntityElectroplater() {
 		super("electroplater", 1, 3, 1, 1, 1, RelativeSide.BACK);
 	}
@@ -41,9 +43,10 @@ public class TileEntityElectroplater extends TileEntityFluidMachine {
 		}
 		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.ELECTROPLATER.entrySet())
 		{
-			if (getInput().isItemEqual(entry.getKey()) && getOutput().isItemEqual(entry.getValue()) && getOutput().getCount() < 64)
+			if (FacStackHelper.matchStacksWithWildcard(getInput(), entry.getKey(), true) && getOutput().isItemEqual(entry.getValue()) && getOutput().getCount() < 64)
 			{
 				hasWork = true;
+				outputNum = entry.getValue().getCount();
 				return;
 			}
 		}
@@ -60,15 +63,7 @@ public class TileEntityElectroplater extends TileEntityFluidMachine {
 	@Override
 	protected boolean performAction() {
 		tanks[0].drainInternal(500, true);
-		if (getInput().getItemDamage() < 4)
-		{
-			getOutput().grow(2);
-//			getOutput().grow(Math.random() < 0.5 ? 2 : 1);
-		}
-		else
-		{
-			getOutput().grow(1);
-		}
+		getOutput().grow(outputNum);
 		getInput().shrink(1);
 		getHasWork();
 		return true;

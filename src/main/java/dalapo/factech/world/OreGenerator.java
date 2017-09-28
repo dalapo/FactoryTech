@@ -31,7 +31,7 @@ public class OreGenerator implements IWorldGenerator {
 	public OreGenerator()
 	{
 		ores.add(new OreGen("copper", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.COPPER), 0, 48, Blocks.STONE, 8, 5, 75));
-		ores.add(new OreGen("nickel", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.NICKEL), 0, 24, Blocks.STONE, 8, 3, 60));
+		ores.add(new OreGen("nickel", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.NICKEL), 0, 24, Blocks.STONE, 8, 4, 60));
 	}
 	
 	public static class OreGen

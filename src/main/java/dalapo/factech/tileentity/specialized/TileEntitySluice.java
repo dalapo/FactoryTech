@@ -62,7 +62,7 @@ public class TileEntitySluice extends TileEntityMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 4), 0.1F, 1.05F, 0.95F, 8);
+		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 3), 0.1F, 1.2F, 0.75F, 4);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class TileEntitySluice extends TileEntityMachine {
 	@Override
 	public int getOpTime() {
 		// TODO Auto-generated method stub
-		return 200;
+		return 280;
 	}
 
 }

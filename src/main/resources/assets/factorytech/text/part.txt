@@ -38,7 +38,7 @@ The Drill does exactly what you would expect, drilling holes in things. It is th
 $end
 $title Heating Element
 $recipe parts/heatelem
-Heating Elements, used in machines that require high temperatures, is made using cupronickel alloy ingots (obtained by crafting 4 copper dust with 1 nickel dust and smelting the result). Due to their nature, they take awhile to burn out, and then they can be reclaimed for some of the metal.
+Heating Elements, used in machines that require high temperatures, is made using cupronickel alloy ingots (obtained by crafting 3 copper dust with 1 nickel dust and smelting the result). Due to their nature, they take awhile to burn out, and then they can be reclaimed for some of the metal.
 $end
 $title Circuit Board
 The Circuit Board is one of the most important parts described in this manual, and is used in virtually all complex machines. Producing them is a multi-step process that will be described on the next page. When they burn out, the board can be smelted to clean it, destroying the copper but refreshing the board.

@@ -10,10 +10,12 @@ import dalapo.factech.helper.Logger;
 import dalapo.factech.packet.PacketFactory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 	
 	protected boolean hasWork = false;
+	protected static boolean useOreDict = false;
 	
 	// Convenience class - 1 input, 1 output
 	public TileEntityBasicProcessor(String name, int partSlots, RelativeSide partHatch) {
@@ -61,7 +63,7 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 		{
 			ItemStack in = entry.getKey().copy();
 			ItemStack out = entry.getValue().copy();
-			if ((FacStackHelper.matchOreDict(in, is) && in.getCount() <= is.getCount()))
+			if ((FacStackHelper.matchStacksWithWildcard(in, is, false) && in.getCount() <= is.getCount()))
 			{
 				return out;
 			}
@@ -70,5 +72,4 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 	}
 	
 	protected abstract Map<ItemStack, ItemStack> getRecipeList();
-
 }

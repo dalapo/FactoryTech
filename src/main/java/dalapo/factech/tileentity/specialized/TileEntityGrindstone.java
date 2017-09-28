@@ -20,6 +20,10 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 		super("grindstone", 1, RelativeSide.BACK);
 		setDisplayName("Grindstone");
 	}
+	
+	static {
+		useOreDict = true;
+	}
 
 	@Override
 	protected Map<ItemStack, ItemStack> getRecipeList() {

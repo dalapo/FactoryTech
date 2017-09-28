@@ -1,4 +1,4 @@
-package dalapo.factech.plugins.jei.saw;
+package dalapo.factech.plugins.jei.categories;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,11 +9,15 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.init.BlockRegistry;
+import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
+import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
@@ -25,7 +29,7 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 
-public class SawRecipeCategory extends BaseRecipeCategory<SawRecipeWrapper> {
+public class SawRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper> {
 	
 	public SawRecipeCategory(IGuiHelper guiHelper)
 	{
@@ -48,38 +52,37 @@ public class SawRecipeCategory extends BaseRecipeCategory<SawRecipeWrapper> {
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 
-	public static List<SawRecipeWrapper> getRecipes(IGuiHelper guiHelper)
+	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
-		List<SawRecipeWrapper> recipes = new ArrayList<>();
+		List<StandardRecipeWrapper> recipes = new ArrayList<>();
 		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.SAW.entrySet())
 		{
-			recipes.add(new SawRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
 		}
 		return recipes;
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, SawRecipeWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, StandardRecipeWrapper recipeWrapper, IIngredients ingredients) {
 		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		List<List<ItemStack>> outputs = ingredients.getOutputs(ItemStack.class);
 		
 		IGuiItemStackGroup guiItemstacks = recipeLayout.getItemStacks();
-		guiItemstacks.init(0, true, 31, 27);
-		guiItemstacks.init(1, false, 85, 27);
+		guiItemstacks.init(0, true, 24, 27);
+		guiItemstacks.init(1, false, 78, 27);
 		guiItemstacks.set(0, inputs.get(0));
 		guiItemstacks.set(1, outputs.get(0));
-	}
-	
-	@Override
-	@Nullable
-	public IDrawable getIcon() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public void drawExtras(Minecraft minecraft) {
-		background.draw(minecraft);
+//		background.draw(minecraft);
+		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, 0), 52, 28);
+	}
+
+	@Override
+	protected void addProgressBar(IGuiHelper helper) {
+		
 	}
 
 }

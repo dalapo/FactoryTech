@@ -16,8 +16,8 @@ public class TileEntityLiftFan extends TileEntityBase implements ITickable {
 		{
 			int dist = (int)ei.posY - pos.getY();
 			ei.motionY = (strength - dist) / 30.0;
-			ei.motionX *= 0.5;
-			ei.motionZ *= 0.5;
+//			ei.motionX *= 0.5;
+//			ei.motionZ *= 0.5;
 		}
 	}
 }

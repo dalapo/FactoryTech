@@ -55,15 +55,6 @@ public class FacMathHelper {
 		return init;
 	}
 	
-	public static boolean matchAny(int[] a, int[] b)
-	{
-		for (int i=0; i<getMin(a.length, b.length); i++)
-		{
-			if (a[i] == b[i]) return true;
-		}
-		return false;
-	}
-	
 	public static double absDist(int dx, int dy, int dz)
 	{
 		return MathHelper.sqrt(dx*dx + dy*dy + dz*dz);

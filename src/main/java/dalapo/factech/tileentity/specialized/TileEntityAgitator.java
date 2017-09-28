@@ -154,6 +154,21 @@ public class TileEntityAgitator extends TileEntityFluidMachine {
 			if (slot == 1) return fluidB;
 			else return fluidA;
 		}
+		
+		public ItemStack getInputItem()
+		{
+			return input;
+		}
+		
+		public FluidStack getOutputFluid()
+		{
+			return fluidOut;
+		}
+		
+		public ItemStack getOutputItem()
+		{
+			return output;
+		}
 
 	}
 

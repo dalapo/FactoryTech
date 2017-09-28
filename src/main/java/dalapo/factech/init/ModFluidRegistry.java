@@ -36,7 +36,7 @@ public class ModFluidRegistry {
 		fluids.add(propane = (FluidBase)new FluidBase("propane").setDensity(20));
 		fluids.add(sulphur = (FluidBase)new FluidBase("sulphur").setDensity(1500).setTemperature(400));
 		fluids.add(energite = (FluidBase)new FluidBase("energite").setDensity(100).setTemperature(350));
-		fluids.add(glowstone = (FluidBase)new FluidBase("glowstone").setDensity(0).setTemperature(500));
+		fluids.add(glowstone = (FluidBase)new FluidBase("ftglowstone").setDensity(0).setTemperature(500));
 		
 		for (FluidBase f : fluids)
 		{

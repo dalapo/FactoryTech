@@ -1,11 +1,13 @@
-package dalapo.factech.plugins.jei.saw;
+package dalapo.factech.plugins.jei.wrappers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableList;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.helper.Logger;
 import dalapo.factech.plugins.jei.BaseRecipeWrapper;
 
 import net.minecraft.client.Minecraft;
@@ -14,12 +16,14 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 
-public class SawRecipeWrapper extends BaseRecipeWrapper {
+public class StandardRecipeWrapper extends BaseRecipeWrapper {
+	
+
 	
 	public ItemStack input;
 	public ItemStack output;
 	
-	public SawRecipeWrapper(IGuiHelper guiHelper, ItemStack in, ItemStack out)
+	public StandardRecipeWrapper(IGuiHelper guiHelper, ItemStack in, ItemStack out)
 	{
 		input = in;
 		output = out;
@@ -38,14 +42,9 @@ public class SawRecipeWrapper extends BaseRecipeWrapper {
 	}
 
 	@Override
-	public List<String> getTooltipStrings(int mouseX, int mouseY) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY,
 			int mouseButton) {
+		Logger.info(String.format("{%s, %s}", mouseX, mouseY));
 		return false;
 	}
 

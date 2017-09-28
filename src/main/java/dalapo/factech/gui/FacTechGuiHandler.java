@@ -104,7 +104,7 @@ public class FacTechGuiHandler implements IGuiHandler {
 		}
 		else if (ID == 6)
 		{
-			return new GuiHandbook();
+			return new GuiHandbook(player.getHeldItemMainhand());
 		}
 		else if (ID == 7)
 		{

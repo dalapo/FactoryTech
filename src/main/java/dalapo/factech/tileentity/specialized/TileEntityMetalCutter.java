@@ -13,6 +13,10 @@ public class TileEntityMetalCutter extends TileEntityBasicProcessor {
 		super("metalcutter", 2, RelativeSide.BOTTOM);
 		setDisplayName("Metal Cutter");
 	}
+	
+	static {
+		useOreDict = true;
+	}
 
 	@Override
 	protected Map<ItemStack, ItemStack> getRecipeList() {

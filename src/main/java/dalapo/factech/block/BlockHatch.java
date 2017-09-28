@@ -41,7 +41,7 @@ public class BlockHatch extends BlockBase {
 		{
 			if (!(entity instanceof EntityItem)) return;
 			Pair<EnumFacing, TileEntity> pair = FacTileHelper.getFirstAdjacentTile(pos, world, CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
-			Logger.info(pair == null ? "null" : pair);
+//			Logger.info(pair == null ? "null" : pair);
 			if (pair == null) return;
 			IItemHandler inv = pair.b.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, pair.a.getOpposite());
 			ItemStack is = ((EntityItem)entity).getItem();

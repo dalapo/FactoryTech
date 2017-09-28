@@ -30,4 +30,21 @@ public class FacArrayHelper {
 		}
 		arr[0] = newVal;
 	}
+	
+	public static boolean matchAny(int[] a, int[] b)
+	{
+		for (int i=0; i<FacMathHelper.getMin(a.length, b.length); i++)
+		{
+			if (a[i] == b[i]) return true;
+		}
+		return false;
+	}
+	
+	public static void printArray(int[] arr)
+	{
+		for (int i : arr)
+		{
+			Logger.info(i);
+		}
+	}
 }

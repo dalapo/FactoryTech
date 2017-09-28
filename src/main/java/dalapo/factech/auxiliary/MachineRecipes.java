@@ -54,7 +54,7 @@ public class MachineRecipes {
 		Logger.info("Entered initRecipes()");
 //		TileEntityAgitator.fillRecipes();
 		
-		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 1), new ItemStack(Items.IRON_NUGGET, 5), 1);
+		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 1), new ItemStack(Items.IRON_NUGGET, 6), 1);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 2), new ItemStack(ItemRegistry.oreProduct, 3, 4), 1);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 5), new ItemStack(ItemRegistry.ingot, 2, 2), 1);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 6), new ItemStack(ItemRegistry.circuitIntermediate, 1, 8), 1);
@@ -68,13 +68,13 @@ public class MachineRecipes {
 		{
 			SAW.put(new ItemStack(Blocks.LOG2, 1, i), new ItemStack(Blocks.PLANKS, 6, i+4));
 		}
+		
 		SAW.put(new ItemStack(Blocks.PLANKS, 1, 32767), new ItemStack(Items.STICK, 3));
-		SAW.put(new ItemStack(Blocks.QUARTZ_BLOCK, 1, 32767), new ItemStack(ItemRegistry.circuitIntermediate, 1, 8));
+		SAW.put(new ItemStack(Blocks.QUARTZ_BLOCK, 1, 32767), new ItemStack(ItemRegistry.circuitIntermediate, 4, 8));
 		
 		GRINDSTONE.put(new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.ordinal()), new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.ordinal()));
 		GRINDSTONE.put(new ItemStack(ItemRegistry.salvagePart, 1, 4), new ItemStack(ItemRegistry.machinePart, 1, PartList.DRILL.ordinal()));
 		GRINDSTONE.put(new ItemStack(Blocks.GLASS), new ItemStack(ItemRegistry.machinePart, 1, PartList.LENS.ordinal()));
-		GRINDSTONE.put(new ItemStack(ItemRegistry.ingot, 1, 1), new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.ordinal()));
 		GRINDSTONE.put(new ItemStack(ItemRegistry.salvagePart, 1, 3), new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.ordinal()));
 		GRINDSTONE.put(new ItemStack(ItemRegistry.salvagePart, 1, 0), new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.ordinal()));
 		
@@ -84,8 +84,6 @@ public class MachineRecipes {
 		CRUCIBLE.put(new ItemStack(Items.GLOWSTONE_DUST, 1), new FluidStack(ModFluidRegistry.glowstone, 100));
 		
 		METALCUTTER.put(new ItemStack(Items.IRON_INGOT), new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.ordinal()));
-		METALCUTTER.put(new ItemStack(ItemRegistry.ingot, 1, 0), new ItemStack(ItemRegistry.machinePart, 2, PartList.WIRE.ordinal()));
-		METALCUTTER.put(new ItemStack(ItemRegistry.ingot, 1, 1), new ItemStack(ItemRegistry.salvagePart, 1, 4));
 		
 		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 0), new ItemStack(Items.IRON_INGOT, 2));
 		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 1), new ItemStack(Items.GOLD_INGOT, 2));
@@ -93,11 +91,11 @@ public class MachineRecipes {
 		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 3), new ItemStack(ItemRegistry.ingot, 2, 1));
 		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 6), new ItemStack(Items.IRON_INGOT));
 		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 7), new ItemStack(Items.GOLD_INGOT));
-		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 8), new ItemStack(ItemRegistry.ingot, 1, 0));
-		ELECTROPLATER.put(new ItemStack(ItemRegistry.oreProduct, 1, 9), new ItemStack(ItemRegistry.ingot, 1, 1));
 		ELECTROPLATER.put(new ItemStack(Items.REDSTONE), new ItemStack(Items.GLOWSTONE_DUST));
 		ELECTROPLATER.put(new ItemStack(Blocks.SAND), new ItemStack(Items.QUARTZ));
 		
+		OREDRILL.put(new ItemStack(Blocks.COBBLESTONE), new ItemStack(Blocks.GRAVEL));
+		OREDRILL.put(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.SAND));
 		OREDRILL.put(new ItemStack(Blocks.IRON_ORE), new ItemStack(ItemRegistry.oreProduct, 2, 0));
 		OREDRILL.put(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ItemRegistry.oreProduct, 2, 1));
 		OREDRILL.put(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 10));
@@ -118,11 +116,12 @@ public class MachineRecipes {
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 1), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 7), new ItemStack(ItemRegistry.oreProduct, 1, 4)});
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 2), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 8), new ItemStack(Items.GOLD_NUGGET)});
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 3), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 9), new ItemStack(Items.IRON_NUGGET)});
+		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 10), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 3, 8), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
 		
 		REFRIGERATOR.put(new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(Blocks.ICE));
 		REFRIGERATOR.put(new FluidStack(FluidRegistry.LAVA, 1000), new ItemStack(Blocks.OBSIDIAN));
 		REFRIGERATOR.put(new FluidStack(ModFluidRegistry.propane, 1000), new ItemStack(Items.COAL));
-		REFRIGERATOR.put(new FluidStack(ModFluidRegistry.glowstone, 200), new ItemStack(Blocks.GLOWSTONE));
+		REFRIGERATOR.put(new FluidStack(ModFluidRegistry.glowstone, 400), new ItemStack(Blocks.GLOWSTONE));
 		
 		AGITATOR.add(new AgitatorRecipe(ItemStack.EMPTY, ItemStack.EMPTY, new FluidStack(ModFluidRegistry.h2so4, 1000), new FluidStack(FluidRegistry.WATER, 1000), new FluidStack(ModFluidRegistry.sulphur, 1000)));
 		AGITATOR.add(new AgitatorRecipe(ItemStack.EMPTY, new ItemStack(Blocks.STONE), null, new FluidStack(FluidRegistry.WATER, 1000), new FluidStack(FluidRegistry.LAVA, 1)));
@@ -153,6 +152,14 @@ public class MachineRecipes {
 		return OreDictionary.doesOreNameExist(str);
 	}
 	
+	private static void addOreDictRecipe(Map<ItemStack, ItemStack> recipeList, String input, ItemStack output)
+	{
+		for (ItemStack in : OreDictionary.getOres(input))
+		{
+			recipeList.put(in, output);
+		}
+	}
+	
 	private static void addDrillRecipe(String type)
 	{
 		type = FacMiscHelper.capitalizeFirstLetter(type);
@@ -161,7 +168,7 @@ public class MachineRecipes {
 		{
 			for (ItemStack is : OreDictionary.getOres("ore" + type))
 			{
-				if (is.getUnlocalizedName().indexOf("factorytech") == -1 &&
+				if (!type.equals("Copper") && !type.equals("Nickel") &&
 					!is.getItem().getRegistryName().getResourceDomain().equals("minecraft") &&
 					!OreDictionary.getOres("dust" + type).isEmpty()) // Avoid duplicate recipes
 				{
@@ -182,6 +189,16 @@ public class MachineRecipes {
 			{
 				addDrillRecipe(str.substring(3));
 			}
+		}
+		addOreDictRecipe(GRINDSTONE, "ingotNickel", new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.ordinal()));
+		addOreDictRecipe(ELECTROPLATER, "dustCopper", new ItemStack(ItemRegistry.ingot, 1, 0));
+		addOreDictRecipe(ELECTROPLATER, "dustNickel", new ItemStack(ItemRegistry.ingot, 1, 1));
+		addOreDictRecipe(METALCUTTER, "ingotCopper", new ItemStack(ItemRegistry.machinePart, 1, PartList.WIRE.ordinal()));
+		addOreDictRecipe(METALCUTTER, "ingotNickel", new ItemStack(ItemRegistry.salvagePart, 1, 4));
+		
+		for (ItemStack is : OreDictionary.getOres("dustInvar"))
+		{
+			CENTRIFUGE.put(is, new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 2, 6), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
 		}
 	}
 	

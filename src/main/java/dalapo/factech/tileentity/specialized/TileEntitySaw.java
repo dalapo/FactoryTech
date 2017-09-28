@@ -1,8 +1,10 @@
 package dalapo.factech.tileentity.specialized;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityBasicProcessor;
 import dalapo.factech.tileentity.TileEntityMachine;

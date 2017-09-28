@@ -73,14 +73,25 @@ public class FacStackHelper {
 	
 	public static boolean matchStacksWithWildcard(ItemStack a, ItemStack b)
 	{
+		return matchStacksWithWildcard(a, b, false);
+	}
+	
+	public static boolean matchStacksWithWildcard(ItemStack a, ItemStack b, boolean oreDict)
+	{
 		if (a.isItemEqual(b)) return true;
-		return (a.getItem().equals(b.getItem()) && (a.getItemDamage() == 32767 || b.getItemDamage() == 32767));
+		return (a.getItem().equals(b.getItem()) && (a.getItemDamage() == 32767 || b.getItemDamage() == 32767)) || (oreDict && matchOreDict(a, b));
 	}
 	
 	public static boolean matchOreDict(ItemStack a, ItemStack b)
 	{
 		if (a.isEmpty() || b.isEmpty()) return false;
-		return matchStacksWithWildcard(a, b) || FacMathHelper.matchAny(OreDictionary.getOreIDs(a), OreDictionary.getOreIDs(b));
+		try {
+			return OreDictionary.getOreIDs(a)[0] == OreDictionary.getOreIDs(b)[0];
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			return false;
+		}
 	}
 	
 	public static boolean areItemsEqualAllowEmpty(@Nonnull ItemStack a, @Nonnull ItemStack b)

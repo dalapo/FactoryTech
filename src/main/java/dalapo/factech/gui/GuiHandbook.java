@@ -18,12 +18,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiHandbook extends GuiScreen
 {
 	private static final int GRID_X_OFFSET = 124;
 	private static final int GRID_Y_OFFSET = 96;
+	
+	private ItemStack book;
 	
 	private static final ResourceLocation guiTex = new ResourceLocation(NameList.MODID, "textures/gui/handbook_gui.png");
 	private static final int[] pageCounts = new int[7];
@@ -47,11 +50,38 @@ public class GuiHandbook extends GuiScreen
 	
 	List<IRecipe> recipes = new ArrayList<IRecipe>();
 	
-	public GuiHandbook()
+	public GuiHandbook(ItemStack is)
 	{
 		super();
+		
+		book = is;
+		if (is.hasTagCompound())
+		{
+			NBTTagCompound nbt = is.getTagCompound();
+			if (nbt.hasKey("section")) section = nbt.getInteger("section");
+			else section = -1;
+			page = nbt.getInteger("page");
+		}
 		recipe = new ItemStack[3][3];
 		resetGrid();
+	}
+	
+	@Override
+	public void onGuiClosed()
+	{
+		super.onGuiClosed();
+		if (!book.hasTagCompound())
+		{
+			NBTTagCompound nbt = new NBTTagCompound();
+			nbt.setInteger("section", section);
+			nbt.setInteger("page", page);
+			book.setTagCompound(nbt);
+		}
+		else
+		{
+			book.getTagCompound().setInteger("section", section);
+			book.getTagCompound().setInteger("page", page);
+		}
 	}
 	
 	private void resetGrid()

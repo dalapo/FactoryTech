@@ -68,7 +68,7 @@ public class TileEntityCrucible extends TileEntityFluidMachine {
 		{
 			ItemStack in = entry.getKey().copy();
 			FluidStack out = entry.getValue().copy();
-			if (FacStackHelper.matchStacksWithWildcard(in, is) && in.getCount() <= is.getCount())
+			if (FacStackHelper.matchStacksWithWildcard(in, is, true) && in.getCount() <= is.getCount())
 			{
 				return out;
 			}

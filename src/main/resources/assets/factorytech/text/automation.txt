@@ -11,6 +11,10 @@ $title Fan Lift
 $recipe automation/fan
 The Fan Lift is the main method of transporting items upwards. When given a Redstone signal, they will blow any items above them straight up by a distance equal to the received signal strength.
 $end
+$title Lift Receiver
+$recipe automation/liftreceiver
+Meant to be used with the Fan Lift, the Lift Receiver redirects any items entering its bottom hatch to its side one.
+$end
 $title Pulse Piston
 $recipe automation/pulsepiston
 The Pulse Piston is a miniaturized Piston, specially adapted for pushing items. It will push any items dropped in front of it, into an inventory if there is one where they would be shoved. Right-clicking will open a filter to set which items should be pushed.

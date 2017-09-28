@@ -2,7 +2,7 @@
     "type": "forge:ore_shaped",
     "result": {
         "item": "factorytech:upgrade",
-        "data": 0
+        "data": 4
     },
     "pattern": [
         "pgp",
@@ -11,7 +11,7 @@
     ],
     "key": {
         "p": {
-            "item": "#planks"
+            "item": "#cupronickel_ingot"
         },
         "g": {
             "item": "factorytech:intermediate",

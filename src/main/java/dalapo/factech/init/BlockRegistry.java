@@ -5,6 +5,7 @@ import java.util.List;
 
 import dalapo.factech.FactoryTech;
 import dalapo.factech.block.BlockBase;
+import dalapo.factech.block.BlockBottomHatch;
 import dalapo.factech.block.BlockBricks;
 import dalapo.factech.block.BlockComparatorExact;
 import dalapo.factech.block.BlockConveyor;
@@ -43,6 +44,7 @@ public class BlockRegistry {
 	public static BlockInventoryDirectional autopuller;
 	public static BlockConveyor conveyor;
 	public static BlockElevator elevator;
+	public static BlockBottomHatch bottomHatch;
 	public static BlockHatch hatch;
 	public static BlockPipe pipe;
 	public static BlockTENoDir itemRedis;
@@ -121,6 +123,7 @@ public class BlockRegistry {
 		blocks.add(crate = new BlockTENoDir(Material.WOOD, "crate", 7));
 		blocks.add(conveyor = new BlockConveyor(Material.IRON, "conveyor", true));
 		blocks.add(elevator = new BlockElevator(Material.IRON, "elevator", true));
+		blocks.add(bottomHatch = new BlockBottomHatch(Material.WOOD, "bottomhatch", true));
 		blocks.add(hatch = new BlockHatch(Material.IRON, "hatch"));
 //		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
 		blocks.add(oredrill = new BlockMachine(Material.IRON, "oredrill", "oredrill", 0));
