@@ -119,12 +119,12 @@ public class BlockRegistry {
 		});
 		blocks.add(sequenceplacer = new BlockInventoryDirectional(Material.WOOD, "sequenceplacer", "sequenceplacer", false, 9));
 //		blocks.add(exactComparator = new BlockComparatorExact(Material.CIRCUITS, "comparatorEx"));
-		blocks.add(watercollector = new BlockTENoDir(Material.WOOD, "watercollector"));
-		blocks.add(crate = new BlockTENoDir(Material.WOOD, "crate", 7));
-		blocks.add(conveyor = new BlockConveyor(Material.IRON, "conveyor", true));
+		blocks.add(watercollector = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "watercollector"));
+		blocks.add(crate = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "crate", 7).setHardness(2F));
+		blocks.add(conveyor = (BlockConveyor) new BlockConveyor(Material.IRON, "conveyor", true).setHardness(1F));
 		blocks.add(elevator = new BlockElevator(Material.IRON, "elevator", true));
 		blocks.add(bottomHatch = new BlockBottomHatch(Material.WOOD, "bottomhatch", true));
-		blocks.add(hatch = new BlockHatch(Material.IRON, "hatch"));
+		blocks.add(hatch = (BlockHatch) new BlockHatch(Material.IRON, "hatch").setHardness(2F));
 //		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
 		blocks.add(oredrill = new BlockMachine(Material.IRON, "oredrill", "oredrill", 0));
 		blocks.add(metalCutter = new BlockMachine(Material.IRON, "metalcutter", "metalcutter", 0));

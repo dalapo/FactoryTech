@@ -13,6 +13,8 @@ public class BlockStackMover extends BlockTiered {
 
 	public BlockStackMover(Material materialIn, String name, String teid, boolean locked, int tier) {
 		super(materialIn, name, teid, locked, tier);
+		setHardness(3F);
+		setResistance(1F);
 	}
 
 	@Override

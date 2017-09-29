@@ -41,6 +41,7 @@ public class BlockBase extends Block {
 		setCreativeTab(TabRegistry.FACTECH);
 		setUnlocalizedName(NameList.MODID + "." + name);
 		setRegistryName(name);
+		setHardness(4F);
 	}
 	
 	public BlockBase(Material materialIn, String name)

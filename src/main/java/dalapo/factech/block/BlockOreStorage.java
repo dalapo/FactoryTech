@@ -25,6 +25,9 @@ public class BlockOreStorage extends BlockBase implements IBlockSubtypes {
 	{
 		super(Material.IRON, name);
 		setDefaultState(blockState.getBaseState().withProperty(StateList.oreblocktype, EnumOreBlockType.COPPER));
+		setHardness(5F);
+		setResistance(5F);
+		setHarvestLevel("pickaxe", 1);
 	}
 
 	@SideOnly(Side.CLIENT)

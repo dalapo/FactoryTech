@@ -19,6 +19,7 @@ public class BlockConveyor extends BlockDirectional {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.125, 1.0);
 	public BlockConveyor(Material materialIn, String name, boolean locked) {
 		super(materialIn, name, true);
+		setHardness(2F);
 	}
 	
 	@Override

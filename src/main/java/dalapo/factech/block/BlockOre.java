@@ -29,6 +29,8 @@ public class BlockOre extends BlockBase implements IBlockSubtypes {
 	public BlockOre(String name) {
 		super(Material.ROCK, name);
 		setDefaultState(blockState.getBaseState().withProperty(StateList.oretype, EnumOreType.COPPER));
+		this.blockHardness = 3F;
+		this.blockResistance = 5F;
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -38,6 +40,16 @@ public class BlockOre extends BlockBase implements IBlockSubtypes {
 
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation("factorytech:ore", "copper"));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation("factorytech:ore", "nickel"));
+	}
+	
+	@Override
+	public int getHarvestLevel(IBlockState state)
+	{
+		if (state.getValue(StateList.oretype) == EnumOreType.COPPER)
+		{
+			return 1;
+		}
+		else return 2;
 	}
 	
 	@Override

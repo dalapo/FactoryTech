@@ -177,6 +177,10 @@ public class MachineRecipes {
 					Logger.info(String.format("Adding Grinder recipe %s -> %s", is, result));
 					OREDRILL.put(is.copy(), result);
 				}
+				else if (type.equals("Copper") || type.equals("Nickel"))
+				{
+					OREDRILL.put(is.copy(), new ItemStack(ItemRegistry.oreProduct, 2, type.equals("Copper") ? 2 : 3));
+				}
 			}
 		}
 	}
@@ -193,7 +197,7 @@ public class MachineRecipes {
 		addOreDictRecipe(GRINDSTONE, "ingotNickel", new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.ordinal()));
 		addOreDictRecipe(ELECTROPLATER, "dustCopper", new ItemStack(ItemRegistry.ingot, 1, 0));
 		addOreDictRecipe(ELECTROPLATER, "dustNickel", new ItemStack(ItemRegistry.ingot, 1, 1));
-		addOreDictRecipe(METALCUTTER, "ingotCopper", new ItemStack(ItemRegistry.machinePart, 1, PartList.WIRE.ordinal()));
+		addOreDictRecipe(METALCUTTER, "ingotCopper", new ItemStack(ItemRegistry.machinePart, 2, PartList.WIRE.ordinal()));
 		addOreDictRecipe(METALCUTTER, "ingotNickel", new ItemStack(ItemRegistry.salvagePart, 1, 4));
 		
 		for (ItemStack is : OreDictionary.getOres("dustInvar"))

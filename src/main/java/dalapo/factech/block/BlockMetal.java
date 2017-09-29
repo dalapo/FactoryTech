@@ -25,6 +25,7 @@ public class BlockMetal extends BlockBase implements IBlockSubtypes
 	public BlockMetal(Material materialIn, String name) {
 		super(materialIn, name);
 		setDefaultState(blockState.getBaseState().withProperty(StateList.metaltype, EnumMetalType.DIAMOND));
+		setHarvestLevel("pickaxe", 1);
 	}
 	
 	@SideOnly(Side.CLIENT)

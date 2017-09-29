@@ -13,6 +13,8 @@ public class BlockScaffold extends BlockBase
 	public BlockScaffold(Material materialIn, String name)
 	{
 		super(materialIn, name);
+		setHardness(3F);
+		setResistance(2F);
 	}
 	
 	@Override

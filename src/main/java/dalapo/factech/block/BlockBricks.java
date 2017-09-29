@@ -26,6 +26,9 @@ public class BlockBricks extends BlockBase implements IBlockSubtypes {
 	{
 		super(materialIn, name);
 		setDefaultState(blockState.getBaseState().withProperty(StateList.bricktype, EnumBrickType.SAND));
+		this.blockHardness = 4F;
+		this.blockResistance = 5F;
+		this.setHarvestLevel("pickaxe", 0);
 	}
 
 	@SideOnly(Side.CLIENT)

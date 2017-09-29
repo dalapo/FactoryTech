@@ -32,6 +32,9 @@ public class BlockSmokestack extends BlockBase implements IBlockSubtypes {
 		super(materialIn, name);
 		setDefaultState(blockState.getBaseState().withProperty(StateList.smokestacktype, EnumSmokestackType.BRICKS));
 		setTickRandomly(true);
+		setHardness(4F);
+		setResistance(4F);
+		setHarvestLevel("pickaxe", 0);
 	}
 	
 	@SideOnly(Side.CLIENT)

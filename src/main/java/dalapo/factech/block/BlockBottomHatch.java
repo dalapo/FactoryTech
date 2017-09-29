@@ -21,6 +21,7 @@ public class BlockBottomHatch extends BlockDirectional
 	public BlockBottomHatch(Material materialIn, String name, boolean locked)
 	{
 		super(materialIn, name, locked);
+		setHardness(3.0F);
 	}
 
 	@Override

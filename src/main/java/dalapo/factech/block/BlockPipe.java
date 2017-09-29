@@ -40,6 +40,8 @@ public class BlockPipe extends BlockTENoDir {
 	public BlockPipe(Material materialIn, String name) {
 		super(materialIn, name);
 		setUnlocalizedName(NameList.MODID + ".pipe");
+		setHardness(2F);
+		setHarvestLevel("pickaxe", 0);
 //		setRegistryName("pipe");
 	}
 	
