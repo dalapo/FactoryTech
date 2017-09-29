@@ -2,6 +2,7 @@ package dalapo.factech.tileentity;
 
 import dalapo.factech.auxiliary.FluidHandlerWrapper;
 import dalapo.factech.auxiliary.IHasFluid;
+import dalapo.factech.helper.FacBlockHelper;
 import dalapo.factech.helper.FacChatHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
@@ -102,6 +103,7 @@ public abstract class TileEntityFluidMachine extends TileEntityMachine implement
 	
 	public void onTankUpdate()
 	{
+		FacBlockHelper.updateBlock(world, pos);
 		getHasWork();
 	}
 	

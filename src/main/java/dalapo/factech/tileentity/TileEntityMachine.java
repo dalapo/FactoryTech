@@ -47,6 +47,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		NONE
 	}
 	
+	protected boolean shouldUpdate;
 	protected MachinePart[] partsNeeded;
 	protected boolean[] partsGot;
 	protected int opTime;
