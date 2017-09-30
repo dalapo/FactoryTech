@@ -117,6 +117,7 @@ public class MachineRecipes {
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 2), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 8), new ItemStack(Items.GOLD_NUGGET)});
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 3), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 9), new ItemStack(Items.IRON_NUGGET)});
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 10), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 3, 8), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
+		CENTRIFUGE.put(new ItemStack(Blocks.SAND, 4, 1), new ItemStack[] {new ItemStack(Blocks.SAND, 4, 0), new ItemStack(Items.REDSTONE, 1)});
 		
 		REFRIGERATOR.put(new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(Blocks.ICE));
 		REFRIGERATOR.put(new FluidStack(FluidRegistry.LAVA, 1000), new ItemStack(Blocks.OBSIDIAN));

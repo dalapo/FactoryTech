@@ -118,7 +118,7 @@ public class MachineContainerFactory {
 		switch (id)
 		{
 		case "sluice":
-			return new GuiBasicMachine(getContainer(te, playerInv, id), playerInv, "sluice_gui", te);
+			return new GuiBasicMachine(getContainer(te, playerInv, id), playerInv, "sluice_gui", te).setBarCoords(60, 37);
 		case "circuitscribe":
 			return new GuiCircuitScribe(getContainer(te, playerInv, id), playerInv, te);
 		case "crucible":

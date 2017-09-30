@@ -73,7 +73,7 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 	
 	@Override
 	public void update() {
-		if (!world.getBlockState(getPos()).getBlock().equals(BlockRegistry.itemPusher)) return;
+		if (world.isBlockIndirectlyGettingPowered(pos) > 0 || !world.getBlockState(getPos()).getBlock().equals(BlockRegistry.itemPusher)) return;
 		// Look at EntityItem instances in front of TE
 		// Any that match filter get pushed away from it; inserted into inventory if one exists
 		EnumFacing direction = world.getBlockState(getPos()).getValue(StateList.directions);

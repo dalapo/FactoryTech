@@ -1,5 +1,7 @@
 package dalapo.factech;
 
+import java.io.File;
+
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.gui.FacTechGuiHandler;
 import dalapo.factech.helper.Logger;
@@ -14,6 +16,7 @@ import dalapo.factech.init.TileRegistry;
 import dalapo.factech.init.WorldGenRegistry;
 import dalapo.factech.packet.PacketHandler;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,9 +28,14 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class CommonProxy {
 	
+	public static Configuration config;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent evt)
 	{
+		File directory = evt.getModConfigurationDirectory();
+		config = new Configuration(new File(directory.getPath(), "factorytech.cfg"));
+		FacTechConfigManager.readConfig();
 		TabRegistry.init();
 		BlockRegistry.init();
 		ItemRegistry.init();
@@ -52,5 +60,6 @@ public class CommonProxy {
 		Logger.info("Entered postInit");
 		MachineRecipes.addOreDictRecipes();
 		MachineRecipes.importFurnaceRecipes();
+		if (config.hasChanged()) config.save();
 	}
 }

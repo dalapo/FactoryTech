@@ -23,9 +23,9 @@ public class TileEntityOreDrill extends TileEntityBasicProcessor {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.1F, 0.7F, 5);
-		partsNeeded[1] = new MachinePart(PartList.DRILL, 0.15F, 1.15F, 0.4F, 6);
-		partsNeeded[2] = new MachinePart(PartList.WIRE, 0.2F, 1.1F, 0.8F, 4);
+		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.1F, 0.7F, 7);
+		partsNeeded[1] = new MachinePart(PartList.DRILL, 0.15F, 1.15F, 0.4F, 8);
+		partsNeeded[2] = new MachinePart(PartList.WIRE, 0.2F, 1.1F, 0.8F, 6);
 	}
 
 	@Override

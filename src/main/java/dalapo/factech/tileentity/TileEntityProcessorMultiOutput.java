@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
+import dalapo.factech.helper.Pair;
 import dalapo.factech.reference.PartList;
 import net.minecraft.item.ItemStack;
 
@@ -28,16 +29,18 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 	
 	public void getHasWork()
 	{
-		ItemStack[] is = getOutput(getInput(0));
-		if (is == null)
+		Pair<Integer, ItemStack[]> data = getOutput(getInput(0));
+		if (data == null)
 		{
 			hasWork = false;
 			return;
 		}
+		ItemStack[] is = data.b;
 		try {
 			for (int i=0; i<is.length; i++)
 			{
 				if (!(is[i].isItemEqual(getOutput(i)) || getOutput(i).isEmpty()) ||
+						getInput().getCount() < data.a || 
 						is[i].isEmpty() || is[i].getCount() + getOutput(i).getCount() >= 64)
 				{
 					hasWork = false;
@@ -54,8 +57,9 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 	
 	@Override
 	protected boolean performAction() {
-		ItemStack[] output = getOutput(getInput(0));
-		getInput(0).shrink(1);
+		Pair<Integer, ItemStack[]> data = getOutput(getInput(0));
+		ItemStack[] output = data.b;
+		getInput(0).shrink(data.a);
 		if (output.length > outSlots)
 		{
 			Logger.error("Who the hell designed this thing?");
@@ -71,19 +75,19 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 		return true;
 	}
 	
-	protected ItemStack[] getOutput(ItemStack is)
+	protected Pair<Integer, ItemStack[]> getOutput(ItemStack is)
 	{
 		for (Entry<ItemStack, ItemStack[]> entry : getRecipeList().entrySet())
 		{
 			ItemStack in = entry.getKey().copy();
 			ItemStack[] out = new ItemStack[entry.getValue().length];
-			if (FacStackHelper.matchOreDict(in, is) && in.getCount() <= is.getCount())
+			if (FacStackHelper.matchStacksWithWildcard(in, is) && in.getCount() <= is.getCount())
 			{
 				for (int i=0; i<out.length; i++)
 				{
 					out[i] = entry.getValue()[i].copy();
 				}
-				return out;
+				return new Pair<Integer, ItemStack[]>(entry.getKey().getCount(), out);
 			}
 		}
 		return null;

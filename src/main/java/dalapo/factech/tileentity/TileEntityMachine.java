@@ -329,7 +329,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	public ItemStack getOutput(int slot)
 	{
 		if (slot >= 0 && slot < outSlots) return getStackInSlot(inSlots + partSlots + slot);
-		return null;
+		return ItemStack.EMPTY;
 	}
 	
 	public ItemStack getOutput()

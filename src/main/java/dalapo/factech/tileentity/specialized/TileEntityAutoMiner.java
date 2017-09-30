@@ -25,7 +25,7 @@ public class TileEntityAutoMiner extends TileEntityAreaMachine {
 	
 	public TileEntityAutoMiner()
 	{
-		super("miner", 0, 3, 9, RelativeSide.SIDE, 4);
+		super("miner", 0, 3, 9, RelativeSide.SIDE, 6);
 		setDisplayName("Autominer");
 		curDist = 1;
 		range = 64;
@@ -38,9 +38,9 @@ public class TileEntityAutoMiner extends TileEntityAreaMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.DRILL, 0.1F, 1.0F, 0.25F, 5);
-		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_0, 0.1F, 1.0F, 0.6F, 6);
-		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.2F, 1.1F, 0.7F, 6);
+		partsNeeded[0] = new MachinePart(PartList.DRILL, 0.1F, 1.0F, 0.5F, 7);
+		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_0, 0.1F, 1.0F, 0.6F, 8);
+		partsNeeded[2] = new MachinePart(PartList.MOTOR, 0.2F, 1.1F, 0.7F, 8);
 	}
 
 	private BlockPos findNextBlock()

@@ -91,7 +91,7 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.GEAR, 0.1F, 1.1F, 0.85F, 6);
+		partsNeeded[0] = new MachinePart(PartList.GEAR, 0.1F, 1.1F, 0.85F, 10);
 	}
 
 	@Override

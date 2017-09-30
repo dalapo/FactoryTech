@@ -51,7 +51,7 @@ public class TileEntityEnergizer extends TileEntityBasicInventory implements ITi
 				{
 					hasCore = false;
 				}
-				else
+				else if (!world.isRemote)
 				{
 					EntityItem ei = new EntityItem(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, new ItemStack(ItemRegistry.salvagePart, 1, 9));
 					world.spawnEntity(ei);

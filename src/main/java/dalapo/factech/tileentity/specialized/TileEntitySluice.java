@@ -62,21 +62,22 @@ public class TileEntitySluice extends TileEntityMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 2), 0.1F, 1.2F, 0.75F, 4);
+		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 3), 0.05F, 1.2F, 0.75F, 8);
 	}
 
 	@Override
 	protected boolean performAction() {
-		int i = FactoryTech.random.nextInt(3);
-		ItemStack output = outputs.get(i).copy();
-		Logger.info(outputs);
-		if (getOutput(i).isEmpty())
+		if (FactoryTech.random.nextInt(2) == 0)
 		{
-			setOutput(i, output);
+			doOutput(outputs.get(0).copy(), 0);
 		}
-		else if (getOutput(i).isItemEqual(output) && getOutput(i).getCount() < 64)
+		else if (FactoryTech.random.nextInt(2) == 0)
 		{
-			getOutput(i).grow(1);
+			doOutput(outputs.get(1).copy(), 1);
+		}
+		else
+		{
+			doOutput(outputs.get(2).copy(), 2);
 		}
 		recalcWater();
 		return true;

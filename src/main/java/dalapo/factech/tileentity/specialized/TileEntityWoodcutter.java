@@ -26,7 +26,7 @@ public class TileEntityWoodcutter extends TileEntityMachine
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.SAW, 0.1F, 1.05F, 0.3F, 3);
+		partsNeeded[0] = new MachinePart(PartList.SAW, 0.1F, 1.05F, 0.5F, 6);
 		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.05F, 1.15F, 0.75F, 6);
 	}
 	
