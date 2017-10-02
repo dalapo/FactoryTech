@@ -23,6 +23,7 @@ import dalapo.factech.block.BlockScaffold;
 import dalapo.factech.block.BlockSmokestack;
 import dalapo.factech.block.BlockStackMover;
 import dalapo.factech.block.BlockTENoDir;
+import dalapo.factech.block.BlockTank;
 import dalapo.factech.helper.Logger;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -133,7 +134,7 @@ public class BlockRegistry {
 		blocks.add(saw = new BlockMachine(Material.ROCK, "saw", "saw", 0));
 		blocks.add(pipe = new BlockPipe(Material.IRON, "pipe"));
 		blocks.add(itemRedis = new BlockItemRedis(Material.ROCK, "itemredis"));
-		blocks.add(tank = new BlockTENoDir(Material.IRON, "tankblock"));
+		blocks.add(tank = new BlockTank(Material.IRON, "tankblock"));
 		blocks.add(crucible = new BlockMachine(Material.IRON, "crucible", "crucible", 0));
 		blocks.add(compressionChamber = new BlockMachine(Material.IRON, "compressor", "compressor", 0));
 //		blocks.add(fluidDebug = new BlockFluidGiver(Material.ROCK, "fluiddebug"));

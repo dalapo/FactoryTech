@@ -10,7 +10,6 @@ import dalapo.factech.helper.Logger;
 import dalapo.factech.helper.Pair;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.item.ItemMachinePart;
-import dalapo.factech.packet.MachineInfoPacket;
 import dalapo.factech.packet.PacketHandler;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.reference.StateList;
@@ -49,7 +48,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	
 	protected boolean shouldUpdate;
 	protected MachinePart[] partsNeeded;
-	protected boolean[] partsGot;
+	protected int[] partsGot;
 	protected int opTime;
 	protected int partSlots;
 	protected int inSlots;
@@ -119,6 +118,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	
 	private double getAdjustedChance(double baseChance)
 	{
+		if (baseChance <= 0) return 0;
 		if (installedUpgrade != 4 || baseChance >= 1.0) return baseChance;
 
 		double d = (1.0 - baseChance) / 2;
@@ -144,7 +144,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 //							if (!partsNeeded[i].getSalvage().isEmpty()) Logger.info(String.format("Potential salvage in slot %s: %s", i, partsNeeded[i].getSalvage()));
 							if (partsNeeded[i].shouldBreak())
 							{
-								partsGot[i] = false;
+								partsGot[i]--;
 								if (FactoryTech.random.nextDouble() < getAdjustedChance(partsNeeded[i].salvageChance))
 								{
 									boolean flag = false;
@@ -172,13 +172,13 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 							{
 								partsNeeded[i].increaseChance();
 							}
-						}
-					}
+						} // Part breaking loop
+					} // performAction()
 					markDirty();
 					syncToAll();
-				}
-			}
-		}
+				} // !world.isRemote
+			} // age >= opTime
+		} // canRun
 		else
 		{
 			age = 0;
@@ -186,14 +186,20 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		}
 		for (int i=0; i<partSlots; i++)
 		{
-			if (partsGot[i] == false)
+			if (partsGot[i] == 0)
 			{
+				/*
+				 * TODO:
+				 * -Make function to return part ID (PartList) and quality from ItemStack
+				 * -Salvage parts have the same parts, in the same order, as good parts
+				 * -(Dummy items for custom salvage and nonsalvageable parts)
+				 */
 				int slot = containsItem(partsNeeded[i].getItem(), inSlots, inSlots + partSlots);
 				if (slot != -1)
 				{
-					decrStackSize(slot, 1);
 					partsNeeded[i].reset();
-					partsGot[i] = true;
+					partsGot[i] = 1;
+					decrStackSize(slot, 1);
 					markDirty();
 				}
 			}
@@ -261,7 +267,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 				setOutput(out);
 				return true;
 			}
-			if (getOutput(i).isItemEqual(out) && getOutput(i).getCount() + out.getCount() <= FacMathHelper.getMin(getInventoryStackLimit(), out.getMaxStackSize()))
+			if (FacStackHelper.canCombineStacks(getOutput(i), out))
 			{
 				getOutput(i).grow(out.getCount());
 				return true;
@@ -343,6 +349,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		world.notifyBlockUpdate(pos, state, state, 3);
 	}
 	
+	/*
 	public void sendInfoPacket(EntityPlayer ep)
 	{
 		MachineInfoPacket packet = new MachineInfoPacket(this);
@@ -354,6 +361,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		MachineInfoPacket packet = new MachineInfoPacket(this);
 		PacketHandler.sendToServer(packet);
 	}
+	*/
 		
 	protected void setOutput(int slot, ItemStack is)
 	{
@@ -396,11 +404,11 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	
 	public boolean hasPart(int slot)
 	{
-		if (FacMathHelper.isInRange(slot, 0, partsGot.length)) return partsGot[slot];
+		if (FacMathHelper.isInRange(slot, 0, partsGot.length)) return partsGot[slot] != 0;
 		return false;
 	}
 	
-	public void copyParts(boolean[] parts)
+	public void copyParts(int[] parts)
 	{
 		try {
 			for (int i=0; i<partsGot.length; i++)
@@ -510,16 +518,16 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 
 	private void initArrays()
 	{
-		partsGot = new boolean[partSlots];
+		partsGot = new int[partSlots];
 		partsNeeded = new MachinePart[partSlots];
 	}
 	
 	protected boolean canRun()
 	{
 		if (isDisabledByRedstone && world.isBlockIndirectlyGettingPowered(pos) > 0) return false;
-		for (boolean b : partsGot)
+		for (int i : partsGot)
 		{
-			if (!b) return false;
+			if (i == 0) return false;
 		}
 		return true;
 //		return hasWork; (For some reason this doesn't work???)
@@ -530,7 +538,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		if (id == 0) age = val;
 		else if (id < getFieldCount())
 		{
-			partsGot[id] = val == 0 ? false : true;
+			partsGot[id] = val;
 		}
 	}
 	
@@ -539,7 +547,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		if (id == 0) return age;
 		else if (id < getFieldCount())
 		{
-			return partsGot[id] ? 1 : 0;
+			return partsGot[id];
 		}
 		return 0;
 	}
@@ -556,7 +564,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		NBTTagList list = new NBTTagList();
 		for (int i=0; i<partsGot.length; i++)
 		{
-			list.appendTag(new NBTTagByte((byte)(partsGot[i] ? 1 : 0)));
+			list.appendTag(new NBTTagByte((byte)(partsGot[i])));
 		}
 		nbt.setTag("parts", list);
 		nbt.setInteger("age", age);
@@ -576,8 +584,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 			for (int i=0; i<list.tagCount(); i++)
 			{
 				NBTTagByte tag = (NBTTagByte)(list.get(i));
-				if (tag.getByte() == 1) partsGot[i] = true;
-				else partsGot[i] = false;
+				partsGot[i] = tag.getByte();
 			}
 		}
 		if (nbt.hasKey("age"))
@@ -607,7 +614,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	public abstract int getOpTime();
 	
 	@Override
-	protected void onInventoryChanged(int slot)
+	public void onInventoryChanged(int slot)
 	{
 //		Logger.info("Entered onInventoryChanged");
 		syncToAll();
@@ -623,6 +630,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	{
 		private ItemStack id;
 		private ItemStack depleted;
+		private int quality = 1;
 		
 		private int numOperations = 0;
 		private int minOperations;
@@ -710,7 +718,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 			case 5:
 				// No effect
 			}
-			return actualMin;
+			return actualMin * quality;
 		}
 
 		public void increaseChance()

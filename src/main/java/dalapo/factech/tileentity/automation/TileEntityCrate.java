@@ -34,10 +34,4 @@ public class TileEntityCrate extends TileEntityBasicInventory
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public void sendInfoPacket(EntityPlayer ep) {
-		// TODO Auto-generated method stub
-		
-	}
 }

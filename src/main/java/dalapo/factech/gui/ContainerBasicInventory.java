@@ -58,7 +58,7 @@ public class ContainerBasicInventory extends Container {
 	{
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot s = (Slot)this.inventorySlots.get(slot);
-		
+		te.onInventoryChanged(slot); // Screw it
 		if (s != null && s.getHasStack())
 		{
 			ItemStack temp = s.getStack();
@@ -93,6 +93,7 @@ public class ContainerBasicInventory extends Container {
 	public ItemStack slotClick(int slotId, int dragType, ClickType clicktype, EntityPlayer ep)
 	{
 		super.slotClick(slotId, dragType, clicktype, ep);
+		te.onInventoryChanged(slotId); // Screw it
 		return ItemStack.EMPTY;
 	}
 	

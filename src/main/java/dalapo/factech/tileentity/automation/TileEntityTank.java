@@ -31,6 +31,11 @@ public class TileEntityTank extends TileEntityBase implements ITickable
 		return tank.getFluid();
 	}
 	
+	public FluidTank getTank()
+	{
+		return tank;
+	}
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{

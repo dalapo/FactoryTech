@@ -25,7 +25,7 @@ import dalapo.factech.helper.Logger;
 import dalapo.factech.reference.NameList;
 import dalapo.factech.tileentity.specialized.TileEntityDisassembler;
 
-@Mod(modid=NameList.MODID, name=NameList.MODNAME, version=NameList.VERSION)
+@Mod(modid=NameList.MODID, name=NameList.MODNAME, version=NameList.VERSION, useMetadata=true)
 public class FactoryTech {
 	public static final boolean DEBUG_PACKETS = false;
 	public static final Random random = new Random();

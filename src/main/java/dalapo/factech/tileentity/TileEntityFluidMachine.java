@@ -75,6 +75,7 @@ public abstract class TileEntityFluidMachine extends TileEntityMachine implement
 		return tanks[i];
 	}
 	
+	/*
 	@Override
 	public void sendInfoPacket(EntityPlayer ep)
 	{
@@ -83,6 +84,7 @@ public abstract class TileEntityFluidMachine extends TileEntityMachine implement
 		FluidInfoPacket packet = new FluidInfoPacket(getPos(), tanks, tanks.length);
 		PacketHandler.sendToPlayer(packet, (EntityPlayerMP)ep);
 	}
+	*/
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)

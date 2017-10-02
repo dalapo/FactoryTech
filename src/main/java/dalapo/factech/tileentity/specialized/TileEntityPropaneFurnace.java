@@ -82,7 +82,7 @@ public class TileEntityPropaneFurnace extends TileEntityMachine {
 	}
 	
 	@Override
-	protected void onInventoryChanged(int slot)
+	public void onInventoryChanged(int slot)
 	{
 		super.onInventoryChanged(slot);
 		if (slot == 1 && propaneRemaining <= 0) consumeFuelTank();

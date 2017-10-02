@@ -27,15 +27,6 @@ public class TileEntityStabilizer extends TileEntityMachine {
 		setDisplayName("");
 	}
 	
-	
-	@Override
-	public void sendInfoPacket(EntityPlayer ep)
-	{
-		super.sendInfoPacket(ep);
-		StabilizerPacket packet = new StabilizerPacket(this);
-		PacketHandler.sendToPlayer(packet, ep);
-	}
-	
 	@Override
 	public void syncToAll()
 	{

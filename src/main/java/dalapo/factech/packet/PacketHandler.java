@@ -26,7 +26,7 @@ public class PacketHandler {
 	public static void registerMessages()
 	{
 		registerMessage(MachineInfoRequestPacket.Handler.class, MachineInfoRequestPacket.class, Side.SERVER);
-		registerMessage(MachineInfoPacket.Handler.class, MachineInfoPacket.class, Side.CLIENT);
+//		registerMessage(MachineInfoPacket.Handler.class, MachineInfoPacket.class, Side.CLIENT);
 		registerMessage(FluidInfoPacket.Handler.class, FluidInfoPacket.class, Side.CLIENT);
 		registerMessage(ItemRedisPacket.Handler.class, ItemRedisPacket.class, Side.SERVER);
 		registerMessage(ItemRedisPacket.Handler.class, ItemRedisPacket.class, Side.CLIENT);

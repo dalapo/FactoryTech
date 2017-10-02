@@ -54,7 +54,7 @@ $end
 $title Stationary Tank
 $recipe automation/tankblock
 These tanks can hold up to 24 buckets of liquid each and will automatically attempt to insert fluid into another tank below them, making it possible to stack them. A Redstone signal disables this behaviour.
-Insertion and extraction can be done from any side; the textures just indicate stacking behaviour.
+Insertion and extraction can be done from any side; the textures just indicate stacking behaviour. Manual I/O with buckets is also possible.
 $end
 $title Extraction Pump
 $recipe automation/fluidpuller

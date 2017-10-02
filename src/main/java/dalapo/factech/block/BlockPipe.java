@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -59,6 +60,12 @@ public class BlockPipe extends BlockTENoDir {
 		ModelLoader.setCustomStateMapper(this, ignoreState);
 	}
 	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos)
+	{
+		return new AxisAlignedBB(0.25, 0.25, 0.25, 0.75, 0.75, 0.75);
+	}
+	
 	@SideOnly(Side.CLIENT)
 	public void initInvModel()
 	{
@@ -79,6 +86,12 @@ public class BlockPipe extends BlockTENoDir {
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state)
 	{
 		return false;
 	}

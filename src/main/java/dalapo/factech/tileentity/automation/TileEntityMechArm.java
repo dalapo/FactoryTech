@@ -106,9 +106,4 @@ public class TileEntityMechArm extends TileEntityBasicInventory implements Actio
 	public int getFieldCount() {
 		return 0;
 	}
-
-	@Override
-	public void sendInfoPacket(EntityPlayer ep) {
-		
-	}
 }

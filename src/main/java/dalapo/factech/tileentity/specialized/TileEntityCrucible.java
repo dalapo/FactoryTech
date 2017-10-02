@@ -14,7 +14,6 @@ import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacChatHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
-import dalapo.factech.packet.MachineInfoPacket;
 import dalapo.factech.packet.PacketFactory;
 import dalapo.factech.packet.PacketHandler;
 import dalapo.factech.reference.PartList;
@@ -57,7 +56,6 @@ public class TileEntityCrucible extends TileEntityFluidMachine {
 		Logger.info(getOutput(getInput(0)));
 		tanks[0].fillInternal(getOutput(getInput(0)), true);
 		getInput(0).shrink(1);
-		sendInfoPacket();
 		getHasWork();
 		return true;
 	}

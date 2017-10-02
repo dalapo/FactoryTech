@@ -134,10 +134,4 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public void sendInfoPacket(EntityPlayer ep) {
-		
-	}
-
 }

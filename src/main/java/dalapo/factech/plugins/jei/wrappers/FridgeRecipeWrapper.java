@@ -44,7 +44,7 @@ public class FridgeRecipeWrapper extends BaseRecipeWrapper {
 	@Override
 	public List<String> getTooltipStrings(int mouseX, int mouseY) {
 		List<String> tooltips = super.getTooltipStrings(mouseX, mouseY);
-		if (FacMathHelper.isInRange(mouseY, 4, 52) && FacMathHelper.isInRange(mouseX, 4, 20) && input != null)
+		if (FacMathHelper.isInRange(mouseY, 4, 52) && FacMathHelper.isInRange(mouseX, 22, 38) && input != null)
 		{
 			tooltips.add(input.getLocalizedName());
 			tooltips.add("mB: " + input.amount);

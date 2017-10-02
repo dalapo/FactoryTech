@@ -234,9 +234,4 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 	public int getFieldCount() {
 		return 0;
 	}
-
-	@Override
-	public void sendInfoPacket(EntityPlayer ep) {
-		// No-op
-	}
 }

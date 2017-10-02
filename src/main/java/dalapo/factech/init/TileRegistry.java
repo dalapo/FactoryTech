@@ -65,5 +65,6 @@ public class TileRegistry {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
 //		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoMiner.class, new TesrMiner(false));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TesrCentrifuge(true));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoreCharger.class, new TesrCharger(true));
 	}
 }

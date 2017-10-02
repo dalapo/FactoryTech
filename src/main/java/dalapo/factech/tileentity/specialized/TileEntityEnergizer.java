@@ -79,12 +79,6 @@ public class TileEntityEnergizer extends TileEntityBasicInventory implements ITi
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public void sendInfoPacket(EntityPlayer ep) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)

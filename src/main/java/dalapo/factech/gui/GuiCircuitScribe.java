@@ -19,8 +19,8 @@ public class GuiCircuitScribe extends GuiBasicMachine {
 	
 	// Data is stored in row/column format
 	private boolean[][] board;
-	private final int boardLeft = 157;
-	private final int boardTop = 118;
+	private final int boardLeft = 32;
+	private final int boardTop = 98;
 	
 	public GuiCircuitScribe(ContainerBasicMachine inventorySlotsIn, IInventory player, TileEntityMachine te) {
 		super(inventorySlotsIn, player, "circscribe_gui", te);
@@ -101,6 +101,13 @@ public class GuiCircuitScribe extends GuiBasicMachine {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
 		super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+		
+	}
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+	{
+		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 		for (int x=0; x<board.length*16; x+=16)
 		{
 			for (int y=0; y<board[x/16].length*16; y+=16)
@@ -121,6 +128,8 @@ public class GuiCircuitScribe extends GuiBasicMachine {
 	public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
 	{
 		super.mouseClicked(mouseX, mouseY, mouseButton);
+		int boardLeft = this.boardLeft + guiLeft;
+		int boardTop = this.boardTop + guiTop;
 //		if (FacMathHelper.isInRange(mouseX, 162, 256) && FacMathHelper.isInRange(mouseY, 34, 114))
 		if (FacMathHelper.isInRange(mouseX, boardLeft, boardLeft + 95) && FacMathHelper.isInRange(mouseY, boardTop - 79, boardTop))
 		{
@@ -135,6 +144,7 @@ public class GuiCircuitScribe extends GuiBasicMachine {
 			scribe.setPattern(match);
 			PacketHandler.sendToServer(new CircuitScribePacket(scribe));
 		}
+		this.drawGuiContainerForegroundLayer(mouseX, mouseY);
 	}
 	
 	@Override

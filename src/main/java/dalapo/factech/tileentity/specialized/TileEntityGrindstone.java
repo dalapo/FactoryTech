@@ -39,14 +39,11 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 		if (input.getItem() instanceof ItemSword || input.getItem() instanceof ItemTool) hasWork = true;
 	}
 	
-	private void processEquipment(int enchID)
+	private boolean processEquipment(int enchID)
 	{
 		ItemStack toolOut = getInput(0).copy();
 		NBTTagList enchantments = toolOut.getEnchantmentTagList();
-		if (enchantments == null)
-		{
-			toolOut.setTagInfo("ench", enchantments = new NBTTagList());
-		}
+		toolOut.setTagInfo("ench", enchantments);
 		for (int i=0; i<enchantments.tagCount(); i++)
 		{
 			NBTTagCompound ench = enchantments.getCompoundTagAt(i);
@@ -58,9 +55,9 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 					toolOut.setItemDamage(toolOut.getMaxDamage() - (int)((FacStackHelper.getRemainingDurability(toolOut) * 0.75)));
 					setOutput(toolOut);
 					getInput(0).shrink(1);
-					return;
+					return true;
 				}
-				else return; // Do nothing if it already has Sharpness III or above
+				else return false; // Do nothing if it already has Sharpness III or above
 			}
 		}
 		NBTTagCompound ench = new NBTTagCompound();
@@ -70,23 +67,23 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 		toolOut.setItemDamage(toolOut.getMaxDamage() - (int)((FacStackHelper.getRemainingDurability(toolOut) * 0.75)));
 		setOutput(toolOut);
 		getInput(0).shrink(1);
+		return true;
 	}
 	@Override
 	public boolean performAction()
 	{
 		if ((getInput(0).getItem()) instanceof ItemSword)
 		{
-			processEquipment(16);
+			return processEquipment(16);
 		}
 		else if ((getInput(0)).getItem() instanceof ItemTool)
 		{
-			processEquipment(32);
+			return processEquipment(32);
 		}
 		else
 		{
-			super.performAction();
+			return super.performAction();
 		}
-		return true;
 	}
 
 	@Override

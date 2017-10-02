@@ -21,7 +21,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public abstract class TileEntityBasicInventory extends TileEntityBase implements IInventory, IInfoPacket {
+public abstract class TileEntityBasicInventory extends TileEntityBase implements IInventory {
 
 	protected String name;
 	protected String displayName;
@@ -44,7 +44,7 @@ public abstract class TileEntityBasicInventory extends TileEntityBase implements
 	}
 	
 	// N.B. This method should be overridden if necessary
-	protected void onInventoryChanged(int slot) {} 
+	public void onInventoryChanged(int slot) {}
 	
 	@Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
