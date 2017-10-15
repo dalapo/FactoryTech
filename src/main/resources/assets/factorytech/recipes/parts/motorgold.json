@@ -17,7 +17,7 @@
 			"item": "#iron_nugget"
 		},
 		"r": {
-			"item": "minecraft:glowstone"
+			"item": "minecraft:glowstone_dust"
 		},
 		"w": {
 			"item": "factorytech:machinepart",

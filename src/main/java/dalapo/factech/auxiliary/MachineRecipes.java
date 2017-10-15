@@ -151,6 +151,7 @@ public class MachineRecipes {
 		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.getFloor() + 2), 73));
 		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.getFloor() + 2), 66));
 		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.DRILL.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.DRILL.getFloor() + 1), 89));
+		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.getFloor() + 1), 54));
 		
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 4), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_0.getFloor()));
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 5), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_1.getFloor()));

@@ -98,7 +98,7 @@ public class TileEntityTemperer extends TileEntityMachine
 				// Only complete the process if the machine has run for the right amount of time
 				if (age > activeTime - deltaT)
 				{
-					Logger.info("Successful tempering");
+//					Logger.info("Successful tempering");
 					if (performAction()) consumeParts();
 					getHasWork();
 					markDirty();

@@ -38,7 +38,7 @@ public class TempererRecipeWrapper extends BaseRecipeWrapper {
 
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		minecraft.fontRenderer.drawString(time + " ticks", 0, 20, 0x00000000);
+		minecraft.fontRenderer.drawString(time + " ticks", 0, 16, 0x00000000);
 	}
 
 	@Override

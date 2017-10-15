@@ -197,7 +197,7 @@ factorytech:jei.elecfurnace=Electric Furnace
 factorytech:jei.crucible=Crucible
 factorytech:jei.fridge=Refrigerator
 factorytech:jei.compressor=Compression Chamber
-factorytech:jei.temperer.name=Tempering Oven
+factorytech:jei.temperer=Tempering Oven
 
 fluid.sulphur=Liquid Sulphur
 fluid.h2so4=Sulphuric Acid
