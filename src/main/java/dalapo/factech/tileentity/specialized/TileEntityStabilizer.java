@@ -123,7 +123,7 @@ public class TileEntityStabilizer extends TileEntityMachine {
 		if (stability >= 500 && getInput().isItemEqualIgnoreDurability(new ItemStack(ItemRegistry.coreUnfinished)))
 		{
 			stability = 0;
-			ItemStack is = new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.ordinal());
+			ItemStack is = new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.getFloor());
 			if (!doOutput(is))
 			{
 				EntityItem ei = new EntityItem(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, is);

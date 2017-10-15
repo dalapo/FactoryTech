@@ -87,7 +87,7 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	@SubscribeEvent
-	public void initBlockModels(ModelRegistryEvent evt)
+	public void initModels(ModelRegistryEvent evt)
 	{
 		BlockRegistry.initModels();
 		ItemRegistry.initModels();

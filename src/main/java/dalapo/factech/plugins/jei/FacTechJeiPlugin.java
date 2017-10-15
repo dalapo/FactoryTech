@@ -2,16 +2,7 @@ package dalapo.factech.plugins.jei;
 
 import net.minecraft.item.ItemStack;
 import dalapo.factech.init.BlockRegistry;
-import dalapo.factech.plugins.jei.categories.AgitatorRecipeCategory;
-import dalapo.factech.plugins.jei.categories.CentrifugeRecipeCategory;
-import dalapo.factech.plugins.jei.categories.CrucibleRecipeCategory;
-import dalapo.factech.plugins.jei.categories.DrillGrinderRecipeCategory;
-import dalapo.factech.plugins.jei.categories.ElecFurnaceRecipeCategory;
-import dalapo.factech.plugins.jei.categories.ElectroplaterRecipeCategory;
-import dalapo.factech.plugins.jei.categories.FridgeRecipeCategory;
-import dalapo.factech.plugins.jei.categories.GrindstoneRecipeCategory;
-import dalapo.factech.plugins.jei.categories.MetalCutterRecipeCategory;
-import dalapo.factech.plugins.jei.categories.SawRecipeCategory;
+import dalapo.factech.plugins.jei.categories.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
@@ -33,6 +24,8 @@ public class FacTechJeiPlugin implements IModPlugin
 		ElecFurnaceRecipeCategory.register(registry);
 		CrucibleRecipeCategory.register(registry);
 		FridgeRecipeCategory.register(registry);
+		TempererRecipeCategory.register(registry);
+		CompressorRecipeCategory.register(registry);
 	}
 	
 	@Override
@@ -48,6 +41,8 @@ public class FacTechJeiPlugin implements IModPlugin
 		ElecFurnaceRecipeCategory.init(registry);
 		CrucibleRecipeCategory.init(registry);
 		FridgeRecipeCategory.init(registry);
+		TempererRecipeCategory.init(registry);
+		CompressorRecipeCategory.init(registry);
 		
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.saw), "saw");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.oredrill), "drillgrinder");
@@ -59,5 +54,7 @@ public class FacTechJeiPlugin implements IModPlugin
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.htfurnace), "elecfurnace");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.crucible), "crucible");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.refrigerator), "fridge");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.temperer), "temperer");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.compressionChamber), "compressor");
 	}
 }

@@ -55,6 +55,7 @@ import dalapo.factech.tileentity.specialized.TileEntitySaw;
 import dalapo.factech.tileentity.specialized.TileEntitySluice;
 import dalapo.factech.tileentity.specialized.TileEntitySpawner;
 import dalapo.factech.tileentity.specialized.TileEntityStabilizer;
+import dalapo.factech.tileentity.specialized.TileEntityTemperer;
 import dalapo.factech.tileentity.specialized.TileEntityTeslaCoil;
 import dalapo.factech.tileentity.specialized.TileEntityWoodcutter;
 
@@ -151,6 +152,8 @@ public class FacTileHelper {
 			return new TileEntitySequencePlacer();
 		case "tankblock":
 			return new TileEntityTank();
+		case "temperer":
+			return new TileEntityTemperer();
 		default:
 			return null;
 		}

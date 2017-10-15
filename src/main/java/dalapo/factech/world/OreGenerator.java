@@ -31,8 +31,8 @@ public class OreGenerator implements IWorldGenerator {
 	
 	public OreGenerator()
 	{
-		if (FacTechConfigManager.genCopper) ores.add(new OreGen("copper", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.COPPER), 0, 48, Blocks.STONE, 8, 5, 75));
-		if (FacTechConfigManager.genNickel) ores.add(new OreGen("nickel", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.NICKEL), 0, 24, Blocks.STONE, 8, 4, 60));
+		if (FacTechConfigManager.genCopper) ores.add(new OreGen("copper", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.COPPER), 0, 48, Blocks.STONE, 8, 10, 75));
+		if (FacTechConfigManager.genNickel) ores.add(new OreGen("nickel", BlockRegistry.ore.getDefaultState().withProperty(StateList.oretype, EnumOreType.NICKEL), 0, 24, Blocks.STONE, 8, 8, 60));
 	}
 	
 	public static class OreGen

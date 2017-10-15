@@ -32,7 +32,7 @@ public class TileEntitySluice extends TileEntityMachine {
 	}
 	
 	public TileEntitySluice() {
-		super("sluice", 0, 1, 3, RelativeSide.SIDE);
+		super("sluice", 0, 1, 4, RelativeSide.SIDE);
 		setDisplayName("River Grate");
 	}
 	
@@ -79,6 +79,12 @@ public class TileEntitySluice extends TileEntityMachine {
 		{
 			doOutput(outputs.get(2).copy(), 2);
 		}
+		
+		if (FactoryTech.random.nextInt(3) == 0)
+		{
+			doOutput(new ItemStack(Items.FISH, 1, 0), 3);
+		}
+		
 		recalcWater();
 		return true;
 	}

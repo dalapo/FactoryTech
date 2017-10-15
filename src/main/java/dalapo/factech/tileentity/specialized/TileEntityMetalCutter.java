@@ -27,7 +27,7 @@ public class TileEntityMetalCutter extends TileEntityBasicProcessor {
 	@Override
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.BLADE, 0.1F, 1.1F, 0.5F, 8);
-		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.05F, 1.01F, 0.7F, 6);
+		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.2F, 1.2F, 0.7F, 6);
 	}
 
 	@Override

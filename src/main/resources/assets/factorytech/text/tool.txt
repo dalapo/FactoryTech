@@ -1,5 +1,5 @@
 $title Monkey Wrench
-The Monkey Wrench is the universal tool for adjusting machines. It's just not quite clear how.
+The Monkey Wrench is the universal tool for adjusting machines. It can rotate most automation components to face the side that they were clicked; however, it does not work on anything with an inventory.
 $end
 $title Magnifying Glass
 $recipe magglass
@@ -8,6 +8,9 @@ $end
 $title Crafting Slot Blocker
 $recipe automation/craftblocker
 Crafting Slot Blockers can be put into the grid of the Autocrafter. They are ignored by it but still take up an inventory slot in order to ease automation.
+$end
+$title Redstone Notifier/Watcher
+Right-click a Redstone Notifier with a Redstone Watcher to link the two. Once linked, the Watcher will light up in your inventory if the Notifier is receiving a Redstone signal.
 $end
 $title Pressure Gun
 $recipe pressuregun

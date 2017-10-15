@@ -1,5 +1,6 @@
 package dalapo.factech.tileentity.specialized;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,7 +51,8 @@ public class TileEntityAutoMiner extends TileEntityAreaMachine {
 			for (int z=pos.getZ()-getAdjustedRange(); z<=pos.getZ()+getAdjustedRange(); z++)
 			{
 				BlockPos toBreak = new BlockPos(x, pos.getY() - curDist, z);
-				if (!world.getBlockState(toBreak).getBlock().equals(Blocks.AIR))
+				Block target = world.getBlockState(toBreak).getBlock();
+				if (target != Blocks.AIR && target != Blocks.BEDROCK)
 				{
 					return toBreak;
 				}
@@ -74,7 +76,7 @@ public class TileEntityAutoMiner extends TileEntityAreaMachine {
 		stateAtDrop.getBlock().getDrops(drops, world, nextToMine, stateAtDrop, 0);
 		if (!stateAtDrop.getBlock().equals(Blocks.BEDROCK))
 		{
-			Logger.info(String.format("Breaking block at (%s, %s, %s)", nextToMine.getX(), nextToMine.getY(), nextToMine.getZ()));
+//			Logger.info(String.format("Breaking block at (%s, %s, %s)", nextToMine.getX(), nextToMine.getY(), nextToMine.getZ()));
 			world.setBlockToAir(nextToMine);
 		}
 		

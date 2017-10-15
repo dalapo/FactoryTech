@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 
 public class BlockInventoryDirectional extends BlockDirectional implements ITileEntityProvider {
 
+	protected boolean canBeRotated = false;
 	protected String tile;
 	private int gui;
 	
@@ -31,6 +32,12 @@ public class BlockInventoryDirectional extends BlockDirectional implements ITile
 		super(materialIn, name, locked);
 		tile = teid;
 		gui = -1;
+	}
+	
+	public BlockInventoryDirectional enableRotating()
+	{
+		canBeRotated = true;
+		return this;
 	}
 	
 	@Override
@@ -71,5 +78,14 @@ public class BlockInventoryDirectional extends BlockDirectional implements ITile
 	public TileEntity createNewTileEntity(World world, int meta)
 	{
 		return FacTileHelper.getTileFromID(tile);
+	}
+	
+	@Override
+	public void onWrenched(boolean isSneaking, World world, BlockPos pos, EnumFacing side)
+	{
+		if (canBeRotated)
+		{
+			super.onWrenched(isSneaking, world, pos, side);
+		}
 	}
 }

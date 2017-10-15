@@ -6,8 +6,8 @@ Nickel is similar to iron in many ways, but is harder and tougher. It is useful 
 $end
 $title Monster Dust
 This unsettling powder seems to be derived from monsters. Killing them by normal means does not yield any, but the Mob Disassembler can harvest one pile per monster processed.
-It can be mixed with liquefied Glowstone to produce Energite.
+It can be mixed with liquefied Glowstone and sulphuric acid to produce Energite.
 $end
 $title Energite
-The reaction of Glowstone with Monster Dust produces substantial latent energy. It reacts strongly to electric current and magnetic fields, and is the key component of Energy Cores.
+The reaction of Glowstone and sulphuric acid with Monster Dust produces substantial latent energy. It reacts strongly to electric current and magnetic fields, and is the key component of Energy Cores.
 $end

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacMiscHelper;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.reference.PartList;
@@ -12,12 +13,7 @@ import dalapo.factech.tileentity.TileEntityBasicProcessor;
 
 public class TileEntityMagnetizer extends TileEntityBasicProcessor {
 
-	private static final Map<ItemStack, ItemStack> recipe = new HashMap<ItemStack, ItemStack>();
 	private boolean[] prevTicks = new boolean[8];
-	
-	static {
-		recipe.put(new ItemStack(Items.IRON_INGOT), new ItemStack(ItemRegistry.machinePart, 1, 13));
-	}
 	
 	public TileEntityMagnetizer() {
 		super("magnetizer", 2, RelativeSide.BOTTOM);
@@ -25,7 +21,7 @@ public class TileEntityMagnetizer extends TileEntityBasicProcessor {
 
 	@Override
 	protected Map<ItemStack, ItemStack> getRecipeList() {
-		return recipe;
+		return MachineRecipes.MAGNETIZER;
 	}
 
 	@Override
@@ -37,7 +33,7 @@ public class TileEntityMagnetizer extends TileEntityBasicProcessor {
 	@Override
 	protected void fillMachineParts() {
 		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.05F, 0.6F, 5);
-		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.4F, 1.25F, 0.6F, 2);
+		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.4F, 1.25F, 0.65F, 3);
 	}
 
 	@Override

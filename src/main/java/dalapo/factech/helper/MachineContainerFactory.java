@@ -56,6 +56,7 @@ public class MachineContainerFactory {
 			output.add(new Pair<Integer, Integer>(89, 17));
 			output.add(new Pair<Integer, Integer>(89, 35));
 			output.add(new Pair<Integer, Integer>(89, 53));
+			output.add(new Pair<Integer, Integer>(117, 35));
 			break;
 		case "fridge":
 //			input.add(new Pair<Integer, Integer>(999, 999));

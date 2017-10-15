@@ -46,6 +46,7 @@ public class TileEntityPotionMixer extends TileEntityMachine {
 			}
 			if (flag)
 			{
+				PotionEffect halved = new PotionEffect(effect.getPotion(), effect.getDuration() / 2, effect.getAmplifier());
 				effects.add(effect);
 			}
 		}
@@ -59,7 +60,6 @@ public class TileEntityPotionMixer extends TileEntityMachine {
 			ItemStack is = getInput(i);
 			if (!is.getItem().equals(Items.POTIONITEM)) continue;
 			addEffectsSafely(effects, PotionUtils.getEffectsFromStack(is));
-//			effects.addAll(PotionUtils.getEffectsFromStack(is));
 			decrStackSize(i, 1);
 		}
 		ItemStack potion = new ItemStack(Items.POTIONITEM);

@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMachine extends BlockInventoryDirectional implements Wrenchable {
+public class BlockMachine extends BlockInventoryDirectional {
 
 	private int GuiId;
 	private boolean hasObjModel;

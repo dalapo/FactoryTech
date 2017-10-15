@@ -2,6 +2,8 @@ package dalapo.factech.block;
 
 import javax.annotation.Nonnull;
 
+import dalapo.factech.auxiliary.Wrenchable;
+import dalapo.factech.helper.FacBlockHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.reference.StateList;
@@ -16,7 +18,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockDirectional extends BlockBase {
+public class BlockDirectional extends BlockBase implements Wrenchable {
 	protected boolean planeLocked;
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
@@ -55,5 +57,12 @@ public class BlockDirectional extends BlockBase {
 	public IBlockState getStateFromMeta(int meta)
 	{
 		return blockState.getBaseState().withProperty(StateList.directions, EnumFacing.getFront(meta));
+	}
+
+	@Override
+	public void onWrenched(boolean isSneaking, World world, BlockPos pos, EnumFacing side) 
+	{
+		IBlockState newState = FacBlockHelper.nextRotation(world, pos, world.getBlockState(pos).getValue(StateList.directions), planeLocked);
+		world.setBlockState(pos, newState);
 	}
 }

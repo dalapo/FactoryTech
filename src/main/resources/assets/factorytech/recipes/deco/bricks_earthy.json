@@ -14,8 +14,7 @@
 			"item": "minecraft:brick"
 		},
 		"d": {
-			"item": "minecraft:dirt",
-			"data": 0
+			"item": "minecraft:soul_sand"
 		}
 	}
 }

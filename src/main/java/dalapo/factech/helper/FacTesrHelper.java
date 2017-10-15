@@ -16,6 +16,6 @@ public class FacTesrHelper {
 	
 	public static void renderPart(PartList id)
 	{
-		renderStack(new ItemStack(ItemRegistry.machinePart, 1, id.ordinal()));
+		renderStack(new ItemStack(ItemRegistry.machinePart, 1, id.getFloor()));
 	}
 }

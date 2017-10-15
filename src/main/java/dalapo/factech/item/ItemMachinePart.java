@@ -1,5 +1,6 @@
 package dalapo.factech.item;
 
+import dalapo.factech.helper.Logger;
 import dalapo.factech.init.TabRegistry;
 import dalapo.factech.reference.NameList;
 import dalapo.factech.reference.PartList;
@@ -28,18 +29,31 @@ public class ItemMachinePart extends ItemBase {
     {
 		if (tab == TabRegistry.FACTECH)
 		{
-        for (int i = 0; i < PartList.values().length; ++i)
-        {
-        	if (i == PartList.NOT_A_PART.ordinal()) continue; // I hope this doesn't break anything
-            subItems.add(new ItemStack(this, 1, i));
-        }
+	        for (int i = 0; i < PartList.getTotalVariants(); ++i)
+	        {
+//	        	if (i == PartList.NOT_A_PART.ordinal()) continue; // I hope this doesn't break anything
+	            subItems.add(new ItemStack(this, 1, i));
+	        }
 		}
     }
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		return NameList.MODID + "." + name + ":" + stack.getItemDamage();
+		int acc = 0;
+		int floor = 0;
+		String partName = "null";
+		for (int i=0; i<PartList.values().length; i++)
+		{
+			acc += PartList.values()[i].getNumVariants();
+			if (acc > stack.getItemDamage())
+			{
+				partName = PartList.values()[i].getName();
+				floor = PartList.values()[i].getFloor();
+				break;
+			}
+		}
+		return NameList.MODID + "." + name + ":" + partName + "-" + (stack.getItemDamage() - floor);
 	}
 	
 	@Override
@@ -47,10 +61,18 @@ public class ItemMachinePart extends ItemBase {
 	public void initModel()
 	{
 		PartList[] parts = PartList.values();
-		final ModelResourceLocation[] locations = new ModelResourceLocation[PartList.values().length];
-		for (int i=0; i<parts.length; i++)
+		final ModelResourceLocation[] locations = new ModelResourceLocation[PartList.getTotalVariants()];
+		for (int i=0, running=0; i<parts.length; i++)
 		{
-			locations[i] = new ModelResourceLocation(NameList.MODID + ":" + parts[i].getName(), "inventory");
+			for (int variant=0; variant<parts[i].getNumVariants(); variant++, running++)
+			{
+				locations[running] = new ModelResourceLocation(NameList.MODID + ":" + parts[i].getName() + "-" + variant, "inventory");
+			}
+		}
+		
+		for (ModelResourceLocation loc : locations)
+		{
+			Logger.info(loc == null);
 		}
 		
 		ModelBakery.registerItemVariants(this, locations);

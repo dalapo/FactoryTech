@@ -15,6 +15,7 @@ import dalapo.factech.init.TabRegistry;
 import dalapo.factech.init.TileRegistry;
 import dalapo.factech.init.WorldGenRegistry;
 import dalapo.factech.packet.PacketHandler;
+import dalapo.factech.reference.PartList;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -58,6 +59,11 @@ public class CommonProxy {
 	public void postInit(FMLPostInitializationEvent evt)
 	{
 		Logger.info("Entered postInit");
+		
+		for (int i=0; i<PartList.getTotalVariants(); i++)
+		{
+			Logger.info(String.format("%s: %s, %s", i, PartList.getPartFromDamage(i), PartList.getQualityFromDamage(i)));
+		}
 		MachineRecipes.addOreDictRecipes();
 		MachineRecipes.importFurnaceRecipes();
 		if (config.hasChanged()) config.save();

@@ -34,10 +34,11 @@ public class TesrSaw extends TesrMachine<TileEntitySaw> {
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(0F, 0.375F, 0.25F);
 			GlStateManager.scale(0.6, 0.6, 0.6);
+			GlStateManager.rotate(180, 0, 1, 0);
 			if (te.isRunning() && !Minecraft.getMinecraft().isGamePaused())
 			{
 				long angle = System.currentTimeMillis() % 360;
-				GlStateManager.rotate(angle, 1, 0, 0);
+				GlStateManager.rotate(angle, -1, 0, 0);
 			}
 			GlStateManager.rotate(90, 0, 1, 0);
 			FacTesrHelper.renderPart(PartList.SAW);

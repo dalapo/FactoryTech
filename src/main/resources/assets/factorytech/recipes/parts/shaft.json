@@ -1,9 +1,9 @@
 {
     "type": "forge:ore_shaped",
     "result": {
-        "item": "factorytech:part",
+        "item": "factorytech:machinepart",
         "count": 3,
-        "data": 5
+        "data": 11
     },
     "pattern": [
         " i ",

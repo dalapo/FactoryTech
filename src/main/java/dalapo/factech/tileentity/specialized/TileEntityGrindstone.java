@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import dalapo.factech.FacTechConfigManager;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.reference.PartList;
@@ -72,11 +73,11 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 	@Override
 	public boolean performAction()
 	{
-		if ((getInput(0).getItem()) instanceof ItemSword)
+		if (FacTechConfigManager.allowMachineEnchanting && (getInput(0).getItem()) instanceof ItemSword)
 		{
 			return processEquipment(16);
 		}
-		else if ((getInput(0)).getItem() instanceof ItemTool)
+		else if (FacTechConfigManager.allowMachineEnchanting && (getInput(0)).getItem() instanceof ItemTool)
 		{
 			return processEquipment(32);
 		}

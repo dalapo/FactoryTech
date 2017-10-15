@@ -6,7 +6,7 @@
     "pattern": [
         " t ",
         "ipi",
-        "www"
+        "wsw"
     ],
     "key": {
         "t": {
@@ -21,6 +21,9 @@
         },
         "w": {
             "item": "#planks"
+        },
+        "s": {
+            "item": "factorytech:tankblock"
         }
     }
 }

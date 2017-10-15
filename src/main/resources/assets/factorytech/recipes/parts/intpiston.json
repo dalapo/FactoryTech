@@ -1,8 +1,8 @@
 {
     "type": "forge:ore_shaped",
     "result": {
-        "item": "factorytech:part",
-        "data": 16
+        "item": "factorytech:machinepart",
+        "data": 31
     },
     "pattern": [
         " s ",

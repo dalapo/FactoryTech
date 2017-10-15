@@ -96,6 +96,8 @@ public class GuiBasicMachine extends GuiFacInventory {
 			return new Point(0, 15);
 		case WIRE:
 			return new Point(15, 15);
+		case LENS:
+			return new Point(30, 15);
 		default:
 			return new Point(256, 256);
 		}

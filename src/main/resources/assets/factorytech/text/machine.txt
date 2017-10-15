@@ -10,12 +10,12 @@ Parts required (back): Gear
 $end
 $title River Grate
 $recipe machines/sluice
-The River Grate collects metal nuggets that wash down rivers to generate a slow but steady supply of iron, copper, and nickel. To run, it must be in a River biome between y-level 60 and 70, and must be surrounded by sufficient water.
+The River Grate collects metal nuggets that wash down rivers to generate a slow but steady supply of iron, copper, and nickel. It can also collect fish swimming downstream. To run, it must be in a River biome between y-level 60 and 70, and must be surrounded by sufficient water.
 Parts required (any side): Wooden Mesh
 $end
 $title Metal Cutting Machine
 $recipe machines/metalcutter
-The Metal Mill is a more precise cutting machine than the Chop Saw, intended for precise metal cutting. Its main use is to cut wire from copper ingots, but it can also make gears *much* more efficiently than by hand.
+The Metal Mill is a more precise cutting machine than the Chop Saw, intended for precise metal cutting. Its main use is to cut wire from copper and gold ingots, but it can also make gears *much* more efficiently than by hand.
 Parts required (bottom): Nickel Cutting Blade, Gear
 $end
 $title Autocrafting Unit
@@ -55,7 +55,7 @@ Parts required (bottom): Heating Element, Mixer
 $end
 $title Potion Mixer
 $recipe machines/potionmixer
-While many aspiring alchemists have sought a way to cram more than one effect into a bottle, potions seem to be averse to mixing when poured together. The Potion Mixer remedies that by first piping them into a central basin and then churning them until the different properties are forced together.
+While many aspiring alchemists have sought a way to cram more than one effect into a bottle, potions seem to be averse to mixing when poured together. The Potion Mixer remedies that by piping normal potions into a central basin and then churning them until the different properties are forced together.
 Parts required (back): Mixer, Gear
 $end
 $title Circuit Scribe
@@ -111,6 +111,16 @@ $recipe machines/propanefurnace
 The Propane Furnace uses compressed propane tanks to smelt items extremely quickly. One tank is good for eight smelts; however, it cannot do the precise recipes of the Electric Furnace.
 Full tanks are inserted on the bottom; empty ones are pulled from the top.
 Parts required: None, but consumes propane in tanks
+$end
+$title Tempering Oven
+$recipe machines/temperer
+Some machine parts can be tempered to increase their strength, and therefore their lifespan in machines. It can also temper iron tools, giving the equivalent of an Unbreaking I enchantment (doesn't stack). To run, it needs a sustained Redstone signal.
+Parts required: Heating Element, Circuit Board (Pattern 3), Focusing Lens
+$end
+$title Tempering Oven (cont'd)
+The Tempering Oven is not self-regulating. The Redstone signal must be turned off at exactly the right time; this time varies depending on the parts.
+If the signal turns off too early, the process will simply fail; if it stays on for too long, the part will be destroyed.
+Note that the tempering will not complete until the signal is actually turned off - removing the part will not suffice.
 $end
 $title Core Charger
 $recipe machines/corecharger

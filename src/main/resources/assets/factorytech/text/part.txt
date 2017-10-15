@@ -66,7 +66,7 @@ $title Battery
 Most machines can run off of simple Redstone power, but some require a substantial electrical current. Batteries are created by first crafting the empty shell, and then using a Compression Chamber to fill them with sulphuric acid. Adding a copper and a gold nugget to a dead battery refurbishes the shell.
 $end
 $title Focusing Lens
-Focusing lenses can be obtained by putting a Glass block on a Grindstone. Currently, their only use is to make the Magnifying Glass.
+Focusing lenses can be obtained by putting a Glass block on a Grindstone. They are used in the Temperance Chamber to achieve a precise temperature.
 $end
 $title Integrated Piston
 $recipe parts/intpiston

@@ -14,11 +14,13 @@ public class FacTechConfigManager {
 	
 	public static boolean genCopper = true;
 	public static boolean genNickel = true;
+	public static boolean convertParts = true;
+	public static boolean allowMachineEnchanting = true;
 	
 	public static Map<String, Float> salvageChances = new HashMap<>();
 	public static Map<String, Integer> minOperations = new HashMap<>();
 	
-	// TODO: Use arrays for multiple parts
+	// TODO: This
 	private static enum MachineDefaults {
 		sluice("River Grate", 0.8F, 8);
 		String name;
@@ -92,6 +94,6 @@ public class FacTechConfigManager {
 	
 	public static void initMachineConfig(Configuration cfg)
 	{
-		
+		allowMachineEnchanting = cfg.getBoolean("allowGrinderEnchanting", CATEGORY_MACHINES, true, "Set to false to disable the Grindstone enchanting tools and weapons");
 	}
 }

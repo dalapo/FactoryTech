@@ -34,8 +34,6 @@ public class TileEntityCrucible extends TileEntityFluidMachine {
 		partsNeeded[1] = new MachinePart(PartList.MIXER, 0.15F, 1.15F, 16);
 	}
 	
-	
-	
 	protected boolean canRun()
 	{
 		return super.canRun() && hasWork;

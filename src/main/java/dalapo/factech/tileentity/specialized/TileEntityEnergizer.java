@@ -32,7 +32,7 @@ public class TileEntityEnergizer extends TileEntityBasicInventory implements ITi
 	@Override
 	public void onInventoryChanged(int slot)
 	{
-		if (!hasCore && getStackInSlot(slot).isItemEqual(new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.ordinal())))
+		if (!hasCore && getStackInSlot(slot).isItemEqual(new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.getFloor())))
 		{
 			getStackInSlot(slot).shrink(1);
 			hasCore = true;

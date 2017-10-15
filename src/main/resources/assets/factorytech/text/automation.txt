@@ -50,6 +50,7 @@ $end
 $title Pipe
 $recipe automation/pipe
 Copper pipes are the primary method of moving liquids around. Thankfully, they don't seem to melt no matter how hot the fluid inside is.
+They will not automatically pull liquid from anything; an Extraction Pump must be used to push fluids into them.
 $end
 $title Stationary Tank
 $recipe automation/tankblock
@@ -62,5 +63,5 @@ The Extraction Pump automatically pulls liquid from any tanks connected to its i
 $end
 $title Water Collector
 $recipe automation/watercollector
-If placed in a river or ocean, the Water Collector will provide a steady and endless supply of water to a pipe or fluid tank above it.
+If placed in a river or ocean, the Water Collector will provide a steady and endless supply of water to an Extraction Pump above it.
 $end

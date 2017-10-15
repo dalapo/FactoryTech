@@ -1,5 +1,6 @@
 package dalapo.factech.helper;
 
+import dalapo.factech.reference.StateList;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -25,5 +26,19 @@ public class FacBlockHelper
 	{
 		if (dir == EnumFacing.UP || dir == EnumFacing.DOWN) return world.getBlockState(pos);
 		return world.getBlockState(pos).getBlock().getStateFromMeta(dir.ordinal());
+	}
+	
+	public static IBlockState nextRotation(World world, BlockPos pos, EnumFacing current, boolean plane)
+	{
+		int newRotation = 0;
+		if (plane)
+		{
+			newRotation = (current.ordinal() + 1) % 4 + 2;
+		}
+		else
+		{
+			newRotation = (current.ordinal() + 1) % 6;
+		}
+		return world.getBlockState(pos).withProperty(StateList.directions, EnumFacing.getFront(newRotation));
 	}
 }

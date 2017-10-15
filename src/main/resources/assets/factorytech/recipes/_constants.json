@@ -16,6 +16,13 @@
 	{
 	"ingredient": {
 	   "type": "forge:ore_dict",
+	   "ore": "slabWood"
+	},
+	"name": "wooden_slab"
+	},
+	{
+	"ingredient": {
+	   "type": "forge:ore_dict",
 	   "ore": "logWood"
 	},
 	"name": "log"
@@ -132,134 +139,134 @@
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
+		"item": "factorytech:machinepart",
 		"data": 0
 	},
 	"name": "saw"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 1
+		"item": "factorytech:machinepart",
+		"data": 3
 	},
 	"name": "gear"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 2
+		"item": "factorytech:machinepart",
+		"data": 6
 	},
 	"name": "wire"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 3
+		"item": "factorytech:machinepart",
+		"data": 8
 	},
 	"name": "blade"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 4
+		"item": "factorytech:machinepart",
+		"data": 10
 	},
 	"name": "mixer"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 5
+		"item": "factorytech:machinepart",
+		"data": 11
 	},
 	"name": "shaft"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 6
+		"item": "factorytech:machinepart",
+		"data": 12
 	},
 	"name": "motor"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 7
+		"item": "factorytech:machinepart",
+		"data": 15
 	},
 	"name": "drill"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 8
+		"item": "factorytech:machinepart",
+		"data": 17
 	},
 	"name": "heat_elem"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 9
+		"item": "factorytech:machinepart",
+		"data": 19
 	},
 	"name": "circ1"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 10
+		"item": "factorytech:machinepart",
+		"data": 21
 	},
 	"name": "circ2"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 11
+		"item": "factorytech:machinepart",
+		"data": 23
 	},
 	"name": "circ3"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 12
+		"item": "factorytech:machinepart",
+		"data": 25
 	},
 	"name": "circ4"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 13
+		"item": "factorytech:machinepart",
+		"data": 27
 	},
 	"name": "magnet"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 14
+		"item": "factorytech:machinepart",
+		"data": 28
 	},
 	"name": "battery"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 15
+		"item": "factorytech:machinepart",
+		"data": 30
 	},
 	"name": "lens"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 16
+		"item": "factorytech:machinepart",
+		"data": 31
 	},
 	"name": "piston"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 17
+		"item": "factorytech:machinepart",
+		"data": 32
 	},
 	"name": "core"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:part",
-		"data": 18
+		"item": "factorytech:machinepart",
+		"data": 33
 	},
 	"name": "mesh"
 	},

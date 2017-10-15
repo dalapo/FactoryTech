@@ -100,6 +100,21 @@ public class FacStackHelper {
 		return a.isItemEqual(b);
 	}
 	
+	public static boolean areItemStacksIdentical(@Nonnull ItemStack a, @Nonnull ItemStack b)
+	{
+		return areItemsEqualAllowEmpty(a, b) && a.getCount() == b.getCount();
+	}
+	
+	public static boolean areFluidStacksIdentical(FluidStack a, FluidStack b)
+	{
+		if (a == null || b == null)
+		{
+			return (a == null && b == null);
+		}
+		
+		return a.getFluid() == b.getFluid() && a.amount == b.amount;
+	}
+	
 	public static boolean canCombineStacks(ItemStack a, ItemStack b)
 	{
 		if (a.isEmpty() || b.isEmpty()) return true;

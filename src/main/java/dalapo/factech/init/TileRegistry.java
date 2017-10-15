@@ -1,5 +1,6 @@
 package dalapo.factech.init;
 
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -56,6 +57,7 @@ public class TileRegistry {
 		GameRegistry.registerTileEntity(TileEntityMechArm.class, "mecharm");
 		GameRegistry.registerTileEntity(TileEntitySequencePlacer.class, "sequenceplacer");
 		GameRegistry.registerTileEntity(TileEntityTank.class, "tank");
+		GameRegistry.registerTileEntity(TileEntityTemperer.class, "temperer");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -66,5 +68,6 @@ public class TileRegistry {
 //		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoMiner.class, new TesrMiner(false));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TesrCentrifuge(true));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoreCharger.class, new TesrCharger(true));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMetalCutter.class, new TesrMetalCutter(true));
 	}
 }

@@ -100,6 +100,7 @@ public class GuiHandbook extends GuiScreen
 	
 	private String getFileFromSection()
 	{
+//		Logger.info(Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getJavaLocale());
 		switch (section)
 		{
 		case 1:

@@ -14,8 +14,7 @@
             "item": "#planks"
         },
         "g": {
-            "item": "factorytech:ore_dust",
-            "data": 8
+            "item": "#copper_dust"
         },
         "q": {
             "item": "factorytech:circuit_intermediate",

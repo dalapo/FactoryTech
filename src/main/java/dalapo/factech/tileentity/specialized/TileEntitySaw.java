@@ -24,8 +24,8 @@ public class TileEntitySaw extends TileEntityBasicProcessor {
 	
 	protected void fillMachineParts()
 	{
-		partsNeeded[0] = new MachinePart(PartList.SAW, 0.15F, 1.1F, 0.7F, 10);
-		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.1F, 1.05F, 0.8F, 8);
+		partsNeeded[0] = new MachinePart(PartList.SAW, 0.15F, 1.1F, 0.7F, 8);
+		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.1F, 1.05F, 0.8F, 7);
 	}
 	
 	protected Map<ItemStack, ItemStack> getRecipeList()

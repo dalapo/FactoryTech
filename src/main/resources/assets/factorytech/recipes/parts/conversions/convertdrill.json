@@ -1,0 +1,13 @@
+{
+    "type": "forge:ore_shapeless",
+    "result": {
+        "item": "factorytech:machinepart",
+        "data": 15
+    },
+    "ingredients": [
+        {
+            "item": "factorytech:part",
+            "data": 7
+        }
+    ]
+}

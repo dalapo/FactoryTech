@@ -5,6 +5,9 @@ $title Consumable Parts
 Whether cutting wood, grinding ores to dust, or etching a circuit, machines are the lifeblood of industry. Machines require between one and five different parts to run, such as motors, circuits, and cutting blades. Parts do not last forever; they will wear out and require replacing. Each part in a machine is guaranteed to last for a number of cycles; each operation after that has a chance to consume it.
 Automating the production and supply of machine parts will be crucial to progression in Factory Tech.
 $end
+$title Tiers of parts
+Many parts have several variants. For example, gears can be made from either iron or invar, and iron gears can be tempered. Better parts are more difficult to make but last much longer in machines. Only the basic variants of parts are shown in the Specifications, but higher tiers are usually made in similar ways.
+$end
 $title Automation details
 Each machine has one side that it accepts new parts from, usually the back or bottom. All other sides are standard IO; items will automatically be put into input slots and pulled from output slots.
 $end

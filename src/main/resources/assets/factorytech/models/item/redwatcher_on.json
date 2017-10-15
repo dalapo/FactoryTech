@@ -1,7 +1,7 @@
 {
 	"parent": "builtin/generated",
 	"textures": {
-		"layer0": "autoutils:items/watcher_off"
+		"layer0": "factorytech:items/watcher_on"
 	},
 	"display": {
 		"thirdperson": {

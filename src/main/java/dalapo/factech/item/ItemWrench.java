@@ -20,9 +20,9 @@ public class ItemWrench extends ItemBase {
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand)
 	{
-		if (world.isRemote && world.getBlockState(pos).getBlock() instanceof Wrenchable)
+		if (world.getBlockState(pos).getBlock() instanceof Wrenchable)
 		{
-			PacketHandler.sendToServer(new WrenchPacket(pos, side));
+			((Wrenchable)world.getBlockState(pos).getBlock()).onWrenched(player.isSneaking(), world, pos, side);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;

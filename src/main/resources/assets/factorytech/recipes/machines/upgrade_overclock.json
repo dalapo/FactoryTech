@@ -14,8 +14,7 @@
             "item": "#planks"
         },
         "g": {
-            "item": "factorytech:ore_dust",
-            "data": 7
+            "item": "#gold_dust"
         },
         "q": {
             "item": "factorytech:circuit_intermediate",

@@ -19,6 +19,7 @@ import dalapo.factech.block.BlockMetal;
 import dalapo.factech.block.BlockOre;
 import dalapo.factech.block.BlockOreStorage;
 import dalapo.factech.block.BlockPipe;
+import dalapo.factech.block.BlockRSNotifier;
 import dalapo.factech.block.BlockScaffold;
 import dalapo.factech.block.BlockSmokestack;
 import dalapo.factech.block.BlockStackMover;
@@ -55,6 +56,7 @@ public class BlockRegistry {
 	public static BlockInventoryDirectional itemPusher;
 //	public static BlockInventoryDirectional mecharm;
 	public static BlockInventoryDirectional sequenceplacer;
+	public static BlockBase redNotifier;
 	
 //	public static BlockMachine wirecutter;
 	public static BlockMachine potionmixer;
@@ -76,6 +78,7 @@ public class BlockRegistry {
 	public static BlockMachine autominer;
 	public static BlockMachine electroplater;
 	public static BlockMachine charger;
+	public static BlockMachine temperer;
 	public static BlockMachine stabilizer;
 	public static BlockMachine magnetizer;
 	public static BlockMachine spawner;
@@ -108,7 +111,7 @@ public class BlockRegistry {
 		blocks.add(stackmover = new BlockStackMover(Material.WOOD, "stackmover", "stackmover", false, 0));
 		blocks.add(filtermover = new BlockStackMover(Material.IRON, "filtermover", "stackmover", false, 1));
 		blocks.add(bulkmover = new BlockStackMover(Material.IRON, "bulkmover", "stackmover", false, 2));
-		blocks.add(autopuller = new BlockInventoryDirectional(Material.IRON, "autopuller", "autopuller", true));
+		blocks.add(autopuller = new BlockInventoryDirectional(Material.IRON, "autopuller", "autopuller", false).enableRotating());
 		blocks.add(itemPusher = new BlockInventoryDirectional(Material.IRON, "itempusher", "itempusher", true) {
 			@Override
 			public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer ep, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
@@ -126,6 +129,7 @@ public class BlockRegistry {
 		blocks.add(elevator = new BlockElevator(Material.IRON, "elevator", true));
 		blocks.add(bottomHatch = new BlockBottomHatch(Material.WOOD, "bottomhatch", true));
 		blocks.add(hatch = (BlockHatch) new BlockHatch(Material.IRON, "hatch").setHardness(2F));
+		blocks.add(redNotifier = (BlockRSNotifier)new BlockRSNotifier(Material.WOOD, "rednotifier").setHardness(2F));
 //		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
 		blocks.add(oredrill = new BlockMachine(Material.IRON, "oredrill", "oredrill", 0));
 		blocks.add(metalCutter = new BlockMachine(Material.IRON, "metalcutter", "metalcutter", 0));
@@ -138,7 +142,7 @@ public class BlockRegistry {
 		blocks.add(crucible = new BlockMachine(Material.IRON, "crucible", "crucible", 0));
 		blocks.add(compressionChamber = new BlockMachine(Material.IRON, "compressor", "compressor", 0));
 //		blocks.add(fluidDebug = new BlockFluidGiver(Material.ROCK, "fluiddebug"));
-		blocks.add(fluidPuller = new BlockInventoryDirectional(Material.IRON, "fluidpuller", "fluidpuller", false));
+		blocks.add(fluidPuller = new BlockInventoryDirectional(Material.IRON, "fluidpuller", "fluidpuller", false).enableRotating());
 		blocks.add(grindstone = new BlockMachine(Material.IRON, "grindstone", "grindstone", 0));
 		blocks.add(centrifuge = new BlockMachine(Material.IRON, "centrifuge", "centrifuge", 0));
 		blocks.add(fluiddrill = new BlockMachine(Material.IRON, "fluiddrill", "fluiddrill", 0));
@@ -151,6 +155,7 @@ public class BlockRegistry {
 		blocks.add(teslaCoil = new BlockMachine(Material.IRON, "teslacoil", "teslacoil", 0));
 		blocks.add(electroplater = new BlockMachine(Material.IRON, "electroplater", "electroplater", 0));
 		blocks.add(charger = new BlockMachine(Material.IRON, "charger", "charger", 0));
+		blocks.add(temperer = new BlockMachine(Material.IRON, "temperer", "temperer", 0));
 		blocks.add(stabilizer = new BlockMachine(Material.IRON, "stabilizer", "stabilizer", 0));
 		blocks.add(magnetizer = new BlockMachine(Material.IRON, "magnetizer", "magnetizer", 0));
 		blocks.add(energizer = new BlockTENoDir(Material.IRON, "energizer", 8));
