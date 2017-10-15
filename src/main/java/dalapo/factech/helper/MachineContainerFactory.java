@@ -91,8 +91,8 @@ public class MachineContainerFactory {
 			output.add(new Pair<Integer, Integer>(62, 65));
 			break;
 		case "circuitscribe":
-			input.add(new Pair<Integer, Integer>(12, 16));
-			output.add(new Pair<Integer, Integer>(12, 48));
+			input.add(new Pair<Integer, Integer>(9, 29));
+			output.add(new Pair<Integer, Integer>(9, 71));
 			playerOffset = 34;
 			break;
 		case "stabilizer":
