@@ -500,7 +500,16 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 			break;
 		}
 //		Logger.info(String.format("Index: %s; %s", index, isPartSide));
-		if (isPartSide) return (index >= inSlots && index < inSlots + partSlots);
+		if (isPartSide)
+		{
+			if (itemStackIn.getItem() != ItemRegistry.machinePart) return false;
+			PartList id = PartList.getPartFromDamage(itemStackIn.getItemDamage());
+			for (int i=0; i<partsNeeded.length; i++)
+			{
+				if (partsNeeded[i].id == id) return index == inSlots + i;
+			}
+			return false;
+		}
 		else return index < inSlots;
 		/*
 		if (direction == world.getBlockState(getPos()).getValue(StateList.directions).getOpposite())
