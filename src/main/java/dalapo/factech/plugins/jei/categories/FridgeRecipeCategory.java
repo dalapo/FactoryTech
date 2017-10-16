@@ -35,7 +35,7 @@ public class FridgeRecipeCategory extends BaseRecipeCategory<FridgeRecipeWrapper
 	
 	public FridgeRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "fridge", "fridge_gui", 4, 16, 140, 56);
+		super(guiHelper, "ftfridge", "fridge_gui", 4, 16, 140, 56);
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -50,7 +50,7 @@ public class FridgeRecipeCategory extends BaseRecipeCategory<FridgeRecipeWrapper
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "fridge");
+		registry.addRecipes(getRecipes(guiHelper), "ftfridge");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

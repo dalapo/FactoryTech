@@ -4,8 +4,11 @@ import java.awt.Point;
 
 import javax.annotation.Nullable;
 
+import dalapo.factech.helper.FacArrayHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Pair;
+import dalapo.factech.init.ItemRegistry;
+import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ClickType;
@@ -23,6 +26,7 @@ public class ContainerBasicMachine extends Container {
 	int inSlots;
 	int partSlots;
 	int outSlots;
+	private int totalSlots;
 	
 	int playerInvOffset;
 	
@@ -67,6 +71,7 @@ public class ContainerBasicMachine extends Container {
 		}
 		
 		outSlots = outCoords.length;
+		totalSlots = inSlots + partSlots + outSlots;
 		if (outSlots > 0)
 		for (int i=0; i<outSlots; i++)
 		{
@@ -91,28 +96,53 @@ public class ContainerBasicMachine extends Container {
 	}
 	
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer ep, int slot)
+	public ItemStack slotClick(int slotId, int dragType, ClickType clicktype, EntityPlayer ep)
+	{
+		te.getHasWork();
+		return super.slotClick(slotId, dragType, clicktype, ep);
+	}
+	
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer ep, int index)
 	{
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot s = this.getSlot(slot);
+		Slot slot = this.getSlot(index);
 		
-		if (s != null && s.getHasStack())
+		if (slot != null && slot.getHasStack())
 		{
-			ItemStack temp = s.getStack();
-			itemstack = temp.copy();
-			
-			if (slot < partSlots + 2)
+			ItemStack change = slot.getStack();
+			itemstack = change.copy();
+			if (index > inSlots + partSlots && index < totalSlots)
 			{
-				if (!mergeItemStack(temp, partSlots + 2, inventorySlots.size(), false))
+				if (!this.mergeItemStack(change, totalSlots, totalSlots + 36, true))
 				{
-					this.te.getHasWork();
+					return ItemStack.EMPTY;
+				}
+				slot.onSlotChange(change, itemstack);
+			}
+			else if (index < totalSlots)
+			{
+				if (!this.mergeItemStack(change, totalSlots, totalSlots + 36, true))
+				{
 					return ItemStack.EMPTY;
 				}
 			}
-			else return ItemStack.EMPTY;
-			
-			if (temp.isEmpty()) return ItemStack.EMPTY;
-			else s.onSlotChanged();
+			else
+			{
+				if (change.getItem() == ItemRegistry.machinePart)
+				{
+					PartList id = PartList.getPartFromDamage(change.getItemDamage());
+					if (FacArrayHelper.contains(te.getPartsNeeded(), id) && !this.mergeItemStack(change, inSlots, inSlots+partSlots, false))
+					{
+						if (!this.mergeItemStack(change, 0, inSlots, false)) return ItemStack.EMPTY;
+					}
+					else if (!this.mergeItemStack(change, 0, inSlots, false)) return ItemStack.EMPTY;
+				}
+				else
+				{
+					if (!this.mergeItemStack(change, 0, inSlots, false)) return ItemStack.EMPTY;
+				}
+			}
 		}
 		this.te.getHasWork();
 		return itemstack;

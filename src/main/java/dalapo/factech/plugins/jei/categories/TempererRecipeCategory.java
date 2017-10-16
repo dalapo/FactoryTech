@@ -35,7 +35,7 @@ public class TempererRecipeCategory extends BaseRecipeCategory<TempererRecipeWra
 	
 	public TempererRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "temperer", "basicmachine");
+		super(guiHelper, "fttemperer", "basicmachine");
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -50,7 +50,7 @@ public class TempererRecipeCategory extends BaseRecipeCategory<TempererRecipeWra
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "temperer");
+		registry.addRecipes(getRecipes(guiHelper), "fttemperer");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

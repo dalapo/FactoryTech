@@ -186,18 +186,18 @@ item.factorytech.bacon.name=Industrial-Strength Bacon
 
 itemGroup.factorytech=Factory Tech
 
-factorytech:jei.saw=Chop Saw
-factorytech:jei.drillgrinder=Drill Grinder
-factorytech:jei.electroplater=Electroplater
-factorytech:jei.agitator=Fluid Agitator
-factorytech:jei.grindstone=Grindstone
-factorytech:jei.metalcutter=Metal Cutter
-factorytech:jei.centrifuge=Centrifuge
-factorytech:jei.elecfurnace=Electric Furnace
-factorytech:jei.crucible=Crucible
-factorytech:jei.fridge=Refrigerator
-factorytech:jei.compressor=Compression Chamber
-factorytech:jei.temperer=Tempering Oven
+factorytech:jei.ftsaw=Chop Saw
+factorytech:jei.ftdrillgrinder=Drill Grinder
+factorytech:jei.ftelectroplater=Electroplater
+factorytech:jei.ftagitator=Fluid Agitator
+factorytech:jei.ftgrindstone=Grindstone
+factorytech:jei.ftmetalcutter=Metal Cutter
+factorytech:jei.ftcentrifuge=Centrifuge
+factorytech:jei.ftelecfurnace=Electric Furnace
+factorytech:jei.ftcrucible=Crucible
+factorytech:jei.ftfridge=Refrigerator
+factorytech:jei.ftcompressor=Compression Chamber
+factorytech:jei.fttemperer=Tempering Oven
 
 fluid.sulphur=Liquid Sulphur
 fluid.h2so4=Sulphuric Acid

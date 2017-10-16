@@ -121,7 +121,7 @@ public class MachineRecipes {
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 1), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 7), new ItemStack(ItemRegistry.oreProduct, 1, 4)});
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 2), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 8), new ItemStack(Items.GOLD_NUGGET)});
 		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 3), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 1, 9), new ItemStack(Items.IRON_NUGGET)});
-		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 1, 10), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 3, 8), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
+		CENTRIFUGE.put(new ItemStack(ItemRegistry.oreProduct, 4, 10), new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 3, 8), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
 		CENTRIFUGE.put(new ItemStack(Blocks.SAND, 4, 1), new ItemStack[] {new ItemStack(Blocks.SAND, 4, 0), new ItemStack(Items.REDSTONE, 1)});
 		
 		REFRIGERATOR.put(new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(Blocks.ICE));
@@ -235,7 +235,9 @@ public class MachineRecipes {
 		
 		for (ItemStack is : OreDictionary.getOres("dustInvar"))
 		{
-			CENTRIFUGE.put(is, new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 2, 6), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
+			ItemStack copy = is.copy();
+			copy.setCount(3);
+			CENTRIFUGE.put(copy, new ItemStack[] {new ItemStack(ItemRegistry.oreProduct, 2, 6), new ItemStack(ItemRegistry.oreProduct, 1, 9)});
 		}
 	}
 	

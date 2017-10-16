@@ -33,7 +33,7 @@ public class SawRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper>
 	
 	public SawRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "saw", "saw_gui");
+		super(guiHelper, "ftsaw", "saw_gui");
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -48,7 +48,7 @@ public class SawRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper>
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "saw");
+		registry.addRecipes(getRecipes(guiHelper), "ftsaw");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

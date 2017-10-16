@@ -21,7 +21,7 @@ import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
 public class DrillGrinderRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper> {
 
 	public DrillGrinderRecipeCategory(IGuiHelper helper) {
-		super(helper, "drillgrinder", "drill_gui", 19, 17, 140, 64);
+		super(helper, "ftdrillgrinder", "drill_gui", 19, 17, 140, 64);
 	}
 
 	public static void register(IRecipeCategoryRegistration registry)
@@ -35,7 +35,7 @@ public class DrillGrinderRecipeCategory extends BaseRecipeCategory<StandardRecip
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "drillgrinder");
+		registry.addRecipes(getRecipes(guiHelper), "ftdrillgrinder");
 	}
 	
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)

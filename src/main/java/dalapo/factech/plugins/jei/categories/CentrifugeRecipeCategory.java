@@ -21,7 +21,7 @@ import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
 public class CentrifugeRecipeCategory extends BaseRecipeCategory<CentrifugeRecipeWrapper> {
 
 	public CentrifugeRecipeCategory(IGuiHelper helper) {
-		super(helper, "centrifuge", "centrifuge_gui");
+		super(helper, "ftcentrifuge", "centrifuge_gui");
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -37,7 +37,7 @@ public class CentrifugeRecipeCategory extends BaseRecipeCategory<CentrifugeRecip
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "centrifuge");
+		registry.addRecipes(getRecipes(guiHelper), "ftcentrifuge");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

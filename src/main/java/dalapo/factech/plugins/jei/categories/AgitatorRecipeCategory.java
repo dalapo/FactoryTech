@@ -22,7 +22,7 @@ import dalapo.factech.tileentity.specialized.TileEntityAgitator.AgitatorRecipe;
 public class AgitatorRecipeCategory extends BaseRecipeCategory<AgitatorRecipeWrapper> {
 
 	public AgitatorRecipeCategory(IGuiHelper helper) {
-		super(helper, "agitator", "agitator_gui", 4, 16, 140, 56);
+		super(helper, "ftagitator", "agitator_gui", 4, 16, 140, 56);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -38,7 +38,7 @@ public class AgitatorRecipeCategory extends BaseRecipeCategory<AgitatorRecipeWra
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "agitator");
+		registry.addRecipes(getRecipes(guiHelper), "ftagitator");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

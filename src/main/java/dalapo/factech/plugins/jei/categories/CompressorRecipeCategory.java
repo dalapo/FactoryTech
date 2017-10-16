@@ -34,7 +34,7 @@ public class CompressorRecipeCategory extends BaseRecipeCategory<CompressorRecip
 	
 	public CompressorRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "compressor", "fridge_gui", 4, 16, 140, 56);
+		super(guiHelper, "ftcompressor", "fridge_gui", 4, 16, 140, 56);
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -49,7 +49,7 @@ public class CompressorRecipeCategory extends BaseRecipeCategory<CompressorRecip
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "compressor");
+		registry.addRecipes(getRecipes(guiHelper), "ftcompressor");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

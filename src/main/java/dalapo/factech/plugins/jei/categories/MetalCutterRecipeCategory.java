@@ -24,7 +24,7 @@ public class MetalCutterRecipeCategory extends BaseRecipeCategory<StandardRecipe
 {
 	public MetalCutterRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "metalcutter", "basicmachine");
+		super(guiHelper, "ftmetalcutter", "basicmachine");
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -39,7 +39,7 @@ public class MetalCutterRecipeCategory extends BaseRecipeCategory<StandardRecipe
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "metalcutter");
+		registry.addRecipes(getRecipes(guiHelper), "ftmetalcutter");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

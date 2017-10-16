@@ -44,17 +44,17 @@ public class FacTechJeiPlugin implements IModPlugin
 		TempererRecipeCategory.init(registry);
 		CompressorRecipeCategory.init(registry);
 		
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.saw), "saw");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.oredrill), "drillgrinder");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.electroplater), "electroplater");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.agitator), "agitator");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.grindstone), "grindstone");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.centrifuge), "centrifuge");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.metalCutter), "metalcutter");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.htfurnace), "elecfurnace");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.crucible), "crucible");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.refrigerator), "fridge");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.temperer), "temperer");
-		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.compressionChamber), "compressor");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.saw), "ftsaw");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.oredrill), "ftdrillgrinder");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.electroplater), "ftelectroplater");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.agitator), "ftagitator");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.grindstone), "ftgrindstone");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.centrifuge), "ftcentrifuge");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.metalCutter), "ftmetalcutter");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.htfurnace), "ftelecfurnace");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.crucible), "ftcrucible");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.refrigerator), "ftfridge");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.temperer), "fttemperer");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.compressionChamber), "ftcompressor");
 	}
 }

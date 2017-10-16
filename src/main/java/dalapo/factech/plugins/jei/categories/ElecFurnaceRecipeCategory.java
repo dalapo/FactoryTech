@@ -33,7 +33,7 @@ public class ElecFurnaceRecipeCategory extends BaseRecipeCategory<StandardRecipe
 	
 	public ElecFurnaceRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "elecfurnace", "basicmachine");
+		super(guiHelper, "ftelecfurnace", "basicmachine");
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -48,7 +48,7 @@ public class ElecFurnaceRecipeCategory extends BaseRecipeCategory<StandardRecipe
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "elecfurnace");
+		registry.addRecipes(getRecipes(guiHelper), "ftelecfurnace");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

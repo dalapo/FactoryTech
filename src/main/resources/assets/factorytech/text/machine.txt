@@ -70,7 +70,8 @@ Parts required (any side): Drill, Circuit Board (Pattern 1), Advanced Motor
 $end
 $title Industrial Electroplater
 $recipe machines/electroplater
-The Industrial Electroplater dissolves materials in sulphuric acid and then uses an electric current to plate them onto wires. It can electroplate ore dusts to double them again as well as turning Redstone into Glowstone and sand into quartz.
+The Industrial Electroplater dissolves materials in sulphuric acid and then uses an electric current to plate them onto wires. It can electroplate ore dusts to double them again as well as turning Redstone into Glowstone and sand into quartz. It must have something manually placed in the output slot to plate onto.
+Parts required (back): Battery, Wire, Mixing Blades
 $end
 $title Mob Disassembler
 $recipe machines/disassembler

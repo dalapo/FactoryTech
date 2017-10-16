@@ -70,11 +70,6 @@ public class ItemMachinePart extends ItemBase {
 			}
 		}
 		
-		for (ModelResourceLocation loc : locations)
-		{
-			Logger.info(loc == null);
-		}
-		
 		ModelBakery.registerItemVariants(this, locations);
 		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
 			@Override

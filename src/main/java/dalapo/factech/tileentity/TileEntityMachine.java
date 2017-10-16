@@ -357,6 +357,15 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		FacBlockHelper.updateBlock(world, pos);
 	}
 	
+	public PartList[] getPartsNeeded()
+	{
+		PartList[] parts = new PartList[partsNeeded.length];
+		for (int i=0; i<partsNeeded.length; i++)
+		{
+			parts[i] = partsNeeded[i].id;
+		}
+		return parts;
+	}
 	/*
 	public void sendInfoPacket(EntityPlayer ep)
 	{

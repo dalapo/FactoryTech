@@ -60,10 +60,6 @@ public class CommonProxy {
 	{
 		Logger.info("Entered postInit");
 		
-		for (int i=0; i<PartList.getTotalVariants(); i++)
-		{
-			Logger.info(String.format("%s: %s, %s", i, PartList.getPartFromDamage(i), PartList.getQualityFromDamage(i)));
-		}
 		MachineRecipes.addOreDictRecipes();
 		MachineRecipes.importFurnaceRecipes();
 		if (config.hasChanged()) config.save();

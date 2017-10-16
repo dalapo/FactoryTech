@@ -14,9 +14,13 @@ Right-click a Redstone Notifier with a Redstone Watcher to link the two. Once li
 $end
 $title Pressure Gun
 $recipe pressuregun
-The Pressure Gun uses filled tanks of fluid as a weapon.
-Air: High knockback, low range
+The Pressure Gun uses filled tanks of fluid as a weapon. It has different range, damage, and knockback depending on the contents of the tank, detailed on the next page.
+
+It doesn't seem to bother squids at all - in fact, it almost seems like they were the ones to design it. But that can't be true, right?
+$end
+$title Pressure Gun ammo variants
+Air: Extreme knockback, low range, no damage
 Water: Medium knockback, low damage, long range
 Propane: Low knockback, medium range, high damage, sets mobs on fire
-H2SO4: Low knockback, extreme damage
+H2SO4: Low knockback, medium range, extreme damage
 $end

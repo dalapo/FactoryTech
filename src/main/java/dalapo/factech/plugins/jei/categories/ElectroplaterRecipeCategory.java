@@ -34,7 +34,7 @@ public class ElectroplaterRecipeCategory extends BaseRecipeCategory<StandardReci
 	
 	public ElectroplaterRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "electroplater", "electroplater_gui", 4, 16, 134, 58);
+		super(guiHelper, "ftelectroplater", "electroplater_gui", 4, 16, 134, 58);
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -49,7 +49,7 @@ public class ElectroplaterRecipeCategory extends BaseRecipeCategory<StandardReci
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "electroplater");
+		registry.addRecipes(getRecipes(guiHelper), "ftelectroplater");
 	}
 
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
@@ -76,7 +76,7 @@ public class ElectroplaterRecipeCategory extends BaseRecipeCategory<StandardReci
 
 	@Override
 	public void drawExtras(Minecraft minecraft) {
-		minecraft.fontRenderer.drawString("Sulphuric acid: 250mB", 42, 50, 0x00000000);
+		minecraft.fontRenderer.drawString("Sulphuric acid: 250mB", 42, 48, 0x00000000);
 		FacFluidRenderHelper.drawFluid(new FluidStack(ModFluidRegistry.h2so4, 250), 22, 50, 16, 3);
 	}
 

@@ -33,7 +33,7 @@ public class GrindstoneRecipeCategory extends BaseRecipeCategory<StandardRecipeW
 	
 	public GrindstoneRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "grindstone", "basicmachine");
+		super(guiHelper, "ftgrindstone", "basicmachine");
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -48,7 +48,7 @@ public class GrindstoneRecipeCategory extends BaseRecipeCategory<StandardRecipeW
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "grindstone");
+		registry.addRecipes(getRecipes(guiHelper), "ftgrindstone");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 

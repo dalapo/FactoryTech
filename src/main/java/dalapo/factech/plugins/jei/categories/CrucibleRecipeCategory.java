@@ -36,7 +36,7 @@ public class CrucibleRecipeCategory extends BaseRecipeCategory<CrucibleRecipeWra
 	
 	public CrucibleRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "crucible", "crucible_gui", 16, 16, 120, 54);
+		super(guiHelper, "ftcrucible", "crucible_gui", 16, 16, 120, 54);
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -51,7 +51,7 @@ public class CrucibleRecipeCategory extends BaseRecipeCategory<CrucibleRecipeWra
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "crucible");
+		registry.addRecipes(getRecipes(guiHelper), "ftcrucible");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 
