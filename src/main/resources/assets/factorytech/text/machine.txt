@@ -31,7 +31,7 @@ $end
 $title Drill Grinder
 $recipe machines/drill
 The Drill Grinder is, well, a drill that grinds things. It can convert one Ore block into two units of dust, each of which can be smelted into an ingot; it can also convert stone to gravel and gravel to sand.
-Parts required (bottom): Advanced Motor, Drill, Wire
+Parts required (top): Advanced Motor, Drill, Wire
 $end
 $title Magnetizer
 $recipe machines/magnetizer
