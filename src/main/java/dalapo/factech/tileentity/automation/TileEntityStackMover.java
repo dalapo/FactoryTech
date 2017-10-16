@@ -152,7 +152,7 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 		// Condition for reaching here: The TE has found an ItemStack to move
 		// The slot of the ItemStack is stored in pair[1]
 		int moveSize = pair[0] == 9 ? 64 : getStackInSlot(pair[0]).getCount();
-		ItemStack toMove = pull.extractItem(pair[1], moveSize, false);
+		ItemStack toMove = pull.extractItem(pair[1], moveSize, true);
 		Logger.info(pair[1]);
 		Logger.info(toMove);
 		if (push == null)
@@ -166,8 +166,10 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 		}
 		else
 		{
+			int initCount = toMove.getCount();
 			ItemStack remaining = FacTileHelper.tryInsertItem((IItemHandler)push, toMove, front.ordinal());
-			((IItemHandler)pull).insertItem(pair[1], remaining, false);
+			pull.extractItem(pair[1], initCount - remaining.getCount(), false);
+//			((IItemHandler)pull).insertItem(pair[1], remaining, false);
 		}
 	}
 
