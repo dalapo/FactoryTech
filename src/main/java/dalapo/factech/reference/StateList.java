@@ -5,6 +5,7 @@ import dalapo.factech.auxiliary.EnumMetalType;
 import dalapo.factech.auxiliary.EnumOreBlockType;
 import dalapo.factech.auxiliary.EnumOreType;
 import dalapo.factech.auxiliary.EnumSmokestackType;
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.util.EnumFacing;

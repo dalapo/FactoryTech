@@ -122,5 +122,9 @@ public class BlockMachine extends BlockInventoryDirectional {
 			dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 			world.setBlockToAir(pos);
 		}
+		else
+		{
+			super.onWrenched(isSneaking, world, pos, side);
+		}
 	}
 }

@@ -28,7 +28,7 @@ public class FacBlockHelper
 		return world.getBlockState(pos).getBlock().getStateFromMeta(dir.ordinal());
 	}
 	
-	public static IBlockState nextRotation(World world, BlockPos pos, EnumFacing current, boolean plane)
+	public static EnumFacing nextRotation(World world, BlockPos pos, EnumFacing current, boolean plane)
 	{
 		int newRotation = 0;
 		if (plane)
@@ -39,6 +39,6 @@ public class FacBlockHelper
 		{
 			newRotation = (current.ordinal() + 1) % 6;
 		}
-		return world.getBlockState(pos).withProperty(StateList.directions, EnumFacing.getFront(newRotation));
+		return EnumFacing.getFront(newRotation);
 	}
 }

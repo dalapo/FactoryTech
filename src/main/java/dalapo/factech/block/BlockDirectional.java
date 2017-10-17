@@ -62,7 +62,9 @@ public class BlockDirectional extends BlockBase implements Wrenchable {
 	@Override
 	public void onWrenched(boolean isSneaking, World world, BlockPos pos, EnumFacing side) 
 	{
-		IBlockState newState = FacBlockHelper.nextRotation(world, pos, world.getBlockState(pos).getValue(StateList.directions), planeLocked);
-		world.setBlockState(pos, newState);
+		EnumFacing newFacing;
+		if (planeLocked) newFacing = world.getBlockState(pos).getValue(StateList.directions).rotateY();
+		else newFacing = FacBlockHelper.nextRotation(world, pos, world.getBlockState(pos).getValue(StateList.directions), false);
+		world.setBlockState(pos, world.getBlockState(pos).withProperty(StateList.directions, newFacing));
 	}
 }

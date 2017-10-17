@@ -3,7 +3,7 @@
   "modid": "factorytech",
   "name": "Factory Tech",
   "description": "A tech mod for people who love automation. Instead of powering your machines from a big nuclear reactor or a jet engine, set up complex assembly lines to keep them stocked with fresh parts!",
-  "version": "1.0",
+  "version": "1.1.1b",
   "mcversion": ["1.12", "1.12.1", "1.12.2"],
   "url": "",
   "updateUrl": "",

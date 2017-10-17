@@ -1,5 +1,6 @@
 $title Monkey Wrench
-The Monkey Wrench is the universal tool for adjusting machines. It can rotate most automation components to face the side that they were clicked; however, it does not work on anything with an inventory.
+$recipe wrench
+The Monkey Wrench is the universal tool for adjusting machines. Right-clicking most machines and automation components will rotate them.
 $end
 $title Magnifying Glass
 $recipe magglass

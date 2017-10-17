@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import dalapo.factech.auxiliary.IInfoPacket;
 import dalapo.factech.helper.FacMathHelper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -12,8 +13,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -224,5 +227,11 @@ public abstract class TileEntityBasicInventory extends TileEntityBase implements
 				inventory[i] = new ItemStack(inv.getCompoundTagAt(i));
 			}
 		}
+	}
+	
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
+	{
+		return oldState.getBlock() != newState.getBlock();
 	}
 }

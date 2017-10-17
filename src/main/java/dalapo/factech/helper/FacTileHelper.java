@@ -231,7 +231,6 @@ public class FacTileHelper {
 	{
 		if (itemstack == null) return null;
 		if (inv == null) return itemstack;
-		Logger.info("Entered tryInsertItem with ItemStack " + itemstack.toString());
 		Logger.info(inv.getSlots());
 		for (int i=0; i<inv.getSlots(); i++)
 		{
