@@ -14,6 +14,7 @@ import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
 import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
+import dalapo.factech.reference.PartList;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -33,7 +34,7 @@ public class StabilizerRecipeCategory extends BaseRecipeCategory<StandardRecipeW
 	
 	public StabilizerRecipeCategory(IGuiHelper guiHelper)
 	{
-		super(guiHelper, "ftsaw", "saw_gui");
+		super(guiHelper, "ftstabilizer", "basicmachine");
 	}
 	
 	public static void register(IRecipeCategoryRegistration registry)
@@ -48,17 +49,14 @@ public class StabilizerRecipeCategory extends BaseRecipeCategory<StandardRecipeW
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "ftsaw");
+		registry.addRecipes(getRecipes(guiHelper), "ftstabilizer");
 //		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
 	}
 
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.SAW.entrySet())
-		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
-		}
+		recipes.add(new StandardRecipeWrapper(guiHelper, new ItemStack(ItemRegistry.coreUnfinished, 1, 20), new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.getFloor())));
 		return recipes;
 	}
 	
@@ -75,9 +73,9 @@ public class StabilizerRecipeCategory extends BaseRecipeCategory<StandardRecipeW
 	}
 
 	@Override
-	public void drawExtras(Minecraft minecraft) {
-//		background.draw(minecraft);
-		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, 0), 52, 28);
+	public void drawExtras(Minecraft minecraft)
+	{
+		minecraft.fontRenderer.drawString("Optimal efficiency at 80% charge", -20, 60, 0x00000000);
 	}
 
 	@Override

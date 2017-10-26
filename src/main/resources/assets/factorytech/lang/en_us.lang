@@ -207,6 +207,7 @@ factorytech:jei.ftcompressor=Compression Chamber
 factorytech:jei.fttemperer=Tempering Oven
 factorytech:jei.ftmagnetizer=Magnetizer
 factorytech:jei.ftdisassembler=Mob Disassembler
+factorytech:jei.ftstabilizer=Stabilization Table
 
 fluid.sulphur=Liquid Sulphur
 fluid.h2so4=Sulphuric Acid

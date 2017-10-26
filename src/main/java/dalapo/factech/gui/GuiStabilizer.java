@@ -73,6 +73,6 @@ public class GuiStabilizer extends GuiBasicMachine {
 				drawCenteredString(fontRenderer, str, cheatycheaty.get(i).a, cheatycheaty.get(i).b, 0xFFFFFF);
 			}
 		}
-		fontRenderer.drawString(String.format("Stability: %s", stabilizer.getStability()), 80, 72, 0x404040);
+		fontRenderer.drawString(String.format("Stability: %s", stabilizer.getStability()), 100, 72, 0x404040);
 	}
 }

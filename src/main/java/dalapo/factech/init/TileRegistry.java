@@ -68,7 +68,7 @@ public class TileRegistry {
 		{
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySaw.class, new TesrSaw(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOreDrill.class, new TesrOreDrill(false));
-			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
+	//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
 	//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoMiner.class, new TesrMiner(false));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TesrCentrifuge(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoreCharger.class, new TesrCharger(true));
@@ -76,6 +76,8 @@ public class TileRegistry {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCircuitScribe.class, new TesrCircuitScribe(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTemperer.class, new TesrTemperer(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagnetizer.class, new TesrMagnetizer(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDisassembler.class, new TesrDisassembler(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStabilizer.class, new TesrStabilizer(false));
 		}
 	}
 }
