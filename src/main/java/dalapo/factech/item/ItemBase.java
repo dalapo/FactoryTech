@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBase extends Item {
+public class ItemBase extends Item implements ItemModelProvider {
 	protected final String name;
 	private final int subtypes;
 	

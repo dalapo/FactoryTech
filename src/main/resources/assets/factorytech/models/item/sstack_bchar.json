@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "factorytech:blocks/bricks_charcoal",
+		"up": "factorytech:blocks/smokevent",
+		"down": "factorytech:blocks/bricks_charcoal",
+		"east": "factorytech:blocks/bricks_charcoal",
+		"west": "factorytech:blocks/bricks_charcoal",
+		"north": "factorytech:blocks/bricks_charcoal",
+		"south": "factorytech:blocks/bricks_charcoal"
+	}
+}

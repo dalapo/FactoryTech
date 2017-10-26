@@ -14,8 +14,13 @@ public class FacTesrHelper {
 		Minecraft.getMinecraft().getRenderItem().renderItem(is, ItemCameraTransforms.TransformType.NONE);
 	}
 	
+	public static void renderPart(PartList id, int variant)
+	{
+		renderStack(new ItemStack(ItemRegistry.machinePart, 1, id.getFloor() + variant));
+	}
+	
 	public static void renderPart(PartList id)
 	{
-		renderStack(new ItemStack(ItemRegistry.machinePart, 1, id.getFloor()));
+		renderPart(id, 0);
 	}
 }

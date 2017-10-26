@@ -26,6 +26,8 @@ public class FacTechJeiPlugin implements IModPlugin
 		FridgeRecipeCategory.register(registry);
 		TempererRecipeCategory.register(registry);
 		CompressorRecipeCategory.register(registry);
+		MagnetizerRecipeCategory.register(registry);
+		DisassemblerRecipeCategory.register(registry);
 	}
 	
 	@Override
@@ -43,6 +45,8 @@ public class FacTechJeiPlugin implements IModPlugin
 		FridgeRecipeCategory.init(registry);
 		TempererRecipeCategory.init(registry);
 		CompressorRecipeCategory.init(registry);
+		MagnetizerRecipeCategory.init(registry);
+		DisassemblerRecipeCategory.init(registry);
 		
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.saw), "ftsaw");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.oredrill), "ftdrillgrinder");
@@ -56,5 +60,7 @@ public class FacTechJeiPlugin implements IModPlugin
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.refrigerator), "ftfridge");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.temperer), "fttemperer");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.compressionChamber), "ftcompressor");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.magnetizer), "ftmagnetizer");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.disassembler), "ftdisassembler");
 	}
 }

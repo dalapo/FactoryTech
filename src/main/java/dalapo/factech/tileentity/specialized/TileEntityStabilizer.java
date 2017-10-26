@@ -19,8 +19,9 @@ import dalapo.factech.tileentity.TileEntityMachine;
 public class TileEntityStabilizer extends TileEntityMachine {
 
 	private short stability = 0;
-	private int dS = 0;
+	private int dS = 0; // Strangely enough, S represents the exact opposite of entropy in this case.
 	short[] magnetStrengths = new short[4];
+	boolean[] isCooling = new boolean[4];
 	
 	public TileEntityStabilizer() {
 		super("stabilizer", 1, 0, 1, RelativeSide.BOTTOM);
@@ -39,8 +40,13 @@ public class TileEntityStabilizer extends TileEntityMachine {
 	protected void fillMachineParts()
 	{
 	}
-
-	public short getStrength (int side)
+	
+	public boolean isCooling(int side)
+	{
+		return isCooling[side];
+	}
+	
+	public short getStrength(int side)
 	{
 		return magnetStrengths[side];
 	}
@@ -50,12 +56,13 @@ public class TileEntityStabilizer extends TileEntityMachine {
 		return stability;
 	}
 	
-	public void updateValues(short stb, short[] str)
+	public void updateValues(short stb, short[] str, boolean[] cool)
 	{
 		stability = stb;
 		for (int i=0; i<4; i++)
 		{
 			magnetStrengths[i] = str[i];
+			isCooling[i] = cool[i];
 		}
 	}
 	
@@ -79,11 +86,11 @@ public class TileEntityStabilizer extends TileEntityMachine {
 			if (te instanceof TileEntityMagnet)
 			{
 				magnetStrengths[i-2] = ((TileEntityMagnet)te).getStrength();
+				isCooling[i-2] = ((TileEntityMagnet)te).getCooldown() > 0;
 			}
 			else
 			{
-//				Logger.info("Magnet not found");
-				magnetStrengths[i-2] = 0;
+				magnetStrengths[i-2] = -1;
 			}
 		}
 		if (!getInput().getItem().equals(ItemRegistry.coreUnfinished) || getInput().getItemDamage() > 40)
@@ -95,19 +102,22 @@ public class TileEntityStabilizer extends TileEntityMachine {
 			double average = 0;
 			int lowest = magnetStrengths[0];
 			int highest = magnetStrengths[0];
-			for (int strength : magnetStrengths)
+			short[] tempStrengths = new short[4];
+			for (int i=0; i<4; i++)
 			{
+				short strength = magnetStrengths[i];
 				if (strength < lowest) lowest = strength;
 				if (strength > highest) highest = strength;
 				average += strength / 4.0;
+				tempStrengths[i] = magnetStrengths[i];
 			}
-			Arrays.sort(magnetStrengths);
-			int biggestJump = magnetStrengths[1] - magnetStrengths[0];
+			Arrays.sort(tempStrengths);
+			int biggestJump = tempStrengths[1] - tempStrengths[0];
 			for (int i=2; i<4; i++)
 			{
-				if (magnetStrengths[i] - magnetStrengths[i-1] > biggestJump)
+				if (tempStrengths[i] - tempStrengths[i-1] > biggestJump)
 				{
-					biggestJump = magnetStrengths[i] - magnetStrengths[i-1];
+					biggestJump = tempStrengths[i] - tempStrengths[i-1];
 				}
 			}
 			// Magnet factors
@@ -118,6 +128,7 @@ public class TileEntityStabilizer extends TileEntityMachine {
 		stability += dS;
 		if (stability <= -200)
 		{
+			setInventorySlotContents(0, ItemStack.EMPTY);
 			world.createExplosion(null, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, 4, true);
 		}
 		if (stability >= 500 && getInput().isItemEqualIgnoreDurability(new ItemStack(ItemRegistry.coreUnfinished)))

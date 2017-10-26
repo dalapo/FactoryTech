@@ -1,0 +1,18 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:steeltoeboots"
+    },
+    "pattern": [
+    " b ",
+    "i i"
+    ],
+    "key": {
+        "b": {
+            "item": "minecraft:leather_boots"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        }
+    }
+}

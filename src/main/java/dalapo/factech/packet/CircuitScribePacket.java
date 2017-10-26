@@ -23,9 +23,9 @@ public class CircuitScribePacket extends FacTechPacket {
 	@Override
 	protected void actuallyDoHandle(FacTechPacket msg, World world,
 			EntityPlayer ep, boolean isClient) {
-		Logger.info("CircuitScribePacket actuallyDoHandle");
 		TileEntityCircuitScribe te = (TileEntityCircuitScribe)world.getTileEntity(((CircuitScribePacket)msg).pos);
 		te.setPattern(((CircuitScribePacket)msg).pattern);
+		te.getHasWork();
 	}
 
 	@Override

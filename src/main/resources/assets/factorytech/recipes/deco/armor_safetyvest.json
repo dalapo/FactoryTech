@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:safetyvest"
+    },
+    "pattern": [
+    "g g",
+    "dcd",
+    " d "
+    ],
+    "key": {
+        "d": {
+            "item": "minecraft:dye",
+            "data": 14
+        },
+        "c": {
+            "item": "minecraft:iron_chestplate"
+        },
+        "g": {
+            "item": "minecraft:glowstone_dust"
+        }
+    }
+}

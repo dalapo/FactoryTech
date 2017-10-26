@@ -18,10 +18,11 @@ $end
 $title Pulse Piston
 $recipe automation/pulsepiston
 The Pulse Piston is a miniaturized Piston, specially adapted for pushing items. It will push any items dropped in front of it, into an inventory if there is one where they would be shoved. Right-clicking will open a filter to set which items should be pushed.
+A Redstone signal disables it.
 $end
 $title Auto Puller
 $recipe automation/autopuller
-The Auto Puller yanks items from an inventory adjacent to its input and drops them into the world. A Redstone signal disables it.
+The Auto Puller automatically yanks items from an inventory adjacent to its input and drops them into the world. A Redstone signal disables it.
 $end
 $title Insertion Hatch
 $recipe automation/hatch
@@ -29,7 +30,7 @@ The opposite of the Auto Puller, the Insertion Hatch will put items that touch i
 $end
 $title Stack Mover
 $recipe automation/stackmover
-The Stack Mover, when given a Redstone signal, pulls a single stack of items from an inventory on its input side and pushes it into the inventory on its output side (or drops it into the world if there is none).
+The Stack Mover, when given a Redstone signal, attempts to pull a single stack of items from an inventory on its input side and push it into the inventory on its output side. It always moves the first stack it finds that will fit into the target inventory. If there is no inventory adjacent to its output side, the stack is dropped into the world instead.
 $end
 $title Filtered Stack Mover
 $recipe automation/filtermover

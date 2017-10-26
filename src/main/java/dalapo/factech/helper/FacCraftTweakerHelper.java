@@ -23,7 +23,7 @@ public class FacCraftTweakerHelper
 	
 	public static ItemStack toStack(IItemStack iis)
 	{
-		if (iis == null) return ItemStack.EMPTY;
+		if (iis == null || ((ItemStack)iis.getInternal()).isEmpty()) return ItemStack.EMPTY;
 		return (ItemStack)iis.getInternal();
 	}
 	
@@ -41,15 +41,15 @@ public class FacCraftTweakerHelper
 	public static Object toObject(IIngredient object)
 	{
 		if (object == null) return null;
-		
-		if (object instanceof IOreDictEntry)
-		{
-			return ((IOreDictEntry)object).getName();
-		}
 		if (object instanceof IItemStack)
 		{
 			return toStack((IItemStack)object);
 		}
+		if (object instanceof IOreDictEntry)
+		{
+			return ((IOreDictEntry)object).getName();
+		}
+		
 		return null;
 	}
 }

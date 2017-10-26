@@ -19,9 +19,21 @@ import dalapo.factech.tileentity.specialized.TileEntityAgitator;
 import dalapo.factech.tileentity.specialized.TileEntityAgitator.AgitatorRecipe;
 import dalapo.factech.tileentity.specialized.TileEntityCompressionChamber.CompressorRecipe;
 import dalapo.factech.tileentity.specialized.TileEntityTemperer.TempererRecipe;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -46,6 +58,8 @@ public class MachineRecipes {
 	public static Map<ItemStack, ItemStack> CIRCUIT_SCRIBE = new HashMap<ItemStack, ItemStack>();
 	public static Map<FluidStack, ItemStack> REFRIGERATOR = new HashMap<FluidStack, ItemStack>();
 	
+	public static Map<Class<? extends EntityLivingBase>, List<ItemStack>> DISASSEMBLER = new HashMap<>();
+	
 	// Lists for complex recipes
 	public static List<CompressorRecipe> COMPRESSOR = new ArrayList<CompressorRecipe>();
 	public static List<AgitatorRecipe> AGITATOR = new ArrayList<AgitatorRecipe>();
@@ -55,7 +69,6 @@ public class MachineRecipes {
 	{
 		Logger.info("Entered initRecipes()");
 //		TileEntityAgitator.fillRecipes();
-		
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 1), new ItemStack(Items.IRON_NUGGET, 6), 1);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 2), new ItemStack(ItemRegistry.oreProduct, 3, 4), 1);
 		GameRegistry.addSmelting(new ItemStack(ItemRegistry.salvagePart, 1, 5), new ItemStack(ItemRegistry.ingot, 2, 2), 1);
@@ -104,12 +117,12 @@ public class MachineRecipes {
 		OREDRILL.put(new ItemStack(Blocks.IRON_ORE), new ItemStack(ItemRegistry.oreProduct, 2, 0));
 		OREDRILL.put(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ItemRegistry.oreProduct, 2, 1));
 		OREDRILL.put(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 10));
-		OREDRILL.put(new ItemStack(BlockRegistry.ore, 1, 0), new ItemStack(ItemRegistry.oreProduct, 2, 2));
-		OREDRILL.put(new ItemStack(BlockRegistry.ore, 1, 1), new ItemStack(ItemRegistry.oreProduct, 2, 3));
-		OREDRILL.put(new ItemStack(Items.IRON_INGOT), new ItemStack(ItemRegistry.oreProduct, 1, 6));
-		OREDRILL.put(new ItemStack(Items.GOLD_INGOT), new ItemStack(ItemRegistry.oreProduct, 1, 7));
-		OREDRILL.put(new ItemStack(ItemRegistry.ingot, 1, 0), new ItemStack(ItemRegistry.oreProduct, 1, 8));
-		OREDRILL.put(new ItemStack(ItemRegistry.ingot, 1, 1), new ItemStack(ItemRegistry.oreProduct, 1, 9));
+//		OREDRILL.put(new ItemStack(BlockRegistry.ore, 1, 0), new ItemStack(ItemRegistry.oreProduct, 2, 2));
+//		OREDRILL.put(new ItemStack(BlockRegistry.ore, 1, 1), new ItemStack(ItemRegistry.oreProduct, 2, 3));
+//		OREDRILL.put(new ItemStack(Items.IRON_INGOT), new ItemStack(ItemRegistry.oreProduct, 1, 6));
+//		OREDRILL.put(new ItemStack(Items.GOLD_INGOT), new ItemStack(ItemRegistry.oreProduct, 1, 7));
+//		OREDRILL.put(new ItemStack(ItemRegistry.ingot, 1, 0), new ItemStack(ItemRegistry.oreProduct, 1, 8));
+//		OREDRILL.put(new ItemStack(ItemRegistry.ingot, 1, 1), new ItemStack(ItemRegistry.oreProduct, 1, 9));
 		OREDRILL.put(new ItemStack(Items.DYE, 1, 4), new ItemStack(ItemRegistry.oreProduct, 1, 12));
 		OREDRILL.put(new ItemStack(Blocks.OBSIDIAN), new ItemStack(ItemRegistry.intermediate, 1, 0));
 		
@@ -161,8 +174,59 @@ public class MachineRecipes {
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 10), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_1.getFloor() + 1));
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 11), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_2.getFloor() + 1));
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 12), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_3.getFloor() + 1));
+		
+		addDisassemblerRecipes();
 	}
 	
+	private static void addDisassemblerRecipes()
+	{
+		List<ItemStack> zombie = new ArrayList<ItemStack>();
+		zombie.add(new ItemStack(Items.ROTTEN_FLESH, 5));
+		zombie.add(new ItemStack(Items.BONE, 2));
+		zombie.add(new ItemStack(Item.getItemById(397), 1, 2));
+		zombie.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
+		DISASSEMBLER.put(EntityZombie.class, zombie);
+		
+		List<ItemStack> skeleton = new ArrayList<ItemStack>();
+		skeleton.add(new ItemStack(Items.BONE, 6));
+		skeleton.add(new ItemStack(Items.ARROW, 5));
+		skeleton.add(new ItemStack(Item.getItemById(397), 1, 0));
+		skeleton.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
+		DISASSEMBLER.put(EntitySkeleton.class, skeleton);
+		
+		List<ItemStack> spider = new ArrayList<ItemStack>();
+		spider.add(new ItemStack(Items.STRING, 5));
+		spider.add(new ItemStack(Items.SPIDER_EYE, 3));
+		spider.add(new ItemStack(Items.LEATHER, 1));
+		spider.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
+		DISASSEMBLER.put(EntitySpider.class, spider);
+		DISASSEMBLER.put(EntityCaveSpider.class, spider);
+		
+		List<ItemStack> creeper = new ArrayList<ItemStack>();
+		creeper.add(new ItemStack(Items.GUNPOWDER, 5));
+		creeper.add(new ItemStack(Item.getItemById(397), 1, 4));
+		creeper.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
+		DISASSEMBLER.put(EntityCreeper.class, creeper);
+
+		List<ItemStack> pigzombie = new ArrayList<ItemStack>();
+		pigzombie.add(new ItemStack(Items.ROTTEN_FLESH, 4));
+		pigzombie.add(new ItemStack(Items.GOLDEN_SWORD, 1));
+		pigzombie.add(new ItemStack(Items.GOLD_NUGGET, 4));
+		pigzombie.add(new ItemStack(Items.COOKED_PORKCHOP, 2));
+		DISASSEMBLER.put(EntityPigZombie.class, pigzombie);
+		
+		List<ItemStack> enderman = new ArrayList<ItemStack>();
+		enderman.add(new ItemStack(Items.ENDER_PEARL, 2));
+		enderman.add(new ItemStack(Blocks.OBSIDIAN, 1));
+		enderman.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
+		DISASSEMBLER.put(EntityEnderman.class, enderman);
+		
+		List<ItemStack> blaze = new ArrayList<ItemStack>();
+		blaze.add(new ItemStack(Items.BLAZE_ROD, 4));
+		blaze.add(new ItemStack(Items.FIRE_CHARGE, 2));
+		blaze.add(new ItemStack(Items.GUNPOWDER, 2));
+		DISASSEMBLER.put(EntityBlaze.class, blaze);
+	}
 	// Because typing is hard
 	private static boolean hasOre(String str)
 	{

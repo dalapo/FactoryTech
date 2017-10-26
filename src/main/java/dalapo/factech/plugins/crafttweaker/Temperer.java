@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import dalapo.factech.auxiliary.MachineRecipes;
@@ -24,6 +25,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Temperer")
+@ZenRegister
 public class Temperer
 {
 	@ZenMethod
@@ -57,9 +59,9 @@ public class Temperer
 		}
 
 		@Override
-		public String describe() {
-			// TODO Auto-generated method stub
-			return "Adding Temperer recipe for " + in + " -> " + out;
+		public String describe()
+		{
+			return "Adding Temperer recipe for " + in + " -> " + out + "(" + time + " ticks)";
 		}
 	}
 	
@@ -85,7 +87,7 @@ public class Temperer
 
 		@Override
 		public String describe() {
-			return "Removing Chop Saw recipe for " + output;
+			return "Removing Temperer recipe for " + output;
 		}
 		
 	}

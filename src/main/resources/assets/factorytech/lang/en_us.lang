@@ -43,6 +43,8 @@ tile.factorytech:factorytech.magnetblock.name=Stationary Magnet
 tile.factorytech:factorytech.watercollector.name=Water Collector
 tile.factorytech:factorytech.iondisperser.name=Negative Ion Disperser
 tile.factorytech:factorytech.teslacoil.name=Tesla Coil
+tile.factorytech:factorytech.batterygen.name=Electric Dynamo
+tile.factorytech:factorytech.coregen.name=Core Conversion Dynamo
 tile.factorytech:factorytech.crate.name=Crate
 tile.factorytech:factorytech.scaffold.name=Scaffolding
 tile.factorytech:factorytech.disassembler.name=Mob Disassembler
@@ -182,7 +184,12 @@ factorytech.tank:3.name=Compressed Propane Tank
 factorytech.tank:4.name=H2SO4 Tank
 
 factorytech.fluidreader.name=Magnifying Glass
-item.factorytech.bacon.name=Industrial-Strength Bacon
+
+item.factorytech:elementsword.name=Element Sword
+item.factorytech:hardhat.name=Hard Hat
+item.factorytech:safetyvest.name=Safety Vest
+item.factorytech:workpants.name=Work Pants
+item.factorytech:steeltoeboots.name=Steel-Toe Boots
 
 itemGroup.factorytech=Factory Tech
 
@@ -198,6 +205,8 @@ factorytech:jei.ftcrucible=Crucible
 factorytech:jei.ftfridge=Refrigerator
 factorytech:jei.ftcompressor=Compression Chamber
 factorytech:jei.fttemperer=Tempering Oven
+factorytech:jei.ftmagnetizer=Magnetizer
+factorytech:jei.ftdisassembler=Mob Disassembler
 
 fluid.sulphur=Liquid Sulphur
 fluid.h2so4=Sulphuric Acid

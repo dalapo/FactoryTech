@@ -13,16 +13,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacStackHelper;
+import dalapo.factech.helper.Logger;
 import dalapo.factech.helper.Pair;
 
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.ChopSaw")
+@ZenRegister
 public class ChopSaw
 {
 	@ZenMethod
@@ -75,6 +78,7 @@ public class ChopSaw
 			{
 				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
 				{
+					Logger.info("CRAFTTWEAKER: " + describe());
 					MachineRecipes.SAW.remove(entry.getKey());
 				}
 			}

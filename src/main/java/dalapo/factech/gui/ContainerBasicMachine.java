@@ -98,8 +98,9 @@ public class ContainerBasicMachine extends Container {
 	@Override
 	public ItemStack slotClick(int slotId, int dragType, ClickType clicktype, EntityPlayer ep)
 	{
+		ItemStack is = super.slotClick(slotId, dragType, clicktype, ep);
 		te.getHasWork();
-		return super.slotClick(slotId, dragType, clicktype, ep);
+		return is;
 	}
 	
 	@Override

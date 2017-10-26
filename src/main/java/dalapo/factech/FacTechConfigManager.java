@@ -10,12 +10,15 @@ import net.minecraftforge.common.config.Configuration;
 
 public class FacTechConfigManager {
 	private static final String CATEGORY_GENERAL = "general";
+	private static final String CATEGORY_CLIENT = "client";
 	private static final String CATEGORY_MACHINES = "machines";
 	
 	public static boolean genCopper = true;
 	public static boolean genNickel = true;
 	public static boolean convertParts = true;
 	public static boolean allowMachineEnchanting = true;
+	public static boolean disassemblePlayers = false;
+	public static boolean doTesrs = true;
 	
 	public static Map<String, Float> salvageChances = new HashMap<>();
 	public static Map<String, Integer> minOperations = new HashMap<>();
@@ -67,6 +70,7 @@ public class FacTechConfigManager {
 		try {
 			cfg.load();
 			initGeneralConfig(cfg);
+			initClientConfig(cfg);
 			initMachineConfig(cfg);
 		}
 		catch (Exception e)
@@ -86,6 +90,12 @@ public class FacTechConfigManager {
 		genNickel = cfg.getBoolean("genNickel", CATEGORY_GENERAL, true, "Set to false to disable nickel ore generation");
 	}
 	
+	public static void initClientConfig(Configuration cfg)
+	{
+		cfg.addCustomCategoryComment(CATEGORY_CLIENT, "Client configuration");
+		doTesrs = cfg.getBoolean("doTESRs", CATEGORY_CLIENT, true, "Set to false to disable machine animations; this will make the mod uglier but may increase your framerate");
+	}
+	
 	private static void addToMaps(String machine, float salvageChance, int minOps)
 	{
 		salvageChances.put(machine, salvageChance);
@@ -95,5 +105,6 @@ public class FacTechConfigManager {
 	public static void initMachineConfig(Configuration cfg)
 	{
 		allowMachineEnchanting = cfg.getBoolean("allowGrinderEnchanting", CATEGORY_MACHINES, true, "Set to false to disable the Grindstone enchanting tools and weapons");
+		disassemblePlayers = cfg.getBoolean("disassemblePlayers", CATEGORY_MACHINES, false, "Set to true to allow the Mob Disassembler to attack players");
 	}
 }

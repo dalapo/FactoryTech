@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:rednotifier"
+    },
+    "pattern": [
+        "ptp",
+        "pqp",
+        "ppp"
+    ],
+    "key": {
+        "p": {
+            "item": "#planks"
+        },
+        "t": {
+            "item": "minecraft:redstone_torch"
+        },
+        "q": {
+            "item": "minecraft:quartz_block",
+            "data": 0
+        }
+    }
+}

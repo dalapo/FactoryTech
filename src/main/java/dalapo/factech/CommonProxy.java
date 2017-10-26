@@ -41,6 +41,7 @@ public class CommonProxy {
 		BlockRegistry.init();
 		ItemRegistry.init();
 		ModFluidRegistry.init();
+		RecipeRegistry.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(FactoryTech.instance, new FacTechGuiHandler());
 	}
 	
@@ -49,7 +50,6 @@ public class CommonProxy {
 	{
 		DictRegistry.registerOreDictEntries();
 		TileRegistry.init();
-		RecipeRegistry.init();
 		FacEntityRegistry.init();
 		WorldGenRegistry.init();
 		PacketHandler.registerMessages("factech");

@@ -14,7 +14,7 @@ public class TabRegistry {
 			@Override
 			@SideOnly(Side.CLIENT)
 			public ItemStack getTabIconItem() {
-				return new ItemStack(BlockRegistry.conveyor);
+				return new ItemStack(BlockRegistry.saw);
 			}
 		};
 	}

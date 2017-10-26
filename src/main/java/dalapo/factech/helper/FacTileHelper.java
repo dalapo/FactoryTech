@@ -186,14 +186,9 @@ public class FacTileHelper {
 	
 	public static boolean isValidSlotForSide(IItemHandler inv, EnumFacing side, int slot, boolean extract)
 	{
-		if (!(inv instanceof SidedInvWrapper)) return true;
-//		ItemStack stack = inv.getStackInSlot(slot);
-		if (extract)
-		{
-			
-		}
-		return false;
+		return isValidSlotForSide(inv, side.ordinal(), slot, extract);
 	}
+	
 	public static boolean isValidSlotForSide(IItemHandler inv, int side, int slot, boolean extract)
 	{
 		return !inv.extractItem(slot, 1, true).isEmpty();

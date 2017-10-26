@@ -36,6 +36,13 @@ public class TileEntitySluice extends TileEntityMachine {
 		setDisplayName("River Grate");
 	}
 	
+	@Override
+	public void onLoad()
+	{
+		super.onLoad();
+		recalcWater();
+	}
+	
 	private void recalcWater()
 	{
 		int waterBlocks = 0;
@@ -52,12 +59,18 @@ public class TileEntitySluice extends TileEntityMachine {
 		if (waterBlocks >= 8) hasWater = true;
 		else hasWater = false;
 	}
+	
+	public boolean isValidLocation()
+	{
+		return hasWater && FacMathHelper.isInRange(pos.getY(), 60, 70) && world.getBiome(pos).equals(Biomes.RIVER);
+	}
+	
 	@Override
 	public boolean canRun()
 	{
 		if (!super.canRun()) return false;
 		
-		return hasWater && FacMathHelper.isInRange(pos.getY(), 60, 70) && world.getBiome(pos).equals(Biomes.RIVER);
+		return isValidLocation();
 	}
 
 	@Override

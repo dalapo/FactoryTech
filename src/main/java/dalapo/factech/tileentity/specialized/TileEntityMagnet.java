@@ -1,6 +1,7 @@
 package dalapo.factech.tileentity.specialized;
 
 import static dalapo.factech.FactoryTech.random;
+import dalapo.factech.FactoryTech;
 import dalapo.factech.auxiliary.IInfoPacket;
 import dalapo.factech.helper.FacMiscHelper;
 import dalapo.factech.helper.Logger;
@@ -10,9 +11,13 @@ import dalapo.factech.tileentity.ActionOnRedstone;
 import dalapo.factech.tileentity.TileEntityBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 
 public class TileEntityMagnet extends TileEntityBase implements ITickable, IInfoPacket {
 
@@ -50,8 +55,8 @@ public class TileEntityMagnet extends TileEntityBase implements ITickable, IInfo
 	}
 
 	@Override
-	public void update() {
-		if (fieldStrength < 0) fieldStrength = 0;
+	public void update()
+	{
 		if (FacMiscHelper.hasACPower(world, pos, lastPower) && cooldown == 0)
 		{
 			if (fieldStrength < 1024)
@@ -60,6 +65,17 @@ public class TileEntityMagnet extends TileEntityBase implements ITickable, IInfo
 			}
 			else
 			{
+				if (!world.isRemote)
+				{
+					world.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 2.6F + (random.nextFloat() - random.nextFloat()) * 0.8F);
+				}
+				else
+				{
+					for (int i=0; i<8; i++)
+					{
+						world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+random.nextFloat(), pos.getY()+random.nextFloat()+0.5, pos.getZ()+random.nextFloat(), 0, 0, 0);
+					}
+				}
 				fieldStrength = 0;
 				cooldown = 256;
 			}
@@ -67,17 +83,11 @@ public class TileEntityMagnet extends TileEntityBase implements ITickable, IInfo
 		else if (fieldStrength > 0)
 		{
 			fieldStrength -= random.nextInt(8);
+			if (fieldStrength < 0) fieldStrength = 0;
 		}
 		
 		if (cooldown > 0) cooldown--;
-		/*
-		if (age++ >= 10)
-		{
-			PacketHandler.sendToAll(new MagnetPacket(this));
-			age = 0;
-		}
-		*/
-//		world.playSound(x, y, z, soundIn, category, volume, pitch, distanceDelay)
+		
 	}
 	
 	@Override

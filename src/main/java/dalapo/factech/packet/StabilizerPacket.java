@@ -12,6 +12,7 @@ public class StabilizerPacket extends FacTechPacket {
 	BlockPos pos;
 	short stability;
 	short[] strength = new short[4];
+	boolean[] cooling = new boolean[4];
 	
 	public StabilizerPacket(TileEntityStabilizer te)
 	{
@@ -20,6 +21,7 @@ public class StabilizerPacket extends FacTechPacket {
 		for (int i=0; i<4; i++)
 		{
 			strength[i] = te.getStrength(i);
+			cooling[i] = te.isCooling(i);
 		}
 	}
 	
@@ -29,7 +31,7 @@ public class StabilizerPacket extends FacTechPacket {
 		TileEntity te = world.getTileEntity(((StabilizerPacket)msg).pos);
 		if (te instanceof TileEntityStabilizer)
 		{
-			((TileEntityStabilizer)te).updateValues(((StabilizerPacket)msg).stability, ((StabilizerPacket)msg).strength);
+			((TileEntityStabilizer)te).updateValues(((StabilizerPacket)msg).stability, ((StabilizerPacket)msg).strength, ((StabilizerPacket)msg).cooling);
 		}
 	}
 
@@ -40,6 +42,7 @@ public class StabilizerPacket extends FacTechPacket {
 		for (int i=0; i<4; i++)
 		{
 			strength[i] = buf.readShort();
+			cooling[i] = buf.readBoolean();
 		}
 	}
 
@@ -50,6 +53,7 @@ public class StabilizerPacket extends FacTechPacket {
 		for (int i=0; i<4; i++)
 		{
 			buf.writeShort(strength[i]);
+			buf.writeBoolean(cooling[i]);
 		}
 	}
 

@@ -20,6 +20,11 @@ public class FacGuiHelper {
 		return "factorytech:textures/gui/" + baseName + ".png";
 	}
 	
+	public static void bindTex(String name)
+	{
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(formatTexName(name)));
+	}
+	
 	public static void setColor(int color)
 	{
 		float r = (float)(color >> 16 & 255) / 255.0F;

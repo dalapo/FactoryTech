@@ -1,8 +1,12 @@
 package dalapo.factech.tileentity.specialized;
 
+import static dalapo.factech.FactoryTech.random;
+
 import java.util.Map;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -10,6 +14,8 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import dalapo.factech.FacTechConfigManager;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacStackHelper;
@@ -67,9 +73,31 @@ public class TileEntityTemperer extends TileEntityMachine
 		activeRecipe = -1;
 	}
 	
+	public int getActiveTime()
+	{
+		return activeTime;
+	}
+	
+	public int getProgressScaled(int pixelSize)
+	{
+		return (int)(((double)age / 120) * pixelSize);
+	}
+	
 	public boolean successfulWindow()
 	{
 		return age >= activeTime - deltaT && age <= activeTime + deltaT;
+	}
+	
+	/**
+	 * DO NOT MODIFY THE ITEMSTACK RETURNED BY THIS METHOD.
+	 * SERIOUSLY.
+	 * @return
+	 */
+	public ItemStack getRecipeOutput()
+	{
+		if (activeRecipe == -1) return ItemStack.EMPTY;
+		if (activeRecipe == -2) return getInput();
+		return MachineRecipes.TEMPERER.get(activeRecipe).output;
 	}
 	
 	@Override
@@ -89,6 +117,17 @@ public class TileEntityTemperer extends TileEntityMachine
 			// Temperer has run for too long - destroy input without outputting anything
 			if (age++ > activeTime + deltaT)
 			{
+				if (!world.isRemote)
+				{
+					world.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 2.6F + (random.nextFloat() - random.nextFloat()) * 0.8F);
+				}
+				else
+				{
+					for (int i=0; i<8; i++)
+					{
+						world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+random.nextFloat(), pos.getY()+random.nextFloat()+0.5, pos.getZ()+random.nextFloat(), 0, 0, 0);
+					}
+				}
 				getInput(0).shrink(1);
 				age = 0;
 			}

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
+import dalapo.factech.FactoryTech;
 import dalapo.factech.gui.widget.WidgetCustomButton;
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.helper.FacMathHelper;
@@ -27,9 +28,11 @@ public class GuiHandbook extends GuiScreen
 	private static final int GRID_X_OFFSET = 124;
 	private static final int GRID_Y_OFFSET = 96;
 	
+	private static int[] backgroundLookup = new int[64];
+	
 	private ItemStack book;
 	
-	private static final ResourceLocation guiTex = new ResourceLocation(NameList.MODID, "textures/gui/handbook_gui.png");
+	
 	private static final int[] pageCounts = new int[7];
 	private int guiLeft;
 	private int guiTop;
@@ -50,6 +53,22 @@ public class GuiHandbook extends GuiScreen
 	String body = "";
 	
 	List<IRecipe> recipes = new ArrayList<IRecipe>();
+	
+	public static void initBackgrounds()
+	{
+		for (int i=0; i<backgroundLookup.length; i++)
+		{
+			backgroundLookup[i] = FactoryTech.random.nextInt(4);
+		}
+	}
+	
+	public static void setPageCount(int section, int count)
+	{
+		if (FacMathHelper.isInRange(section, 0, pageCounts.length))
+		{
+			pageCounts[section] = count;
+		}
+	}
 	
 	public GuiHandbook(ItemStack is)
 	{
@@ -120,13 +139,7 @@ public class GuiHandbook extends GuiScreen
 		}
 	}
 	
-	public static void setPageCount(int section, int count)
-	{
-		if (FacMathHelper.isInRange(section, 0, pageCounts.length))
-		{
-			pageCounts[section] = count;
-		}
-	}
+	
 	
 	@Override
 	public void initGui()
@@ -144,6 +157,8 @@ public class GuiHandbook extends GuiScreen
 		addButton(buttons[9] = new GuiButton(9, guiLeft + 64, guiTop + 136, 30, 20, "->"));
 		refresh();
 	}
+	
+	
 	
 	private boolean[][] getCircuitBoard(int pattern)
 	{
@@ -175,7 +190,6 @@ public class GuiHandbook extends GuiScreen
 						if (recipe.getIngredients().get(row*3 + col).getMatchingStacks().length > 0)
 						{
 							ItemStack is = recipe.getIngredients().get(row*3 + col).getMatchingStacks()[0];
-///							Logger.info(String.format("Rendering stack %s into slot (%s, %s)", is, col, row));
 							this.recipe[row][col] = is;
 						}
 					}
@@ -297,6 +311,7 @@ public class GuiHandbook extends GuiScreen
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks)
 	{
+		ResourceLocation guiTex = new ResourceLocation(NameList.MODID, "textures/gui/handbook_gui_" + backgroundLookup[((section+1)*8 + page) % 64] + ".png");
 		mc.getTextureManager().bindTexture(guiTex);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
@@ -340,7 +355,7 @@ public class GuiHandbook extends GuiScreen
 		
 		
 		fontRenderer.drawString(title, guiLeft + 4, guiTop + 4, 0xFFFFFFFF);
-		fontRenderer.drawSplitString(body, guiLeft+4, guiTop + 20, 248, 0xFFFFFFFF);
+		fontRenderer.drawSplitString(body, guiLeft + 4, guiTop + 16, 248, 0xFFFFFFFF);
 	}
 	
 	@Override

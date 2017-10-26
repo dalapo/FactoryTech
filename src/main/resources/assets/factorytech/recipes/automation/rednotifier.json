@@ -1,0 +1,24 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:redwatcher",
+        "data": 0
+    },
+    "pattern": [
+        "qrq",
+        "sss",
+        "   "
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stone_slab",
+            "data": 0
+        },
+        "r": {
+            "item": "minecraft:redstone"
+        },
+        "q": {
+            "item": "minecraft:quartz"
+        }
+    }
+}

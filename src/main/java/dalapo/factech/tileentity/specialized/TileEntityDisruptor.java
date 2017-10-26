@@ -40,7 +40,7 @@ public class TileEntityDisruptor extends TileEntityAreaMachine {
 		for (EntityMob entity : entities)
 		{
 			entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 10));
-//			entity.addPotionEffect(new PotionEffect(PotionLockdown.INSTANCE, 200, 1));
+			entity.addPotionEffect(new PotionEffect(PotionLockdown.INSTANCE, 200, 1));
 		}
 		return true;
 	}

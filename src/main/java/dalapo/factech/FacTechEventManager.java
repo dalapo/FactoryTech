@@ -10,9 +10,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.auxiliary.PotionLockdown;
 import dalapo.factech.block.IBlockSubtypes;
 import dalapo.factech.helper.FacMathHelper;
@@ -67,7 +69,10 @@ public class FacTechEventManager {
 	@SubscribeEvent
 	public void cancelDisassemblyDrops(LivingDropsEvent evt)
 	{
-		if (evt.getSource().damageType.equals("machine")) evt.setCanceled(true);
+		if (evt.getSource().damageType.equals("machine") && MachineRecipes.DISASSEMBLER.containsKey(evt.getEntity().getClass()))
+		{
+			evt.setCanceled(true);
+		}
 	}
 	
 	@SubscribeEvent

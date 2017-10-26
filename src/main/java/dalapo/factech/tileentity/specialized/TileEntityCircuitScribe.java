@@ -35,7 +35,7 @@ public class TileEntityCircuitScribe extends TileEntityBasicProcessor {
 	
 	public void setPattern(byte p)
 	{
-		if (FacMathHelper.isInRange(p, 0, 4)) pattern = p;
+		if (FacMathHelper.isInRange(p, -1, 4)) pattern = p;
 	}
 	
 	@Override
@@ -43,6 +43,7 @@ public class TileEntityCircuitScribe extends TileEntityBasicProcessor {
 	{
 		if (getInput(0).getItem().equals(ItemRegistry.circuitIntermediate) &&
 				getInput(0).getItemDamage() == 8 &&
+				pattern != -1 && 
 				(getOutput().isEmpty() || (getOutput().getItemDamage() == pattern && getOutput().getCount() <= 64))) hasWork = true;
 		else hasWork = false;
 	}

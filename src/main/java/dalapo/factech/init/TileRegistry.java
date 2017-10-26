@@ -5,6 +5,8 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import dalapo.factech.FacTechConfigManager;
+import dalapo.factech.FactoryTech;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.tileentity.*;
 import dalapo.factech.tileentity.automation.*;
@@ -62,12 +64,18 @@ public class TileRegistry {
 	
 	@SideOnly(Side.CLIENT)
 	public static void initTESRs() {
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySaw.class, new TesrSaw(true));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOreDrill.class, new TesrOreDrill(false));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
-//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoMiner.class, new TesrMiner(false));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TesrCentrifuge(true));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoreCharger.class, new TesrCharger(true));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMetalCutter.class, new TesrMetalCutter(true));
+		if (FacTechConfigManager.doTesrs)
+		{
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySaw.class, new TesrSaw(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOreDrill.class, new TesrOreDrill(false));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
+	//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoMiner.class, new TesrMiner(false));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TesrCentrifuge(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoreCharger.class, new TesrCharger(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMetalCutter.class, new TesrMetalCutter(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCircuitScribe.class, new TesrCircuitScribe(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTemperer.class, new TesrTemperer(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagnetizer.class, new TesrMagnetizer(true));
+		}
 	}
 }

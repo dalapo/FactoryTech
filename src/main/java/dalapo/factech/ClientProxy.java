@@ -79,6 +79,8 @@ public class ClientProxy extends CommonProxy {
 			GuiHandbook.setPageCount(i, numEntries == 0 ? numEntries : numEntries - 1);
 			file.close();
 		}
+		
+		GuiHandbook.initBackgrounds();
 	}
 	@SubscribeEvent
 	public void initTextures(TextureStitchEvent.Pre evt)

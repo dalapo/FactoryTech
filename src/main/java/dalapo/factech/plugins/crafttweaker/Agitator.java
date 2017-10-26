@@ -14,10 +14,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.helper.FacCraftTweakerHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Pair;
 import dalapo.factech.tileentity.specialized.TileEntityAgitator.AgitatorRecipe;
@@ -26,12 +28,34 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Agitator")
+@ZenRegister
 public class Agitator
 {
 	@ZenMethod
-	public static void addRecipe(IIngredient fluid1, IIngredient fluid2, IIngredient itemIn, ILiquidStack fluidOut, IItemStack itemOut)
+	public static void addRecipe(ILiquidStack fluid1, ILiquidStack fluid2, IItemStack itemIn, ILiquidStack fluidOut, IItemStack itemOut)
 	{
-		AgitatorRecipe toAdd = new AgitatorRecipe((ItemStack)itemIn.getInternal(), (ItemStack)itemOut.getInternal(), (FluidStack)fluidOut.getInternal(), (FluidStack)fluid1.getInternal(), (FluidStack)fluid2.getInternal());
+		AgitatorRecipe toAdd = new AgitatorRecipe((ItemStack)FacCraftTweakerHelper.toStack(itemIn), (ItemStack)FacCraftTweakerHelper.toStack(itemOut), (FluidStack)fluidOut.getInternal(), (FluidStack)fluid1.getInternal(), (FluidStack)fluid2.getInternal());
+		CraftTweakerAPI.apply(new Add(toAdd));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(ILiquidStack fluid1, ILiquidStack fluid2, ILiquidStack fluidOut)
+	{
+		AgitatorRecipe toAdd = new AgitatorRecipe(ItemStack.EMPTY, ItemStack.EMPTY, (FluidStack)fluidOut.getInternal(), (FluidStack)fluid1.getInternal(), (FluidStack)fluid2.getInternal());
+		CraftTweakerAPI.apply(new Add(toAdd));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IItemStack itemIn, ILiquidStack fluid1, ILiquidStack fluid2, ILiquidStack fluidOut)
+	{
+		AgitatorRecipe toAdd = new AgitatorRecipe(FacCraftTweakerHelper.toStack(itemIn), ItemStack.EMPTY, (FluidStack)fluidOut.getInternal(), (FluidStack)fluid1.getInternal(), (FluidStack)fluid2.getInternal());
+		CraftTweakerAPI.apply(new Add(toAdd));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(ILiquidStack fluid1, ILiquidStack fluid2, IItemStack itemOut, ILiquidStack fluidOut)
+	{
+		AgitatorRecipe toAdd = new AgitatorRecipe(ItemStack.EMPTY, FacCraftTweakerHelper.toStack(itemOut), (FluidStack)fluidOut.getInternal(), (FluidStack)fluid1.getInternal(), (FluidStack)fluid2.getInternal());
 		CraftTweakerAPI.apply(new Add(toAdd));
 	}
 	

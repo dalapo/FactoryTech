@@ -4,9 +4,12 @@ import java.util.List;
 
 import dalapo.factech.item.ItemBase;
 import dalapo.factech.item.ItemCoreStage;
+import dalapo.factech.item.ItemElementSword;
+import dalapo.factech.item.ItemModelProvider;
 import dalapo.factech.item.ItemFluidReader;
 import dalapo.factech.item.ItemHandbook;
 import dalapo.factech.item.ItemMachinePart;
+import dalapo.factech.item.ItemModArmor;
 import dalapo.factech.item.ItemOldPart;
 import dalapo.factech.item.ItemPressureGun;
 import dalapo.factech.item.ItemRedWatcher;
@@ -17,10 +20,15 @@ import dalapo.factech.reference.PartList;
 import java.util.ArrayList;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -46,6 +54,13 @@ public class ItemRegistry {
 	public static ItemCoreStage coreUnfinished;
 	public static ItemBase redWatcher;
 	public static ItemBase pressureGun;
+	public static ItemElementSword elementSword;
+	public static ItemModArmor hardHat;
+	public static ItemModArmor safetyVest;
+	public static ItemModArmor workPants;
+	public static ItemModArmor steelToeBoots;
+	
+	public static ItemArmor.ArmorMaterial safetyArmor;
 	
 	public static Item getItem(String name)
 	{
@@ -58,6 +73,8 @@ public class ItemRegistry {
 	
 	public static void init()
 	{
+		safetyArmor = EnumHelper.addArmorMaterial("SAFETY", NameList.MODID + ":safety", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+		
 		items.add(handbook = new ItemHandbook("handbook"));
 		items.add(wrench = new ItemWrench("wrench"));
 		items.add(machinePartOld = new ItemOldPart("part").setHasInformation());
@@ -81,6 +98,11 @@ public class ItemRegistry {
 		items.add(upgrade = new ItemBase("upgrade", 5));
 		items.add(redWatcher = new ItemRedWatcher("redwatcher"));
 		items.add(pressureGun = new ItemPressureGun("pressuregun").setHasInformation());
+		items.add(elementSword = new ItemElementSword(ToolMaterial.IRON, "elementsword"));
+		items.add(hardHat = (ItemModArmor) new ItemModArmor("hardhat", safetyArmor, EntityEquipmentSlot.HEAD).setCreativeTab(TabRegistry.FACTECH));
+		items.add(safetyVest = (ItemModArmor) new ItemModArmor("safetyvest", safetyArmor, EntityEquipmentSlot.CHEST).setCreativeTab(TabRegistry.FACTECH));
+		items.add(workPants = (ItemModArmor) new ItemModArmor("workpants", safetyArmor, EntityEquipmentSlot.LEGS).setCreativeTab(TabRegistry.FACTECH));
+		items.add(steelToeBoots = (ItemModArmor) new ItemModArmor("steeltoeboots", safetyArmor, EntityEquipmentSlot.FEET).setCreativeTab(TabRegistry.FACTECH));
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -88,7 +110,7 @@ public class ItemRegistry {
 	{
 		for (Item item : items)
 		{
-			if (item instanceof ItemBase) ((ItemBase)item).initModel();
+			if (item instanceof ItemModelProvider) ((ItemModelProvider)item).initModel();
 		}
 	}
 }

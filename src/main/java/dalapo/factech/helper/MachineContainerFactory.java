@@ -11,7 +11,9 @@ import dalapo.factech.gui.GuiFacInventory;
 import dalapo.factech.gui.GuiFluidDrill;
 import dalapo.factech.gui.GuiFluidMachine;
 import dalapo.factech.gui.GuiSaw;
+import dalapo.factech.gui.GuiSluice;
 import dalapo.factech.gui.GuiStabilizer;
+import dalapo.factech.gui.GuiTemperer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -56,7 +58,7 @@ public class MachineContainerFactory {
 			output.add(new Pair<Integer, Integer>(89, 17));
 			output.add(new Pair<Integer, Integer>(89, 35));
 			output.add(new Pair<Integer, Integer>(89, 53));
-			output.add(new Pair<Integer, Integer>(117, 35));
+			output.add(new Pair<Integer, Integer>(107, 35));
 			break;
 		case "fridge":
 //			input.add(new Pair<Integer, Integer>(999, 999));
@@ -104,6 +106,10 @@ public class MachineContainerFactory {
 		
 			input.add(new Pair<Integer, Integer>(80, 35));
 			break;
+		case "temperer":
+			input.add(new Pair<Integer, Integer>(35, 35));
+			output.add(new Pair<Integer, Integer>(116, 35));
+			break;
 		default:
 			input.add(new Pair<Integer, Integer>(35, 35));
 			output.add(new Pair<Integer, Integer>(89, 35));
@@ -119,7 +125,7 @@ public class MachineContainerFactory {
 		switch (id)
 		{
 		case "sluice":
-			return new GuiBasicMachine(getContainer(te, playerInv, id), playerInv, "sluice_gui", te).setBarCoords(60, 37);
+			return new GuiSluice(getContainer(te, playerInv, id), playerInv, te);
 		case "circuitscribe":
 			return new GuiCircuitScribe(getContainer(te, playerInv, id), playerInv, te);
 		case "crucible":
@@ -146,6 +152,8 @@ public class MachineContainerFactory {
 			};
 		case "stabilizer":
 			return new GuiStabilizer(getContainer(te, playerInv, id), playerInv, te);
+		case "temperer":
+			return new GuiTemperer(getContainer(te, playerInv, id), playerInv, te);
 		case "saw":
 			return new GuiBasicMachine(getContainer(te, playerInv, id), playerInv, "saw_gui", te) {
 				@Override

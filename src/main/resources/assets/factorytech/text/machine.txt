@@ -76,6 +76,7 @@ $end
 $title Mob Disassembler
 $recipe machines/disassembler
 The Mob Disassembler rapidly damages any creature (save for Players) that stands on top of it; in addition, mobs killed by it will drop much more loot than normal. Some may even drop loot they normally couldn't.
+A Redstone signal disables it.
 Parts required (bottom): Saw Blade, Circuit Board (Pattern 3), Battery
 $end
 $title Fluid Drill
@@ -126,7 +127,7 @@ $end
 $title Core Charger
 $recipe machines/corecharger
 This machine runs an intense electric current through unfinished energy cores, charging them up. It is important to note that fully charging cores is extremely dangerous; optimal efficiency is achieved at 80%. Above that causes it to take longer to stabilize, and charging a core above 100% can cause an explosive overflow.
-Parts required (back): Battery, Circuit Boards (Patterns 1, 2, and 3)
+Parts required (back): Battery, Circuit Boards (1 and 2), Magnet
 $end
 $title Stabilization Table
 $recipe machines/stabilizer

@@ -29,7 +29,7 @@ import net.minecraftforge.items.IItemHandler;
  * before Capabilities and ItemStackHandlers existed, so it manipulates inventory slots
  * and ItemStacks directly. However, performance overhead should not be too bad since
  * it only runs upon receiving a redstone signal.
- * @author davidpowell
+ * @author dalapo
  */
 public class TileEntityStackMover extends TileEntityBasicInventory implements ISidedInventory, ActionOnRedstone {
 //	ItemStack[] filter;
@@ -72,11 +72,11 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 	
 	private int checkFilter(ItemStack is)
 	{
-		Logger.info(shouldFilter());
+//		Logger.info(shouldFilter());
 		if (!shouldFilter()) return 9;
 		for (int i=0; i<9; i++)
 		{
-			if (getStackInSlot(i) != null && getStackInSlot(i).isItemEqual(is)) return i;
+			if (getStackInSlot(i).isItemEqual(is) && getStackInSlot(i).getCount() <= is.getCount()) return i;
 		}
 		return -1;
 	}
@@ -92,7 +92,7 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 			if (FacTileHelper.isValidSlotForSide(te, side, i, !insert) && !te.getStackInSlot(i).isEmpty() && filterSlot != -1)
 			{
 				ItemStack wouldMove = te.getStackInSlot(i);
-				Logger.info(FacTileHelper.hasSpaceForItem(dest, wouldMove, EnumFacing.getFront(side).getOpposite().ordinal(), true));
+//				Logger.info(FacTileHelper.hasSpaceForItem(dest, wouldMove, EnumFacing.getFront(side).getOpposite().ordinal(), true));
 				if (FacTileHelper.hasSpaceForItem(dest, wouldMove, EnumFacing.getFront(side).getOpposite().ordinal(), true)) return new int[] {filterSlot, i};
 			}
 		}
@@ -153,8 +153,6 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 		// The slot of the ItemStack is stored in pair[1]
 		int moveSize = pair[0] == 9 ? 64 : getStackInSlot(pair[0]).getCount();
 		ItemStack toMove = pull.extractItem(pair[1], moveSize, true);
-		Logger.info(pair[1]);
-		Logger.info(toMove);
 		if (push == null)
 		{
 			BlockPos pos = FacMathHelper.withOffset(getPos(), front.getOpposite());

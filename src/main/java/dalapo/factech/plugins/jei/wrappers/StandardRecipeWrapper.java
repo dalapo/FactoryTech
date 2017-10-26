@@ -44,7 +44,7 @@ public class StandardRecipeWrapper extends BaseRecipeWrapper {
 	@Override
 	public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY,
 			int mouseButton) {
-		Logger.info(String.format("{%s, %s}", mouseX, mouseY));
+//		Logger.info(String.format("{%s, %s}", mouseX, mouseY));
 		return false;
 	}
 
