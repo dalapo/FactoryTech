@@ -20,7 +20,6 @@ import dalapo.factech.render.tesr.TesrStabilizer;
 import dalapo.factech.render.tesr.TesrTemperer;
 import dalapo.factech.tileentity.*;
 import dalapo.factech.tileentity.automation.*;
-import dalapo.factech.tileentity.render.*;
 import dalapo.factech.tileentity.specialized.*;
 
 public class TileRegistry {
