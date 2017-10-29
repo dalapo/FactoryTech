@@ -31,15 +31,22 @@ public class BlockOre extends BlockBase implements IBlockSubtypes {
 		setDefaultState(blockState.getBaseState().withProperty(StateList.oretype, EnumOreType.COPPER));
 		this.blockHardness = 3F;
 		this.blockResistance = 5F;
+//		this.setHarvestLevel("pickaxe", 1);
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void initModel()
 	{
 		ModelBakery.registerItemVariants(Item.getItemFromBlock(this), new ResourceLocation("factorytech:ore_copper"), new ResourceLocation("factorytech:ore_nickel"));
-
+		
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation("factorytech:ore", "copper"));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation("factorytech:ore", "nickel"));
+	}
+	
+	@Override
+	public String getHarvestTool(IBlockState state)
+	{
+		return "pickaxe";
 	}
 	
 	@Override

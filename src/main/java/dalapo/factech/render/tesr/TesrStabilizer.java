@@ -1,4 +1,4 @@
-package dalapo.factech.tileentity.render;
+package dalapo.factech.render.tesr;
 
 import net.minecraft.client.renderer.GlStateManager;
 import dalapo.factech.helper.FacTesrHelper;
