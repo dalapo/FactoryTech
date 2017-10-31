@@ -99,33 +99,6 @@ public class FacTechConfigManager {
 		public String name;
 		public int numParts;
 	}
-	private static final String[] machineNames = {
-		"River Grate",
-		"Chop Saw",
-		"Grindstone",
-		"Metal Cutter",
-		"Drill Grinder",
-		"Woodcutter",
-		"Magnetizer",
-		"Electric Furnace",
-		"Centrifuge",
-		"Crucible",
-		"Potion Mixer",
-		"Circuit Scribe",
-		"Autominer",
-		"Industrial Electroplater",
-		"Mob Disassembler",
-		"Fluid Drill",
-		"Fluid Agitator",
-		"Refrigeration Unit",
-		"Compression Chamber",
-		"Core Charger",
-		"Stabilization Table",
-		"Biosynthesis Unit",
-		"Mob Disruptor",
-		"Negative Ion Disperser",
-		"Tesla Coil"
-	};
 	
 	public static void readConfig()
 	{
@@ -164,6 +137,6 @@ public class FacTechConfigManager {
 	{
 		allowMachineEnchanting = cfg.getBoolean("allowGrinderEnchanting", CATEGORY_MACHINES, true, "Set to false to disable the Grindstone enchanting tools and weapons");
 		disassemblePlayers = cfg.getBoolean("disassemblePlayers", CATEGORY_MACHINES, false, "Set to true to allow the Mob Disassembler to attack players");
-		grateBiomes = cfg.getStringList("riverGrateWhitelist", CATEGORY_MACHINES, new String[] {"River", "Plains"}, "Biomes that the River Grate is allowed to function in");
+		grateBiomes = cfg.getStringList("riverGrateWhitelist", CATEGORY_MACHINES, new String[] {"River"}, "Biomes that the River Grate is allowed to function in");
 	}
 }

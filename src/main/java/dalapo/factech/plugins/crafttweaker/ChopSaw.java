@@ -29,6 +29,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.ChopSaw")
+@ZenRegister
 public class ChopSaw
 {
 	private List<ItemStack> toRemove = new ArrayList<ItemStack>();

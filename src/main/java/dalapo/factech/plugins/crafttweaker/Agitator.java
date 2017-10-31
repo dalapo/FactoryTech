@@ -28,6 +28,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Agitator")
+@ZenRegister
 public class Agitator
 {
 	@ZenMethod

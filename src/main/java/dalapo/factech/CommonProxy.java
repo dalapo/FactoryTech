@@ -40,7 +40,7 @@ public class CommonProxy {
 		FacTechConfigManager.readConfig();
 		TabRegistry.init();
 		ModFluidRegistry.init();
-		FacCraftTweakerHelper.initTweaks();
+//		FacCraftTweakerHelper.initTweaks();
 		NetworkRegistry.INSTANCE.registerGuiHandler(FactoryTech.instance, new FacTechGuiHandler());
 	}
 	

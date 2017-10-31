@@ -34,6 +34,7 @@ public class TileEntityTeslaCoil extends TileEntityAreaMachine {
 	protected boolean performAction() {
 		AxisAlignedBB range = AABBList.getCube(pos, getAdjustedRange());
 		List<EntityLiving> targets = world.getEntitiesWithinAABB(EntityLiving.class, range);
+		if (targets.isEmpty()) return false;
 		EntityLiving toZap = targets.get(random.nextInt(targets.size()));
 		boolean hasChain = true;
 		

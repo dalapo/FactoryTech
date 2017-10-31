@@ -25,6 +25,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Temperer")
+@ZenRegister
 public class Temperer
 {
 	@ZenMethod

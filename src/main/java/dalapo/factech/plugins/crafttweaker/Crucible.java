@@ -26,6 +26,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Crucible")
+@ZenRegister
 public class Crucible
 {
 	@ZenMethod

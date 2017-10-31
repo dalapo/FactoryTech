@@ -24,6 +24,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Magnetizer")
+@ZenRegister
 public class Magnetizer
 {
 	@ZenMethod
