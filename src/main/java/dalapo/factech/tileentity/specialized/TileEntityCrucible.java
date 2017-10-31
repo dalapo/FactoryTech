@@ -30,8 +30,8 @@ public class TileEntityCrucible extends TileEntityFluidMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.1F, 1.15F, 0.8F, 6);
-		partsNeeded[1] = new MachinePart(PartList.MIXER, 0.15F, 1.15F, 16);
+		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.1F, 1.15F, 0.8F*kValue[0][1], (int)(6*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.MIXER, 0.15F, 1.15F, (int)(16*kValue[1][0]));
 	}
 	
 	protected boolean canRun()

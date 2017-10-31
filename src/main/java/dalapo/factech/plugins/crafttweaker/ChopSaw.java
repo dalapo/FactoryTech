@@ -1,6 +1,9 @@
 package dalapo.factech.plugins.crafttweaker;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Nullable;
 
@@ -11,6 +14,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ZenRegister;
@@ -25,13 +29,24 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.ChopSaw")
-@ZenRegister
 public class ChopSaw
 {
+	private List<ItemStack> toRemove = new ArrayList<ItemStack>();
 	@ZenMethod
 	public static void addRecipe(IItemStack output, IIngredient input)
 	{
 		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal()));
+	}
+	
+	@ZenMethod
+	public static void addOreDictRecipe(IItemStack output, String input, int amount)
+	{
+		for (ItemStack is : OreDictionary.getOres(input))
+		{
+			ItemStack temp = is.copy();
+			temp.setCount(amount);
+			CraftTweakerAPI.apply(new Add(temp, ((ItemStack)output.getInternal())));
+		}
 	}
 	
 	@ZenMethod
@@ -74,6 +89,9 @@ public class ChopSaw
 		@Override
 		public void apply()
 		{
+			Logger.info(Thread.activeCount());
+//			Set<Entry<ItemStack, ItemStack>> entries = MachineRecipes.SAW.entrySet();
+//			MachineRecipes.SAW.remove(output); // Doesn't do anything because ItemStacks are stupid and don't override equals
 			for (Entry<ItemStack, ItemStack> entry : MachineRecipes.SAW.entrySet())
 			{
 				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))

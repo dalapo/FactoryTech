@@ -1,5 +1,6 @@
 package dalapo.factech.tileentity;
 
+import dalapo.factech.FacTechConfigManager;
 import dalapo.factech.FactoryTech;
 import dalapo.factech.helper.FacBlockHelper;
 import dalapo.factech.helper.FacChatHelper;
@@ -49,6 +50,9 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		NONE
 	}
 	
+	protected static int ID = -1;
+	protected float[][] kValue;
+	
 	protected boolean shouldUpdate;
 	protected MachinePart[] partsNeeded;
 	protected int[] partsGot;
@@ -84,6 +88,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		this.partSlots = partSlots;
 		this.outSlots = outSlots;
 		this.partSide = partSide;
+		kValue = FacTechConfigManager.getMachineMultiplier(this.getClass());
 		initArrays();
 		fillMachineParts();
 		age = 0;

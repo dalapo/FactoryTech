@@ -15,7 +15,6 @@ import net.minecraftforge.oredict.OreDictionary;
 public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 	
 	protected boolean hasWork = false;
-	protected static boolean useOreDict = false;
 	
 	// Convenience class - 1 input, 1 output
 	public TileEntityBasicProcessor(String name, int partSlots, RelativeSide partHatch) {

@@ -19,9 +19,3 @@ $end
 $title Decorative blocks
 Factory Tech adds a variety of sheet metal, smokestacks, and new brick types for use in building steampunk bases and sprawling industrial complexes. See their pages in the Miscellaneous section for details.
 $end
-$title Recommended other mods
-While perfectly playable on its own, playing Factory Tech with other mods can make it more enjoyable. Notably:
--Railcraft: Long-distance automation
--BuildCraft: Extended automation features
--Thermal Dynamics: Simpler item transport and IO
-$end

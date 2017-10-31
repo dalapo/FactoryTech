@@ -23,9 +23,9 @@ public class TileEntityCentrifuge extends TileEntityProcessorMultiOutput {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.07F, 0.75F, 4);
-		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.2F, 1.1F, 0.7F, 6);
-		partsNeeded[2] = new MachinePart(PartList.SHAFT, 0.05F, 1.3F, 0.75F, 16);
+		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.07F, 0.75F*kValue[0][1], (int)(4*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.2F, 1.1F, 0.7F*kValue[1][1], (int)(6*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.SHAFT, 0.05F, 1.3F, 0.75F*kValue[2][1], (int)(16*kValue[2][0]));
 	}
 
 	@Override

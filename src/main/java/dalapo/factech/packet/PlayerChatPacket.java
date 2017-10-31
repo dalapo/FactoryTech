@@ -15,7 +15,6 @@ public class PlayerChatPacket extends FacTechPacket {
 	}
 	public PlayerChatPacket()
 	{
-		message = "";
 	}
 	
 	@Override

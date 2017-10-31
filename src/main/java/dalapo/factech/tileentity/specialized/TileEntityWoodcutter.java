@@ -17,7 +17,8 @@ import java.util.Deque;
 
 public class TileEntityWoodcutter extends TileEntityMachine
 {
-	private static final int MAX_RECURSIONS = 256;
+	private final int MAX_RECURSIONS = 256;
+	
 	public TileEntityWoodcutter()
 	{
 		super("woodcutter", 0, 2, 1, RelativeSide.BACK);
@@ -26,8 +27,8 @@ public class TileEntityWoodcutter extends TileEntityMachine
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.SAW, 0.1F, 1.05F, 0.5F, 6);
-		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.05F, 1.15F, 0.75F, 6);
+		partsNeeded[0] = new MachinePart(PartList.SAW, 0.1F, 1.05F, 0.5F*kValue[0][1], (int)(6*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.05F, 1.15F, 0.75F*(kValue[1][1]), (int)(6*kValue[1][0]));
 	}
 	
 	private void cutAndProgress(BlockPos pos, Block type, int recursions)

@@ -26,7 +26,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.CompressionChamber")
-@ZenRegister
 public class CompressionChamber
 {
 	@ZenMethod

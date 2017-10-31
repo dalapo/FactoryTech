@@ -158,9 +158,9 @@ public class TileEntityTemperer extends TileEntityMachine
 	
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.5F, 1.2F, 0.8F, 10);
-		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_2, 0.2F, 1.1F, 0.75F, 8);
-		partsNeeded[2] = new MachinePart(PartList.LENS, 0.5F, 1.0F, 0, 8);
+		partsNeeded[0] = new MachinePart(PartList.HEATELEM, 0.5F, 1.2F, 0.8F*kValue[0][1], (int)(10*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_2, 0.2F, 1.1F, 0.75F*kValue[1][1], (int)(8*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.LENS, 0.5F, 1.0F, 0, (int)(8*kValue[2][1]));
 	}
 
 	@Override

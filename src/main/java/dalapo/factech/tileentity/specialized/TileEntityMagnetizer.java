@@ -32,8 +32,8 @@ public class TileEntityMagnetizer extends TileEntityBasicProcessor {
 	
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.05F, 0.6F, 5);
-		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.4F, 1.25F, 0.65F, 3);
+		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.05F, 0.6F*kValue[0][1], (int)(5*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.4F, 1.25F, 0.65F*kValue[1][1], (int)(3*kValue[1][0]));
 	}
 
 	@Override

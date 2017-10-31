@@ -55,9 +55,9 @@ public class TileEntityElectroplater extends TileEntityFluidMachine {
 	
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.BATTERY, 0.2F, 1.5F, 0.8F, 8);
-		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.4F, 1.2F, 1F, 2);
-		partsNeeded[2] = new MachinePart(PartList.MIXER, 0.1F, 1.1F, 16);
+		partsNeeded[0] = new MachinePart(PartList.BATTERY, 0.2F, 1.5F, 0.8F*kValue[0][1], (int)(8*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.WIRE, 0.4F, 1.2F, 1F*kValue[1][1], (int)(2*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.MIXER, 0.1F, 1.1F, (int)(16*kValue[2][0]));
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.io.File;
 
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.gui.FacTechGuiHandler;
+import dalapo.factech.helper.FacCraftTweakerHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.DictRegistry;
@@ -38,17 +39,14 @@ public class CommonProxy {
 		config = new Configuration(new File(directory.getPath(), "factorytech.cfg"));
 		FacTechConfigManager.readConfig();
 		TabRegistry.init();
-		BlockRegistry.init();
-		ItemRegistry.init();
 		ModFluidRegistry.init();
-		RecipeRegistry.init();
+		FacCraftTweakerHelper.initTweaks();
 		NetworkRegistry.INSTANCE.registerGuiHandler(FactoryTech.instance, new FacTechGuiHandler());
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent evt)
 	{
-		DictRegistry.registerOreDictEntries();
 		TileRegistry.init();
 		FacEntityRegistry.init();
 		WorldGenRegistry.init();

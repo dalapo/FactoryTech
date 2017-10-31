@@ -11,14 +11,22 @@ import dalapo.factech.plugins.crafttweaker.*;
 
 public class FacCraftTweakerHelper
 {
-	public void initTweaks()
+	public static void initTweaks()
 	{
+		Logger.info("Entering initTweaks");
+		CraftTweakerAPI.registerClass(Agitator.class);
+		CraftTweakerAPI.registerClass(Centrifuge.class);
 		CraftTweakerAPI.registerClass(ChopSaw.class);
+		CraftTweakerAPI.registerClass(CompressionChamber.class);
+		CraftTweakerAPI.registerClass(Crucible.class);
 		CraftTweakerAPI.registerClass(DrillGrinder.class);
+		CraftTweakerAPI.registerClass(ElectricFurnace.class);
 		CraftTweakerAPI.registerClass(Electroplater.class);
 		CraftTweakerAPI.registerClass(Grindstone.class);
 		CraftTweakerAPI.registerClass(Magnetizer.class);
 		CraftTweakerAPI.registerClass(MetalCutter.class);
+		CraftTweakerAPI.registerClass(Refrigerator.class);
+		CraftTweakerAPI.registerClass(Temperer.class);
 	}
 	
 	public static ItemStack toStack(IItemStack iis)

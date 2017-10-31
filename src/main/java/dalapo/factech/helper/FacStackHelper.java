@@ -138,7 +138,7 @@ public class FacStackHelper {
 			if (found)
 			{
 				ItemStack temp = inv.getStackInSlot(i).copy();
-				inv.decrStackSize(i, 1);
+				if (consume) inv.decrStackSize(i, 1);
 				return temp;
 			}
 		}

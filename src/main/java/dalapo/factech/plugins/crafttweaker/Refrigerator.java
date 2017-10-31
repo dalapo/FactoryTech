@@ -25,7 +25,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Refrigerator")
-@ZenRegister
 public class Refrigerator
 {
 	@ZenMethod

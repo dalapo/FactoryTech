@@ -1,5 +1,6 @@
 package dalapo.factech.entity;
 
+import dalapo.factech.helper.FacChatHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.ModFluidRegistry;
@@ -31,6 +32,7 @@ public class EntityPressureGunShot extends EntityArrow
 {
 	private EnumPressureGun projType = EnumPressureGun.AIR;
 	
+	private EntityPlayer owner;
 	private int bX = -1;
 	private int bY = -1;
 	private int bZ = -1;
@@ -42,8 +44,9 @@ public class EntityPressureGunShot extends EntityArrow
 		super(world);
 	}
 	
-	public EntityPressureGunShot(World worldIn, EntityLivingBase shooter, int fluidType) {
+	public EntityPressureGunShot(World worldIn, EntityLivingBase shooter, int fluidType, boolean flag) {
 		super(worldIn);
+		if (flag && shooter instanceof EntityPlayer) owner = (EntityPlayer)shooter;
 		this.setPosition(shooter.posX, shooter.posY + shooter.getEyeHeight(), shooter.posZ);
 		try {
 		projType = EnumPressureGun.values()[fluidType];
@@ -57,7 +60,7 @@ public class EntityPressureGunShot extends EntityArrow
 	
 	public Fluid getFluid()
 	{
-		Logger.info(projType.name);
+//		Logger.info(projType.name);
 		switch (projType)
 		{
 		case WATER:
@@ -86,6 +89,10 @@ public class EntityPressureGunShot extends EntityArrow
 			if (projType.fire)
 			{
 				entityHit.setFire(5);
+			}
+			if (entityHit.getHealth() <= 0 && owner != null)
+			{
+				FacChatHelper.sendChatToPlayer(owner, "Splatted " + entityHit.getName() + "!");
 			}
 //			setDead();
 		}
@@ -234,10 +241,10 @@ public class EntityPressureGunShot extends EntityArrow
 
 	public static enum EnumPressureGun
 	{
-		AIR("air", 0, 3.0F, 4, 0.2, false),
-		WATER("water", 1, 1.0F, 10, 0, false),
-		PROPANE("propane", 5, 0.5F, 5, 0.15, true),
-		H2SO4("h2so4", 8, 0.25F, 6, 0.1, false);
+		AIR("air", 0, 3.0F, 6, 0.2, false),
+		WATER("water", 1, 1.0F, 15, 0, false),
+		PROPANE("propane", 5, 0.5F, 8, 0.15, true),
+		H2SO4("h2so4", 8, 0.25F, 9, 0.1, false);
 		
 		private EnumPressureGun(String name, int damage, float knockback, int range, double spread, boolean fire)
 		{

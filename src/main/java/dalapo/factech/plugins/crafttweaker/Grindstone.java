@@ -24,7 +24,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.Grindstone")
-@ZenRegister
 public class Grindstone
 {
 	@ZenMethod

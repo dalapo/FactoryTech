@@ -16,14 +16,10 @@ import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityBasicProcessor;
 
 public class TileEntityGrindstone extends TileEntityBasicProcessor {
-
+	
 	public TileEntityGrindstone() {
 		super("grindstone", 1, RelativeSide.BACK);
 		setDisplayName("Grindstone");
-	}
-	
-	static {
-		useOreDict = true;
 	}
 
 	@Override
@@ -89,7 +85,7 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.GEAR, 0.1F, 1.1F, 0.85F, 10);
+		partsNeeded[0] = new MachinePart(PartList.GEAR, 0.1F, 1.1F, 0.85F*kValue[0][1], (int)(10*kValue[0][0]));
 	}
 
 	@Override

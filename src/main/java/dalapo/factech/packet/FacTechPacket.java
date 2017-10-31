@@ -7,6 +7,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.NetHandlerPlayServer;
+import net.minecraft.util.IThreadListener;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -49,6 +50,16 @@ public abstract class FacTechPacket implements IMessage {
 		@Override
 		public IMessage onMessage(final FacTechPacket message, final MessageContext ctx) {
 			// Magic!
+			IThreadListener worldThread = FMLCommonHandler.instance().getWorldThread(ctx.netHandler);
+			if (ctx.side.equals(Side.CLIENT))
+			{
+				worldThread.addScheduledTask(() -> message.doHandle(ctx.getClientHandler()));
+			}
+			else
+			{
+				worldThread.addScheduledTask(() -> message.doHandle(ctx.getServerHandler()));
+			}
+			/*
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(new Runnable() {
 				@Override
 				public void run() {
@@ -56,6 +67,7 @@ public abstract class FacTechPacket implements IMessage {
 					else message.doHandle(ctx.getServerHandler());
 				}
 			});
+			*/
 			return null;
 		}
 	}

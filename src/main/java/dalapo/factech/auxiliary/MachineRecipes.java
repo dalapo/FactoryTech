@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 import com.google.common.collect.Maps;
 
@@ -45,22 +47,23 @@ import net.minecraft.item.ItemStack;
 public class MachineRecipes {
 	// In lieu of good coding, have a bunch of manually defined and filled static HashMaps.
 	// Convention: Key = input, Value = output.
-	public static Map<ItemStack, ItemStack[]> CENTRIFUGE = new HashMap<ItemStack, ItemStack[]>();
-	public static Map<ItemStack, ItemStack> SAW = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, ItemStack> ROLLER = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, ItemStack> METALCUTTER = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, ItemStack> GRINDSTONE = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, ItemStack> MAGNETIZER = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, FluidStack> CRUCIBLE = new HashMap<ItemStack, FluidStack>();
-	public static Map<ItemStack, ItemStack> ELECTROPLATER = new HashMap<>();
-	public static Map<ItemStack, ItemStack> HTFURNACE = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, ItemStack> OREDRILL = new HashMap<ItemStack, ItemStack>();
-	public static Map<ItemStack, ItemStack> CIRCUIT_SCRIBE = new HashMap<ItemStack, ItemStack>();
-	public static Map<FluidStack, ItemStack> REFRIGERATOR = new HashMap<FluidStack, ItemStack>();
+	public static Map<ItemStack, ItemStack[]> CENTRIFUGE = new ConcurrentHashMap<ItemStack, ItemStack[]>();
+	public static Map<ItemStack, ItemStack> SAW = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, ItemStack> ROLLER = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, ItemStack> METALCUTTER = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, ItemStack> GRINDSTONE = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, ItemStack> MAGNETIZER = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, FluidStack> CRUCIBLE = new ConcurrentHashMap<ItemStack, FluidStack>();
+	public static Map<ItemStack, ItemStack> ELECTROPLATER = new ConcurrentHashMap<>();
+	public static Map<ItemStack, ItemStack> HTFURNACE = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, ItemStack> OREDRILL = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<ItemStack, ItemStack> CIRCUIT_SCRIBE = new ConcurrentHashMap<ItemStack, ItemStack>();
+	public static Map<FluidStack, ItemStack> REFRIGERATOR = new ConcurrentHashMap<FluidStack, ItemStack>();
 	
 	public static Map<Class<? extends EntityLivingBase>, List<ItemStack>> DISASSEMBLER = new HashMap<>();
 	
 	// Lists for complex recipes
+	
 	public static List<CompressorRecipe> COMPRESSOR = new ArrayList<CompressorRecipe>();
 	public static List<AgitatorRecipe> AGITATOR = new ArrayList<AgitatorRecipe>();
 	public static List<TempererRecipe> TEMPERER = new ArrayList<TempererRecipe>();

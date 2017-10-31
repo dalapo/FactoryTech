@@ -97,7 +97,7 @@ public class ItemPressureGun extends ItemBase
 			is.setItemDamage(is.getItemDamage()+1);
 			for (int i=0; i<shots; i++)
 			{
-				EntityPressureGunShot shot = new EntityPressureGunShot(ep.world, ep, tank);
+				EntityPressureGunShot shot = new EntityPressureGunShot(ep.world, ep, tank, isFreshestWeapon(is));
 				Vec3d lookDir = ep.getLookVec();
 				double spread = shot.getProjType().spread;
 				Vec3d motionVec = lookDir.addVector(ep.getRNG().nextGaussian()*spread, ep.getRNG().nextGaussian()*spread, ep.getRNG().nextGaussian()*spread);
@@ -116,11 +116,17 @@ public class ItemPressureGun extends ItemBase
 		}
 	}
 	
+	private boolean isFreshestWeapon(ItemStack is)
+	{
+		return (is.getDisplayName().equals("Splattershot"));
+	}
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer ep, EnumHand hand)
 	{
 		super.onItemRightClick(world, ep, hand);
 		ItemStack is = ep.getHeldItem(hand);
+		
 		int tankNum = getTankID(is);
 //		Logger.info(tankNum);
 		if (tankNum == -1)
@@ -132,6 +138,10 @@ public class ItemPressureGun extends ItemBase
 			}
 			else
 			{
+				if (tank.getItemDamage() == 0)
+				{
+					ep.world.spawnEntity(new EntityItem(ep.world, ep.posX, ep.posY, ep.posZ, tank));
+				}
 				tankNum = tank.getItemDamage() - 1;
 				is.getTagCompound().setInteger("tank", tankNum);
 				is.setItemDamage(0);

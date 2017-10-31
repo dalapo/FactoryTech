@@ -92,9 +92,9 @@ public class TileEntityAgitator extends TileEntityFluidMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MIXER, 0.2F, 1.2F, 0, 15);
-		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.1F, 1.3F, 0.7F, 6);
-		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_3, 0.25F, 1.15F, 0.6F, 4);
+		partsNeeded[0] = new MachinePart(PartList.MIXER, 0.2F, 1.2F, 0, (int)(15*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.MOTOR, 0.1F, 1.3F, 0.7F*kValue[1][1], (int)(6*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_3, 0.25F, 1.15F, 0.6F*kValue[2][1], (int)(4*kValue[2][0]));
 	}
 
 	// Precondition: The Agitator has sufficient resources to complete an operation.

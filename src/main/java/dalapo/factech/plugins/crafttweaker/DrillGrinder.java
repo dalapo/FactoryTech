@@ -24,7 +24,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.factorytech.DrillGrinder")
-@ZenRegister
 public class DrillGrinder
 {
 	@ZenMethod

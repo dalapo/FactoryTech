@@ -3,8 +3,10 @@ package dalapo.factech.tileentity.specialized;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import dalapo.factech.FacTechConfigManager;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.FacStackHelper;
+import dalapo.factech.helper.Logger;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityBasicProcessor;
 import dalapo.factech.tileentity.TileEntityMachine;
@@ -24,8 +26,8 @@ public class TileEntitySaw extends TileEntityBasicProcessor {
 	
 	protected void fillMachineParts()
 	{
-		partsNeeded[0] = new MachinePart(PartList.SAW, 0.15F, 1.1F, 0.7F, 8);
-		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.1F, 1.05F, 0.8F, 7);
+		partsNeeded[0] = new MachinePart(PartList.SAW, 0.15F, 1.1F, 0.7F*kValue[0][1], (int)(8*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.GEAR, 0.1F, 1.05F, 0.8F*kValue[1][1], (int)(7*kValue[1][0]));
 	}
 	
 	protected Map<ItemStack, ItemStack> getRecipeList()

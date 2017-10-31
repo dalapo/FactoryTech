@@ -16,10 +16,10 @@ public class TileEntityCoreCharger extends TileEntityMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.BATTERY, 0.05F, 1.2F, 0.8F, 4);
-		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_0, 0.02F, 1.05F, 0.75F, 8);
-		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_1, 0.02F, 1.05F, 0.75F, 8);
-		partsNeeded[3] = new MachinePart(PartList.MAGNET, 0.05F, 1.05F, 0.75F, 6);
+		partsNeeded[0] = new MachinePart(PartList.BATTERY, 0.05F, 1.2F, 0.8F*kValue[0][1], (int)(4*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_0, 0.02F, 1.05F, 0.75F*kValue[1][1], (int)(8*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.CIRCUIT_1, 0.02F, 1.05F, 0.75F*kValue[2][1], (int)(8*kValue[2][0]));
+		partsNeeded[3] = new MachinePart(PartList.MAGNET, 0.05F, 1.05F, 0.75F*kValue[3][1], (int)(6*kValue[3][0]));
 	}
 
 	@Override

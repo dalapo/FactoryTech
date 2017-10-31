@@ -10,7 +10,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
 public class TileEntityOreDrill extends TileEntityBasicProcessor {
-
+	
 	public TileEntityOreDrill() {
 		super("drill", 3, RelativeSide.TOP);
 		setDisplayName("Ore Drill");
@@ -23,9 +23,9 @@ public class TileEntityOreDrill extends TileEntityBasicProcessor {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.1F, 0.7F, 7);
-		partsNeeded[1] = new MachinePart(PartList.DRILL, 0.15F, 1.15F, 0.4F, 8);
-		partsNeeded[2] = new MachinePart(PartList.WIRE, 0.2F, 1.1F, 0.8F, 6);
+		partsNeeded[0] = new MachinePart(PartList.MOTOR, 0.1F, 1.1F, 0.7F*kValue[0][1], (int)(7*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.DRILL, 0.15F, 1.15F, 0.4F*kValue[1][1], (int)(8*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.WIRE, 0.2F, 1.1F, 0.8F*kValue[2][1], (int)(10*kValue[2][0]));
 	}
 
 	@Override

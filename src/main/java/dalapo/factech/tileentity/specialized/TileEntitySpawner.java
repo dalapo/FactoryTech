@@ -93,11 +93,10 @@ public class TileEntitySpawner extends TileEntityMachineNoOutput {
 	
 	@Override
 	protected void fillMachineParts() {
-		// Energy Core, Circuit Board, Battery, Motor
-		partsNeeded[0] = new MachinePart(PartList.CORE, 0.1F, 1.15F, 0.8F, 6);
-		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_0, 0.15F, 1.1F, 0.5F, 5);
-		partsNeeded[2] = new MachinePart(PartList.BATTERY, 0.1F, 1.1F, 0.8F, 0);
-		partsNeeded[3] = new MachinePart(PartList.MOTOR, 0.2F, 1.2F, 0.5F, 4);
+		partsNeeded[0] = new MachinePart(PartList.CORE, 0.1F, 1.15F, 0.8F*kValue[0][1], (int)(6*kValue[0][0]));
+		partsNeeded[1] = new MachinePart(PartList.CIRCUIT_0, 0.15F, 1.1F, 0.5F*kValue[1][1], (int)(5*kValue[1][0]));
+		partsNeeded[2] = new MachinePart(PartList.BATTERY, 0.1F, 1.1F, 0.8F*kValue[2][1], 0);
+		partsNeeded[3] = new MachinePart(PartList.MOTOR, 0.2F, 1.2F, 0.5F*kValue[3][1], (int)(4*kValue[3][0]));
 	}
 
 	@Override

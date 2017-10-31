@@ -11,7 +11,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
+import dalapo.factech.FacTechConfigManager;
 import dalapo.factech.FactoryTech;
+import dalapo.factech.helper.FacArrayHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.ItemRegistry;
@@ -60,9 +62,14 @@ public class TileEntitySluice extends TileEntityMachine {
 		else hasWater = false;
 	}
 	
+	private boolean isValidBiome()
+	{
+		return FacArrayHelper.contains(FacTechConfigManager.grateBiomes, world.getBiome(pos).getBiomeName());
+	}
+	
 	public boolean isValidLocation()
 	{
-		return hasWater && FacMathHelper.isInRange(pos.getY(), 60, 70) && world.getBiome(pos).equals(Biomes.RIVER);
+		return hasWater && FacMathHelper.isInRange(pos.getY(), 60, 70) && isValidBiome();
 	}
 	
 	@Override
@@ -75,7 +82,7 @@ public class TileEntitySluice extends TileEntityMachine {
 
 	@Override
 	protected void fillMachineParts() {
-		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 3), 0.05F, 1.2F, 0.75F, 8);
+		partsNeeded[0] = new MachinePart(PartList.MESH, new ItemStack(Items.STICK, 3), 0.05F, 1.2F, 0.75F*kValue[0][1], (int)(8*kValue[0][0]));
 	}
 
 	@Override

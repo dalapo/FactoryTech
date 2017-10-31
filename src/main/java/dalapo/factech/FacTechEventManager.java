@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -20,7 +21,9 @@ import dalapo.factech.block.IBlockSubtypes;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.BlockRegistry;
+import dalapo.factech.init.DictRegistry;
 import dalapo.factech.init.ItemRegistry;
+import dalapo.factech.init.RecipeRegistry;
 import dalapo.factech.item.ItemBlockMod;
 import dalapo.factech.tileentity.specialized.TileEntityDisassembler;
 
@@ -34,6 +37,7 @@ public class FacTechEventManager {
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
 		Logger.info("Entered registerBlocks");
+		BlockRegistry.init();
 		for (Block b : BlockRegistry.blocks)
 		{
 			event.getRegistry().register(b);
@@ -43,6 +47,7 @@ public class FacTechEventManager {
 	@SubscribeEvent
 	public void registerItems(RegistryEvent.Register<Item> event)
 	{
+		ItemRegistry.init();
 		for (Block b : BlockRegistry.blocks)
 		{
 			if (b instanceof IBlockSubtypes)
@@ -58,12 +63,19 @@ public class FacTechEventManager {
 		{
 			event.getRegistry().register(i);
 		}
+		DictRegistry.registerOreDictEntries();
 	}
 	
 	@SubscribeEvent
 	public void registerPotions(RegistryEvent.Register<Potion> event)
 	{
 		event.getRegistry().register(PotionLockdown.INSTANCE);
+	}
+	
+	@SubscribeEvent
+	public void registerRecipes(RegistryEvent.Register<IRecipe> event)
+	{
+		RecipeRegistry.init();
 	}
 	
 	@SubscribeEvent
