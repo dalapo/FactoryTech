@@ -156,6 +156,7 @@ public class TileEntityStackMover extends TileEntityBasicInventory implements IS
 		if (push == null)
 		{
 			BlockPos pos = FacMathHelper.withOffset(getPos(), front.getOpposite());
+			pull.extractItem(pair[1], moveSize, false);
 			EntityItem drop = new EntityItem(world, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, toMove);
 			drop.motionX = 0;
 			drop.motionY = 0;

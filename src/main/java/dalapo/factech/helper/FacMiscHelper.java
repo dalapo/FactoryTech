@@ -9,6 +9,7 @@ import dalapo.factech.reference.NameList;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityZombie;
@@ -26,6 +27,7 @@ import net.minecraftforge.common.util.FakePlayerFactory;
 public class FacMiscHelper {
 	
 	private FacMiscHelper() {}
+	
 	
 	public static FakePlayer getFakePlayer(World world)
 	{

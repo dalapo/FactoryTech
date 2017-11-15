@@ -13,6 +13,7 @@ import com.google.common.collect.Maps;
 
 import dalapo.factech.helper.FacMiscHelper;
 import dalapo.factech.helper.Logger;
+import dalapo.factech.helper.Pair;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.init.ModFluidRegistry;
@@ -67,6 +68,7 @@ public class MachineRecipes {
 	public static List<CompressorRecipe> COMPRESSOR = new ArrayList<CompressorRecipe>();
 	public static List<AgitatorRecipe> AGITATOR = new ArrayList<AgitatorRecipe>();
 	public static List<TempererRecipe> TEMPERER = new ArrayList<TempererRecipe>();
+	public static List<Pair<ItemStack, Double>> DEEP_DRILL = new ArrayList<Pair<ItemStack, Double>>();
 	
 	public static void initRecipes()
 	{
@@ -120,12 +122,8 @@ public class MachineRecipes {
 		OREDRILL.put(new ItemStack(Blocks.IRON_ORE), new ItemStack(ItemRegistry.oreProduct, 2, 0));
 		OREDRILL.put(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ItemRegistry.oreProduct, 2, 1));
 		OREDRILL.put(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 10));
-//		OREDRILL.put(new ItemStack(BlockRegistry.ore, 1, 0), new ItemStack(ItemRegistry.oreProduct, 2, 2));
-//		OREDRILL.put(new ItemStack(BlockRegistry.ore, 1, 1), new ItemStack(ItemRegistry.oreProduct, 2, 3));
-//		OREDRILL.put(new ItemStack(Items.IRON_INGOT), new ItemStack(ItemRegistry.oreProduct, 1, 6));
-//		OREDRILL.put(new ItemStack(Items.GOLD_INGOT), new ItemStack(ItemRegistry.oreProduct, 1, 7));
-//		OREDRILL.put(new ItemStack(ItemRegistry.ingot, 1, 0), new ItemStack(ItemRegistry.oreProduct, 1, 8));
-//		OREDRILL.put(new ItemStack(ItemRegistry.ingot, 1, 1), new ItemStack(ItemRegistry.oreProduct, 1, 9));
+		OREDRILL.put(new ItemStack(Blocks.LAPIS_ORE), new ItemStack(Items.DYE, 12, 4));
+		OREDRILL.put(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(Items.DIAMOND, 2));
 		OREDRILL.put(new ItemStack(Items.DYE, 1, 4), new ItemStack(ItemRegistry.oreProduct, 1, 12));
 		OREDRILL.put(new ItemStack(Blocks.OBSIDIAN), new ItemStack(ItemRegistry.intermediate, 1, 0));
 		
@@ -168,6 +166,15 @@ public class MachineRecipes {
 		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.GEAR.getFloor() + 2), 66));
 		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.DRILL.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.DRILL.getFloor() + 1), 89));
 		TEMPERER.add(new TempererRecipe(new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.getFloor()), new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.getFloor() + 1), 54));
+		
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(Blocks.COAL_ORE), 2.0));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(Blocks.IRON_ORE), 1.0));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(Blocks.GOLD_ORE), 0.25));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(Blocks.REDSTONE_ORE), 0.8));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(Blocks.LAPIS_ORE), 0.3));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(Blocks.DIAMOND_ORE), 0.1));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(BlockRegistry.ore, 1, 0), 1.0));
+		DEEP_DRILL.add(new Pair<ItemStack, Double>(new ItemStack(BlockRegistry.ore, 1, 1), 0.8));
 		
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 4), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_0.getFloor()));
 		HTFURNACE.put(new ItemStack(ItemRegistry.circuitIntermediate, 1, 5), new ItemStack(ItemRegistry.machinePart, 1, PartList.CIRCUIT_1.getFloor()));

@@ -131,17 +131,13 @@ public class ItemPressureGun extends ItemBase
 //		Logger.info(tankNum);
 		if (tankNum == -1)
 		{
-			ItemStack tank = FacStackHelper.findStack(ep.inventory, new ItemStack(ItemRegistry.tank), false, !ep.isCreative());
+			ItemStack tank = FacStackHelper.findStack(ep.inventory, itemstack -> (itemstack.getItemDamage() != 0 && itemstack.getItem() == ItemRegistry.tank), !ep.isCreative());
 			if (tank.isEmpty())
 			{
 				return ActionResult.newResult(EnumActionResult.FAIL, is);
 			}
 			else
 			{
-				if (tank.getItemDamage() == 0)
-				{
-					ep.world.spawnEntity(new EntityItem(ep.world, ep.posX, ep.posY, ep.posZ, tank));
-				}
 				tankNum = tank.getItemDamage() - 1;
 				is.getTagCompound().setInteger("tank", tankNum);
 				is.setItemDamage(0);

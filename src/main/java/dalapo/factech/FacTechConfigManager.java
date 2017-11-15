@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.helper.Logger;
+import dalapo.factech.helper.Pair;
 import dalapo.factech.tileentity.TileEntityMachine;
 import dalapo.factech.tileentity.specialized.*;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class FacTechConfigManager {
 	private static final String CATEGORY_GENERAL = "general";
@@ -48,6 +52,8 @@ public class FacTechConfigManager {
 	
 	public static float[][] getMachineMultiplier(Class<? extends TileEntityMachine> clazz)
 	{
+		MachineInfo me = MachineInfo.getFromTEClass(clazz);
+		if (me == null) return null;
 		return machineMultipliers.get(MachineInfo.getFromTEClass(clazz).ordinal());
 	}
 	
@@ -77,7 +83,8 @@ public class FacTechConfigManager {
 		SPAWNER("Biosynthesizer", 4, TileEntitySpawner.class),
 		DISRUPTOR("Disruptor", 4, TileEntityDisruptor.class),
 		DISPERSER("Neg. Ion Disperser", 4, TileEntityIonDisperser.class),
-		TESLACOIL("Tesla Coil", 2, TileEntityTeslaCoil.class);
+		TESLACOIL("Tesla Coil", 2, TileEntityTeslaCoil.class),
+		DEEPDRILL("Terraneous Extractor", 4, TileEntityDeepDrill.class);
 
 		private MachineInfo(String name, int numParts, Class<? extends TileEntityMachine> clazz)
 		{
@@ -138,5 +145,18 @@ public class FacTechConfigManager {
 		allowMachineEnchanting = cfg.getBoolean("allowGrinderEnchanting", CATEGORY_MACHINES, true, "Set to false to disable the Grindstone enchanting tools and weapons");
 		disassemblePlayers = cfg.getBoolean("disassemblePlayers", CATEGORY_MACHINES, false, "Set to true to allow the Mob Disassembler to attack players");
 		grateBiomes = cfg.getStringList("riverGrateWhitelist", CATEGORY_MACHINES, new String[] {"River"}, "Biomes that the River Grate is allowed to function in");
+		
+		String[] stacks = cfg.getStringList("deepDrillCustomOres", CATEGORY_MACHINES, new String[] {}, "Add extra ores to the Deep Drill table according to their Ore Dict entry and weight. Coal ore has weight 2.0, Diamond has weight 0.1. Example: oreTin:1.5");
+		for (String str : stacks)
+		{
+			String[] entry = str.split(":");
+			if (!OreDictionary.getOres(entry[0]).isEmpty())
+			{
+				try {
+					MachineRecipes.DEEP_DRILL.add(new Pair<ItemStack, Double>(OreDictionary.getOres(entry[0]).get(0), Double.parseDouble(entry[1])));
+				}
+				catch (NumberFormatException e) { continue; }
+			}
+		}
 	}
 }

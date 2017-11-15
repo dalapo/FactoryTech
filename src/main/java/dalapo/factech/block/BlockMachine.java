@@ -74,6 +74,12 @@ public class BlockMachine extends BlockInventoryDirectional {
 	}
 	
 	@Override
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side)
+	{
+		return false;
+	}
+	
+	@Override
 	public boolean isFullCube(IBlockState state)
 	{
 		return false;
@@ -115,7 +121,7 @@ public class BlockMachine extends BlockInventoryDirectional {
 	}
 
 	@Override
-	public void onWrenched(boolean isSneaking, World world, BlockPos pos, EnumFacing side)
+	public void onWrenched(EntityPlayer ep, boolean isSneaking, World world, BlockPos pos, EnumFacing side)
 	{
 		if (isSneaking)
 		{
@@ -124,7 +130,7 @@ public class BlockMachine extends BlockInventoryDirectional {
 		}
 		else
 		{
-			super.onWrenched(isSneaking, world, pos, side);
+			super.onWrenched(ep, isSneaking, world, pos, side);
 		}
 	}
 }

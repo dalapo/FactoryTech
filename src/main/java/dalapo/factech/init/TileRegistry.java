@@ -8,16 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import dalapo.factech.FacTechConfigManager;
 import dalapo.factech.FactoryTech;
 import dalapo.factech.helper.Logger;
-import dalapo.factech.render.tesr.TesrCentrifuge;
-import dalapo.factech.render.tesr.TesrCharger;
-import dalapo.factech.render.tesr.TesrCircuitScribe;
-import dalapo.factech.render.tesr.TesrDisassembler;
-import dalapo.factech.render.tesr.TesrMagnetizer;
-import dalapo.factech.render.tesr.TesrMetalCutter;
-import dalapo.factech.render.tesr.TesrOreDrill;
-import dalapo.factech.render.tesr.TesrSaw;
-import dalapo.factech.render.tesr.TesrStabilizer;
-import dalapo.factech.render.tesr.TesrTemperer;
+import dalapo.factech.render.tesr.*;
 import dalapo.factech.tileentity.*;
 import dalapo.factech.tileentity.automation.*;
 import dalapo.factech.tileentity.specialized.*;
@@ -69,6 +60,8 @@ public class TileRegistry {
 		GameRegistry.registerTileEntity(TileEntitySequencePlacer.class, "sequenceplacer");
 		GameRegistry.registerTileEntity(TileEntityTank.class, "tank");
 		GameRegistry.registerTileEntity(TileEntityTemperer.class, "temperer");
+		GameRegistry.registerTileEntity(TileEntityBlockBreaker.class, "blockbreaker");
+		GameRegistry.registerTileEntity(TileEntityDeepDrill.class, "deepdrill");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -77,7 +70,7 @@ public class TileRegistry {
 		{
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySaw.class, new TesrSaw(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOreDrill.class, new TesrOreDrill(false));
-	//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDecoCoil.class, new TesrDecoCoil(false));
 	//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoMiner.class, new TesrMiner(false));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TesrCentrifuge(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoreCharger.class, new TesrCharger(true));
@@ -87,6 +80,7 @@ public class TileRegistry {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagnetizer.class, new TesrMagnetizer(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDisassembler.class, new TesrDisassembler(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStabilizer.class, new TesrStabilizer(false));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockBreaker.class, new TesrBlockBreaker(true));
 		}
 	}
 }

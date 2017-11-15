@@ -5,10 +5,12 @@ import java.util.List;
 
 import dalapo.factech.FactoryTech;
 import dalapo.factech.block.BlockBase;
+import dalapo.factech.block.BlockBlockBreaker;
 import dalapo.factech.block.BlockBottomHatch;
 import dalapo.factech.block.BlockBricks;
 import dalapo.factech.block.BlockComparatorExact;
 import dalapo.factech.block.BlockConveyor;
+import dalapo.factech.block.BlockDecoCoil;
 import dalapo.factech.block.BlockElevator;
 import dalapo.factech.block.BlockFluidGiver;
 import dalapo.factech.block.BlockHatch;
@@ -57,6 +59,7 @@ public class BlockRegistry {
 //	public static BlockInventoryDirectional mecharm;
 	public static BlockInventoryDirectional sequenceplacer;
 	public static BlockBase redNotifier;
+	public static BlockBlockBreaker blockbreaker;
 	
 //	public static BlockMachine wirecutter;
 	public static BlockMachine potionmixer;
@@ -87,6 +90,7 @@ public class BlockRegistry {
 	public static BlockMachine woodcutter;
 	public static BlockMachine ionDisperser;
 	public static BlockMachine teslaCoil;
+	public static BlockMachine deepdrill;
 	
 	public static BlockTENoDir energizer;
 	public static BlockTENoDir magnet;
@@ -104,10 +108,8 @@ public class BlockRegistry {
 	public static void init()
 	{
 		Logger.info("Entered BlockRegistry.init");
-		blocks.add(potionmixer = new BlockMachine(Material.ROCK, "potionmixer", "potionmixer"));
-		blocks.add(htfurnace = new BlockMachine(Material.IRON, "htfurnace", "htfurnace"));
-		blocks.add(propfurnace = new BlockMachine(Material.IRON, "propfurnace", "propfurnace"));
-		blocks.add(disruptor = new BlockMachine(Material.IRON, "disruptor", "disruptor"));
+		
+		// Automation
 		blocks.add(stackmover = new BlockStackMover(Material.WOOD, "stackmover", "stackmover", false, 0));
 		blocks.add(filtermover = new BlockStackMover(Material.IRON, "filtermover", "stackmover", false, 1));
 		blocks.add(bulkmover = new BlockStackMover(Material.IRON, "bulkmover", "stackmover", false, 2));
@@ -130,7 +132,10 @@ public class BlockRegistry {
 		blocks.add(bottomHatch = new BlockBottomHatch(Material.WOOD, "bottomhatch", true));
 		blocks.add(hatch = (BlockHatch) new BlockHatch(Material.IRON, "hatch").setHardness(2F));
 		blocks.add(redNotifier = (BlockRSNotifier)new BlockRSNotifier(Material.WOOD, "rednotifier").setHardness(2F));
+		blocks.add(blockbreaker = (BlockBlockBreaker)new BlockBlockBreaker(Material.ROCK, "blockbreaker", "blockbreaker", false).setHardness(2F));
 //		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
+		
+		// Machines
 		blocks.add(oredrill = new BlockMachine(Material.IRON, "oredrill", "oredrill", 0));
 		blocks.add(metalCutter = new BlockMachine(Material.IRON, "metalcutter", "metalcutter", 0));
 		blocks.add(autocrafter = new BlockMachine(Material.IRON, "autocrafter", "autocrafter", 2));
@@ -162,13 +167,20 @@ public class BlockRegistry {
 		blocks.add(magnet = new BlockTENoDir(Material.IRON, "magnetblock"));
 		blocks.add(spawner = new BlockMachine(Material.ROCK, "spawner", "spawner", 0));
 		blocks.add(disassembler = new BlockMachine(Material.IRON, "disassembler", "disassembler", 0, false));
+		blocks.add(potionmixer = new BlockMachine(Material.ROCK, "potionmixer", "potionmixer"));
+		blocks.add(htfurnace = new BlockMachine(Material.IRON, "htfurnace", "htfurnace"));
+		blocks.add(propfurnace = new BlockMachine(Material.IRON, "propfurnace", "propfurnace"));
+		blocks.add(disruptor = new BlockMachine(Material.IRON, "disruptor", "disruptor"));
+		blocks.add(deepdrill = new BlockMachine(Material.IRON, "deepdrill", "deepdrill"));
+		
+		// Deco & Resources
 		blocks.add(ore = new BlockOre("ore"));
 		blocks.add(oreblock = new BlockOreStorage("oreblock"));
 		blocks.add(bricks = (BlockBricks)new BlockBricks(Material.ROCK, "bricks").setHardness(2.0F).setResistance(10.0F));
 		blocks.add(smokestack = (BlockSmokestack)new BlockSmokestack(Material.ROCK, "smokestack").setHardness(2.0F).setResistance(10.0F));
 		blocks.add(decorative_metal = (BlockMetal)new BlockMetal(Material.IRON, "metal").setHardness(3.0F).setResistance(12.0F));
 		blocks.add(scaffold = (BlockBase)new BlockScaffold(Material.IRON, "scaffold"));
-//		blocks.add(decocoil = new BlockTENoDir(Material.IRON, "decocoil"));
+		blocks.add(decocoil = new BlockDecoCoil(Material.IRON, "decocoil"));
 	}
 
 	@SideOnly(Side.CLIENT)

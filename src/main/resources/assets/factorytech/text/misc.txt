@@ -53,3 +53,7 @@ $recipe deco/smokestack_pmetal
 Smokestacks are craftable in many variations to put the finishing touch on your environmentally (un)friendly assembly lines.
 (Note: they must be crafted in the centre column of the workbench.)
 $end
+$title Decorative Coil
+No high-tech production facility or mad scientist's lab would be complete without a few of these. To link them, right-click on the first one and then the second one with a Monkey Wrench; once paired, electric arcs will appear between them.
+A Redstone signal disables them; in addition, because the coils are much more conductive than living beings are, the arcs don't cause damage.
+$end

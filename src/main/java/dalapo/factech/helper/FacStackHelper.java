@@ -1,7 +1,10 @@
 package dalapo.factech.helper;
 
+import java.util.function.Predicate;
+
 import javax.annotation.Nonnull;
 
+import dalapo.factech.auxiliary.BinaryPredicate;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,6 +13,11 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class FacStackHelper {
 	private FacStackHelper() {}
+	
+	public static boolean isItemDamageNonZero(ItemStack is)
+	{
+		return (is.getItemDamage() != 0);
+	}
 	
 	public static boolean areAllEmpty(ItemStack[] test)
 	{
@@ -122,20 +130,12 @@ public class FacStackHelper {
 	}
 	
 	@Nonnull
-	public static ItemStack findStack(IInventory inv, ItemStack test, boolean careAboutDamage, boolean consume)
+	public static ItemStack findStack(IInventory inv, Predicate<ItemStack> p, boolean consume)
 	{
 		boolean found = false;
 		for (int i=0; i<inv.getSizeInventory(); i++)
 		{
-			if (careAboutDamage)
-			{
-				if (inv.getStackInSlot(i).isItemEqual(test)) found = true;
-			}
-			else
-			{
-				if (inv.getStackInSlot(i).getItem().equals(test.getItem())) found = true;
-			}
-			if (found)
+			if (p.test(inv.getStackInSlot(i)))
 			{
 				ItemStack temp = inv.getStackInSlot(i).copy();
 				if (consume) inv.decrStackSize(i, 1);

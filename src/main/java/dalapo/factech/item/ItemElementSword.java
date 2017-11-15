@@ -28,7 +28,7 @@ public class ItemElementSword extends ItemSword implements ItemModelProvider
 	public void onUpdate(ItemStack stack, World world, Entity ep, int i, boolean b)
 	{
 		super.onUpdate(stack, world, ep, i, b);
-		if (ep.isInWater() && b)
+		if (b && ep.isInWater())
 		{
 			ep.attackEntityFrom(new DamageSource("tesla"), 2);
 		}

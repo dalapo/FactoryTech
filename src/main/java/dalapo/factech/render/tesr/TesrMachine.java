@@ -2,6 +2,7 @@ package dalapo.factech.render.tesr;
 
 import java.util.function.Function;
 
+import dalapo.factech.helper.FacTesrHelper;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.reference.NameList;
 import dalapo.factech.reference.PartList;
@@ -35,31 +36,24 @@ public abstract class TesrMachine<T extends TileEntityBase> extends TileEntitySp
 		isDirectional = directional;
 	}
 	
-	protected abstract String getModelName();
+	// Should be overridden if necessary
+	protected String getModelName()
+	{
+		return null;
+	}
 	
 	protected IBakedModel getBakedModel()
 	{
 		if (getModelName() == null) return null;
-		if (model == null)
-		{
-			try
-			{
-				model = OBJLoader.INSTANCE.loadModel(new ResourceLocation(NameList.MODID, String.format("models/block/%s.obj", getModelName())));
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				throw new RuntimeException(e);
-			}
+		try {
+			IModel model = OBJLoader.INSTANCE.loadModel(new ResourceLocation(NameList.MODID, String.format("models/block/%s.obj", getModelName())));
+			IBakedModel bakedModel = model.bake(TRSRTransformation.identity(), DefaultVertexFormats.BLOCK, FacTesrHelper::getAtlasFromLocation);
+			return bakedModel;
 		}
-		bakedModel = model.bake(TRSRTransformation.identity(), DefaultVertexFormats.BLOCK, new Function<ResourceLocation, TextureAtlasSprite>() {
-				@Override
-				public TextureAtlasSprite apply(ResourceLocation location)
-				{
-					return Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
-				}
-			});
-		return bakedModel;
+		catch (Exception e)
+		{
+			throw new RuntimeException();
+		}
 	}
 	
 	public abstract void doRender(T te, double x, double y, double z, float partialTicks, int destroyStage, float alpha);
@@ -85,6 +79,11 @@ public abstract class TesrMachine<T extends TileEntityBase> extends TileEntitySp
 				break;
 			case SOUTH:
 				break;
+			case UP:
+				GlStateManager.rotate(-90, 1, 0, 0);
+				break;
+			case DOWN:
+				GlStateManager.rotate(90, 1, 0, 0);
 			default:
 				break;
 			}

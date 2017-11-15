@@ -25,7 +25,7 @@ import dalapo.factech.tileentity.specialized.TileEntityPropaneFurnace;
 public class MachineContainerFactory {
 	private MachineContainerFactory() {}
 	
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	public static ContainerBasicMachine getContainer(TileEntityMachine te, IInventory playerInv, String id)
 	{
 		List<Pair<Integer, Integer>> input = new ArrayList<>();
@@ -52,6 +52,7 @@ public class MachineContainerFactory {
 		case "disassembler":
 		case "teslacoil":
 		case "iondisperser":
+		case "deepdrill":
 			// No IO
 			break;
 		case "sluice":
@@ -254,6 +255,7 @@ public class MachineContainerFactory {
 		case "disassembler":
 		case "teslacoil":
 		case "iondisperser":
+		case "deepdrill":
 			return new GuiBasicMachine(getContainer(te, playerInv, id), playerInv, "gui_blank", te);
 		case "woodcutter":
 		case "corecharger":

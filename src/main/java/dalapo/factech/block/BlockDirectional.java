@@ -60,7 +60,7 @@ public class BlockDirectional extends BlockBase implements Wrenchable {
 	}
 
 	@Override
-	public void onWrenched(boolean isSneaking, World world, BlockPos pos, EnumFacing side) 
+	public void onWrenched(EntityPlayer ep, boolean isSneaking, World world, BlockPos pos, EnumFacing side) 
 	{
 		EnumFacing newFacing;
 		if (planeLocked) newFacing = world.getBlockState(pos).getValue(StateList.directions).rotateY();

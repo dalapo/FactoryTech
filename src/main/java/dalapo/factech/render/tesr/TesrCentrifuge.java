@@ -40,10 +40,10 @@ public class TesrCentrifuge extends TesrMachine<TileEntityCentrifuge>
 		}
 		GlStateManager.translate(-te.getPos().getX()-0.5, -te.getPos().getY()-0.5, -te.getPos().getZ()-0.5);
 
-		RenderHelper.enableStandardItemLighting();
-		GlStateManager.enableLighting();
+		RenderHelper.disableStandardItemLighting();
+		GlStateManager.disableLighting();
 		
-		this.bindTexture(new ResourceLocation(NameList.MODID, "textures/blocks/model_tex_sheet.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(NameList.MODID, "textures/blocks/model_tex_sheet.png"));
 		if (Minecraft.isAmbientOcclusionEnabled())
 		{
 			GlStateManager.shadeModel(GL11.GL_SMOOTH);
@@ -85,7 +85,7 @@ public class TesrCentrifuge extends TesrMachine<TileEntityCentrifuge>
 		{
 			// Shaft
 		}
-		GlStateManager.disableLighting();
-		RenderHelper.disableStandardItemLighting();
+		GlStateManager.enableLighting();
+		RenderHelper.enableStandardItemLighting();
 	}
 }

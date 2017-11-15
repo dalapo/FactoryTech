@@ -155,6 +155,10 @@ $recipe machines/teslacoil
 This machine builds up electric charge to zap mobs and players, making it a powerful form of base defence. Any creature wearing a full suit of Chainmail armour is immune to it as the chainmail forms a Faraday cage.
 Parts required (any side): Battery, Wire
 $end
+$title Terraneous Extractor
+By focusing the power of an Energy Core through a lens, this machine is able to drill a small hole through the Bedrock at the bottom of the world and extract the rich supply of minerals that lie below. To function, it must be at or below Y-level 8.
+Parts required (any side): Energy Core, Circuit Board (Pattern 1), Drill, Focusing Lens
+$end
 $title Universal Supercharger
 $recipe machines/energizer
 The Universal Supercharger can be placed adjacent to any machine to make it run twice as fast. To function, it requires a steady supply of Energy Cores.

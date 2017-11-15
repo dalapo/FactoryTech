@@ -38,7 +38,7 @@ public class ItemRegistry {
 	
 	public static ItemBase handbook;
 	public static ItemBase wrench;
-	public static ItemBase machinePartOld;
+//	public static ItemBase machinePartOld;
 	public static ItemMachinePart machinePart;
 	public static ItemBase salvagePart;
 	public static ItemBase circuitIntermediate;
@@ -77,7 +77,7 @@ public class ItemRegistry {
 		
 		items.add(handbook = new ItemHandbook("handbook"));
 		items.add(wrench = new ItemWrench("wrench"));
-		items.add(machinePartOld = new ItemOldPart("part").setHasInformation());
+//		items.add(machinePartOld = new ItemOldPart("part").setHasInformation());
 		items.add(machinePart = new ItemMachinePart("machinepart"));
 		items.add(salvagePart = new ItemBase("salvage", 12));
 		items.add(circuitIntermediate = new ItemBase("circuit_intermediate", 13));

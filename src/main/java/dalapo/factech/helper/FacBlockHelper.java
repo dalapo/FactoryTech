@@ -28,6 +28,11 @@ public class FacBlockHelper
 		return world.getBlockState(pos).getBlock().getStateFromMeta(dir.ordinal());
 	}
 	
+	public static EnumFacing getDirection(World world, BlockPos pos)
+	{
+		return world.getBlockState(pos).getValue(StateList.directions);
+	}
+	
 	public static EnumFacing nextRotation(World world, BlockPos pos, EnumFacing current, boolean plane)
 	{
 		int newRotation = 0;

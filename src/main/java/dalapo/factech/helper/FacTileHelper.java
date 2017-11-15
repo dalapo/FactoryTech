@@ -16,6 +16,7 @@ import java.util.List;
 
 import dalapo.factech.tileentity.*;
 import dalapo.factech.tileentity.automation.TileEntityAutoPuller;
+import dalapo.factech.tileentity.automation.TileEntityBlockBreaker;
 import dalapo.factech.tileentity.automation.TileEntityCrate;
 import dalapo.factech.tileentity.automation.TileEntityFluidPuller;
 import dalapo.factech.tileentity.automation.TileEntityItemPusher;
@@ -36,6 +37,7 @@ import dalapo.factech.tileentity.specialized.TileEntityCompressionChamber;
 import dalapo.factech.tileentity.specialized.TileEntityCoreCharger;
 import dalapo.factech.tileentity.specialized.TileEntityCrucible;
 import dalapo.factech.tileentity.specialized.TileEntityDecoCoil;
+import dalapo.factech.tileentity.specialized.TileEntityDeepDrill;
 import dalapo.factech.tileentity.specialized.TileEntityDisassembler;
 import dalapo.factech.tileentity.specialized.TileEntityDisruptor;
 import dalapo.factech.tileentity.specialized.TileEntityElectroplater;
@@ -154,6 +156,10 @@ public class FacTileHelper {
 			return new TileEntityTank();
 		case "temperer":
 			return new TileEntityTemperer();
+		case "blockbreaker":
+			return new TileEntityBlockBreaker();
+		case "deepdrill":
+			return new TileEntityDeepDrill();
 		default:
 			return null;
 		}
@@ -226,12 +232,12 @@ public class FacTileHelper {
 	{
 		if (itemstack == null) return null;
 		if (inv == null) return itemstack;
-		Logger.info(inv.getSlots());
+//		Logger.info(inv.getSlots());
 		for (int i=0; i<inv.getSlots(); i++)
 		{
-			Logger.info(i);
+//			Logger.info(i);
 			itemstack = inv.insertItem(i, itemstack, false);
-			Logger.info(itemstack);
+//			Logger.info(itemstack);
 		}
 		return itemstack;
 	}

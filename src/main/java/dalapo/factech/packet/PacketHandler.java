@@ -33,7 +33,7 @@ public class PacketHandler {
 		registerMessage(MagnetPacket.Handler.class, MagnetPacket.class, Side.CLIENT);
 		registerMessage(StabilizerPacket.Handler.class, StabilizerPacket.class, Side.CLIENT);
 		registerMessage(CircuitScribePacket.Handler.class, CircuitScribePacket.class, Side.SERVER);
-		registerMessage(WrenchPacket.Handler.class, WrenchPacket.class, Side.SERVER);
+//		registerMessage(WrenchPacket.Handler.class, WrenchPacket.class, Side.SERVER);
 		registerMessage(PlayerChatPacket.Handler.class, PlayerChatPacket.class, Side.CLIENT);
 		// Register all packets here
 		// registerMessage(PacketClass.Handler.class, PacketClass.class, Side.<SERVER, CLIENT>);

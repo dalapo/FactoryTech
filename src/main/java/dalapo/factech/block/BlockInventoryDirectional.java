@@ -79,16 +79,4 @@ public class BlockInventoryDirectional extends BlockDirectional implements ITile
 	{
 		return FacTileHelper.getTileFromID(tile);
 	}
-	
-	@Override
-	public void onWrenched(boolean isSneaking, World world, BlockPos pos, EnumFacing side)
-	{
-		super.onWrenched(isSneaking, world, pos, side);
-		/*
-		if (canBeRotated)
-		{
-			super.onWrenched(isSneaking, world, pos, side);
-		}
-		*/
-	}
 }

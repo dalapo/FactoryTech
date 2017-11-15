@@ -42,7 +42,7 @@ public class TileEntityAutoCrafter extends TileEntityMachine {
 			if (!getStackInSlot(i).getItem().equals(ItemRegistry.craftStopper)) matrix.setInventorySlotContents(i, getStackInSlot(i));
 			else matrix.setInventorySlotContents(i, ItemStack.EMPTY);
 		}
-		if (CraftingManager.findMatchingRecipe(matrix, world) != null) Logger.info(CraftingManager.findMatchingRecipe(matrix, world).getRegistryName());
+//		if (CraftingManager.findMatchingRecipe(matrix, world) != null) Logger.info(CraftingManager.findMatchingRecipe(matrix, world).getRegistryName());
 		result = CraftingManager.findMatchingResult(matrix, world);
 		/*
 		for (IRecipe recipe : CraftingManager.getRecipeList())
@@ -159,7 +159,7 @@ public class TileEntityAutoCrafter extends TileEntityMachine {
 	
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
-		Logger.info(String.format("canInsertItem, item = %s, slot = %s, direction = %s", itemStackIn, index, direction));
+//		Logger.info(String.format("canInsertItem, item = %s, slot = %s, direction = %s", itemStackIn, index, direction));
 		if (direction.equals(EnumFacing.DOWN)) return (index == 9 || index == 10) && itemStackIn.getItem() instanceof ItemMachinePart;
 		else return (index < 9);
 	}

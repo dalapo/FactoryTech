@@ -40,9 +40,16 @@ $title Bulk Stack Mover
 $recipe automation/bulkmover
 A further upgrade to the Filtered Stack Mover. Instead of moving one stack of items in its filter, it will attempt to move everything in its filter at once.
 $end
+$title Mounted Drill
+The Mounted Drill is a device that breaks the block directly in front of it. In pulse mode it does this upon receiving a Redstone signal, while in continuous mode it does this once per second unless receiving a Redstone signal. Shift-right-click it with a Monkey Wrench to switch modes.
+$end
 $title Item Redistributor
 $recipe automation/itemredis
 The Item Redistributor redirects items dropped into its top to one of its sides, according to a ratio specified by its GUI. You can also select whether to treat a stack as a single entity, or to split it.
+$end
+$title Stationary Drill
+Essentially a drill head mounted on a small piston, this machine will break the block directly in front of it. In Pulse mode it will do this whenever it gets a Redstone pulse, while in Continuous mode it will automatically break 1 block per second.
+Shift-right-click it with a Monkey Wrench to switch modes.
 $end
 $title Sequential Placer
 $recipe automation/sequenceplacer
