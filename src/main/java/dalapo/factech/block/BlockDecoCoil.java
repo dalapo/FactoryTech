@@ -12,18 +12,19 @@ import net.minecraft.world.World;
 
 public class BlockDecoCoil extends BlockTENoDir implements Linkable
 {
-	public BlockDecoCoil(Material materialIn, String name) {
+	public BlockDecoCoil(Material materialIn, String name)
+	{
 		super(materialIn, name);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void onLinked(World world, EntityPlayer ep, BlockPos origin, BlockPos thisPos, ItemStack linker)
+	public void onLinked(World world, EntityPlayer ep, BlockPos thisPos, BlockPos otherPos, ItemStack linker)
 	{
-		TileEntity te = world.getTileEntity(origin);
-		if (te instanceof TileEntityDecoCoil)
+		TileEntity thisTE = world.getTileEntity(thisPos);
+		TileEntity otherTE = world.getTileEntity(otherPos);
+		if (thisTE instanceof TileEntityDecoCoil && otherTE instanceof TileEntityDecoCoil)
 		{
-			((TileEntityDecoCoil)te).setNeighbour(thisPos);
+			TileEntityDecoCoil.link((TileEntityDecoCoil)thisTE, (TileEntityDecoCoil)otherTE);
 			if (world.isRemote) FacChatHelper.sendChatToPlayer(ep, "Linked!");
 		}
 	}

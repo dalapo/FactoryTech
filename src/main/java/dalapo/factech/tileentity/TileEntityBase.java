@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public abstract class TileEntityBase extends TileEntity {
 //	public abstract void sendInfoPacket(EntityPlayer ep);
-	protected boolean isPowered()
+	public boolean isPowered()
 	{
 		return world.isBlockIndirectlyGettingPowered(pos) > 0;
 	}

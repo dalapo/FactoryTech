@@ -1,5 +1,7 @@
 package dalapo.factech.item;
 
+import javax.annotation.Nullable;
+
 import dalapo.factech.auxiliary.Linkable;
 import dalapo.factech.auxiliary.Wrenchable;
 import dalapo.factech.helper.Logger;
@@ -14,6 +16,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemWrench extends ItemBase {
+	
+	public static final String LINK_TAG = "link_pos"; // NBT tag for linked block
 
 	public ItemWrench(String name) {
 		super(name);
@@ -24,6 +28,7 @@ public class ItemWrench extends ItemBase {
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand)
 	{
 		ItemStack is = player.getHeldItem(hand);
+		
 		if (world.getBlockState(pos).getBlock() instanceof Wrenchable)
 		{
 			((Wrenchable)world.getBlockState(pos).getBlock()).onWrenched(player, player.isSneaking(), world, pos, side);
@@ -32,18 +37,59 @@ public class ItemWrench extends ItemBase {
 		
 		if (world.getBlockState(pos).getBlock() instanceof Linkable)
 		{
-			if (!is.hasTagCompound())
+			if (!hasLink(is))
 			{
-				NBTTagCompound nbt = new NBTTagCompound();
-				nbt.setLong("pos", pos.toLong());
-				is.setTagCompound(nbt);
+				setLink(is, pos);
 			}
 			else
 			{
-				((Linkable)world.getBlockState(pos).getBlock()).onLinked(world, player, BlockPos.fromLong(is.getTagCompound().getLong("pos")), pos, is);
-				is.setTagCompound(null);
+				((Linkable)world.getBlockState(pos).getBlock()).onLinked(world, player, pos, getLink(is), is);
+				clearLink(is);
 			}
+			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
 	}
+	
+	/**
+	 * Returns true if the given ItemStack has an NBT tag with key LINK_TAG.
+	 */
+	public boolean hasLink(ItemStack wrench)
+	{
+		return wrench.hasTagCompound() && wrench.getTagCompound().hasKey(LINK_TAG);
+	}
+	
+	/**
+	 * Returns the BlockPos of the linked block, or null if no block is linked.
+	 */
+	@Nullable
+	public BlockPos getLink(ItemStack wrench)
+	{
+		return hasLink(wrench) ? BlockPos.fromLong(wrench.getTagCompound().getLong(LINK_TAG)) : null;
+	}
+
+	/**
+	 * Sets LINK_TAG of the given ItemStack's NBT tag to the given BlockPos.
+	 */
+	public void setLink(ItemStack wrench, BlockPos link)
+	{
+		NBTTagCompound tag;
+		if (!wrench.hasTagCompound())
+		{
+			wrench.setTagCompound(new NBTTagCompound());
+		}
+		wrench.getTagCompound().setLong(LINK_TAG, link.toLong());
+	}
+	
+	/**
+	 * Removes LINK_TAG from the given ItemStack's NBT tag, if it exists.
+	 */
+	public void clearLink(ItemStack wrench)
+	{
+		if (hasLink(wrench))
+		{
+			wrench.getTagCompound().removeTag(LINK_TAG);
+		}
+	}
+	
 }

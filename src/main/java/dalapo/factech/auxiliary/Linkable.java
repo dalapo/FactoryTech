@@ -7,5 +7,5 @@ import net.minecraft.world.World;
 
 public interface Linkable
 {
-	public void onLinked(World world, EntityPlayer ep, BlockPos origin, BlockPos thisPos, ItemStack linker);
+	public void onLinked(World world, EntityPlayer ep, BlockPos thisPos, BlockPos otherPos, ItemStack linker);
 }
