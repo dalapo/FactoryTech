@@ -8,6 +8,17 @@ import java.util.Set;
 
 import dalapo.factech.tileentity.specialized.TileEntityDecoCoil;
 
+/**
+ * A Graph with vertices being TileEntityDecoCoil (TEDC) objects. Edges are defined by an adjacency list,
+ * i.e. each vertex is mapped to a set of other vertices that it is adjacent to.
+ * Additionally, when an edge is created, the pair of vertices used to create the edge are mapped
+ * to a DecoCoilLink, which is a client-side rendering of a link between two TEDC objects.
+ * 
+ * Neighbours of a TEDC can be iterated over using getNeighbours(TEDC).
+ * DecoCoilLink objects originating at a TEDC can be iterated over using getOutgoingLinks(TEDC).
+ * The entire connected component (i.e. all neighbours of neighbours, recursive) of a TEDC can be
+ * iterated over using getConnectedComponent(TEDC).
+ */
 public class DecoCoilLinkGraph
 {
 	// Some nifty code simulating "friend" code to allow exclusive access to function in TileEntityDecoCoil - found here:
@@ -161,6 +172,12 @@ public class DecoCoilLinkGraph
 		return links;
 	}
 	
+	/**
+	 * Gets all TileEntityDecoCoil objects in the connected component of the given TileEntityDecoCoil.
+	 * 
+	 * @param source The TileEntityDecoCoil to get the connected components of.
+	 * @return An Iterable containing each vertex in the connected component originating at the source, including the source.
+	 */
     public Iterable<TileEntityDecoCoil> getConnectedComponents(TileEntityDecoCoil source)
     {
     	Set<TileEntityDecoCoil> checked = new HashSet<TileEntityDecoCoil>();

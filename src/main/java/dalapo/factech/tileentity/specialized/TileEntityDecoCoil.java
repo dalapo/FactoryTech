@@ -43,9 +43,9 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 	// we use this to allow linking upon game load.
 	// This is because first, the TE loads with world == null - so we can't immediately check
 	// to see if there's another loaded DecoCoil at the linked positions. Consequently, we link
-	// to our connections on the first call to update(). 
+	// to our connections on the first call to update().
 	private List<BlockPos> nbtConnections;
-	private boolean connected;
+	private boolean connected = false;
 	
 	private double[][] positions = new double[3][3];
 	private double[][] velocities = new double[3][3];
@@ -81,11 +81,11 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 		BufferBuilder buffer = v5.getBuffer();
 		if (!this.isPoweredThroughConnections())
 		{
-			for (DecoCoilLink other : links.getOutgoingLinks(this))
+			for (DecoCoilLink link : links.getOutgoingLinks(this))
 			{
 				buffer.begin(GL11.GL_LINE_STRIP, DefaultVertexFormats.POSITION_COLOR);
-				other.update(world);
-				other.draw(world, buffer, partialTicks);
+				link.update(world);
+				link.draw(world, buffer, partialTicks);
 				v5.draw();
 			}
 		}
@@ -106,7 +106,8 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 	@Override
 	public void update()
 	{
-		// link to other DecoCoils on first call to update() after reading from NBT.
+		// link to other TileEntityDecoCoils on first call to update() after reading from NBT.
+		// For some reason, putting this in onLoad() doesn't work. That could be indicative of poor coding, or just MC quirks..
 		if (!connected && world != null && nbtConnections != null)
 		{
 			for (BlockPos blockPos : nbtConnections)
@@ -118,7 +119,8 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 			}
 			connected = true;
 		}
-		// disable things if any connected coil is powered.
+		
+		// Disable visuals & hurting things if any connected coil is powered.
 		if (!this.isPoweredThroughConnections())
 		{
 			Vec3d centerVec = new Vec3d(this.getPos()).add(HALFBLOCK);
@@ -198,10 +200,10 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 		return INFINITE_EXTENT_AABB;
 	}
 	
+	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		System.out.println("writing tag...");
 		if (links != null)
 		{
 			NBTTagList tagList = new NBTTagList();
@@ -211,10 +213,10 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 			}
 			nbt.setTag(NEIGHBOURS_NBTKEY, tagList);
 		}
-		System.out.println("wrote tag: " + nbt.toString());
 		return nbt;
 	}
 	
+	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
@@ -227,5 +229,6 @@ public class TileEntityDecoCoil extends TileEntityBase implements ITickable {
 				nbtConnections.add(BlockPos.fromLong(((NBTTagLong)neighbourTagList.get(i)).getLong()));
 			}
 		}
+		connected = false;
 	}
 }

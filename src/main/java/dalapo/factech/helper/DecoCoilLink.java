@@ -5,7 +5,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * A visual link between two TileEntityDecoCoils.
+ */
+@SideOnly(Side.CLIENT)
 public class DecoCoilLink {
 
 	private Vec3d start;
@@ -51,7 +57,6 @@ public class DecoCoilLink {
 	public void draw(World world, BufferBuilder buffer, double partialTicks)
 	{
 		buffer.pos(0, 0.1, 0).color(0.5F, 0.5F, 1.0F, 1.0F).endVertex();
-		
 		
 		for (int i=0; i<3; i++)
 		{
