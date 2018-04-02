@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
 
+import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.packet.PacketFactory;
@@ -35,9 +36,7 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 	public void getHasWork()
 	{
 		@Nonnull ItemStack is = getOutput(getInput(0));
-		if (!is.isEmpty() &&
-				(FacStackHelper.matchStacksWithWildcard(is, getOutput()) || getOutput().isEmpty()) &&
-				is.getCount() + getOutput().getCount() <= 64) hasWork = true;
+		if (!is.isEmpty() && FacStackHelper.canCombineStacks(is, getOutput())) hasWork = true;
 		else hasWork = false;
 //		Logger.info(String.format("hasWork: %s", hasWork));
 	}
