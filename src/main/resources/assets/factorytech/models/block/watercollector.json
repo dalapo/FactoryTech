@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "factorytech:blocks/watercollector",
+		"up": "factorytech:blocks/smokevent",
+		"down": "factorytech:blocks/watercollector",
+		"east": "factorytech:blocks/watercollector",
+		"west": "factorytech:blocks/watercollector",
+		"north": "factorytech:blocks/watercollector",
+		"south": "factorytech:blocks/watercollector"
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:metal",
+		"data": 2,
+		"count": 4
+	},
+	"pattern": [
+	"mm ",
+	"mm "
+	],
+	"key": {
+		"m": {
+			"item": "factorytech:metal",
+			"data": 0
+		}
+	}
+}

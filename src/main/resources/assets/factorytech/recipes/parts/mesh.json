@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:machinepart",
+		"data": 33
+	},
+	"pattern": [
+	"# #",
+	" # ",
+	"# #"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:stick"
+		}
+	}
+}

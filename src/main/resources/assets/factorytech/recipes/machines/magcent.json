@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:magcent"
+	},
+	"pattern": [
+		"   ",
+		" c ",
+		"mbm"
+	],
+	"key": {
+		"c": {
+		   "item": "factorytech:centrifuge"
+	    },
+	    "m": {
+	       "item": "#magnet"
+	    },
+	    "b": {
+	       "item": "#circ4"
+	    }
+	}
+}

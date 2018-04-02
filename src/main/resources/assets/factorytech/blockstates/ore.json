@@ -1,0 +1,16 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "factorytech:ore_copper"
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": [{}],
+		"copper": { "model": "factorytech:ore_copper"},
+		"nickel": { "model": "factorytech:ore_nickel"},
+		"oretype": {
+			"copper": { "model": "factorytech:ore_copper"},
+			"nickel": { "model": "factorytech:ore_nickel"}
+		}
+	}
+}

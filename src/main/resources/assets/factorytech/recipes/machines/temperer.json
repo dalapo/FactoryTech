@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:temperer"
+    },
+    "pattern": [
+        "ncn",
+        "q b",
+        "iii"
+    ],
+    "key": {
+        "n": {
+            "item": "#cupronickel_ingot"
+        },
+        "c": {
+            "item": "#circ1"
+        },
+        "q": {
+            "item": "minecraft:quartz_block",
+            "data": 0
+        },
+        "b": {
+            "item": "#battery"
+        },
+        "i": {
+            "item": "#invar_ingot"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:machinepart",
+		"data": 3
+	},
+	"pattern": [
+	" # ",
+	"#X#",
+	" # "
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:iron_ingot"
+		},
+		"X": {
+		    "item": "minecraft:stone",
+		    "data": 0
+		}
+	}
+}

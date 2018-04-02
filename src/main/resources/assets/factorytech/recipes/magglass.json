@@ -1,0 +1,18 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:fluidreader"
+    },
+    "pattern": [
+        "g  ",
+        " s "
+    ],
+    "key": {
+        "g": {
+            "item": "#lens"
+        },
+        "s": {
+            "item": "minecraft:stick"
+        }
+    }
+}

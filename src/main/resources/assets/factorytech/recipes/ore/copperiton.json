@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"result": {
+		"item": "factorytech:ore_dust",
+		"data": 4,
+		"count": 9
+	},
+	"ingredients": [
+		{
+			"item": "#copper_ingot"
+		}
+	]
+}

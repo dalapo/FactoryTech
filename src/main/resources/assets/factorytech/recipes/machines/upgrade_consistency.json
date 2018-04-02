@@ -1,0 +1,24 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:upgrade",
+        "data": 3
+    },
+    "pattern": [
+        "pgp",
+        "gqg",
+        "pgp"
+    ],
+    "key": {
+        "p": {
+            "item": "#planks"
+        },
+        "g": {
+            "item": "factorytech:ore_dust",
+            "data": 12
+        },
+        "q": {
+            "item": "#circ1"
+        }
+    }
+}

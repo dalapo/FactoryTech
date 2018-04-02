@@ -1,0 +1,30 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:potionmixer"
+	},
+	"pattern": [
+	"pip",
+	"bcb",
+	"www"
+	],
+	"key": {
+	"p": {
+		"item": "factorytech:pipe"
+	},
+	"i": {
+		"item": "#piston"
+	},
+	"b": {
+		"item": "minecraft:glass_bottle"
+	},
+	"c": {
+		"item": "minecraft:cauldron"
+	},
+	"w": {
+		"item": "minecraft:wooden_slab",
+		"data": 0
+	}
+	}
+}
+	

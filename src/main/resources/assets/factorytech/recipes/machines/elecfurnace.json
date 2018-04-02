@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:htfurnace"
+	},
+	"pattern": [
+		"nnn",
+		"nfn",
+		"whw"
+	],
+	"key": {
+		"n": {
+			"item": "#nickel_ingot"
+		},
+		"f": {
+			"item": "minecraft:furnace"
+		},
+		"w": {
+			"item": "#wire"
+		},
+		"h": {
+			"item": "#heat_elem"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+    "type": "forge:ore_shapeless",
+    "result": {
+        "item": "factorytech:ore_dust",
+        "count": 2,
+        "data": 13
+    },
+    "ingredients": [
+        {
+            "item": "#copper_dust"
+        },
+        {
+            "item": "minecraft:redstone"
+        }
+    ]
+}

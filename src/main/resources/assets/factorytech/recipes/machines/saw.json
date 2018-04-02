@@ -1,0 +1,32 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:saw"
+	},
+	"pattern": [
+	"wws",
+	"ig ",
+	"rmr"
+	],
+	"key": {
+	"w": {
+		"item": "#planks"
+	},
+	"i": {
+		"item": "minecraft:iron_ingot"
+	},
+	"g": {
+		"item": "#gear"
+	},
+	"r": {
+		"item": "minecraft:stone",
+		"data": 0
+	},
+	"s": {
+		"item": "#saw"
+	},
+	"m": {
+	   "item": "#basic_motor"
+	}
+	}
+}

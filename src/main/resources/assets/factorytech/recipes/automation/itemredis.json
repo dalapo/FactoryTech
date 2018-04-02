@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:itemredis"
+	},
+	"pattern": [
+		"whw",
+		"qpq",
+		"wqw"
+	],
+	"key": {
+		"w": {
+			"item": "#planks"
+		},
+		"h": {
+			"item": "minecraft:hopper"
+		},
+		"p": {
+			"item": "#piston"
+		},
+		"q": {
+		    "item": "minecraft:quartz"
+		}
+	}
+}

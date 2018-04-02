@@ -1,0 +1,15 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:pipe",
+		"count": 8
+	},
+	"pattern": [
+		"ccc"
+	],
+	"key": {
+		"c": {
+			"item": "#copper_ingot"
+		}
+	}
+}

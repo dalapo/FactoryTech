@@ -1,0 +1,26 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:circuitscribe"
+	},
+	"pattern": [
+		"hb ",
+		"sss",
+		" i "
+	],
+	"key": {
+		"h": {
+			"item": "#heat_elem"
+		},
+		"b": {
+			"item": "#blade"
+		},
+		"s": {
+			"item": "minecraft:wooden_slab",
+			"data": 0
+		},
+		"i": {
+			"item": "#invar_block"
+		}
+	}
+}

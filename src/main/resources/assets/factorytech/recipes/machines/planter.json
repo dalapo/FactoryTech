@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:planter"
+    },
+    "pattern": [
+        "wgw",
+        "wpw",
+        "sss"
+    ],
+    "key": {
+        "w": {
+            "item": "#planks"
+        },
+        "g": {
+            "item": "#mesh"
+        },
+        "p": {
+            "item": "#circ2"
+        },
+        "s": {
+            "item": "#stone"
+        }
+    }
+}

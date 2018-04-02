@@ -1,0 +1,31 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:disassembler"
+	},
+	"pattern": [
+	"ncn",
+	"nsn",
+	"bdg"
+	],
+	"key": {
+		"n": {
+			"item": "#nickel_ingot"
+		},
+		"c": {
+			"item": "#circ3"
+		},
+		"s": {
+			"item": "#saw"
+		},
+		"b": {
+			"item": "#battery"
+		},
+		"d": {
+			"item": "minecraft:diamond"
+		},
+		"g": {
+			"item": "#gear"
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:woodcutter"
+    },
+    "pattern": [
+        "sss",
+        "blw",
+        "imi"
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stone_slab",
+            "data": 0
+        },
+        "b": {
+            "item": "minecraft:stone",
+            "data": 0
+        },
+        "l": {
+            "item": "#log"
+        },
+        "w": {
+            "item": "#saw"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "m": {
+            "item": "#motor"
+        }
+    }
+}

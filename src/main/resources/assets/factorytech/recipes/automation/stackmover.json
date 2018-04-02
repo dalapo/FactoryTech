@@ -1,0 +1,23 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:stackmover",
+		"count": 2
+	},
+	"pattern": [
+		"www",
+		"h d",
+		"www"
+	],
+	"key": {
+		"w": {
+			"item": "#planks"
+		},
+		"h": {
+			"item": "minecraft:hopper"
+		},
+		"d": {
+			"item": "minecraft:dropper"
+		}
+	}
+}

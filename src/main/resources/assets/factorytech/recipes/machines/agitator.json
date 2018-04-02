@@ -1,0 +1,28 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:agitator"
+    },
+    "pattern": [
+        "ptp",
+        "tmt",
+        "non"
+    ],
+    "key": {
+        "p": {
+            "item": "factorytech:pipe"
+        },
+        "t": {
+            "item": "factorytech:tankblock"
+        },
+        "m": {
+            "item": "#mixer"
+        },
+        "n": {
+            "item": "#nickel_ingot"
+        },
+        "o": {
+            "item": "#motor"
+        }
+    }
+}

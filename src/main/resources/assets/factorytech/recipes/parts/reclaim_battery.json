@@ -1,0 +1,19 @@
+{
+	"type": "forge:ore_shapeless",
+	"result": {
+		"item": "factorytech:intermediate",
+		"data": 2
+	},
+	"ingredients": [
+		{
+			"item": "factorytech:salvage",
+			"data": 7
+		},
+		{
+		  "item": "minecraft:gold_nugget"
+		},
+		{
+		  "item": "#copper_nugget"
+		}
+	]
+}

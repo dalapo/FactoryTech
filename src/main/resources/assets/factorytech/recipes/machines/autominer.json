@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:autominer"
+	},
+	"pattern": [
+		"scs",
+		"sms",
+		"sds"
+	],
+	"key": {
+		"s": {
+			"item": "#stone"
+		},
+		"c": {
+			"item": "#circ1"
+		},
+		"m": {
+			"item": "#motor"
+		},
+		"d": {
+			"item": "#drill"
+		}
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:centrifuge"
+	},
+	"pattern": [
+		"isi",
+		"mg ",
+		"www"
+	],
+	"key": {
+		"i": {
+			"item": "minecraft:iron_ingot"
+		},
+		"s": {
+			"item": "#shaft"
+		},
+		"m": {
+			"item": "#motor"
+		},
+		"g": {
+			"item": "#gear"
+		},
+		"w": {
+			"item": "#planks"
+		}
+	}
+}

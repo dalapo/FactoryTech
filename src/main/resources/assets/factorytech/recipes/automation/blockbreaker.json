@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:blockbreaker"
+    },
+    "pattern": [
+        "scc",
+        " dr",
+        "scc"
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stick"
+        },
+        "c": {
+            "item": "minecraft:cobblestone"
+        },
+        "d": {
+            "item": "#drill"
+        },
+        "r": {
+            "item": "minecraft:redstone"
+        }
+    }
+}

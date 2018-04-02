@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:handpump"
+    },
+    "pattern": [
+        " p ",
+        "ibi",
+        "ioi"
+    ],
+    "key": {
+        "p": {
+            "item": "#piston"
+        },
+        "i": {
+            "item": "#invar_ingot"
+        },
+        "o": {
+            "item": "factorytech:pipe"
+        },
+        "b": {
+            "item": "minecraft:bucket"
+        }
+    }
+}

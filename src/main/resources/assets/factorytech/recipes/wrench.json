@@ -1,0 +1,19 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:wrench"
+	},
+	"pattern": [
+	"iw ",
+	"iw ",
+	" w "
+	],
+	"key": {
+		"i": {
+			"item": "minecraft:iron_ingot"
+		},
+		"w": {
+			"item": "#planks"
+		}
+	}
+}

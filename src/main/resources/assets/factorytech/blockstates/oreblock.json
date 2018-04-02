@@ -1,0 +1,20 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "factorytech:block_copper"
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": [{}],
+		"copper": { "model": "factorytech:oreblock_copper"},
+		"nickel": { "model": "factorytech:oreblock_nickel"},
+		"cupronickel": { "model": "factorytech:oreblock_cupronickel"},
+		"invar": { "model": "factorytech:oreblock_invar"},
+		"oreblocktype": {
+			"copper": { "model": "factorytech:oreblock_copper"},
+			"nickel": { "model": "factorytech:oreblock_nickel"},
+			"cupronickel": { "model": "factorytech:oreblock_cupronickel"},
+			"invar": { "model": "factorytech:oreblock_invar"}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:oreblock",
+		"data": 3
+	},
+	"pattern": [
+		"###",
+		"###",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "#invar_ingot"
+		}
+	}
+}

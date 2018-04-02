@@ -1,0 +1,19 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:tankblock"
+    },
+    "pattern": [
+        "ipi",
+        "i i",
+        "ipi"
+    ],
+    "key": {
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "p": {
+            "item": "factorytech:pipe"
+        }
+    }
+}

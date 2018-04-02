@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:bulkmover"
+	},
+	"pattern": [
+		"eee",
+		"cfc",
+		"eee"
+	],
+	"key": {
+		"e": {
+			"item": "#invar_ingot"
+		},
+		"c": {
+			"item": "minecraft:soul_sand"
+		},
+		"f": {
+			"item": "factorytech:filtermover"
+		}
+	}
+}

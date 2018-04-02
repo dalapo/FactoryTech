@@ -1,0 +1,24 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "factorytech:metal_diamond"
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": [{}],
+		"diamond": { "model": "factorytech:metal_diamond"},
+		"rivet": { "model": "factorytech:metal_rivet"},
+		"smooth": { "model": "factorytech:metal_smooth"},
+		"rust": { "model": "factorytech:metal_rust"},
+		"siding": {"model": "factorytech:metal_siding"},
+		"caution": {"model": "factorytech:metal_caution"},
+		"metaltype": {
+			"diamond": {"model": "factorytech:metal_diamond"},
+			"rivet": {"model": "factorytech:metal_rivet"},
+			"smooth": {"model": "factorytech:metal_smooth"},
+			"rust": {"model": "factorytech:metal_rust"},
+			"siding": {"model": "factorytech:metal_siding"},
+			"caution": {"model": "factorytech:metal_caution"}
+		}
+	}
+}

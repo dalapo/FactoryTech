@@ -1,0 +1,19 @@
+{
+	"type": "forge:ore_shapeless",
+	"result": {
+		"item": "factorytech:ore_dust",
+		"count": 3,
+		"data": 11
+	},
+	"ingredients": [
+		{
+			"item": "#iron_dust"
+		},
+		{
+			"item": "#iron_dust"
+		},
+		{
+			"item": "#nickel_dust"
+		}
+	]
+}

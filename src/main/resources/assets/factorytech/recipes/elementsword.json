@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:elementsword"
+	},
+	"pattern": [
+	" e ",
+	" c ",
+	" s "
+	],
+	"key": {
+		"e": {
+			"item": "#heat_elem"
+		},
+		"c": {
+			"item": "#circ1"
+		},
+		"s": {
+		    "item": "#shaft"
+		}
+	}
+}

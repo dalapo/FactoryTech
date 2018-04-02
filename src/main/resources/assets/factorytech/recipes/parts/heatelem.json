@@ -1,0 +1,20 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:machinepart",
+		"data": 17
+	},
+	"pattern": [
+		" c ",
+		"c c",
+		"r r"
+	],
+	"key": {
+		"c": {
+			"item": "#cupronickel_ingot"
+		},
+		"r": {
+			"item": "minecraft:redstone"
+		}
+	}
+}

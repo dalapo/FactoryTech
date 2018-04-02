@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shapeless",
+	"result": {
+		"item": "minecraft:redstone"
+	},
+	"ingredients": [
+		{
+			"item": "factorytech:salvage",
+			"data": 10
+		}
+	]
+}

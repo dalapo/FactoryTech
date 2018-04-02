@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:deepdrill"
+    },
+    "pattern": [
+       "vvv",
+       "bcb",
+       "ydv"
+    ],
+    "key": {
+        "v": {
+            "item": "#invar_ingot"
+        },
+        "b": {
+            "item": "#circ2"
+        },
+        "c": {
+            "item": "#core"
+        },
+        "y": {
+            "item": "#battery"
+        },
+        "d": {
+            "item": "factorytech:machinepart",
+            "data": 16
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:buffercrate"
+    },
+    "pattern": [
+        " i ",
+        "ici",
+        " i "
+    ],
+    "key": {
+        "i": {
+            "item": "minecraft:iron_bars"
+        },
+        "c": {
+            "item": "factorytech:crate"
+        }
+    }
+}

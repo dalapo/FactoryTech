@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:interceptor"
+    },
+    "pattern": [   
+        "oqo",
+        " c ",
+        "oqo"
+    ],
+    "key": {
+        "o": {
+            "item": "minecraft:obsidian"
+        },
+        "q": {
+            "item": "minecraft:quartz_block",
+            "data": 0
+        },
+        "c": {
+            "item": "#circ1"
+        }
+    }
+}

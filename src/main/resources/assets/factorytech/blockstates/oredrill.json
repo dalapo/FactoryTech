@@ -1,0 +1,24 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"custom": { "flip-v": true},
+		"model": "factorytech:oredrill.obj",
+		"textures": {
+			"#None": "factorytech:blocks/model_tex_sheet"
+		}
+	},
+	"variants": {
+		"facing": {
+			"north": {},
+			"south": {},
+			"west": {},
+			"east": {},
+			"up": {},
+			"down": {}
+		},
+		"inventory": [{
+			"transform": "forge:default-block"
+		}],
+		"normal": [{}]
+	}
+}

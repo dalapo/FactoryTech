@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    "result": {
+        "item": "factorytech:compressor"
+    },
+    "pattern": [
+        " t ",
+        "ipi",
+        "wsw"
+    ],
+    "key": {
+        "t": {
+            "item": "factorytech:tank",
+            "data": 0
+        },
+        "i": {
+            "item": "#nickel_ingot"
+        },
+        "p": {
+            "item": "factorytech:pipe"
+        },
+        "w": {
+            "item": "#planks"
+        },
+        "s": {
+            "item": "factorytech:tankblock"
+        }
+    }
+}

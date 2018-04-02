@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"result": {
+		"item": "factorytech:intermediate",
+		"data": 1
+	},
+	"ingredients": [
+		{
+			"item": "factorytech:salvage",
+			"data": 9
+		}
+	]
+}

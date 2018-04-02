@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:itempusher",
+		"count": 2
+	},
+	"pattern": [
+		"gpq"
+	],
+	"key": {
+		"g": {
+			"item": "minecraft:glowstone_dust"
+		},
+		"p": {
+			"item": "minecraft:piston"
+		},
+		"q": {
+			"item": "minecraft:quartz"
+		}
+	}
+}

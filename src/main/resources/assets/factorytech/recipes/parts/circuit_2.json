@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:circuit_intermediate",
+		"data": 6
+	},
+	"pattern": [
+		"c",
+		"b"
+	],
+	"key": {
+		"c": {
+			"item": "factorytech:ore_dust",
+            "data": 13
+		},
+		"b": {
+			"item": "factorytech:circuit_intermediate",
+			"data": 2
+		}
+	}
+}

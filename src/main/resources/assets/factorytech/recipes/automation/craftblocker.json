@@ -1,0 +1,20 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:craftstopper",
+		"count": 8
+	},
+	"pattern": [
+		"scs",
+		"csc",
+		"scs"
+	],
+	"key": {
+		"c": {
+			"item": "minecraft:cobblestone"
+		},
+		"s": {
+			"item": "minecraft:redstone"
+		}
+	}
+}

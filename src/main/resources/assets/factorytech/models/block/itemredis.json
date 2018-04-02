@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "factorytech:blocks/itemredis_u",
+		"down": "factorytech:blocks/itemredis_d",
+		"up": "factorytech:blocks/itemredis_u",
+		"east": "factorytech:blocks/itemredis_e",
+		"west": "factorytech:blocks/itemredis_w",
+		"north": "factorytech:blocks/itemredis_n",
+		"south": "factorytech:blocks/itemredis_s"
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:fluidpuller"
+	},
+	"pattern": [
+		"  n",
+		"pin",
+		"  n"
+	],
+	"key": {
+		"n": {
+			"item": "#nickel_ingot"
+		},
+		"p": {
+			"item": "factorytech:pipe"
+		},
+		"i": {
+			"item": "minecraft:piston"
+		}
+	}
+}

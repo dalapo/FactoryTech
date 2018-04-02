@@ -1,0 +1,28 @@
+{
+	"type": "forge:ore_shaped",
+	"result": {
+		"item": "factorytech:metalcutter"
+	},
+	"pattern": [
+		"ibi",
+		"nmn",
+		"s s"
+	],
+	"key": {
+		"i": {
+			"item": "minecraft:iron_ingot"
+		},
+		"b": {
+			"item": "#blade"
+		},
+		"n": {
+			"item": "#nickel_ingot"
+		},
+		"s": {
+			"item": "#stone"
+		},
+		"m": {
+		    "item": "#basic_motor"
+		}
+	}
+}
