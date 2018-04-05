@@ -65,7 +65,7 @@ public class TileEntityWoodcutter extends TileEntityMachine
 		BlockPos toCut = FacMathHelper.withOffset(pos, getFront());
 		if (world.getBlockState(toCut).getBlock().isWood(world, toCut))
 		{
-			cutAndProgress(toCut, (BlockLog)world.getBlockState(toCut).getBlock(), 0);
+			cutAndProgress(toCut, world.getBlockState(toCut).getBlock(), 0);
 			return true;
 		}
 		return false;
