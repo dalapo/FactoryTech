@@ -17,6 +17,12 @@ public class ItemHandbook extends ItemBase
 	}
 	
 	@Override
+	protected void actuallyAddInformation(ItemStack is, World world, List<String> list, ITooltipFlag flags)
+	{
+		list.add("Or \"Mod Handbook\", if you prefer");
+	}
+	
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer ep, EnumHand hand)
 	{
 		if (hand == EnumHand.MAIN_HAND)
