@@ -2,6 +2,7 @@ package dalapo.factech.block;
 
 import dalapo.factech.FactoryTech;
 import dalapo.factech.auxiliary.Wrenchable;
+import dalapo.factech.helper.FacBlockHelper;
 import dalapo.factech.helper.FacTileHelper;
 import dalapo.factech.init.ItemRegistry;
 import net.minecraft.block.ITileEntityProvider;
@@ -57,6 +58,7 @@ public class BlockInventoryDirectional extends BlockDirectional implements ITile
 	{
 		if (gui == -1 || ep.isSneaking() || ep.getHeldItemMainhand().getItem() == ItemRegistry.magnifyingGlass) return false;
 		
+//		FacBlockHelper.updateBlock(world, pos);
 		ep.openGui(FactoryTech.instance, gui, world, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}

@@ -9,11 +9,13 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
 import dalapo.factech.plugins.jei.wrappers.FridgeRecipeWrapper;
+import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
 import dalapo.factech.plugins.jei.wrappers.FridgeRecipeWrapper;
 
 import net.minecraft.client.Minecraft;
@@ -57,9 +59,9 @@ public class FridgeRecipeCategory extends BaseRecipeCategory<FridgeRecipeWrapper
 	public static List<FridgeRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<FridgeRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<FluidStack, ItemStack> entry : MachineRecipes.REFRIGERATOR.entrySet())
+		for (MachineRecipe<FluidStack, ItemStack> entry : MachineRecipes.REFRIGERATOR)
 		{
-			recipes.add(new FridgeRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new FridgeRecipeWrapper(guiHelper, entry.input(), entry.output()));
 		}
 		return recipes;
 	}

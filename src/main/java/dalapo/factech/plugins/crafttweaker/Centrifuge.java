@@ -17,6 +17,7 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacCraftTweakerHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
@@ -30,9 +31,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class Centrifuge
 {
 	@ZenMethod
-	public static void addRecipe(IIngredient input, IItemStack output1, @Optional IItemStack output2, @Optional IItemStack output3)
+	public static void addRecipe(IIngredient input, IItemStack output1, @Optional IItemStack output2, @Optional IItemStack output3, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), FacCraftTweakerHelper.toStacks(output1, output2, output3)));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), FacCraftTweakerHelper.toStacks(output1, output2, output3), worksWithBad));
 	}
 	
 	@ZenMethod
@@ -45,8 +46,9 @@ public class Centrifuge
 	{
 		private ItemStack in;
 		private ItemStack[] out;
+		private boolean worksWithBad;
 		
-		public Add(ItemStack in, ItemStack[] out)
+		public Add(ItemStack in, ItemStack[] out, boolean worksWithBad)
 		{
 			this.in = in;
 			this.out = out;
@@ -54,7 +56,7 @@ public class Centrifuge
 		
 		@Override
 		public void apply() {
-			if (out.length <= 3) MachineRecipes.CENTRIFUGE.put(in, out);
+			if (out.length <= 3) MachineRecipes.CENTRIFUGE.add(new MachineRecipe<>(in, out, worksWithBad));
 		}
 
 		@Override
@@ -75,13 +77,13 @@ public class Centrifuge
 		@Override
 		public void apply()
 		{
-			for (Entry<ItemStack, ItemStack[]> entry : MachineRecipes.CENTRIFUGE.entrySet())
+			for (MachineRecipe<ItemStack, ItemStack[]> entry : MachineRecipes.CENTRIFUGE)
 			{
 				boolean flag = true;
 				try {
-					for (int i=0; i<entry.getValue().length; i++)
+					for (int i=0; i<entry.output().length; i++)
 					{
-						if (!entry.getValue()[i].isItemEqual(output[i])) flag = false;
+						if (!entry.output()[i].isItemEqual(output[i])) flag = false;
 					}
 				}
 				catch (ArrayIndexOutOfBoundsException e)
@@ -90,14 +92,14 @@ public class Centrifuge
 				}
 				if (flag)
 				{
-					MachineRecipes.CENTRIFUGE.remove(entry.getKey());
+					MachineRecipes.CENTRIFUGE.remove(entry);
 				}
 			}
 		}
 
 		@Override
 		public String describe() {
-			return "Removing Chop Saw recipe for " + output;
+			return "Removing Centrifuge recipe for " + output;
 		}
 		
 	}

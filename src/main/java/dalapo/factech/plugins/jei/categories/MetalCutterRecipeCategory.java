@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
@@ -46,9 +47,9 @@ public class MetalCutterRecipeCategory extends BaseRecipeCategory<StandardRecipe
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.METALCUTTER.entrySet())
+		for (MachineRecipe<ItemStack, ItemStack> entry : MachineRecipes.METALCUTTER)
 		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new StandardRecipeWrapper(guiHelper, entry.worksWithBad(), entry.input(), entry.output()));
 		}
 		return recipes;
 	}
@@ -68,7 +69,7 @@ public class MetalCutterRecipeCategory extends BaseRecipeCategory<StandardRecipe
 	@Override
 	public void drawExtras(Minecraft minecraft) {
 //		background.draw(minecraft);
-		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.ordinal()), 52, 28);
+		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, PartList.BLADE.getFloor()+1), 52, 28);
 	}
 
 	@Override

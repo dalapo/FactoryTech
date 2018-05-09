@@ -31,7 +31,7 @@ import dalapo.factech.tileentity.specialized.TileEntityDisassembler;
 @Mod(modid=NameList.MODID, name=NameList.MODNAME, version=NameList.VERSION, useMetadata=true)
 public class FactoryTech {
 	public static final boolean DEBUG_PACKETS = false;
-	public static final boolean DEBUG_GENERAL = false;
+	public static final boolean DEBUG_GENERAL = true;
 	public static final boolean DEBUG_MEMORY = false;
 	
 	public static final Random random = new Random();

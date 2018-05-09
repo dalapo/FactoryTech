@@ -9,6 +9,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fluids.FluidStack;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityFluidMachine;
 
@@ -29,15 +30,15 @@ public class TileEntityRefrigerator extends TileEntityFluidMachine {
 	
 	private ItemStack getRecipeOutput()
 	{
-		Set<Entry<FluidStack, ItemStack>> entries = MachineRecipes.REFRIGERATOR.entrySet();
-		for (Entry<FluidStack, ItemStack> e : entries)
+		for (MachineRecipe<FluidStack, ItemStack> e : MachineRecipes.REFRIGERATOR)
 		{
-			FluidStack in = e.getKey();
+			if (hasBadParts() && !e.worksWithBad()) continue;
+			FluidStack in = e.input();
 			if (tanks[0].getFluid() != null && tanks[0].getFluid().getFluid().equals(in.getFluid()) &&
 					tanks[0].getFluidAmount() >= in.amount)
 			{
 				amountToDrain = in.amount;
-				return e.getValue().copy();
+				return e.output().copy();
 			}
 		}
 		return ItemStack.EMPTY;

@@ -1,3 +1,9 @@
+$title Stone Parts
+$recipe parts/gear_stone
+$recipe parts/drill_stone
+Simple mechanical parts can be fashioned from stone instead of metal. However, given the primitive age of the material, stone parts last for only a few operations in machines; furthermore, any machine using them will have its speed halved.
+Furthermore, machines using stone parts will also be unable to do some recipes. They are good for starting out, but not advised for long-term use.
+$end
 $title Basic Motor
 $recipe parts/basic_motor
 These low-power motors are used in entry-level machines. They are not put under enough stress to break, but they simply don't have enough oomph to do anything advanced.
@@ -6,8 +12,7 @@ $title Saw Blade
 The Saw Blade is used in machines such as the Chop Saw that make big, imprecise cuts. It dulls overtime and must be replaced, but some used ones can be re-sharpened on the Grindstone. It itself is made by putting a Gear on a Grindstone.
 $end
 $title Basic Gear
-$recipe parts/gear
-Gears are used to change the ratio of torque to speed in rotational systems (apparently a dragon once wrote a great deal about the subject). They can be made either in a Crafting grid, using four iron ingots per gear; or on a Metal Cutter, which only requires one.
+Gears are used to change the ratio of torque to speed in rotational systems (apparently a dragon once wrote a great deal about the subject). They are made by machining an Iron Ingot on a Metal Cutter.
 $end
 $title Standard Wire
 Copper wires are used to transmit electrical energy in machines such as the Electroplater and Electric Furnace. They burn out, but used ones can be smelted down into a few Copper nuggets.
@@ -68,6 +73,7 @@ $recipe parts/intpiston
 These pistons, which have been adapted for use in machinery, are used in many machines that deal with manufacturing or otherwise back-and-forth motion. They wear out from repeated use, but the Redstone inside them can usually be reclaimed.
 $end
 $title Energy Core
+$recipe core_assembly
 This piece of cutting-edge technology comes straight from the Mad Professor himself. It radiates raw energy and was designed to allow this energy to be tapped in many different ways. Automating the production of these is no small feat, but many machines will ravenously gobble up their power. The method of producing them is detailed on the next page.
 $page
 The first step to manufacturing an Energy Core is to drill a hole in a block of Obsidian using the Drill Grinder. Next, it must be outfitted with two Pattern 2 Circuit Boards and lined with lapis lazuli to aid in energy balance. Finally, as the actual energy storage medium, it must be filled with Energite in the Compression Chamber.

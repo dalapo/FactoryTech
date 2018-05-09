@@ -2,7 +2,7 @@
 	"type": "forge:ore_shaped",
 	"result": {
 		"item": "factorytech:machinepart",
-		"data": 12
+		"data": 60
 	},
 	"pattern": [
 		" n ",

@@ -19,6 +19,7 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Pair;
 
@@ -30,9 +31,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class Crucible
 {
 	@ZenMethod
-	public static void addRecipe(ILiquidStack output, IIngredient input)
+	public static void addRecipe(ILiquidStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (FluidStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (FluidStack)output.getInternal(), false));
 	}
 	
 	@ZenMethod
@@ -41,26 +42,20 @@ public class Crucible
 		CraftTweakerAPI.apply(new Remove((FluidStack)output.getInternal()));
 	}
 	
-	private static class Add implements IAction
+	private static class Add extends MasterAdd<ItemStack, FluidStack>
 	{
 		private ItemStack in;
 		private FluidStack out;
 		
-		public Add(ItemStack in, FluidStack out)
+		public Add(ItemStack in, FluidStack out, boolean worksWithBad)
 		{
-			this.in = in;
-			this.out = out;
-		}
-		
-		@Override
-		public void apply() {
-			MachineRecipes.CRUCIBLE.put(in, out);
+			super(in, out, worksWithBad, MachineRecipes.CRUCIBLE);
 		}
 
 		@Override
-		public String describe() {
-			// TODO Auto-generated method stub
-			return "Adding Chop Saw recipe for " + in + " -> " + out;
+		public String describe()
+		{
+			return "Adding Crucible recipe for " + in + " -> " + out;
 		}
 	}
 	
@@ -75,11 +70,11 @@ public class Crucible
 		@Override
 		public void apply()
 		{
-			for (Entry<ItemStack, FluidStack> entry : MachineRecipes.CRUCIBLE.entrySet())
+			for (int i=MachineRecipes.CRUCIBLE.size()-1; i>=0; i--)
 			{
-				if (FacStackHelper.areFluidStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areFluidStacksIdentical(MachineRecipes.CRUCIBLE.get(i).output(), output))
 				{
-					MachineRecipes.CRUCIBLE.remove(entry.getKey());
+					MachineRecipes.CRUCIBLE.remove(i);
 				}
 			}
 		}

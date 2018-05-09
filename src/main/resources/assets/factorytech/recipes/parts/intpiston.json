@@ -2,11 +2,11 @@
     "type": "forge:ore_shaped",
     "result": {
         "item": "factorytech:machinepart",
-        "data": 31
+        "data": 160
     },
     "pattern": [
         " s ",
-        " i ",
+        "ihi",
         "iri"
     ],
     "key": {
@@ -15,10 +15,13 @@
             "data": 0
         },
         "i": {
-            "item": "minecraft:iron_nugget"
+            "item": "#copper_nugget"
         },
         "r": {
             "item": "minecraft:redstone"
+        },
+        "h": {
+            "item": "#shaft"
         }
     }
 }

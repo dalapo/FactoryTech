@@ -1,5 +1,6 @@
 package dalapo.factech.block;
 
+import java.util.List;
 import java.util.Random;
 
 import dalapo.factech.auxiliary.EnumBrickType;
@@ -13,6 +14,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,6 +37,14 @@ public class BlockSmokestack extends BlockBase implements IBlockSubtypes {
 		setHardness(4F);
 		setResistance(4F);
 		setHarvestLevel("pickaxe", 0);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void actuallyAddInformation(ItemStack is, World world, List<String> list, ITooltipFlag flags)
+	{
+		list.add("Emits puffs of smoke.");
+		list.add("Good for decoration.");
 	}
 	
 	@SideOnly(Side.CLIENT)

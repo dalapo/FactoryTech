@@ -28,9 +28,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class DrillGrinder
 {
 	@ZenMethod
-	public static void addRecipe(IItemStack output, IIngredient input)
+	public static void addRecipe(IItemStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal(), worksWithBad));
 	}
 	
 	@ZenMethod
@@ -39,20 +39,14 @@ public class DrillGrinder
 		CraftTweakerAPI.apply(new Remove((ItemStack)output.getInternal()));
 	}
 	
-	private static class Add implements IAction
+	private static class Add extends MasterAdd<ItemStack, ItemStack>
 	{
 		private ItemStack in;
 		private ItemStack out;
 		
-		public Add(ItemStack in, ItemStack out)
+		public Add(ItemStack in, ItemStack out, boolean worksWithBad)
 		{
-			this.in = in;
-			this.out = out;
-		}
-		
-		@Override
-		public void apply() {
-			MachineRecipes.OREDRILL.put(in, out);
+			super(in, out, worksWithBad, MachineRecipes.OREDRILL);
 		}
 
 		@Override
@@ -73,11 +67,11 @@ public class DrillGrinder
 		@Override
 		public void apply()
 		{
-			for (Entry<ItemStack, ItemStack> entry : MachineRecipes.OREDRILL.entrySet())
+			for (int i=MachineRecipes.OREDRILL.size()-1; i>=0; i--)
 			{
-				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areItemStacksIdentical(MachineRecipes.OREDRILL.get(i).output(), output))
 				{
-					MachineRecipes.OREDRILL.remove(entry.getKey());
+					MachineRecipes.OREDRILL.remove(i);
 				}
 			}
 		}

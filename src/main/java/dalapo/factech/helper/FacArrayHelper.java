@@ -1,5 +1,9 @@
 package dalapo.factech.helper;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class FacArrayHelper {
 	private FacArrayHelper() {}
 	
@@ -46,5 +50,15 @@ public class FacArrayHelper {
 		{
 			Logger.info(i);
 		}
+	}
+	
+	public static <T> T[] removeNulls(T[] o)
+	{
+		List<T> arr = new ArrayList<T>();
+		for (T t : o)
+		{
+			if (t != null) arr.add(t);
+		}
+		return (T[])arr.toArray();
 	}
 }

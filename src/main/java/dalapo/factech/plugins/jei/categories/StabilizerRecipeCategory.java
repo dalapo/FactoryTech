@@ -56,7 +56,7 @@ public class StabilizerRecipeCategory extends BaseRecipeCategory<StandardRecipeW
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		recipes.add(new StandardRecipeWrapper(guiHelper, new ItemStack(ItemRegistry.coreUnfinished, 1, 20), new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.getFloor())));
+		recipes.add(new StandardRecipeWrapper(guiHelper, true, new ItemStack(ItemRegistry.coreUnfinished, 1, 20), new ItemStack(ItemRegistry.machinePart, 1, PartList.CORE.getFloor())));
 		return recipes;
 	}
 	

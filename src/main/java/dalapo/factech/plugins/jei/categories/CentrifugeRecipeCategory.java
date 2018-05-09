@@ -14,6 +14,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
 import dalapo.factech.plugins.jei.wrappers.CentrifugeRecipeWrapper;
 import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
@@ -44,9 +45,9 @@ public class CentrifugeRecipeCategory extends BaseRecipeCategory<CentrifugeRecip
 	public static List<CentrifugeRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<CentrifugeRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack[]> entry : MachineRecipes.CENTRIFUGE.entrySet())
+		for (MachineRecipe<ItemStack, ItemStack[]> entry : MachineRecipes.CENTRIFUGE)
 		{
-			recipes.add(new CentrifugeRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new CentrifugeRecipeWrapper(guiHelper, entry.worksWithBad(), entry.input(), entry.output()));
 		}
 		return recipes;
 	}

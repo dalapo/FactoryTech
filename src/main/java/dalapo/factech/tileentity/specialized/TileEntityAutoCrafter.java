@@ -161,8 +161,9 @@ public class TileEntityAutoCrafter extends TileEntityMachine {
 	}
 	
 	@Override
-	public int getOpTime() {
-		return 40;
+	public int getOpTime()
+	{
+		return 30;
 	}
 	
 	@Override

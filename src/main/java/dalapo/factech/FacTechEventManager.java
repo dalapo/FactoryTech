@@ -1,7 +1,11 @@
 package dalapo.factech;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
@@ -10,9 +14,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidEvent;
@@ -20,8 +27,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.auxiliary.PotionLockdown;
+import dalapo.factech.block.BlockBase;
 import dalapo.factech.block.IBlockSubtypes;
 import dalapo.factech.entity.EntityHoverScooter;
 import dalapo.factech.entity.EntityPressureGunShot;
@@ -69,7 +79,7 @@ public class FacTechEventManager {
 	public void registerItems(RegistryEvent.Register<Item> event)
 	{
 		ItemRegistry.init();
-		for (Block b : BlockRegistry.blocks)
+		for (BlockBase b : BlockRegistry.blocks)
 		{
 			if (b instanceof IBlockSubtypes)
 			{
@@ -123,6 +133,15 @@ public class FacTechEventManager {
 	}
 	
 	@SubscribeEvent
+	public void noShootingForYou(LivingEntityUseItemEvent.Start e)
+	{
+		if (!(e.getEntityLiving() instanceof EntityPlayer) && e.getEntityLiving().getActivePotionEffect(PotionLockdown.INSTANCE) != null && e.getItem().getItem() == Items.BOW)
+		{
+			e.setCanceled(true);
+		}
+	}
+	
+	@SubscribeEvent
 	public void syncTankFill(FluidEvent e)
 	{
 		TileEntity te = e.getWorld().getTileEntity(e.getPos());
@@ -135,6 +154,17 @@ public class FacTechEventManager {
 			{
 				((TileEntityMachine)te).getHasWork();
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void updateLanguage(GuiScreenEvent.ActionPerformedEvent e)
+	{
+		if (e.getGui() instanceof GuiLanguage)
+		{
+			((ClientProxy)FactoryTech.proxy).language = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode();
+			((ClientProxy)FactoryTech.proxy).initHandbookPages();
 		}
 	}
 }

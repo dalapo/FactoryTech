@@ -28,29 +28,10 @@ import net.minecraftforge.items.IItemHandler;
 
 public class TileEntityItemPusher extends TileEntityBasicInventory implements ITickable {
 
+	private boolean ignoreDamage;
+	
 	public TileEntityItemPusher() {
 		super("Pulse Piston", 9);
-	}
-	
-	@Override
-	public NBTTagCompound getUpdateTag()
-	{
-		NBTTagCompound nbt = super.getUpdateTag();
-		return writeToNBT(nbt);
-	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket()
-	{
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return new SPacketUpdateTileEntity(getPos(), 1, nbt);
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet)
-	{
-		this.readFromNBT(packet.getNbtCompound());
 	}
 
 	private boolean isFilterEmpty()
@@ -66,7 +47,11 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 	{
 		for (int i=0; i<9; i++)
 		{
-			if (getStackInSlot(i).isItemEqual(is)) return true;
+			if (ignoreDamage)
+			{
+				if (getStackInSlot(i).isItemEqualIgnoreDurability(is)) return true;
+			}
+			else if (getStackInSlot(i).isItemEqual(is)) return true;
 		}
 		return isFilterEmpty();
 	}
@@ -117,20 +102,40 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 	}
 
 	@Override
-	public int getField(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt)
+	{
+		super.writeToNBT(nbt);
+		nbt.setBoolean("ignoreDamage", ignoreDamage);
+		return nbt;
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound nbt)
+	{
+		super.readFromNBT(nbt);
+		ignoreDamage = nbt.getBoolean("ignoreDamage");
+	}
+	
+	@Override
+	public int getField(int id)
+	{
+		if (id == 0) return ignoreDamage ? 1 : 0;
+		else return 0;
 	}
 
 	@Override
-	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
-		
+	public void setField(int id, int value)
+	{
+		switch (id)
+		{
+		case 0:
+			ignoreDamage = (value != 0);
+		}
 	}
 
 	@Override
-	public int getFieldCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getFieldCount()
+	{
+		return 1;
 	}
 }

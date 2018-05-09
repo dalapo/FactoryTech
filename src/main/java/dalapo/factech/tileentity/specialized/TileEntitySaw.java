@@ -1,9 +1,11 @@
 package dalapo.factech.tileentity.specialized;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.config.FacTechConfigManager;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
@@ -23,7 +25,7 @@ public class TileEntitySaw extends TileEntityBasicProcessor {
 		setDisplayName("Chop Saw");
 	}
 
-	protected Map<ItemStack, ItemStack> getRecipeList()
+	protected List<MachineRecipe<ItemStack, ItemStack>> getRecipeList()
 	{
 		return MachineRecipes.SAW;
 	}

@@ -1,6 +1,12 @@
 package dalapo.factech.item;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import dalapo.factech.config.FacTechConfigManager;
+import dalapo.factech.helper.FacArrayHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.init.TabRegistry;
 import dalapo.factech.reference.NameList;
@@ -12,6 +18,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,11 +38,19 @@ public class ItemMachinePart extends ItemBase {
     {
 		if (tab == TabRegistry.FACTECH)
 		{
-	        for (int i = 0; i < PartList.getTotalVariants(); ++i)
-	        {
+			PartList[] partTypes = PartList.values();
+			for (int i=0; i<partTypes.length; i++)
+			{
+				for (int j=0; j<partTypes[i].getNumVariants(); j++)
+				{
+					subItems.add(new ItemStack(this, 1, (i*10 + j)));
+				}
+			}
+//	        for (int i = 0; i < PartList.getTotalVariants(); ++i)
+//	        {
 //	        	if (i == PartList.NOT_A_PART.ordinal()) continue; // I hope this doesn't break anything
-	            subItems.add(new ItemStack(this, 1, i));
-	        }
+//	            subItems.add(new ItemStack(this, 1, i));
+//	        }
 		}
     }
 	
@@ -45,6 +60,11 @@ public class ItemMachinePart extends ItemBase {
 		int acc = 0;
 		int floor = 0;
 		String partName = "null";
+		try {
+			partName = PartList.values()[stack.getItemDamage() / 10].getName();
+		}
+		catch (ArrayIndexOutOfBoundsException e) {}
+		/*
 		for (int i=0; i<PartList.values().length; i++)
 		{
 			acc += PartList.values()[i].getNumVariants();
@@ -55,7 +75,8 @@ public class ItemMachinePart extends ItemBase {
 				break;
 			}
 		}
-		return NameList.MODID + "." + name + ":" + partName + "-" + (stack.getItemDamage() - floor);
+		*/
+		return NameList.MODID + "." + name + ":" + partName + "-" + (stack.getItemDamage() % 10);
 	}
 	
 	@Override
@@ -63,7 +84,15 @@ public class ItemMachinePart extends ItemBase {
 	public void initModel()
 	{
 		PartList[] parts = PartList.values();
-		final ModelResourceLocation[] locations = new ModelResourceLocation[PartList.getTotalVariants()];
+		final ModelResourceLocation[] lookup = new ModelResourceLocation[parts.length * 10];
+		for (int i=0; i<parts.length; i++)
+		{
+			for (int j=0; j<parts[i].getNumVariants(); j++)
+			{
+				lookup[i*10 + j] = new ModelResourceLocation(NameList.MODID + ":" + parts[i].getName() + "-" + j, "inventory");
+			}
+		}
+		/*
 		for (int i=0, running=0; i<parts.length; i++)
 		{
 			for (int variant=0; variant<parts[i].getNumVariants(); variant++, running++)
@@ -71,12 +100,24 @@ public class ItemMachinePart extends ItemBase {
 				locations[running] = new ModelResourceLocation(NameList.MODID + ":" + parts[i].getName() + "-" + variant, "inventory");
 			}
 		}
+		*/
 		
-		ModelBakery.registerItemVariants(this, locations);
+		List<ModelResourceLocation> list = new ArrayList<>();
+		for (ModelResourceLocation mrl : lookup)
+		{
+			if (mrl != null) list.add(mrl);
+		}
+		ModelResourceLocation[] withoutNulls = new ModelResourceLocation[list.size()];
+		for (int i=0; i<list.size(); i++)
+		{
+			withoutNulls[i] = list.get(i);
+		}
+		// Causes crash
+		ModelBakery.registerItemVariants(this, withoutNulls);
 		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return locations[stack.getItemDamage()];
+				return lookup[stack.getItemDamage()];
 			}
 		});
 	}

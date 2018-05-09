@@ -59,6 +59,7 @@ public class GuiHandbookPage extends GuiHandbookBase
 	public void initGui()
 	{
 		super.initGui();
+//		Logger.info(String.format("%s, %s", title, page, parent.getParent()));
 		buttonList.add(new GuiButton(0, guiLeft + 24, guiTop + 136, 20, 20, "X"));
 		buttonList.add(new GuiButton(1, guiLeft + 4, guiTop + 136, 20, 20, "<"));
 		buttonList.add(new GuiButton(2, guiLeft + 44, guiTop + 136, 20, 20, ">"));
@@ -68,12 +69,20 @@ public class GuiHandbookPage extends GuiHandbookBase
 	}
 	
 	@Override
+	public void onGuiClosed()
+	{
+		parent.onGuiClosed();
+	}
+	
+	@Override
 	public void actionPerformed(GuiButton b)
 	{
+//		Logger.info(String.format("%s, %s", title, page));
 		if (b.id == 0) mc.displayGuiScreen(parent);
 		else if (b.id == 1 && page != 0) page--;
 		else if (b.id == 2 && page < lastPage) page++;
 		
+		parent.getParent().setPage(page);
 		background = FactoryTech.random.nextInt(4);
 		buttonList.get(1).enabled = page != 0;
 		buttonList.get(2).enabled = page != lastPage;

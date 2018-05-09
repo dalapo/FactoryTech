@@ -236,5 +236,4 @@ public abstract class TileEntityBasicInventory extends TileEntityBase implements
 		else setField(id, 0);
 		if (!world.isRemote && FactoryTech.DEBUG_GENERAL) Logger.info(String.format("Toggling field %s; new value %s", id, getField(id)));
 	}
-	
 }

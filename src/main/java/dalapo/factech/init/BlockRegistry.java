@@ -116,73 +116,65 @@ public class BlockRegistry {
 		Logger.info("Entered BlockRegistry.init");
 		
 		// Automation
-		blocks.add(stackmover = new BlockInventoryDirectional(Material.WOOD, "stackmover", "stackmover", false, -1));
-		blocks.add(filtermover = new BlockInventoryDirectional(Material.IRON, "filtermover", "filtermover", false, 12));
-		blocks.add(bulkmover = new BlockInventoryDirectional(Material.IRON, "bulkmover", "bulkmover", false, 1));
-		blocks.add(autopuller = new BlockInventoryDirectional(Material.IRON, "autopuller", "autopuller", false).enableRotating());
-		blocks.add(itemPusher = new BlockInventoryDirectional(Material.IRON, "itempusher", "itempusher", true) {
-			@Override
-			public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer ep, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
-			{
-				super.onBlockActivated(world, pos, state, ep, hand, side, hitX, hitY, hitZ);
-				ep.openGui(FactoryTech.instance, 1, world, pos.getX(), pos.getY(), pos.getZ());
-				return true;
-			}
-		});
-		blocks.add(sequenceplacer = new BlockInventoryDirectional(Material.WOOD, "sequenceplacer", "sequenceplacer", false, 9));
+		blocks.add(stackmover = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.WOOD, "stackmover", "stackmover", false, -1).setHasInformation());
+		blocks.add(filtermover = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "filtermover", "filtermover", false, 12).setHasInformation());
+		blocks.add(bulkmover = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "bulkmover", "bulkmover", false, 1).setHasInformation());
+		blocks.add(autopuller = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "autopuller", "autopuller", false).enableRotating().setHasInformation());
+		blocks.add(itemPusher = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "itempusher", "itempusher", true, 13).setHasInformation());
+		blocks.add(sequenceplacer = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.WOOD, "sequenceplacer", "sequenceplacer", false, 9).setHasInformation());
 //		blocks.add(exactComparator = new BlockComparatorExact(Material.CIRCUITS, "comparatorEx"));
-		blocks.add(watercollector = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "watercollector"));
-		blocks.add(crate = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "crate", 7).setHardness(2F));
-		blocks.add(conveyor = (BlockConveyor) new BlockConveyor(Material.IRON, "conveyor", true).setHardness(1F));
-		blocks.add(buffercrate = (BlockTENoDir)new BlockTENoDir(Material.IRON, "buffercrate", 7).setHardness(2.5F));
-		blocks.add(elevator = new BlockElevator(Material.IRON, "elevator", true));
-		blocks.add(bottomHatch = new BlockBottomHatch(Material.WOOD, "bottomhatch", true));
-		blocks.add(hatch = (BlockHatch) new BlockHatch(Material.IRON, "hatch").setHardness(2F));
-		blocks.add(redNotifier = (BlockRSNotifier)new BlockRSNotifier(Material.WOOD, "rednotifier").setHardness(2F));
-		blocks.add(blockbreaker = (BlockBlockBreaker)new BlockBlockBreaker(Material.ROCK, "blockbreaker", "blockbreaker", false).setHardness(2F));
-		blocks.add(invSensor = (BlockInventorySensor)new BlockInventorySensor(Material.IRON, "inventorysensor", "inventorysensor", false, 11).setHardness(2F));
-		blocks.add(interceptor = (BlockTENoDir)new BlockTENoDir(Material.IRON, "interceptor", 1).setHardness(2F));
+		blocks.add(watercollector = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "watercollector").setHasInformation().setHardness(2F));
+		blocks.add(crate = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "crate", 7).setHasInformation().setHardness(2F));
+		blocks.add(conveyor = (BlockConveyor) new BlockConveyor(Material.IRON, "conveyor", true).setHasInformation().setHardness(1F));
+		blocks.add(buffercrate = (BlockTENoDir)new BlockTENoDir(Material.IRON, "buffercrate", 7).setHasInformation().setHardness(2.5F));
+		blocks.add(elevator = (BlockElevator) new BlockElevator(Material.IRON, "elevator", true).setHasInformation());
+		blocks.add(bottomHatch = (BlockBottomHatch) new BlockBottomHatch(Material.WOOD, "bottomhatch", true).setHasInformation());
+		blocks.add(hatch = (BlockHatch) new BlockHatch(Material.IRON, "hatch").setHasInformation().setHardness(2F));
+		blocks.add(redNotifier = (BlockRSNotifier)new BlockRSNotifier(Material.WOOD, "rednotifier").setHasInformation().setHardness(2F));
+		blocks.add(blockbreaker = (BlockBlockBreaker)new BlockBlockBreaker(Material.ROCK, "blockbreaker", "blockbreaker", false).setHasInformation().setHardness(2F));
+		blocks.add(invSensor = (BlockInventorySensor)new BlockInventorySensor(Material.IRON, "inventorysensor", "inventorysensor", false, 11).setHasInformation().setHardness(2F));
+		blocks.add(interceptor = (BlockTENoDir)new BlockTENoDir(Material.IRON, "interceptor", 1).setHasInformation().setHardness(2F));
 //		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
 		
 		// Machines
-		blocks.add(oredrill = new BlockMachine(Material.IRON, "oredrill", "oredrill", 0));
-		blocks.add(metalCutter = new BlockMachine(Material.IRON, "metalcutter", "metalcutter", 0));
-		blocks.add(autocrafter = new BlockMachine(Material.IRON, "autocrafter", "autocrafter", 2));
-		blocks.add(circuitscribe = (BlockMachine)new BlockMachine(Material.IRON, "circuitscribe", "circuitscribe", 0));
-		blocks.add(saw = new BlockMachine(Material.ROCK, "saw", "saw", 0));
+		blocks.add(oredrill = (BlockMachine) new BlockMachine(Material.IRON, "oredrill", "oredrill", 0).setHasInformation());
+		blocks.add(metalCutter = (BlockMachine) new BlockMachine(Material.IRON, "metalcutter", "metalcutter", 0).setHasInformation());
+		blocks.add(autocrafter = (BlockMachine) new BlockMachine(Material.IRON, "autocrafter", "autocrafter", 2).setHasInformation());
+		blocks.add(circuitscribe = (BlockMachine)new BlockMachine(Material.IRON, "circuitscribe", "circuitscribe", 0).setHasInformation());
+		blocks.add(saw = (BlockMachine) new BlockMachine(Material.ROCK, "saw", "saw", 0).setHasInformation());
 		blocks.add(pipe = new BlockPipe(Material.IRON, "pipe"));
-		blocks.add(itemRedis = new BlockItemRedis(Material.ROCK, "itemredis"));
-		blocks.add(tank = new BlockTank(Material.IRON, "tankblock"));
-		blocks.add(crucible = new BlockMachine(Material.IRON, "crucible", "crucible", 0));
-		blocks.add(compressionChamber = new BlockMachine(Material.IRON, "compressor", "compressor", 0));
+		blocks.add(itemRedis = (BlockTENoDir) new BlockItemRedis(Material.ROCK, "itemredis").setHasInformation());
+		blocks.add(tank = (BlockTENoDir) new BlockTank(Material.IRON, "tankblock").setHasInformation());
+		blocks.add(crucible = (BlockMachine) new BlockMachine(Material.IRON, "crucible", "crucible", 0).setHasInformation());
+		blocks.add(compressionChamber = (BlockMachine) new BlockMachine(Material.IRON, "compressor", "compressor", 0).setHasInformation());
 //		blocks.add(fluidDebug = new BlockFluidGiver(Material.ROCK, "fluiddebug"));
-		blocks.add(fluidPuller = new BlockInventoryDirectional(Material.IRON, "fluidpuller", "fluidpuller", false).enableRotating());
-		blocks.add(grindstone = new BlockMachine(Material.IRON, "grindstone", "grindstone", 0));
-		blocks.add(centrifuge = new BlockMachine(Material.IRON, "centrifuge", "centrifuge", 0));
-		blocks.add(magCentrifuge = new BlockMachine(Material.IRON, "magcent", "magcent", 0));
-		blocks.add(fluiddrill = new BlockMachine(Material.IRON, "fluiddrill", "fluiddrill", 0));
-		blocks.add(agitator = new BlockMachine(Material.IRON, "agitator", "agitator", 0));
-		blocks.add(refrigerator = new BlockMachine(Material.IRON, "fridge", "fridge", 0));
-		blocks.add(sluice = new BlockMachine(Material.WOOD, "sluice", "sluice", 0));
-		blocks.add(autominer = new BlockMachine(Material.IRON, "autominer", "miner", 0));
-		blocks.add(woodcutter = new BlockMachine(Material.ROCK, "woodcutter", "woodcutter", 0));
-		blocks.add(ionDisperser = new BlockMachine(Material.IRON, "iondisperser", "iondisperser", 0));
-		blocks.add(teslaCoil = new BlockMachine(Material.IRON, "teslacoil", "teslacoil", 0));
-		blocks.add(electroplater = new BlockMachine(Material.IRON, "electroplater", "electroplater", 0));
-		blocks.add(charger = new BlockMachine(Material.IRON, "charger", "charger", 0));
-		blocks.add(temperer = new BlockMachine(Material.IRON, "temperer", "temperer", 0));
-		blocks.add(stabilizer = new BlockMachine(Material.IRON, "stabilizer", "stabilizer", 0));
-		blocks.add(magnetizer = new BlockMachine(Material.IRON, "magnetizer", "magnetizer", 0));
-		blocks.add(energizer = new BlockTENoDir(Material.IRON, "energizer", 8));
-		blocks.add(magnet = new BlockTENoDir(Material.IRON, "magnetblock"));
-		blocks.add(spawner = new BlockMachine(Material.ROCK, "spawner", "spawner", 0));
-		blocks.add(disassembler = new BlockMachine(Material.IRON, "disassembler", "disassembler", 0, false));
-		blocks.add(potionmixer = new BlockMachine(Material.ROCK, "potionmixer", "potionmixer"));
-		blocks.add(htfurnace = new BlockMachine(Material.IRON, "htfurnace", "htfurnace"));
-		blocks.add(propfurnace = new BlockMachine(Material.IRON, "propfurnace", "propfurnace"));
-		blocks.add(disruptor = new BlockMachine(Material.IRON, "disruptor", "disruptor"));
-		blocks.add(deepdrill = new BlockMachine(Material.IRON, "deepdrill", "deepdrill"));
-		blocks.add(planter = new BlockMachine(Material.WOOD, "planter", "planter"));
+		blocks.add(fluidPuller = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "fluidpuller", "fluidpuller", false).enableRotating().setHasInformation());
+		blocks.add(grindstone = (BlockMachine) new BlockMachine(Material.IRON, "grindstone", "grindstone", 0).setHasInformation());
+		blocks.add(centrifuge = (BlockMachine) new BlockMachine(Material.IRON, "centrifuge", "centrifuge", 0).setHasInformation());
+		blocks.add(magCentrifuge = (BlockMachine) new BlockMachine(Material.IRON, "magcent", "magcent", 0).setHasInformation());
+		blocks.add(fluiddrill = (BlockMachine) new BlockMachine(Material.IRON, "fluiddrill", "fluiddrill", 0).setHasInformation());
+		blocks.add(agitator = (BlockMachine) new BlockMachine(Material.IRON, "agitator", "agitator", 0).setHasInformation());
+		blocks.add(refrigerator = (BlockMachine) new BlockMachine(Material.IRON, "fridge", "fridge", 0).setHasInformation());
+		blocks.add(sluice = (BlockMachine) new BlockMachine(Material.WOOD, "sluice", "sluice", 0).setHasInformation());
+		blocks.add(autominer = (BlockMachine) new BlockMachine(Material.IRON, "autominer", "miner", 0).setHasInformation());
+		blocks.add(woodcutter = (BlockMachine) new BlockMachine(Material.ROCK, "woodcutter", "woodcutter", 0).setHasInformation());
+		blocks.add(ionDisperser = (BlockMachine) new BlockMachine(Material.IRON, "iondisperser", "iondisperser", 0).setHasInformation());
+		blocks.add(teslaCoil = (BlockMachine) new BlockMachine(Material.IRON, "teslacoil", "teslacoil", 0).setHasInformation());
+		blocks.add(electroplater = (BlockMachine) new BlockMachine(Material.IRON, "electroplater", "electroplater", 0).setHasInformation());
+		blocks.add(charger = (BlockMachine) new BlockMachine(Material.IRON, "charger", "charger", 0).setHasInformation());
+		blocks.add(temperer = (BlockMachine) new BlockMachine(Material.IRON, "temperer", "temperer", 0).setHasInformation());
+		blocks.add(stabilizer = (BlockMachine) new BlockMachine(Material.IRON, "stabilizer", "stabilizer", 0).setHasInformation());
+		blocks.add(magnetizer = (BlockMachine) new BlockMachine(Material.IRON, "magnetizer", "magnetizer", 0).setHasInformation());
+		blocks.add(energizer = (BlockTENoDir) new BlockTENoDir(Material.IRON, "energizer", 8).setHasInformation());
+		blocks.add(magnet = (BlockTENoDir) new BlockTENoDir(Material.IRON, "magnetblock").setHasInformation());
+		blocks.add(spawner = (BlockMachine) new BlockMachine(Material.ROCK, "spawner", "spawner", 0).setHasInformation());
+		blocks.add(disassembler = (BlockMachine) new BlockMachine(Material.IRON, "disassembler", "disassembler", 0, false).setHasInformation());
+		blocks.add(potionmixer = (BlockMachine) new BlockMachine(Material.ROCK, "potionmixer", "potionmixer").setHasInformation());
+		blocks.add(htfurnace = (BlockMachine) new BlockMachine(Material.IRON, "htfurnace", "htfurnace").setHasInformation());
+		blocks.add(propfurnace = (BlockMachine) new BlockMachine(Material.IRON, "propfurnace", "propfurnace").setHasInformation());
+		blocks.add(disruptor = (BlockMachine) new BlockMachine(Material.IRON, "disruptor", "disruptor").setHasInformation());
+		blocks.add(deepdrill = (BlockMachine) new BlockMachine(Material.IRON, "deepdrill", "deepdrill").setHasInformation());
+		blocks.add(planter = (BlockMachine) new BlockMachine(Material.WOOD, "planter", "planter").setHasInformation());
 //		blocks.add(aerolyzer = new BlockMachine(Material.IRON, "aerolyzer", "aerolyzer"));
 		
 		// Deco & Resources
@@ -209,5 +201,17 @@ public class BlockRegistry {
 	public static void initInvModels()
 	{
 		pipe.initInvModel();
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void initTooltips()
+	{
+		for (BlockBase b : blocks)
+		{
+			if (b.getHasInformation())
+			{
+				
+			}
+		}
 	}
 }

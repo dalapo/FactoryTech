@@ -1,41 +1,30 @@
 package dalapo.factech.plugins.jei.categories;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachineRecipes;
-import dalapo.factech.helper.FacGuiHelper;
-import dalapo.factech.init.BlockRegistry;
-import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
+import dalapo.factech.plugins.jei.wrappers.AgitatorRecipeWrapper;
+import dalapo.factech.plugins.jei.wrappers.CircuitScribeRecipeWrapper;
 import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import dalapo.factech.tileentity.specialized.TileEntityAgitator.AgitatorRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
-import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import mezz.jei.api.recipe.IRecipeWrapper;
+import net.minecraft.item.ItemStack;
 
-public class CircuitScribeRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper> {
-	
-	public CircuitScribeRecipeCategory(IGuiHelper guiHelper)
+public class CircuitScribeRecipeCategory extends BaseRecipeCategory<CircuitScribeRecipeWrapper>
+{
+	public CircuitScribeRecipeCategory(IGuiHelper helper)
 	{
-		super(guiHelper, "ftsaw", "saw_gui");
+		super(helper, "ftcircuitscribe", "circscribe_gui", 8, 16, 120, 80);
 	}
-	
+
 	public static void register(IRecipeCategoryRegistration registry)
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
@@ -48,41 +37,35 @@ public class CircuitScribeRecipeCategory extends BaseRecipeCategory<StandardReci
 	{
 		IJeiHelpers jeihelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeihelpers.getGuiHelper();
-		registry.addRecipes(getRecipes(guiHelper), "ftsaw");
-//		registry.addRecipeCatalyst(BlockRegistry.saw, "saw");
+		registry.addRecipes(getRecipes(guiHelper), "ftcircuitscribe");
 	}
-
-	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
+	
+	public static List<CircuitScribeRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
-		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.SAW.entrySet())
+		List<CircuitScribeRecipeWrapper> recipes = new ArrayList<>();
+		for (int i=0; i<4; i++)
 		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new CircuitScribeRecipeWrapper(i));
 		}
 		return recipes;
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, StandardRecipeWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, CircuitScribeRecipeWrapper recipeWrapper, IIngredients ingredients)
+	{
 		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		List<List<ItemStack>> outputs = ingredients.getOutputs(ItemStack.class);
 		
 		IGuiItemStackGroup guiItemstacks = recipeLayout.getItemStacks();
-		guiItemstacks.init(0, true, 24, 27);
-		guiItemstacks.init(1, false, 78, 27);
+		guiItemstacks.init(0, true, 0, 12);
+		guiItemstacks.init(1, false, 0, 54);
 		guiItemstacks.set(0, inputs.get(0));
 		guiItemstacks.set(1, outputs.get(0));
 	}
 
 	@Override
-	public void drawExtras(Minecraft minecraft) {
-//		background.draw(minecraft);
-		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, 0), 52, 28);
-	}
-
-	@Override
-	protected void addProgressBar(IGuiHelper helper) {
+	protected void addProgressBar(IGuiHelper helper)
+	{
 		
 	}
-
 }

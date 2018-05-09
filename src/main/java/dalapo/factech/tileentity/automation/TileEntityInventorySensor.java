@@ -107,7 +107,7 @@ public class TileEntityInventorySensor extends TileEntityBasicInventory
 
 	@Override
 	public void setField(int id, int value) {
-		boolean val = value == 0 ? false : true;
+		boolean val = value != 0;
 		switch (id)
 		{
 		case 0:

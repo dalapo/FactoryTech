@@ -28,9 +28,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class Grindstone
 {
 	@ZenMethod
-	public static void addRecipe(IItemStack output, IIngredient input)
+	public static void addRecipe(IItemStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal(), worksWithBad));
 	}
 	
 	@ZenMethod
@@ -39,26 +39,18 @@ public class Grindstone
 		CraftTweakerAPI.apply(new Remove((ItemStack)output.getInternal()));
 	}
 	
-	private static class Add implements IAction
+	private static class Add extends MasterAdd
 	{
-		private ItemStack in;
-		private ItemStack out;
 		
-		public Add(ItemStack in, ItemStack out)
+		public Add(ItemStack in, ItemStack out, boolean worksWithBad)
 		{
-			this.in = in;
-			this.out = out;
+			super(in, out, worksWithBad, MachineRecipes.GRINDSTONE);
 		}
 		
-		@Override
-		public void apply() {
-			MachineRecipes.GRINDSTONE.put(in, out);
-		}
-
 		@Override
 		public String describe() {
 			// TODO Auto-generated method stub
-			return "Adding Grindstone recipe for " + in + " -> " + out;
+			return "Adding Grindstone recipe for " + input + " -> " + output;
 		}
 	}
 	
@@ -73,11 +65,11 @@ public class Grindstone
 		@Override
 		public void apply()
 		{
-			for (Entry<ItemStack, ItemStack> entry : MachineRecipes.GRINDSTONE.entrySet())
+			for (int i=MachineRecipes.GRINDSTONE.size()-1; i>=0; i--)
 			{
-				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areItemStacksIdentical(MachineRecipes.GRINDSTONE.get(i).output(), output))
 				{
-					MachineRecipes.GRINDSTONE.remove(entry.getKey());
+					MachineRecipes.GRINDSTONE.remove(i);
 				}
 			}
 		}

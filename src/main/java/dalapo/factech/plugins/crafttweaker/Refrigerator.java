@@ -29,9 +29,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class Refrigerator
 {
 	@ZenMethod
-	public static void addRecipe(IItemStack output, IIngredient input)
+	public static void addRecipe(IItemStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((FluidStack)input.getInternal(), (ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((FluidStack)input.getInternal(), (ItemStack)output.getInternal(), worksWithBad));
 	}
 	
 	@ZenMethod
@@ -40,26 +40,17 @@ public class Refrigerator
 		CraftTweakerAPI.apply(new Remove((ItemStack)output.getInternal()));
 	}
 	
-	private static class Add implements IAction
+	private static class Add extends MasterAdd<FluidStack, ItemStack>
 	{
-		private FluidStack in;
-		private ItemStack out;
-		
-		public Add(FluidStack in, ItemStack out)
+		public Add(FluidStack in, ItemStack out, boolean worksWithBad)
 		{
-			this.in = in;
-			this.out = out;
+			super(in, out, worksWithBad, MachineRecipes.REFRIGERATOR);
 		}
 		
-		@Override
-		public void apply() {
-			MachineRecipes.REFRIGERATOR.put(in, out);
-		}
-
 		@Override
 		public String describe() {
 			// TODO Auto-generated method stub
-			return "Adding Refrigerator recipe for " + in + " -> " + out;
+			return "Adding Refrigerator recipe for " + input + " -> " + output;
 		}
 	}
 	
@@ -74,11 +65,11 @@ public class Refrigerator
 		@Override
 		public void apply()
 		{
-			for (Entry<FluidStack, ItemStack> entry : MachineRecipes.REFRIGERATOR.entrySet())
+			for (int i=MachineRecipes.REFRIGERATOR.size()-1; i>=0; i--)
 			{
-				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areItemStacksIdentical(MachineRecipes.REFRIGERATOR.get(i).output(), output))
 				{
-					MachineRecipes.REFRIGERATOR.remove(entry.getKey());
+					MachineRecipes.REFRIGERATOR.remove(i);
 				}
 			}
 		}

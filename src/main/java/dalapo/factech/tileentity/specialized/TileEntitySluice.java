@@ -16,6 +16,7 @@ import dalapo.factech.config.FacTechConfigManager;
 import dalapo.factech.helper.FacArrayHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
+import dalapo.factech.helper.Pair;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityBase;
@@ -24,16 +25,10 @@ import dalapo.factech.tileentity.TileEntityMachine;
 public class TileEntitySluice extends TileEntityMachine {
 	
 	private static boolean isUniversal = false;
-	private static final List<ItemStack> outputs = new ArrayList<ItemStack>();
+	public static final List<Pair<ItemStack, Double>> outputs = new ArrayList<>();
 	private static List<Integer> allowedBiomes = new ArrayList<>();
 	
 	private boolean hasWater = true;
-	
-	static {
-		outputs.add(new ItemStack(Items.IRON_NUGGET));
-		outputs.add(new ItemStack(ItemRegistry.oreProduct, 1, 5));
-		outputs.add(new ItemStack(ItemRegistry.oreProduct, 1, 4));
-	}
 	
 	public static void genBiomeWhitelist()
 	{
@@ -57,8 +52,13 @@ public class TileEntitySluice extends TileEntityMachine {
 		}
 	}
 	
+	public static void addValidOutput(ItemStack is, double chance)
+	{
+		outputs.add(new Pair(is, chance));
+	}
+	
 	public TileEntitySluice() {
-		super("sluice", 0, 1, 4, RelativeSide.SIDE);
+		super("sluice", 0, 1, 9, RelativeSide.SIDE);
 		setDisplayName("River Grate");
 	}
 	
@@ -119,24 +119,13 @@ public class TileEntitySluice extends TileEntityMachine {
 	
 	@Override
 	protected boolean performAction() {
-		if (FactoryTech.random.nextInt(2) == 0)
+		for (Pair<ItemStack, Double> p : outputs)
 		{
-			doOutput(Items.IRON_NUGGET, 1, 0, 0);
+			if (Math.random() < p.b)
+			{
+				doOutput(p.a.copy());
+			}
 		}
-		else if (FactoryTech.random.nextInt(2) == 0)
-		{
-			doOutput(ItemRegistry.oreProduct, 1, 5, 1);
-		}
-		else
-		{
-			doOutput(ItemRegistry.oreProduct, 1, 4, 2);
-		}
-		
-		if (FactoryTech.random.nextInt(8) == 0)
-		{
-			doOutput(Items.FISH, 1, 0, 3);
-		}
-		
 		recalcWater();
 		return true;
 	}

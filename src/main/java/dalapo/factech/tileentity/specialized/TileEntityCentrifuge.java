@@ -1,8 +1,9 @@
 package dalapo.factech.tileentity.specialized;
 
-import java.util.Map;
+import java.util.List;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityProcessorMultiOutput;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ public class TileEntityCentrifuge extends TileEntityProcessorMultiOutput {
 	}
 	
 	@Override
-	public Map<ItemStack, ItemStack[]> getRecipeList() {
+	public List<MachineRecipe<ItemStack, ItemStack[]>> getRecipeList() {
 		return MachineRecipes.CENTRIFUGE;
 	}
 

@@ -10,6 +10,7 @@ import dalapo.factech.tileentity.automation.TileEntityBufferCrate;
 import dalapo.factech.tileentity.automation.TileEntityCrate;
 import dalapo.factech.tileentity.automation.TileEntityFilterMover;
 import dalapo.factech.tileentity.automation.TileEntityInventorySensor;
+import dalapo.factech.tileentity.automation.TileEntityItemPusher;
 import dalapo.factech.tileentity.automation.TileEntityItemRedis;
 import dalapo.factech.tileentity.automation.TileEntityMechArm;
 import dalapo.factech.tileentity.automation.TileEntitySequencePlacer;
@@ -35,7 +36,7 @@ public class FacTechGuiHandler implements IGuiHandler {
 			return MachineContainerFactory.getContainer(te, player.inventory, te.getName());
 //			return new ContainerBasicMachine(te.countPartSlots(), te, player.inventory, 35, 35, 89, 35);
 		}
-		else if (ID == 1 || ID == 12)
+		else if (ID == 1 || ID == 12 || ID == 13)
 		{
 			TileEntityBasicInventory te = (TileEntityBasicInventory)world.getTileEntity(new BlockPos(x, y, z));
 			return new ContainerBasicInventory(3, 3, te, player.inventory);
@@ -152,6 +153,11 @@ public class FacTechGuiHandler implements IGuiHandler {
 			GuiBasicInventory inv = new GuiBasicInventory(new ContainerBasicInventory(3, 3, te, player.inventory), player.inventory, "stackfilter", te);
 			inv.addWidget(new WidgetToggleSwitch(inv, 0, 136, 20, "Round Robin", "First Match"));
 			return inv;
+		}
+		else if (ID == 13)
+		{
+			TileEntityItemPusher te = (TileEntityItemPusher)world.getTileEntity(new BlockPos(x, y, z));
+			return new GuiPulsePiston(new ContainerBasicInventory(3, 3, te, player.inventory), player.inventory, "stackfilter", te);
 		}
 		return null;
 	}

@@ -42,6 +42,10 @@ public class GuiHandbookSubmenu extends GuiHandbookBase
 		this.parent = parent;
 		this.page = page;
 		this.name = name;
+
+		back = new GuiButton(0, guiLeft + 120, guiTop + 160, 20, 20, "X");
+		prev = new GuiButton(1, guiLeft + 100, guiTop + 160, 20, 20, "<");
+		next = new GuiButton(2, guiLeft + 140, guiTop + 160, 20, 20, ">");
 	}
 	
 	@Override
@@ -56,13 +60,14 @@ public class GuiHandbookSubmenu extends GuiHandbookBase
 	{
 		super.initGui();
 		allButtons.clear();
+		parent.setEntry(-1);
 		int x = 0;
 		int y = 0;
 		int i = 0;
 		
-		back = new GuiButton(0, guiLeft + 120, guiTop + 120, 20, 20, "X");
-		prev = new GuiButton(1, guiLeft + 100, guiTop + 120, 20, 20, "<");
-		next = new GuiButton(2, guiLeft + 140, guiTop + 120, 20, 20, ">");
+		back.y = guiTop + 120;
+		prev.y = guiTop + 120;
+		next.y = guiTop + 120;
 		buttonList.add(back);
 		buttonList.add(prev);
 		buttonList.add(next);
@@ -82,8 +87,8 @@ public class GuiHandbookSubmenu extends GuiHandbookBase
 		}
 		background = FactoryTech.random.nextInt(4);
 		
-		prev.enabled = newPage != 0;
-		next.enabled = newPage != lastPage;
+		if (prev != null) prev.enabled = newPage != 0;
+		if (next != null) next.enabled = newPage != lastPage;
 		for (int i=0; i<12; i++)
 		{
 			int index = (newPage * 12) + i;
@@ -98,7 +103,14 @@ public class GuiHandbookSubmenu extends GuiHandbookBase
 //			Logger.info(debug);
 		}
 		page = newPage;
+		parent.setPage(newPage);
 		canClickButtons = true;
+	}
+	
+	@Override
+	public void onGuiClosed()
+	{
+		parent.onGuiClosed();
 	}
 	
 	@Override
@@ -110,6 +122,7 @@ public class GuiHandbookSubmenu extends GuiHandbookBase
 			switch (b.id)
 			{
 			case 0:
+				parent.setSection(-1);
 				mc.displayGuiScreen(parent);
 				break;
 			case 1:
@@ -119,9 +132,20 @@ public class GuiHandbookSubmenu extends GuiHandbookBase
 				changePage(page + 1);
 				break;
 				default:
-					HandbookEntry entry = GuiHandbook.entries.get(labelSet).get(page*12 + b.id - 3);
+					parent.setEntry(page*12 + b.id - 3);
+					HandbookEntry entry = getEntry(page*12 + b.id - 3);
 					mc.displayGuiScreen(new GuiHandbookPage(entry, this));
 			}
 		}
+	}
+	
+	protected GuiHandbook getParent()
+	{
+		return parent;
+	}
+	
+	HandbookEntry getEntry(int id) // Default access
+	{
+		return GuiHandbook.entries.get(labelSet).get(id);
 	}
 }

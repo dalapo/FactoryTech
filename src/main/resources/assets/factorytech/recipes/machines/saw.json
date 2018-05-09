@@ -16,14 +16,14 @@
 		"item": "minecraft:iron_ingot"
 	},
 	"g": {
-		"item": "#gear"
+		"item": "#gear_stone"
 	},
 	"r": {
 		"item": "minecraft:stone",
 		"data": 0
 	},
 	"s": {
-		"item": "#saw"
+		"item": "#shaft"
 	},
 	"m": {
 	   "item": "#basic_motor"

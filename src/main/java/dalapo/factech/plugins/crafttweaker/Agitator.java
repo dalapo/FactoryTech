@@ -31,20 +31,31 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenRegister
 public class Agitator
 {
+//	@ZenMethod
+//	public static void addRecipe(IIngredient[] inputs, IIngredient[] outputs)
+//	{
+//		
+//	}
 	@ZenMethod
-	public static void addRecipe(IIngredient fluid1, @Optional IIngredient fluid2, @Optional IIngredient itemIn, @Optional ILiquidStack fluidOut, @Optional IItemStack itemOut)
+	public static void addRecipe(ILiquidStack fluid1, @Optional ILiquidStack fluid2, @Optional IItemStack itemIn, int dummy, @Optional ILiquidStack fluidOut, @Optional IItemStack itemOut)
 	{
-		AgitatorRecipe toAdd = new AgitatorRecipe((ItemStack)FacCraftTweakerHelper.toObject(itemIn), FacCraftTweakerHelper.toStack(itemOut), FacCraftTweakerHelper.toStack(fluidOut), (FluidStack)FacCraftTweakerHelper.toObject(fluid1), (FluidStack)FacCraftTweakerHelper.toObject(fluid2));
-		CraftTweakerAPI.apply(new Add(toAdd));
+		CraftTweakerAPI.apply(new Add(FacCraftTweakerHelper.toStack(fluid1), FacCraftTweakerHelper.toStack(fluid2), FacCraftTweakerHelper.toStack(itemIn), FacCraftTweakerHelper.toStack(fluidOut), FacCraftTweakerHelper.toStack(itemOut)));
+//		CraftTweakerAPI.apply(new Add(toAdd));
+	}
+	
+	@ZenMethod
+	public static void removeRecipe(IItemStack item, ILiquidStack fluid)
+	{
+		CraftTweakerAPI.apply(new Remove(FacCraftTweakerHelper.toStack(fluid), FacCraftTweakerHelper.toStack(item)));
 	}
 	
 	private static class Add implements IAction
 	{
 		private AgitatorRecipe recipe;
 		
-		public Add(AgitatorRecipe r)
+		public Add(FluidStack fluid1, FluidStack fluid2, ItemStack item1, FluidStack fluidOut, ItemStack itemOut)
 		{
-			recipe = r;
+			recipe = new AgitatorRecipe(itemOut, item1, fluidOut, fluid1, fluid2);
 		}
 		
 		@Override
@@ -72,7 +83,7 @@ public class Agitator
 		@Override
 		public void apply()
 		{
-			for (int i=MachineRecipes.AGITATOR.size(); i>=0; i--)
+			for (int i=MachineRecipes.AGITATOR.size()-1; i>=0; i--)
 			{
 				AgitatorRecipe r = MachineRecipes.AGITATOR.get(i);
 				if (r.getOutputFluid().isFluidEqual(fluidOut) &&

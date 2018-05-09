@@ -76,7 +76,7 @@ public class ItemRegistry {
 	{
 		safetyArmor = EnumHelper.addArmorMaterial("SAFETY", NameList.MODID + ":safety", 15, new int[] {2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 		
-		items.add(handbook = new ItemHandbook("handbook"));
+		items.add(handbook = new ItemHandbook("handbook").setHasInformation());
 		items.add(wrench = new ItemWrench("wrench"));
 		items.add(machinePart = new ItemMachinePart("machinepart"));
 		items.add(salvagePart = new ItemBase("salvage", 12));

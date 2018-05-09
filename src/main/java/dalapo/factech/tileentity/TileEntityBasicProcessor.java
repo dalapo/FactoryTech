@@ -1,10 +1,13 @@
 package dalapo.factech.tileentity;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
 
+import dalapo.factech.FactoryTech;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
@@ -38,7 +41,7 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 		@Nonnull ItemStack is = getOutput(getInput(0));
 		if (!getInput().isEmpty() && !is.isEmpty() && FacStackHelper.canCombineStacks(is, getOutput())) hasWork = true;
 		else hasWork = false;
-//		Logger.info(String.format("hasWork: %s", hasWork));
+		Logger.info(String.format("hasWork: %s", hasWork));
 	}
 	
 	@Override
@@ -52,22 +55,21 @@ public abstract class TileEntityBasicProcessor extends TileEntityMachine {
 		else if (getOutput().getCount() + is.getCount() <= 64) getOutput().grow(is.getCount());
 		getHasWork();
 		return true;
-//		markDirty();
 	}
 	
 	protected ItemStack getOutput(ItemStack is)
 	{
-		for (Entry<ItemStack, ItemStack> entry : getRecipeList().entrySet())
+		for (MachineRecipe<ItemStack, ItemStack> entry : getRecipeList())
 		{
-			ItemStack in = entry.getKey().copy();
-			ItemStack out = entry.getValue().copy();
+			ItemStack in = entry.input();
+			ItemStack out = entry.output();
 			if ((FacStackHelper.matchStacksWithWildcard(in, is, false) && in.getCount() <= is.getCount()))
 			{
-				return out;
+				return out.copy();
 			}
 		}
 		return ItemStack.EMPTY;
 	}
 	
-	protected abstract Map<ItemStack, ItemStack> getRecipeList();
+	protected abstract List<MachineRecipe<ItemStack, ItemStack>> getRecipeList();
 }

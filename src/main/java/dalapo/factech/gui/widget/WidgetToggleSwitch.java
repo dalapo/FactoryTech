@@ -34,7 +34,8 @@ public class WidgetToggleSwitch extends FacTechWidget
 	public void handle(int mouseButton, boolean shift)
 	{
 		state = !state;
-		PacketHandler.sendToServer(new SwitchTogglePacket(parent.getTileEntity().getPos(), (byte)id));
+		parent.getTileEntity().toggleField(id); // Client-side
+		PacketHandler.sendToServer(new SwitchTogglePacket(parent.getTileEntity().getPos(), (byte)id)); // Server-side
 	}
 	
 	public int getID()

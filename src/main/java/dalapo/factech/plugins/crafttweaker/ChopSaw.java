@@ -21,6 +21,7 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.helper.Pair;
@@ -32,21 +33,20 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenRegister
 public class ChopSaw
 {
-	private List<ItemStack> toRemove = new ArrayList<ItemStack>();
 	@ZenMethod
-	public static void addRecipe(IItemStack output, IIngredient input)
+	public static void addRecipe(IItemStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal(), worksWithBad));
 	}
 	
 	@ZenMethod
-	public static void addOreDictRecipe(IItemStack output, String input, int amount)
+	public static void addOreDictRecipe(IItemStack output, String input, int amount, boolean worksWithBad)
 	{
 		for (ItemStack is : OreDictionary.getOres(input))
 		{
 			ItemStack temp = is.copy();
 			temp.setCount(amount);
-			CraftTweakerAPI.apply(new Add(temp, ((ItemStack)output.getInternal())));
+			CraftTweakerAPI.apply(new Add(temp, ((ItemStack)output.getInternal()), worksWithBad));
 		}
 	}
 	
@@ -60,16 +60,18 @@ public class ChopSaw
 	{
 		private ItemStack in;
 		private ItemStack out;
+		private boolean worksWithBad;
 		
-		public Add(ItemStack in, ItemStack out)
+		public Add(ItemStack in, ItemStack out, boolean worksWithBad)
 		{
 			this.in = in;
 			this.out = out;
+			this.worksWithBad = worksWithBad;
 		}
 		
 		@Override
 		public void apply() {
-			MachineRecipes.SAW.put(in, out);
+			MachineRecipes.SAW.add(new MachineRecipe<>(in, out, worksWithBad));
 		}
 
 		@Override
@@ -93,12 +95,12 @@ public class ChopSaw
 			Logger.info(Thread.activeCount());
 //			Set<Entry<ItemStack, ItemStack>> entries = MachineRecipes.SAW.entrySet();
 //			MachineRecipes.SAW.remove(output); // Doesn't do anything because ItemStacks are stupid and don't override equals
-			for (Entry<ItemStack, ItemStack> entry : MachineRecipes.SAW.entrySet())
+			for (MachineRecipe<ItemStack, ItemStack> entry : MachineRecipes.SAW)
 			{
-				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areItemStacksIdentical(entry.output(), output))
 				{
 					Logger.info("CRAFTTWEAKER: " + describe());
-					MachineRecipes.SAW.remove(entry.getKey());
+					MachineRecipes.SAW.remove(entry);
 				}
 			}
 		}

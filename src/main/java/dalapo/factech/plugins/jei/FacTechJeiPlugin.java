@@ -30,6 +30,7 @@ public class FacTechJeiPlugin implements IModPlugin
 		DisassemblerRecipeCategory.register(registry);
 		StabilizerRecipeCategory.register(registry);
 		MagCentrifugeRecipeCategory.register(registry);
+		CircuitScribeRecipeCategory.register(registry);
 	}
 	
 	@Override
@@ -51,6 +52,7 @@ public class FacTechJeiPlugin implements IModPlugin
 		DisassemblerRecipeCategory.init(registry);
 		StabilizerRecipeCategory.init(registry);
 		MagCentrifugeRecipeCategory.init(registry);
+		CircuitScribeRecipeCategory.init(registry);
 		
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.saw), "ftsaw");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.oredrill), "ftdrillgrinder");
@@ -68,5 +70,6 @@ public class FacTechJeiPlugin implements IModPlugin
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.disassembler), "ftdisassembler");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.stabilizer), "ftstabilizer");
 		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.magCentrifuge), "ftmagcentrifuge");
+		registry.addRecipeCatalyst(new ItemStack(BlockRegistry.circuitscribe), "ftcircuitscribe");
 	}
 }

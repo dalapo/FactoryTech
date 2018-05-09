@@ -1,8 +1,10 @@
 package dalapo.factech.tileentity.specialized;
 
+import java.util.List;
 import java.util.Map;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityBasicProcessor;
 import net.minecraft.item.ItemStack;
@@ -15,7 +17,7 @@ public class TileEntityMetalCutter extends TileEntityBasicProcessor {
 	}
 
 	@Override
-	protected Map<ItemStack, ItemStack> getRecipeList() {
+	protected List<MachineRecipe<ItemStack, ItemStack>> getRecipeList() {
 		// TODO Auto-generated method stub
 		return MachineRecipes.METALCUTTER;
 	}

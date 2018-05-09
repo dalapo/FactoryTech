@@ -9,12 +9,13 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
 import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
-
+import dalapo.factech.reference.PartList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -55,9 +56,9 @@ public class SawRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper>
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.SAW.entrySet())
+		for (MachineRecipe<ItemStack, ItemStack> entry : MachineRecipes.SAW)
 		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new StandardRecipeWrapper(guiHelper, entry.worksWithBad(), entry.input(), entry.output()));
 		}
 		return recipes;
 	}
@@ -77,7 +78,7 @@ public class SawRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper>
 	@Override
 	public void drawExtras(Minecraft minecraft) {
 //		background.draw(minecraft);
-		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, 0), 52, 28);
+		FacGuiHelper.renderItemStack(new ItemStack(ItemRegistry.machinePart, 1, PartList.SAW.getFloor()+1), 52, 28);
 	}
 
 	@Override

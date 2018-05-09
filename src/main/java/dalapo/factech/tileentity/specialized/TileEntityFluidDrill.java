@@ -61,7 +61,7 @@ public class TileEntityFluidDrill extends TileEntityFluidMachine {
 			{
 				hasWork = false;
 			}
-			if (pos.getY() - i == 0) break;
+			if (i == pos.getY()) break;
 		}
 		hasWork = true;
 	}

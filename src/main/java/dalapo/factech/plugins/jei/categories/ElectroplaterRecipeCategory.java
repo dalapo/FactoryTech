@@ -58,7 +58,7 @@ public class ElectroplaterRecipeCategory extends BaseRecipeCategory<StandardReci
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
 		for (Pair<ItemStack, ItemStack> entry : MachineRecipes.ELECTROPLATER)
 		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.a, entry.b));
+			recipes.add(new StandardRecipeWrapper(guiHelper, true, entry.a, entry.b));
 		}
 		return recipes;
 	}

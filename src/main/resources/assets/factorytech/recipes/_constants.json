@@ -138,135 +138,163 @@
 	"name": "nickel_dust"
 	},
 	{
+    "ingredient": {
+        "item": "factorytech:machinepart",
+        "data": 0
+    },
+    "name": "saw_stone"
+    },
+	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 0
+		"data": 1
 	},
 	"name": "saw"
 	},
 	{
 	"ingredient": {
-		"item": "factorytech:machinepart",
-		"data": 3
+	    "item": "factorytech:machinepart",
+	    "data": 10
 	},
-	"name": "gear"
-	},
-	{
-	"ingredient": {
-		"item": "factorytech:machinepart",
-		"data": 6
-	},
-	"name": "wire"
-	},
-	{
-	"ingredient": {
-		"item": "factorytech:machinepart",
-		"data": 8
-	},
-	"name": "blade"
-	},
-	{
-	"ingredient": {
-		"item": "factorytech:machinepart",
-		"data": 10
-	},
-	"name": "mixer"
+	"name": "gear_stone"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
 		"data": 11
 	},
+	"name": "gear"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:machinepart",
+		"data": 20
+	},
+	"name": "wire"
+	},
+	{
+    "ingredient": {
+        "item": "factorytech:machinepart",
+        "data": 30
+    },
+    "name": "blade_stone"
+    },
+	{
+	"ingredient": {
+		"item": "factorytech:machinepart",
+		"data": 31
+	},
+	"name": "blade"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:machinepart",
+		"data": 40
+	},
+	"name": "mixer"
+	},
+	{
+	"ingredient": {
+		"item": "factorytech:machinepart",
+		"data": 50
+	},
 	"name": "shaft"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 12
+		"data": 60
 	},
 	"name": "motor"
 	},
 	{
+    "ingredient": {
+        "item": "factorytech:machinepart",
+        "data": 70
+    },
+    "name": "drill_stone"
+    },
+	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 15
+		"data": 71
 	},
 	"name": "drill"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 17
+		"data": 80
 	},
 	"name": "heat_elem"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 19
+		"data": 90
 	},
 	"name": "circ1"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 21
+		"data": 100
 	},
 	"name": "circ2"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 23
+		"data": 110
 	},
 	"name": "circ3"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 25
+		"data": 120
 	},
 	"name": "circ4"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 27
+		"data": 130
 	},
 	"name": "magnet"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 28
+		"data": 140
 	},
 	"name": "battery"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 30
+		"data": 150
 	},
 	"name": "lens"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 31
+		"data": 160
 	},
 	"name": "piston"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 32
+		"data": 170
 	},
 	"name": "core"
 	},
 	{
 	"ingredient": {
 		"item": "factorytech:machinepart",
-		"data": 33
+		"data": 180
 	},
 	"name": "mesh"
 	},

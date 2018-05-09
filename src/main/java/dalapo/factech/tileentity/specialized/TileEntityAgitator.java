@@ -1,6 +1,7 @@
 package dalapo.factech.tileentity.specialized;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachinePart;
 import dalapo.factech.auxiliary.MachineRecipes;
@@ -53,7 +54,6 @@ public class TileEntityAgitator extends TileEntityFluidMachine {
 			}
 			if (flag)
 			{
-//				Logger.info("Recipe: " + r);
 				activeRecipe = r;
 				return;
 			}
@@ -136,12 +136,12 @@ public class TileEntityAgitator extends TileEntityFluidMachine {
 		ItemStack output;
 		FluidStack fluidOut;
 		
-		public AgitatorRecipe(@Nonnull ItemStack input, @Nonnull ItemStack output, FluidStack fluidOut, FluidStack fluidA, FluidStack fluidB)
+		public AgitatorRecipe(@Nullable ItemStack input, @Nullable ItemStack output, @Nullable FluidStack fluidOut, @Nonnull FluidStack fluidA, @Nullable FluidStack fluidB)
 		{
 			this.fluidA = fluidA;
 			this.fluidB = fluidB;
-			this.input = input;
-			this.output = output;
+			this.input = input != null ? input : ItemStack.EMPTY;
+			this.output = output != null ? output : ItemStack.EMPTY;
 			this.fluidOut = fluidOut;
 		}
 		

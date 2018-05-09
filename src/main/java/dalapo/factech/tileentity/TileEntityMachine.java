@@ -53,6 +53,8 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		NONE
 	}
 	
+	private boolean hasBadParts = false;
+	
 	protected static int ID = -1;
 	protected float[][] kValue;
 	
@@ -151,7 +153,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 					Logger.info(partsNeeded[i].getSalvage());
 					Logger.info(String.format("Generated %s; need less than %s", d, partsNeeded[i].salvageChance));
 				}
-				if (d < getAdjustedChance(partsNeeded[i].salvageChance))
+				if (d < getAdjustedChance(partsNeeded[i].salvageChance) && !partsNeeded[i].isBad())
 				{
 					boolean flag = false;
 					Pair<EnumFacing, TileEntity> cratePos = FacTileHelper.getFirstAdjacentTile(pos, world, TileEntityCrate.class);
@@ -194,11 +196,23 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 					double quality = partsNeeded[i].getPartID().getLifetimeModifier(tier);
 					partsNeeded[i].reset(quality);
 					partsGot[i] = 1;
+					// TODO: PSEUDOCODE
+					// If the part being replenished is a crappy one (Stone), set partsGot to something else
+					// Then, if the machine has any bad parts, reduce the machine to half speed.
 					decrStackSize(slot, 1);
 					markDirty();
 				}
 			}
 		}
+		for (int i=0; i<partSlots; i++)
+		{
+			if (partsNeeded[i].isBad())
+			{
+				this.hasBadParts = true;
+				return;
+			}
+		}
+		this.hasBadParts = false;
 	}
 	
 	public void update() {
@@ -253,6 +267,12 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		return isRunning;
 	}
 	
+	public int getTheoreticalRemainingOperations(int slot)
+	{
+		if (!FacMathHelper.isInRange(slot, 0, partSlots)) return -1;
+		return partsNeeded[slot].getRemainingOperations();
+	}
+	
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet)
 	{
@@ -260,19 +280,28 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		getHasWork();
 	}
 	
+	protected boolean hasBadParts()
+	{
+		return hasBadParts;
+	}
+	
 	private int getActualOptime()
 	{
+		int adjustedOptime = opTime;
 		switch (installedUpgrade)
 		{
 		case 1:
-			return opTime / 2;
+			adjustedOptime /= 2;
+			break;
 		case 2:
-			return opTime * 2;
+			adjustedOptime *= 2;
+			break;
 		case 3:
-			return (int)(opTime * 1.25);
-			default:
-				return opTime;
+			adjustedOptime *= 1.25;
+			break;
 		}
+		if (hasBadParts) adjustedOptime *= 2;
+		return adjustedOptime;
 	}
 	
 	protected boolean doOutput(Item out, int amt, int dmg, int outSlot)
@@ -633,6 +662,10 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		nbt.setInteger("upgrade", installedUpgrade);
 		nbt.setBoolean("isCharged", isCharged);
 		if (actualPartSide != null) nbt.setInteger("actualPartSide", actualPartSide.ordinal());
+		for (int i=0; i<partSlots; i++)
+		{
+			nbt.setString("part_" + i, partsNeeded[i].serializeNBT());
+		}
 		return nbt;
 	}
 	
@@ -657,6 +690,13 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		if (nbt.hasKey("upgrade")) installedUpgrade = nbt.getInteger("upgrade");
 		if (nbt.hasKey("isCharged")) isCharged = nbt.getBoolean("isCharged");
 		if (nbt.hasKey("actualPartSide")) actualPartSide = EnumFacing.getFront(nbt.getInteger("actualPartSide"));
+		for (int i=0; i<partSlots; i++)
+		{
+			if (nbt.hasKey("part_" + i))
+			{
+				partsNeeded[i].deserializeNBT(nbt.getString("part_" + i));
+			}
+		}
 	}
 	
 	/**

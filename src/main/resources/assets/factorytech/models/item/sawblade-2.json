@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "factorytech:items/saw-2"
+		"layer0": "factorytech:items/saw-1"
 	}
 }

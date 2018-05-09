@@ -17,6 +17,7 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.helper.FacCraftTweakerHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Pair;
 
@@ -36,7 +37,7 @@ public class Electroplater
 	@ZenMethod
 	public static void removeRecipe(IItemStack output)
 	{
-		CraftTweakerAPI.apply(new Remove((ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Remove(FacCraftTweakerHelper.toStack(output)));
 	}
 	
 	private static class Add implements IAction
@@ -73,11 +74,12 @@ public class Electroplater
 		@Override
 		public void apply()
 		{
-			for (Pair<ItemStack, ItemStack> entry : MachineRecipes.ELECTROPLATER)
+			for (int i=MachineRecipes.ELECTROPLATER.size()-1; i>=0; i--)
 			{
+				Pair<ItemStack, ItemStack> entry = MachineRecipes.ELECTROPLATER.get(i);
 				if (FacStackHelper.areItemStacksIdentical(entry.b, output))
 				{
-					MachineRecipes.ELECTROPLATER.remove(entry);
+					MachineRecipes.ELECTROPLATER.remove(i);
 				}
 			}
 		}

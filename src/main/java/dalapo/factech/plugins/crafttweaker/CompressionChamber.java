@@ -78,7 +78,7 @@ public class CompressionChamber
 		@Override
 		public void apply()
 		{
-			for (int i=MachineRecipes.COMPRESSOR.size(); i>=0; i--)
+			for (int i=MachineRecipes.COMPRESSOR.size()-1; i>=0; i--)
 			{
 				if (FacStackHelper.areItemStacksIdentical(MachineRecipes.COMPRESSOR.get(i).getItemOut(), output))
 				{

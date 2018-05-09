@@ -14,8 +14,10 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
 import dalapo.factech.plugins.jei.BaseRecipeWrapper;
+import dalapo.factech.plugins.jei.wrappers.CentrifugeRecipeWrapper;
 import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
 
 public class DrillGrinderRecipeCategory extends BaseRecipeCategory<StandardRecipeWrapper> {
@@ -41,9 +43,9 @@ public class DrillGrinderRecipeCategory extends BaseRecipeCategory<StandardRecip
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.OREDRILL.entrySet())
+		for (MachineRecipe<ItemStack, ItemStack> entry : MachineRecipes.OREDRILL)
 		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new StandardRecipeWrapper(guiHelper, entry.worksWithBad(), entry.input(), entry.output()));
 		}
 		return recipes;
 	}

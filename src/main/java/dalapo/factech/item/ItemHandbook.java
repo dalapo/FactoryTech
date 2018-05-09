@@ -1,6 +1,9 @@
 package dalapo.factech.item;
 
+import java.util.List;
+
 import dalapo.factech.FactoryTech;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;

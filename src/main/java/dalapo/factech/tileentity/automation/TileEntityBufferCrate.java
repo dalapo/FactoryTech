@@ -15,6 +15,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
+import scala.collection.generic.Shrinkable;
 
 public class TileEntityBufferCrate extends TileEntityCrate
 {
@@ -55,7 +56,6 @@ public class TileEntityBufferCrate extends TileEntityCrate
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 		{
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(new InvWrapper(this) {
-				
 				@Override
 				public ItemStack extractItem(int slot, int amount, boolean simulate)
 				{

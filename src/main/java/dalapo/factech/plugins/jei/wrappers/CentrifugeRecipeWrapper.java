@@ -6,18 +6,22 @@ import java.util.List;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import dalapo.factech.helper.FacGuiHelper;
+import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.plugins.jei.BaseRecipeWrapper;
 
 public class CentrifugeRecipeWrapper extends BaseRecipeWrapper {
 
 	ItemStack input;
 	ItemStack[] outputs;
-	
-	public CentrifugeRecipeWrapper(IGuiHelper helper, ItemStack in, ItemStack[] out)
+	boolean worksWithBad;
+	public CentrifugeRecipeWrapper(IGuiHelper helper, boolean worksWithBad, ItemStack in, ItemStack[] out)
 	{
 		input = in;
 		outputs = out;
+		this.worksWithBad = worksWithBad;
 	}
 	
 	@Override
@@ -34,15 +38,23 @@ public class CentrifugeRecipeWrapper extends BaseRecipeWrapper {
 	}
 
 	@Override
-	public void drawInfo(Minecraft minecraft, int recipeWidth,
-			int recipeHeight, int mouseX, int mouseY) {
-		
+	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
+		if (!worksWithBad)
+		{
+			FacGuiHelper.bindTex("nostone");
+			FacGuiHelper.drawTexturedModalRect(0, 28, 100, 0, 0, 16, 16);
+//			minecraft.fontRenderer.drawString(I18n.format("factorytech:jei.nostone"), -16, 16, 0xD03030);
+		}
 	}
 
 	@Override
 	public List<String> getTooltipStrings(int mouseX, int mouseY) {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> tooltips = new ArrayList<>();
+		if (!worksWithBad &&  FacMathHelper.isInRange(mouseX, 0, 16) && FacMathHelper.isInRange(mouseY, 28, 44))
+		{
+			tooltips.add(I18n.format("factorytech:jei.nostone"));
+		}
+		return tooltips;
 	}
 
 	@Override

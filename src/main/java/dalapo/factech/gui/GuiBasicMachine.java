@@ -180,14 +180,19 @@ public class GuiBasicMachine extends GuiFacInventory {
 //			Logger.info(String.format("%s, %s", p.x, p.y));
 			this.drawTexturedModalRect(guiLeft + 134, guiTop + 8 + (i*18), p.x, p.y, 16, 16);
 			
+			
 		}
-		
 		for (int i=0; i<te.countPartSlots(); i++)
 		{
 //			if (!((ContainerBasicMachine)inventorySlots).partsGot[i])
 			if (!te.hasPart(i))
 			{
 				drawRect(guiLeft + 134, guiTop + 7 + (i*18), guiLeft + 152, guiTop + 25 + (i*18), 0x80FF0000);
+			}
+			else
+			{
+				String health = Integer.toString(te.getTheoreticalRemainingOperations(i));
+				fontRenderer.drawString(health, guiLeft + 118, guiTop + 8 + (i*18), 0x00000000);
 			}
 		}
 		
@@ -200,5 +205,9 @@ public class GuiBasicMachine extends GuiFacInventory {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 		String str = this.te.getDisplayName().getUnformattedText();
 		fontRenderer.drawString(str, 88 - fontRenderer.getStringWidth(str) / 2, 6, 0x404040);
+//		for (int i=0; i<te.countPartSlots(); i++)
+//		{
+//			
+//		}
 	}
 }

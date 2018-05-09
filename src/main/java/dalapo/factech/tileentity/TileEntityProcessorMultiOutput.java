@@ -1,11 +1,11 @@
 package dalapo.factech.tileentity;
 
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.helper.Pair;
@@ -19,7 +19,7 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 		super(name, 1, partSlots, outSlots, partHatch);
 	}
 
-	public abstract Map<ItemStack, ItemStack[]> getRecipeList();
+	public abstract List<MachineRecipe<ItemStack, ItemStack[]>> getRecipeList();
 	
 	@Override
 	public boolean canRun()
@@ -67,7 +67,7 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 		}
 		for (int i=0; i<output.length; i++)
 		{
-			if (getOutput(i).isEmpty()) setOutput(i, output[i]);
+			if (getOutput(i).isEmpty()) setOutput(i, output[i].copy());
 			else getOutput(i).grow(output[i].getCount());
 		}
 		getHasWork();
@@ -77,17 +77,18 @@ public abstract class TileEntityProcessorMultiOutput extends TileEntityMachine {
 	
 	protected Pair<Integer, ItemStack[]> getOutput(ItemStack is)
 	{
-		for (Entry<ItemStack, ItemStack[]> entry : getRecipeList().entrySet())
+		for (MachineRecipe<ItemStack, ItemStack[]> entry : getRecipeList())
 		{
-			ItemStack in = entry.getKey().copy();
-			ItemStack[] out = new ItemStack[entry.getValue().length];
+			if (hasBadParts() && !entry.worksWithBad()) continue;
+			ItemStack in = entry.input().copy();
+			ItemStack[] out = new ItemStack[entry.output().length];
 			if (FacStackHelper.matchStacksWithWildcard(in, is) && in.getCount() <= is.getCount())
 			{
 				for (int i=0; i<out.length; i++)
 				{
-					out[i] = entry.getValue()[i].copy();
+					out[i] = entry.output()[i].copy();
 				}
-				return new Pair<Integer, ItemStack[]>(entry.getKey().getCount(), out);
+				return new Pair<Integer, ItemStack[]>(entry.input().getCount(), out);
 			}
 		}
 		return null;

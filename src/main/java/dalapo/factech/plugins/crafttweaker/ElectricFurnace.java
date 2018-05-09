@@ -28,9 +28,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class ElectricFurnace
 {
 	@ZenMethod
-	public static void addRecipe(IItemStack output, IIngredient input)
+	public static void addRecipe(IItemStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal(), worksWithBad));
 	}
 	
 	@ZenMethod
@@ -39,26 +39,18 @@ public class ElectricFurnace
 		CraftTweakerAPI.apply(new Remove((ItemStack)output.getInternal()));
 	}
 	
-	private static class Add implements IAction
+	private static class Add extends MasterAdd<ItemStack, ItemStack>
 	{
-		private ItemStack in;
-		private ItemStack out;
 		
-		public Add(ItemStack in, ItemStack out)
+		public Add(ItemStack in, ItemStack out, boolean worksWithBad)
 		{
-			this.in = in;
-			this.out = out;
-		}
-		
-		@Override
-		public void apply() {
-			MachineRecipes.HTFURNACE.put(in, out);
+			super(in, out, worksWithBad, MachineRecipes.HTFURNACE);
 		}
 
 		@Override
 		public String describe() {
 			// TODO Auto-generated method stub
-			return "Adding Electric Furnace recipe for " + in + " -> " + out;
+			return "Adding Electric Furnace recipe for " + input + " -> " + output;
 		}
 	}
 	
@@ -73,11 +65,11 @@ public class ElectricFurnace
 		@Override
 		public void apply()
 		{
-			for (Entry<ItemStack, ItemStack> entry : MachineRecipes.HTFURNACE.entrySet())
+			for (int i=MachineRecipes.HTFURNACE.size()-1; i>=0; i--)
 			{
-				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areItemStacksIdentical(MachineRecipes.HTFURNACE.get(i).output(), output))
 				{
-					MachineRecipes.HTFURNACE.remove(entry.getKey());
+					MachineRecipes.HTFURNACE.remove(i);
 				}
 			}
 		}

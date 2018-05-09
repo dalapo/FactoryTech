@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ItemRegistry;
@@ -55,9 +56,9 @@ public class ElecFurnaceRecipeCategory extends BaseRecipeCategory<StandardRecipe
 	public static List<StandardRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<StandardRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, ItemStack> entry : MachineRecipes.HTFURNACE.entrySet())
+		for (MachineRecipe<ItemStack, ItemStack> entry : MachineRecipes.HTFURNACE)
 		{
-			recipes.add(new StandardRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new StandardRecipeWrapper(guiHelper, entry.worksWithBad(), entry.input(), entry.output()));
 		}
 		return recipes;
 	}

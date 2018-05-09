@@ -28,9 +28,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class Magnetizer
 {
 	@ZenMethod
-	public static void addRecipe(IItemStack output, IIngredient input)
+	public static void addRecipe(IItemStack output, IIngredient input, boolean worksWithBad)
 	{
-		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal()));
+		CraftTweakerAPI.apply(new Add((ItemStack)input.getInternal(), (ItemStack)output.getInternal(), worksWithBad));
 	}
 	
 	@ZenMethod
@@ -39,26 +39,17 @@ public class Magnetizer
 		CraftTweakerAPI.apply(new Remove((ItemStack)output.getInternal()));
 	}
 	
-	private static class Add implements IAction
+	private static class Add extends MasterAdd<ItemStack, ItemStack>
 	{
-		private ItemStack in;
-		private ItemStack out;
-		
-		public Add(ItemStack in, ItemStack out)
+		public Add(ItemStack in, ItemStack out, boolean worksWithBad)
 		{
-			this.in = in;
-			this.out = out;
+			super(in, out, worksWithBad, MachineRecipes.METALCUTTER);
 		}
 		
-		@Override
-		public void apply() {
-			MachineRecipes.MAGNETIZER.put(in, out);
-		}
-
 		@Override
 		public String describe() {
 			// TODO Auto-generated method stub
-			return "Adding Magnetizer recipe for " + in + " -> " + out;
+			return "Adding Magnetizer recipe for " + input + " -> " + output;
 		}
 	}
 	
@@ -73,11 +64,11 @@ public class Magnetizer
 		@Override
 		public void apply()
 		{
-			for (Entry<ItemStack, ItemStack> entry : MachineRecipes.MAGNETIZER.entrySet())
+			for (int i=MachineRecipes.MAGNETIZER.size()-1; i>=0; i--)
 			{
-				if (FacStackHelper.areItemStacksIdentical(entry.getValue(), output))
+				if (FacStackHelper.areItemStacksIdentical(MachineRecipes.MAGNETIZER.get(i).output(), output))
 				{
-					MachineRecipes.MAGNETIZER.remove(entry.getKey());
+					MachineRecipes.MAGNETIZER.remove(i);
 				}
 			}
 		}

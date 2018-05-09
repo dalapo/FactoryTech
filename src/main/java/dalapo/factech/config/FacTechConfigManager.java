@@ -41,7 +41,9 @@ public class FacTechConfigManager {
 	public static int nickelMax = 24;
 	public static float fluidDrillMultiplier = 1.0F;
 	public static String grateBiomes;
+	public static String[] grateOutputs;
 	public static Map<Class<? extends TileEntityMachine>, MachinePart[]> allParts = new HashMap<>();
+	public static boolean showTooltips = true;
 	
 	public static String encodeMachinePart(MachinePart part)
 	{
@@ -116,6 +118,7 @@ public class FacTechConfigManager {
 	{
 		cfg.addCustomCategoryComment(CATEGORY_CLIENT, "Client configuration");
 		doTesrs = cfg.getBoolean("doTESRs", CATEGORY_CLIENT, true, "Set to false to disable machine animations; this will make the mod uglier but may increase your framerate");
+		showTooltips = cfg.getBoolean("showTooltips", CATEGORY_CLIENT, true, "Set to false to disable extra information in machine tooltips.");
 	}
 	
 	public static void initMachineConfig(Configuration cfg)

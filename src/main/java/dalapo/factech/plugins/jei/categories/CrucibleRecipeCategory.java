@@ -9,11 +9,13 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.init.ItemRegistry;
 import dalapo.factech.plugins.jei.BaseRecipeCategory;
+import dalapo.factech.plugins.jei.wrappers.CentrifugeRecipeWrapper;
 import dalapo.factech.plugins.jei.wrappers.CrucibleRecipeWrapper;
 import dalapo.factech.plugins.jei.wrappers.StandardRecipeWrapper;
 
@@ -58,9 +60,9 @@ public class CrucibleRecipeCategory extends BaseRecipeCategory<CrucibleRecipeWra
 	public static List<CrucibleRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<CrucibleRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<ItemStack, FluidStack> entry : MachineRecipes.CRUCIBLE.entrySet())
+		for (MachineRecipe<ItemStack, FluidStack> entry : MachineRecipes.CRUCIBLE)
 		{
-			recipes.add(new CrucibleRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
+			recipes.add(new CrucibleRecipeWrapper(guiHelper, entry.input(), entry.output()));
 		}
 		return recipes;
 	}

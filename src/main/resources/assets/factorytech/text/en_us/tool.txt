@@ -18,6 +18,8 @@ $recipe automation/craftblocker
 Crafting Slot Blockers can be put into the grid of the Autocrafter. They are ignored by it but still take up an inventory slot in order to ease automation.
 $end
 $title Redstone Notifier/Watcher
+$brief %rednotifier% Signals Redstone Watchers.
+$brief %redwatcher% Listens for a linked Notifier to be signalled.
 $recipe automation/rednotifier
 $recipe automation/redwatcher
 Right-click a Redstone Notifier with a Redstone Watcher to link the two. Once linked, the Watcher will light up in your inventory if the Notifier is receiving a Redstone signal.

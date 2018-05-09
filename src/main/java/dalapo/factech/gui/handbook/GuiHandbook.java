@@ -1,6 +1,7 @@
 package dalapo.factech.gui.handbook;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.Map;
@@ -20,20 +21,18 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.Language;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.LanguageMap;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.relauncher.Side;
 
-/**
- * Rewrite in progress. Please be patient.
- * Click on a main button -> sub-menu comes up (keys of the middle map EntrySet) -> clicking a button of the menu takes you to the entry
- * @author davidpowell
- */
 @SideOnly(Side.CLIENT)
 public class GuiHandbook extends GuiHandbookBase
 {
@@ -52,11 +51,15 @@ public class GuiHandbook extends GuiHandbookBase
 	private ItemStack[][] recipe;
 	private boolean[][] board;
 	private ItemStack result;
+	
 	GuiButton[] buttons = new GuiButton[10];
 	
 	int page = 0;
+	int entry = 0;
 	int numPages = 0;
 	int section = -1;
+	
+	private static final String[] submenuNames = new String[] {"The Basics", "Machine info", "Part specifications", "Tools and Devices", "Automation components", "Resources", "Miscellaneous"};
 	
 	public static void initBackgrounds()
 	{
@@ -90,6 +93,11 @@ public class GuiHandbook extends GuiHandbookBase
 		resetGrid();
 	}
 	
+	public GuiHandbook(EntityPlayer ep)
+	{
+		this(ep.getHeldItemMainhand());
+	}
+	
 	@Override
 	public void onGuiClosed()
 	{
@@ -99,13 +107,16 @@ public class GuiHandbook extends GuiHandbookBase
 			NBTTagCompound nbt = new NBTTagCompound();
 			nbt.setInteger("section", section);
 			nbt.setInteger("page", page);
+			nbt.setInteger("entry", entry);
 			book.setTagCompound(nbt);
 		}
 		else
 		{
 			book.getTagCompound().setInteger("section", section);
 			book.getTagCompound().setInteger("page", page);
+			book.getTagCompound().setInteger("entry", entry);
 		}
+//		Logger.info(String.format("Closing GUI. Section %s, entry %s, page %s", section, entry, page));
 	}
 	
 	private void resetGrid()
@@ -121,35 +132,25 @@ public class GuiHandbook extends GuiHandbookBase
 		result = ItemStack.EMPTY;
 	}
 	
-	private String getFileFromSection()
-	{
-//		Logger.info(Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getJavaLocale());
-		switch (section)
-		{
-		case 1:
-			return "machine";
-		case 2:
-			return "part";
-		case 3:
-			return "tool";
-		case 4:
-			return "automation";
-		case 5:
-			return "resource";
-		case 6:
-			return "misc";
-		default:
-			return "basic";
-		}
-	}
-	
-	
-	
 	@Override
 	public void initGui()
 	{
 		showMenu(0);
-//		refresh();
+		section = -1;
+		
+		section = -1;
+		if (book.hasTagCompound())
+		{
+			NBTTagCompound nbt = book.getTagCompound();
+			int s = nbt.getInteger("section");
+			int e = nbt.getInteger("entry");
+			int p = nbt.getInteger("page");
+			if (s != -1)
+			{
+				goToPage(s, e, p);
+			}
+		}
+		
 	}
 	
 	@Override
@@ -177,45 +178,43 @@ public class GuiHandbook extends GuiHandbookBase
 	public void actionPerformed(GuiButton b)
 	{
 		buttonList.clear();
-		String[] names = new String[] {"The Basics", "Machine info", "Part specifications", "Tools and Devices", "Automation components", "Resources", "Miscellaneous"};
-		mc.displayGuiScreen(new GuiHandbookSubmenu(names[b.id], FactoryTech.random.nextInt(4), b.id, 0, entries.get(b.id), this));
+		section = b.id;
+		mc.displayGuiScreen(new GuiHandbookSubmenu(submenuNames[b.id], FactoryTech.random.nextInt(4), b.id, 0, entries.get(b.id), this));
 	}
-
-	/*
-	@Override
-	public void actionPerformed(GuiButton b)
+	
+	protected void setSection(int s)
 	{
-		if (b.id <= 6)
+		this.section = s;
+	}
+	
+	protected void setEntry(int e)
+	{
+		this.entry = e;
+	}
+	
+	protected void setPage(int p)
+	{
+		this.page = p;
+	}
+	
+	// Go to a specified section/entry/page, leaving a breadcrumb trail.
+	// Perhaps some day I will write good code, but that day is not today.
+	private void goToPage(int section, int entry, int page)
+	{
+		this.section = section;
+		this.page = page;
+		this.entry = entry;
+		GuiHandbookSubmenu submenu = new GuiHandbookSubmenu(submenuNames[section], FactoryTech.random.nextInt(4), section, 0, entries.get(section), this);
+		if (entry == -1)
 		{
-			section = b.id;
+			submenu.changePage(page);
+			mc.displayGuiScreen(submenu);
 		}
 		else
 		{
-			switch (b.id)
-			{
-			case 7:
-				
-				if (page > 0)
-				{
-					body = "";
-					page--;
-				}
-				break;
-			case 8:
-				title = "";
-				body = "";
-				section = -1;
-				break;
-			case 9:
-				if (page < numPages)
-				{
-					body = "";
-					page++;
-				}
-				break;
-			}
+			GuiHandbookPage bookPage = new GuiHandbookPage(submenu.getEntry(entry), submenu);
+			bookPage.page = page;
+			mc.displayGuiScreen(bookPage);
 		}
-		refresh();
 	}
-	*/
 }

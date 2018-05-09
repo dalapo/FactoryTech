@@ -1,8 +1,10 @@
 package dalapo.factech.tileentity.specialized;
 
+import java.util.List;
 import java.util.Map;
 
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.reference.PartList;
 import dalapo.factech.tileentity.TileEntityBasicProcessor;
@@ -22,7 +24,7 @@ public class TileEntityHTFurnace extends TileEntityBasicProcessor {
 	}
 
 	@Override
-	protected Map<ItemStack, ItemStack> getRecipeList() {
+	protected List<MachineRecipe<ItemStack, ItemStack>> getRecipeList() {
 		return MachineRecipes.HTFURNACE;
 	}
 

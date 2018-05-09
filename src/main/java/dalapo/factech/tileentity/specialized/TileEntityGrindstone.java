@@ -1,6 +1,7 @@
 package dalapo.factech.tileentity.specialized;
 
 import java.util.Map;
+import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -10,6 +11,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.config.FacTechConfigManager;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.reference.PartList;
@@ -23,8 +25,8 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 	}
 
 	@Override
-	protected Map<ItemStack, ItemStack> getRecipeList() {
-		// TODO Auto-generated method stub
+	protected List<MachineRecipe<ItemStack, ItemStack>> getRecipeList()
+	{
 		return MachineRecipes.GRINDSTONE;
 	}
 	

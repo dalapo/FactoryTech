@@ -13,7 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
@@ -33,6 +33,7 @@ public abstract class BaseRecipeCategory<T extends BaseRecipeWrapper> implements
 	protected IDrawableAnimated progressBar;
 	protected IDrawableStatic background;
 	protected IDrawable icon;
+	protected boolean worksWithBad;
 	
 	public BaseRecipeCategory(IGuiHelper helper, String uid, String guiTex)
 	{
@@ -56,13 +57,12 @@ public abstract class BaseRecipeCategory<T extends BaseRecipeWrapper> implements
 		return UID;
 	}
 	@Override
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return I18n.translateToLocal("factorytech:jei." + UID);
+	public String getTitle()
+	{
+		return I18n.format("factorytech:jei." + UID);
 	}
 	@Override
 	public String getModName() {
-		// TODO Auto-generated method stub
 		return NameList.MODNAME;
 	}
 	

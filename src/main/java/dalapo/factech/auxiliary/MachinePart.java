@@ -8,9 +8,11 @@ import dalapo.factech.tileentity.TileEntityMachine;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagString;
 
 public class MachinePart
 {
+	private boolean isCrappy;
 	public PartList id;
 	private ItemStack depleted;
 	private double quality = 1.0;
@@ -40,6 +42,13 @@ public class MachinePart
 		{
 			Logger.info("Creating MachinePart: " + id.getName());
 		}
+	}
+	
+	// May be negative
+	public int getRemainingOperations()
+	{
+//		Logger.info(numOperations);
+		return getActualMin() - numOperations;
 	}
 	
 	public int getMinOperations()
@@ -100,6 +109,13 @@ public class MachinePart
 		numOperations = 0;
 		this.quality = quality;
 		curBreakChance = baseBreakChance;
+		if (id.hasBadVariant() && quality < 1.0) isCrappy = true;
+		else isCrappy = false;
+	}
+	
+	public boolean isBad()
+	{
+		return isCrappy;
 	}
 	
 	public ItemStack getSalvage()
@@ -152,6 +168,20 @@ public class MachinePart
 			default:
 			return Math.random() < curBreakChance;
 		}
-		
+	}
+	
+	public String serializeNBT() // Well, for some value of "serialize", anyway
+	{
+		return String.format("%s:%s:%s:%s:%s", numOperations, curBreakChance, increase, quality, isCrappy);
+	}
+	
+	public void deserializeNBT(String str)
+	{
+		String[] arr = str.split(":");
+		numOperations = Integer.parseInt(arr[0]);
+		curBreakChance = Float.parseFloat(arr[1]);
+		increase = Float.parseFloat(arr[2]);
+		quality = Double.parseDouble(arr[3]);
+		isCrappy = Boolean.parseBoolean(arr[4]);
 	}
 }	

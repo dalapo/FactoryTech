@@ -2,6 +2,7 @@ package dalapo.factech.tileentity.specialized;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 
@@ -11,6 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fluids.FluidStack;
 import dalapo.factech.auxiliary.MachineRecipes;
+import dalapo.factech.auxiliary.MachineRecipes.MachineRecipe;
 import dalapo.factech.helper.FacChatHelper;
 import dalapo.factech.helper.FacStackHelper;
 import dalapo.factech.helper.Logger;
@@ -54,10 +56,10 @@ public class TileEntityCrucible extends TileEntityFluidMachine {
 
 	protected FluidStack getOutput(ItemStack is)
 	{
-		for (Entry<ItemStack, FluidStack> entry : getRecipeList().entrySet())
+		for (MachineRecipe<ItemStack, FluidStack> entry : getRecipeList())
 		{
-			ItemStack in = entry.getKey().copy();
-			FluidStack out = entry.getValue().copy();
+			ItemStack in = entry.input().copy();
+			FluidStack out = entry.output().copy();
 			if (FacStackHelper.matchStacksWithWildcard(in, is, true) && in.getCount() <= is.getCount())
 			{
 				return out;
@@ -66,13 +68,13 @@ public class TileEntityCrucible extends TileEntityFluidMachine {
 		return null;
 	}
 	
-	public Map<ItemStack, FluidStack> getRecipeList() {
+	public List<MachineRecipe<ItemStack, FluidStack>> getRecipeList() {
 		return MachineRecipes.CRUCIBLE;
 	}
 
 	@Override
-	public int getOpTime() {
-		// TODO Auto-generated method stub
+	public int getOpTime()
+	{
 		return 60;
 	}
 
