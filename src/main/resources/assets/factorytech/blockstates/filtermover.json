@@ -9,6 +9,10 @@
 		"inventory": [{
             "transform": "forge:default-block"
         }],
+        "partid": {
+            "0": {},
+            "1": {}
+        },
 		"facing": {
 			"north": {"y": 180},
             "south": {"y": 0},

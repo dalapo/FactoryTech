@@ -31,13 +31,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenRegister
 public class Agitator
 {
-//	@ZenMethod
-//	public static void addRecipe(IIngredient[] inputs, IIngredient[] outputs)
-//	{
-//		
-//	}
 	@ZenMethod
-	public static void addRecipe(ILiquidStack fluid1, @Optional ILiquidStack fluid2, @Optional IItemStack itemIn, int dummy, @Optional ILiquidStack fluidOut, @Optional IItemStack itemOut)
+	public static void addRecipe(ILiquidStack fluid1, @Optional ILiquidStack fluid2, @Optional IItemStack itemIn, boolean worksWithBad, @Optional ILiquidStack fluidOut, @Optional IItemStack itemOut)
 	{
 		CraftTweakerAPI.apply(new Add(FacCraftTweakerHelper.toStack(fluid1), FacCraftTweakerHelper.toStack(fluid2), FacCraftTweakerHelper.toStack(itemIn), FacCraftTweakerHelper.toStack(fluidOut), FacCraftTweakerHelper.toStack(itemOut)));
 //		CraftTweakerAPI.apply(new Add(toAdd));

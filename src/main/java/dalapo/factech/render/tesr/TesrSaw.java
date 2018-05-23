@@ -41,7 +41,7 @@ public class TesrSaw extends TesrMachine<TileEntitySaw> {
 				GlStateManager.rotate(angle, -1, 0, 0);
 			}
 			GlStateManager.rotate(90, 0, 1, 0);
-			FacTesrHelper.renderPart(PartList.SAW);
+			FacTesrHelper.renderPart(PartList.SAW, 1);
 			GlStateManager.popMatrix();
 		}
 		if (te.hasPart(1)) // Gear
@@ -50,7 +50,7 @@ public class TesrSaw extends TesrMachine<TileEntitySaw> {
 			GlStateManager.translate(0.5F, 0F, 0F);
 			GlStateManager.scale(0.6, 0.6, 0.6);
 			GlStateManager.rotate(90, 0, 1, 0);
-			FacTesrHelper.renderPart(PartList.GEAR);
+			FacTesrHelper.renderPart(PartList.GEAR, 1);
 			GlStateManager.popMatrix();
 		}
 		

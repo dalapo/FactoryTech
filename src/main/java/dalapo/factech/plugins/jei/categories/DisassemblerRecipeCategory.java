@@ -58,7 +58,7 @@ public class DisassemblerRecipeCategory extends BaseRecipeCategory<DisassemblerR
 	public static List<DisassemblerRecipeWrapper> getRecipes(IGuiHelper guiHelper)
 	{
 		List<DisassemblerRecipeWrapper> recipes = new ArrayList<>();
-		for (Entry<Class<? extends EntityLivingBase>, List<ItemStack>> entry : MachineRecipes.DISASSEMBLER.entrySet())
+		for (Entry<String, List<ItemStack>> entry : MachineRecipes.DISASSEMBLER.entrySet())
 		{
 			recipes.add(new DisassemblerRecipeWrapper(guiHelper, entry.getKey(), entry.getValue()));
 		}

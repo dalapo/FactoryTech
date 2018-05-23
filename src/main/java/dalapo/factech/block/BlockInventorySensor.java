@@ -52,7 +52,7 @@ public class BlockInventorySensor extends BlockInventoryDirectional
 	@Override
 	public BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[] {StateList.directions, POWERED});
+		return new BlockStateContainer(this, StateList.directions, PART_ID, POWERED);
 	}
 	
 	@Override

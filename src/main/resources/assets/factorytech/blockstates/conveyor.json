@@ -2,7 +2,6 @@
 	"forge_marker": 1,
 	"defaults": {
 		"custom": { "flip-v": true},
-		"model": "factorytech:conveyor.obj",
 		"textures": {
 			"#None": "factorytech:blocks/model_tex_sheet"
 		}
@@ -16,7 +15,12 @@
 			"up": {"x": -90},
 			"down": {"x": 90}
 		},
+		"partid": {
+		    "0": {"model": "factorytech:conveyor_1.obj"},
+		    "1": {"model": "factorytech:conveyor_2.obj"}
+		},
 		"inventory": [{
+		    "model": "factorytech:conveyor.obj",
 			"transform": "forge:default-block"
 		}],
 		"normal": [{}]

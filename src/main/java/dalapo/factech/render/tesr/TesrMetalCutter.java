@@ -41,7 +41,7 @@ public class TesrMetalCutter extends TesrMachine<TileEntityMetalCutter>
 				GlStateManager.translate(0, 0, time/200);
 			}
 			GlStateManager.rotate(90, 1, 0, 0);
-			FacTesrHelper.renderPart(PartList.BLADE);
+			FacTesrHelper.renderPart(PartList.BLADE, 1);
 			GlStateManager.popMatrix();
 		}
 		GlStateManager.popMatrix();

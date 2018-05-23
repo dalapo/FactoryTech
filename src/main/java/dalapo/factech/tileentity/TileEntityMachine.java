@@ -340,7 +340,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		{
 			if (getOutput(i).isEmpty())
 			{
-				setOutput(out.copy());
+				setOutput(i, out.copy());
 				return true;
 			}
 			if (FacStackHelper.canCombineStacks(getOutput(i), out))
@@ -577,7 +577,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 				break;
 			}
 		}
-//		Logger.info(String.format("Index: %s; %s", index, isPartSide));
+
 		if (isPartSide)
 		{
 			if (itemStackIn.getItem() != ItemRegistry.machinePart) return false;
@@ -589,15 +589,6 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 			return false;
 		}
 		else return index < inSlots;
-		/*
-		if (direction == world.getBlockState(getPos()).getValue(StateList.directions).getOpposite())
-		{
-			// The back is specifically for inserting parts
-			// All machines will have some indicator of which side is the back
-			return (index >= inSlots && index < inSlots + partSlots);
-		}
-		else return index < inSlots;
-		*/
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package dalapo.factech;
 
 import java.io.File;
 
+import dalapo.factech.auxiliary.ChunkLoadRegistry;
 import dalapo.factech.auxiliary.MachineRecipes;
 import dalapo.factech.config.FacTechConfigManager;
 import dalapo.factech.gui.FacTechGuiHandler;
@@ -56,6 +57,7 @@ public class CommonProxy {
 //		FacEntityRegistry.init();
 		WorldGenRegistry.init();
 		PacketHandler.registerMessages("factech");
+		ChunkLoadRegistry.instance.init();
 		
 		TileEntitySluice.genBiomeWhitelist();
 	}

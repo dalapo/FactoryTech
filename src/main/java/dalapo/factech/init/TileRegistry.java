@@ -70,6 +70,9 @@ public class TileRegistry {
 		GameRegistry.registerTileEntity(TileEntityItemInterceptor.class, "interceptor");
 		GameRegistry.registerTileEntity(TileEntityAerolyzer.class, "aerolyzer");
 		GameRegistry.registerTileEntity(TileEntityMagnetCentrifuge.class, "magcent");
+		GameRegistry.registerTileEntity(TileEntityPlaneShifter.class, "planeshifter");
+		GameRegistry.registerTileEntity(TileEntityAnimatedModel.class, "animatedmodel");
+		GameRegistry.registerTileEntity(TileEntityElevator.class, "realelevator");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -91,6 +94,8 @@ public class TileRegistry {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockBreaker.class, new TesrBlockBreaker(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodcutter.class, new TesrWoodcutter(true));
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagnetCentrifuge.class, new TesrMagCentrifuge(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimatedModel.class, new TesrAnimatedModel(true));
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElevator.class, new TesrElevator());
 		}
 	}
 }

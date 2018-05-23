@@ -8,7 +8,9 @@ import dalapo.factech.init.TabRegistry;
 import dalapo.factech.reference.MachineInfoList;
 import dalapo.factech.reference.NameList;
 import dalapo.factech.reference.StateList;
+import dalapo.factech.render.tesr.IAnimatedModel;
 import dalapo.factech.tileentity.ActionOnRedstone;
+import dalapo.factech.tileentity.TileEntityAnimatedModel;
 import dalapo.factech.tileentity.TileEntityBasicInventory;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -136,6 +138,12 @@ public class BlockBase extends Block {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
 	}
 	
+	@SideOnly(Side.CLIENT)
+	public void initStaticModel() // Override if the normal model is non-static (e.g. conveyors)
+	{
+		initModel();
+	}
+	
 	@Override
 	public String getUnlocalizedName()
 	{
@@ -146,5 +154,21 @@ public class BlockBase extends Block {
 	{
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
+	public TileEntity createTileEntity(World world, IBlockState state)
+	{
+		if (this instanceof IAnimatedModel)
+		{
+			return new TileEntityAnimatedModel();
+		}
+		return super.createTileEntity(world, state);
+	}
 	
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		if (this instanceof IAnimatedModel)
+		{
+			return new TileEntityAnimatedModel();
+		}
+		return null;
+	}
 }

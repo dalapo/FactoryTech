@@ -35,7 +35,10 @@ public class TileEntityGrindstone extends TileEntityBasicProcessor {
 	{
 		super.getHasWork();
 		ItemStack input = getInput(0);
-		if (input.getItem() instanceof ItemSword || input.getItem() instanceof ItemTool) hasWork = true;
+		if (input.getItem() instanceof ItemSword || input.getItem() instanceof ItemTool)
+		{
+			hasWork = true;
+		}
 	}
 	
 	private boolean processEquipment(int enchID)

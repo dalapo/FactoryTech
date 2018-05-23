@@ -217,24 +217,4 @@ public class EntityHoverScooter extends Entity
 	protected void writeEntityToNBT(NBTTagCompound compound)
 	{
 	}
-	
-//	@SubscribeEvent
-//	public EnumActionResult rideScooter(EntityInteractSpecific evt)
-//	{
-//		Logger.info("I love my scooter!");
-//		if (evt.getTarget() == this)
-//		{
-//			this.processInitialInteract(evt.getEntityPlayer(), evt.getHand());
-//			return EnumActionResult.SUCCESS;
-//		}
-//		return EnumActionResult.PASS;
-//	}
-//	
-//	// The closest thing there is to a Destructor
-//	@Override
-//	public void setDead()
-//	{
-//		MinecraftForge.EVENT_BUS.unregister(this);
-//		super.setDead();
-//	}
 }

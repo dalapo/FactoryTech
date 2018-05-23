@@ -35,7 +35,6 @@ public class TileEntitySluice extends TileEntityMachine {
 		String[] raw = FacTechConfigManager.grateBiomes.split(",");
 		for (String str : raw)
 		{
-			Logger.info(str);
 			if (str.equals("all"))
 			{
 				isUniversal = true;

@@ -10,6 +10,7 @@ import dalapo.factech.helper.Logger;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.reference.StateList;
 import dalapo.factech.tileentity.TileEntityBasicInventory;
+import dalapo.factech.tileentity.TileEntityItemQueue;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,12 +57,28 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 		return isFilterEmpty();
 	}
 	
-	@Override
-	public void update() {
-		if (world.isBlockIndirectlyGettingPowered(pos) > 0 || !world.getBlockState(getPos()).getBlock().equals(BlockRegistry.itemPusher)) return;
-		// Look at EntityItem instances in front of TE
-		// Any that match filter get pushed away from it; inserted into inventory if one exists
-		EnumFacing direction = world.getBlockState(getPos()).getValue(StateList.directions);
+	private void moveEntity(EntityItem ei, EnumFacing direction)
+	{
+		switch(direction)
+		{
+		case SOUTH:
+			ei.move(MoverType.PISTON, 0, 0, 1);
+			break;
+		case WEST:
+			ei.move(MoverType.PISTON, -1, 0, 0);
+			break;
+		case NORTH:
+			ei.move(MoverType.PISTON, 0, 0, -1);
+			break;
+		case EAST:
+			ei.move(MoverType.PISTON, 1, 0, 0);
+			break;
+			default:
+				// No-op
+		}
+	}
+	private void pushEntities(EnumFacing direction)
+	{		
 		AxisAlignedBB testBox = new AxisAlignedBB(FacMathHelper.withOffset(getPos(), direction));
 		List<EntityItem> entities = world.getEntitiesWithinAABB(EntityItem.class, testBox);
 		BlockPos targetSpace = FacMathHelper.withOffset(FacMathHelper.withOffset(getPos(), direction), direction);
@@ -79,26 +96,37 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 			}
 			else
 			{
-				switch(direction)
-				{
-				case SOUTH:
-					ei.move(MoverType.PISTON, 0, 0, 1);
-					break;
-				case WEST:
-					ei.move(MoverType.PISTON, -1, 0, 0);
-					break;
-				case NORTH:
-					ei.move(MoverType.PISTON, 0, 0, -1);
-					break;
-				case EAST:
-					ei.move(MoverType.PISTON, 1, 0, 0);
-					break;
-					default:
-						// No-op
-				}
+				moveEntity(ei, direction);
 			}
 		}
+	}
+	
+	private void pushQueue(TileEntityItemQueue te, EnumFacing direction)
+	{
+		ItemStack is = te.peek(te.getCapacity() / 2);
+		if (!is.isEmpty() && isItemInFilter(is))
+		{
+			is = te.yank(te.getCapacity() / 2);
+			EntityItem ei = new EntityItem(world, te.getPos().getX(), te.getPos().getY(), te.getPos().getZ(), is);
+			moveEntity(ei, direction);
+			world.spawnEntity(ei);
+		}
+	}
+	
+	@Override
+	public void update() {
+		if (world.isBlockIndirectlyGettingPowered(pos) > 0 || !world.getBlockState(getPos()).getBlock().equals(BlockRegistry.itemPusher)) return;
+		EnumFacing direction = world.getBlockState(getPos()).getValue(StateList.directions);
+		TileEntity te = world.getTileEntity(pos);
 		
+		if (te instanceof TileEntityItemQueue)
+		{
+			pushQueue((TileEntityItemQueue)te, direction);
+		}
+		else
+		{
+			pushEntities(direction);
+		}
 	}
 
 	@Override

@@ -22,7 +22,8 @@ public class FacEntityRegistry
 	
 	public static void init()
 	{
-		
+		int id = 0;
+		EntityRegistry.registerModEntity(new ResourceLocation(NameList.MODID), EntityPressureGunShot.class, "pressuregunshot", id++, FactoryTech.instance, 64, 3, false);
 	}
 	
 	@SideOnly(Side.CLIENT)

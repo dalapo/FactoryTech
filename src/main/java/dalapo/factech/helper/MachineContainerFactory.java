@@ -59,10 +59,17 @@ public class MachineContainerFactory {
 			// No IO
 			break;
 		case "sluice":
-			output.add(new Pair<Integer, Integer>(89, 17));
-			output.add(new Pair<Integer, Integer>(89, 35));
-			output.add(new Pair<Integer, Integer>(89, 53));
-			output.add(new Pair<Integer, Integer>(107, 35));
+			for (int i=0; i<3; i++)
+			{
+				for (int j=0; j<3; j++)
+				{
+					output.add(new Pair<Integer, Integer>(71+(i*18), 17+(j*18)));
+				}
+			}
+//			output.add(new Pair<Integer, Integer>(89, 17));
+//			output.add(new Pair<Integer, Integer>(89, 35));
+//			output.add(new Pair<Integer, Integer>(89, 53));
+//			output.add(new Pair<Integer, Integer>(107, 35));
 			break;
 		case "fridge":
 //			input.add(new Pair<Integer, Integer>(999, 999));

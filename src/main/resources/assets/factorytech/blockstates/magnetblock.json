@@ -8,6 +8,10 @@
 	"variants": {
 		"normal": [{}],
 		"inventory": [{}],
+		"partid": {
+            "0": {},
+            "1": {}
+        },
 		"facing": {
 			"north": {},
 			"south": {"y": 180},

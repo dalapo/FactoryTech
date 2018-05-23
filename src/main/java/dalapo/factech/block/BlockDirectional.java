@@ -8,7 +8,9 @@ import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.Logger;
 import dalapo.factech.reference.StateList;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,6 +23,7 @@ import net.minecraft.world.World;
 public class BlockDirectional extends BlockBase implements Wrenchable {
 	protected boolean planeLocked;
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
+	public static final PropertyInteger PART_ID = PropertyInteger.create("partid", 0, 16); // 16 moving parts ought to be enough for anyone
 
 	public BlockDirectional(Material materialIn, String name, boolean locked) {
 		super(materialIn, name);
@@ -43,7 +46,7 @@ public class BlockDirectional extends BlockBase implements Wrenchable {
 	@Override
 	public BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, StateList.directions);
+		return new BlockStateContainer(this, StateList.directions, PART_ID);
 	}
 	
 	@Override
@@ -55,7 +58,7 @@ public class BlockDirectional extends BlockBase implements Wrenchable {
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return blockState.getBaseState().withProperty(StateList.directions, EnumFacing.getFront(meta));
+		return blockState.getBaseState().withProperty(StateList.directions, EnumFacing.getFront(meta)).withProperty(PART_ID, 0);
 	}
 
 	@Override

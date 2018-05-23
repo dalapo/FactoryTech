@@ -5,9 +5,12 @@ import java.util.function.Predicate;
 import javax.annotation.Nonnull;
 
 import dalapo.factech.auxiliary.BinaryPredicate;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
@@ -165,5 +168,22 @@ public class FacStackHelper {
 	{
 		if (a == null || b == null) return true;
 		return a.getFluid().equals(b.getFluid());
+	}
+	
+	public static void spawnEntityItem(World world, ItemStack stack, double x, double y, double z, boolean freeze)
+	{
+		EntityItem ei = new EntityItem(world, x, y, z, stack);
+		if (freeze)
+		{
+			ei.motionX = 0;
+			ei.motionY = 0;
+			ei.motionZ = 0;
+		}
+		world.spawnEntity(ei);
+	}
+	
+	public static void spawnEntityItem(World world, ItemStack stack, BlockPos pos, boolean freeze)
+	{
+		spawnEntityItem(world, stack, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, freeze);
 	}
 }

@@ -14,6 +14,7 @@ import dalapo.factech.item.ItemMachinePart;
 import dalapo.factech.item.ItemModArmor;
 import dalapo.factech.item.ItemPressureGun;
 import dalapo.factech.item.ItemRedWatcher;
+import dalapo.factech.item.ItemTuningFork;
 import dalapo.factech.item.ItemWrench;
 import dalapo.factech.reference.NameList;
 import dalapo.factech.reference.PartList;
@@ -59,6 +60,7 @@ public class ItemRegistry {
 	public static ItemModArmor workPants;
 	public static ItemModArmor steelToeBoots;
 	public static ItemBase handPump;
+	public static ItemTuningFork tuningFork;
 //	public static ItemHoverScooter hoverScooter;
 	
 	public static ItemArmor.ArmorMaterial safetyArmor;
@@ -111,6 +113,7 @@ public class ItemRegistry {
 		items.add(workPants = (ItemModArmor) new ItemModArmor("workpants", safetyArmor, EntityEquipmentSlot.LEGS).setCreativeTab(TabRegistry.FACTECH));
 		items.add(steelToeBoots = (ItemModArmor) new ItemModArmor("steeltoeboots", safetyArmor, EntityEquipmentSlot.FEET).setCreativeTab(TabRegistry.FACTECH));
 		items.add(handPump = new ItemHandPump("handpump").setHasInformation());
+		items.add(tuningFork = (ItemTuningFork) new ItemTuningFork("tuningfork").setHasInformation());
 //		items.add(hoverScooter = new ItemHoverScooter("hoverscooter"));
 	}
 	

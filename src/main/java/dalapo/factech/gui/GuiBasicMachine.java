@@ -192,7 +192,7 @@ public class GuiBasicMachine extends GuiFacInventory {
 			else
 			{
 				String health = Integer.toString(te.getTheoreticalRemainingOperations(i));
-				fontRenderer.drawString(health, guiLeft + 118, guiTop + 8 + (i*18), 0x00000000);
+				fontRenderer.drawString(health, guiLeft + 120, guiTop + 10 + (i*18), 0x00000000);
 			}
 		}
 		

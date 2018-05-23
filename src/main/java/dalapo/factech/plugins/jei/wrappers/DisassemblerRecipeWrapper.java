@@ -21,10 +21,10 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 
 public class DisassemblerRecipeWrapper extends BaseRecipeWrapper
 {	
-	public Class<? extends EntityLivingBase> input;
+	public String input;
 	public List<ItemStack> output;
 	
-	public DisassemblerRecipeWrapper(IGuiHelper guiHelper, Class<? extends EntityLivingBase> in, List<ItemStack> out)
+	public DisassemblerRecipeWrapper(IGuiHelper guiHelper, String in, List<ItemStack> out)
 	{
 		input = in;
 		output = out;
@@ -38,7 +38,7 @@ public class DisassemblerRecipeWrapper extends BaseRecipeWrapper
 
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		minecraft.fontRenderer.drawString(EntityList.getTranslationName(EntityList.getKey(input)), 0, 0, 0x0000000);
+		minecraft.fontRenderer.drawString(input, 0, 0, 0x0000000);
 	}
 
 	@Override

@@ -134,6 +134,10 @@ public class FacTileHelper {
 			return new TileEntityAerolyzer();
 		case "magcent":
 			return new TileEntityMagnetCentrifuge();
+		case "planeshifter":
+			return new TileEntityPlaneShifter();
+		case "realelevator":
+			return new TileEntityElevator();
 		default:
 			return null;
 		}

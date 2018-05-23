@@ -12,7 +12,8 @@ public class AABBList
 	public static final AxisAlignedBB BLOCK = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB TOP_IN = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.9375D, 1.0D);
 	public static final AxisAlignedBB SHRUNK = new AxisAlignedBB(0.0625D, 0.0625D, 0.0625D, 0.9375D, 0.9375D, 0.9375D);
-	public static final AxisAlignedBB BOTTOM_IN = new AxisAlignedBB(0.0D, 0.625, 0.0D, 1.0D, 1.0D, 1.0D);
+	public static final AxisAlignedBB BOTTOM_IN = new AxisAlignedBB(0.0D, 0.0625, 0.0D, 1.0D, 1.0D, 1.0D);
+	public static final AxisAlignedBB COLUMN = new AxisAlignedBB(0.0625D, 0, 0.0625D, 0.9375D, 1.0D, 0.9375D);
 	
 	public static final AxisAlignedBB getCube(BlockPos centre, int range)
 	{

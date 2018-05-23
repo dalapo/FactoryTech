@@ -8,6 +8,10 @@
 		"inventory": [{
 			"transform": "forge:default-block"
 		}],
+		"partid": {
+            "0": {},
+            "1": {}
+        },
 		"normal": [{}]
 	}
 }

@@ -12,6 +12,7 @@ import dalapo.factech.block.BlockComparatorExact;
 import dalapo.factech.block.BlockConveyor;
 import dalapo.factech.block.BlockDecoCoil;
 import dalapo.factech.block.BlockElevator;
+import dalapo.factech.block.BlockFan;
 import dalapo.factech.block.BlockFluidGiver;
 import dalapo.factech.block.BlockHatch;
 import dalapo.factech.block.BlockInventoryDirectional;
@@ -48,7 +49,7 @@ public class BlockRegistry {
 	public static BlockInventoryDirectional bulkmover;
 	public static BlockInventoryDirectional autopuller;
 	public static BlockConveyor conveyor;
-	public static BlockElevator elevator;
+	public static BlockFan fan;
 	public static BlockBottomHatch bottomHatch;
 	public static BlockHatch hatch;
 	public static BlockPipe pipe;
@@ -103,6 +104,8 @@ public class BlockRegistry {
 	public static BlockTENoDir crate;
 	public static BlockTENoDir buffercrate;
 	public static BlockTENoDir interceptor;
+	public static BlockTENoDir planeShifter;
+	public static BlockTENoDir elevator;
 	
 	public static BlockBase ore;
 	public static BlockBase oreblock;
@@ -127,13 +130,14 @@ public class BlockRegistry {
 		blocks.add(crate = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "crate", 7).setHasInformation().setHardness(2F));
 		blocks.add(conveyor = (BlockConveyor) new BlockConveyor(Material.IRON, "conveyor", true).setHasInformation().setHardness(1F));
 		blocks.add(buffercrate = (BlockTENoDir)new BlockTENoDir(Material.IRON, "buffercrate", 7).setHasInformation().setHardness(2.5F));
-		blocks.add(elevator = (BlockElevator) new BlockElevator(Material.IRON, "elevator", true).setHasInformation());
+		blocks.add(fan = (BlockFan) new BlockFan(Material.IRON, "elevator", true).setHasInformation());
 		blocks.add(bottomHatch = (BlockBottomHatch) new BlockBottomHatch(Material.WOOD, "bottomhatch", true).setHasInformation());
 		blocks.add(hatch = (BlockHatch) new BlockHatch(Material.IRON, "hatch").setHasInformation().setHardness(2F));
 		blocks.add(redNotifier = (BlockRSNotifier)new BlockRSNotifier(Material.WOOD, "rednotifier").setHasInformation().setHardness(2F));
 		blocks.add(blockbreaker = (BlockBlockBreaker)new BlockBlockBreaker(Material.ROCK, "blockbreaker", "blockbreaker", false).setHasInformation().setHardness(2F));
 		blocks.add(invSensor = (BlockInventorySensor)new BlockInventorySensor(Material.IRON, "inventorysensor", "inventorysensor", false, 11).setHasInformation().setHardness(2F));
 		blocks.add(interceptor = (BlockTENoDir)new BlockTENoDir(Material.IRON, "interceptor", 1).setHasInformation().setHardness(2F));
+		blocks.add(elevator = new BlockElevator(Material.IRON, "realelevator"));
 //		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
 		
 		// Machines
@@ -185,6 +189,7 @@ public class BlockRegistry {
 		blocks.add(decorative_metal = (BlockMetal)new BlockMetal(Material.IRON, "metal").setHardness(3.0F).setResistance(12.0F));
 		blocks.add(scaffold = (BlockBase)new BlockScaffold(Material.IRON, "scaffold"));
 		blocks.add(decocoil = new BlockDecoCoil(Material.IRON, "decocoil"));
+		blocks.add(planeShifter = new BlockTENoDir(Material.IRON, "planeshifter"));
 	}
 
 	@SideOnly(Side.CLIENT)

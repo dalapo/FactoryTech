@@ -13,6 +13,10 @@
 			"up": {"x": -90},
 			"down": {"x": 90}
 		},
+		"partid": {
+            "0": {},
+            "1": {}
+        },
 		"inventory": [{
 			"transform": "forge:default-block"
 		}],

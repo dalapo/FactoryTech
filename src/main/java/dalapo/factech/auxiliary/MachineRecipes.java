@@ -76,7 +76,7 @@ public class MachineRecipes {
 //	public static Map<ItemStack, ItemStack> CIRCUIT_SCRIBE = new ConcurrentHashMap<ItemStack, ItemStack>();
 //	public static Map<FluidStack, ItemStack> REFRIGERATOR = new ConcurrentHashMap<FluidStack, ItemStack>();
 	
-	public static Map<Class<? extends EntityLivingBase>, List<ItemStack>> DISASSEMBLER = new HashMap<>();
+	public static Map<String, List<ItemStack>> DISASSEMBLER = new HashMap<>();
 	public static Map<ItemStack, Block> PLANTER = new HashMap<ItemStack, Block>();
 	// Lists for complex recipes
 	
@@ -232,28 +232,28 @@ public class MachineRecipes {
 		zombie.add(new ItemStack(Items.BONE, 1));
 		zombie.add(new ItemStack(Item.getItemById(397), 1, 2));
 		zombie.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
-		DISASSEMBLER.put(EntityZombie.class, zombie);
+		DISASSEMBLER.put("EntityZombie", zombie);
 		
 		List<ItemStack> skeleton = new ArrayList<ItemStack>();
 		skeleton.add(new ItemStack(Items.BONE, 4));
 		skeleton.add(new ItemStack(Items.ARROW, 4));
 		skeleton.add(new ItemStack(Item.getItemById(397), 1, 0));
 		skeleton.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
-		DISASSEMBLER.put(EntitySkeleton.class, skeleton);
+		DISASSEMBLER.put("EntitySkeleton", skeleton);
 		
 		List<ItemStack> spider = new ArrayList<ItemStack>();
 		spider.add(new ItemStack(Items.STRING, 4));
 		spider.add(new ItemStack(Items.SPIDER_EYE, 3));
 		spider.add(new ItemStack(Items.LEATHER, 1));
 		spider.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
-		DISASSEMBLER.put(EntitySpider.class, spider);
-		DISASSEMBLER.put(EntityCaveSpider.class, spider);
+		DISASSEMBLER.put("EntitySpider", spider);
+		DISASSEMBLER.put("EntityCaveSpider", spider);
 		
 		List<ItemStack> creeper = new ArrayList<ItemStack>();
 		creeper.add(new ItemStack(Items.GUNPOWDER, 4));
 		creeper.add(new ItemStack(Item.getItemById(397), 1, 4));
 		creeper.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
-		DISASSEMBLER.put(EntityCreeper.class, creeper);
+		DISASSEMBLER.put("EntityCreeper", creeper);
 
 		List<ItemStack> pigzombie = new ArrayList<ItemStack>();
 		pigzombie.add(new ItemStack(Items.ROTTEN_FLESH, 3));
@@ -261,19 +261,19 @@ public class MachineRecipes {
 		pigzombie.add(new ItemStack(Items.GOLD_NUGGET, 2));
 		pigzombie.add(new ItemStack(Items.COOKED_PORKCHOP, 1));
 		pigzombie.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
-		DISASSEMBLER.put(EntityPigZombie.class, pigzombie);
+		DISASSEMBLER.put("EntityPigZombie", pigzombie);
 		
 		List<ItemStack> enderman = new ArrayList<ItemStack>();
 		enderman.add(new ItemStack(Items.ENDER_PEARL, 2));
 		enderman.add(new ItemStack(Blocks.OBSIDIAN, 1));
 		enderman.add(new ItemStack(ItemRegistry.intermediate, 1, 3));
-		DISASSEMBLER.put(EntityEnderman.class, enderman);
+		DISASSEMBLER.put("EntityEnderman", enderman);
 		
 		List<ItemStack> blaze = new ArrayList<ItemStack>();
 		blaze.add(new ItemStack(Items.BLAZE_ROD, 3));
 		blaze.add(new ItemStack(Items.FIRE_CHARGE, 2));
 		blaze.add(new ItemStack(Items.GUNPOWDER, 1));
-		DISASSEMBLER.put(EntityBlaze.class, blaze);
+		DISASSEMBLER.put("EntityBlaze", blaze);
 	}
 	// Because typing is hard
 	private static boolean hasOre(String str)
