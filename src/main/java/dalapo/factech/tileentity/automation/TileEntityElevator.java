@@ -19,24 +19,22 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityElevator extends TileEntityItemQueue
 {
 	@Override
-	public void cacheTileEntity()
+	public BlockPos getTarget()
 	{
-		TileEntity te = world.getTileEntity(pos.up());
-		if (te instanceof TileEntityElevator)
-		{
-			cachedTarget = (TileEntityElevator)te;
-		}
+		return pos.up();
 	}
 	
 	@Override
 	protected void ejectItem(ItemStack toEject)
-	{
+	{	
+		Logger.info(pos + ": Ejecting item " + toEject);
 		EntityItem ei = new EntityItem(world, pos.getX()+0.5, pos.getY()+1.5, pos.getZ()+0.5, toEject);
 		ei.motionX = 0;
 		ei.motionY = 0.2;

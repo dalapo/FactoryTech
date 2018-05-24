@@ -23,18 +23,18 @@ public class BlockElevator extends BlockTENoDir
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos fromPos)
 	{
 		TileEntityElevator elevator = (TileEntityElevator)world.getTileEntity(pos);
-		elevator.cacheTileEntity();
+		elevator.onLoad();
 	}
 	
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
 	{
 		
-		if (entity instanceof EntityItem)
+		if (entity instanceof EntityItem && !entity.isDead)
 		{
+			entity.setDead();
 			TileEntityElevator te = (TileEntityElevator)world.getTileEntity(pos);
 			te.scheduleItemStack(((EntityItem)entity).getItem());
-			entity.setDead();
 		}
 	}
 	

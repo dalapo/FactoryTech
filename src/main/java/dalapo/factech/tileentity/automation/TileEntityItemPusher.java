@@ -117,7 +117,7 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 	public void update() {
 		if (world.isBlockIndirectlyGettingPowered(pos) > 0 || !world.getBlockState(getPos()).getBlock().equals(BlockRegistry.itemPusher)) return;
 		EnumFacing direction = world.getBlockState(getPos()).getValue(StateList.directions);
-		TileEntity te = world.getTileEntity(pos);
+		TileEntity te = world.getTileEntity(FacMathHelper.withOffset(pos, direction));
 		
 		if (te instanceof TileEntityItemQueue)
 		{

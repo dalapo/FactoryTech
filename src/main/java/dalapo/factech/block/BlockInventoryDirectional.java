@@ -67,7 +67,7 @@ public class BlockInventoryDirectional extends BlockDirectional implements ITile
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack itemstack)
 	{
 		super.onBlockPlacedBy(world, pos, state, placer, itemstack);
-		world.addTileEntity(createTileEntity(world, state));
+		world.setTileEntity(pos, FacTileHelper.getTileFromID(tile));
 	}
 	
 	@Override

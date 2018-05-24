@@ -39,7 +39,8 @@ public class BlockDirectional extends BlockBase implements Wrenchable {
 		super.onBlockPlacedBy(world, pos, state, placer, itemstack);
 		EnumFacing direction = (planeLocked ? FacMathHelper.getDirectionFromEntityXZ(pos, placer) : FacMathHelper.getDirectionFromEntity(pos, placer));
 		if (placer.isSneaking()) direction = direction.getOpposite();
-		world.setBlockState(pos, state.withProperty(StateList.directions, direction));
+		state = state.withProperty(StateList.directions, direction);
+		world.setBlockState(pos, state);
 	}
 	
 	@Nonnull

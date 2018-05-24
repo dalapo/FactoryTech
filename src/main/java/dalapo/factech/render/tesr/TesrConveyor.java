@@ -5,6 +5,7 @@ import java.util.Deque;
 import org.lwjgl.opengl.GL11;
 
 import dalapo.factech.block.BlockConveyor;
+import dalapo.factech.block.BlockDirectional;
 import dalapo.factech.helper.FacRenderHelper;
 import dalapo.factech.helper.FacTesrHelper;
 import dalapo.factech.init.BlockRegistry;
@@ -28,31 +29,26 @@ public class TesrConveyor extends TesrOmnidirectional<TileEntityConveyor>
 	public void doRender(TileEntityConveyor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
 	{
 		GlStateManager.pushMatrix();
-		
 		Deque<ItemStack> stacks = te.getStacks(TesrElevator.auth);
         ItemStack andOneMore = te.getLegacy();
         GlStateManager.pushMatrix();
-        GlStateManager.translate(x, y, z);
+        GlStateManager.translate(-1, -0.5, 0.5);
         int i = 0;
         for (ItemStack stack : stacks)
         {
         	if (!stack.isEmpty())
         	{
         		GlStateManager.pushMatrix();
-        		GlStateManager.translate(1, 0.2, 1 - (i - partialTicks) / 20);
+        		GlStateManager.translate(1, 0.2, (i - partialTicks) / te.getCapacity() - 1);
         		GlStateManager.scale(0.25, 0.25, 0.25);
         		FacTesrHelper.renderStack(stack);
         		GlStateManager.popMatrix();
         	}
         	i++;
         }
-        GlStateManager.pushMatrix();
-		GlStateManager.translate(1, 1 + (partialTicks / 20), 0.5);
-		GlStateManager.scale(0.25, 0.25, 0.25);
-		FacTesrHelper.renderStack(andOneMore);
-		GlStateManager.popMatrix();
         GlStateManager.popMatrix();
 		
+        
 		GlStateManager.enableLighting();
 		RenderHelper.enableStandardItemLighting();
 		FacRenderHelper.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
@@ -64,21 +60,20 @@ public class TesrConveyor extends TesrOmnidirectional<TileEntityConveyor>
 		{
 			GlStateManager.shadeModel(GL11.GL_FLAT);
 		}
-		
+		GlStateManager.translate(0, -0.5, 0);
 		World world = te.getWorld();
 		
-		// laaaaaaag
 		for (double d=0; d<1; d+=0.125)
 		{
 			GlStateManager.pushMatrix();
 			Tessellator v5 = Tessellator.getInstance();
 			BufferBuilder builder = v5.getBuffer();
-			IBlockState state = BlockRegistry.conveyor.getDefaultState().withProperty(BlockRegistry.conveyor.PART_ID, 1);
+			IBlockState state = te.getBlockType().getDefaultState().withProperty(BlockDirectional.PART_ID, 1);
 			BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
 
 			IBakedModel model = dispatcher.getModelForState(state);
 			builder.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-			GlStateManager.translate(-0.49, 0.03125, i-0.46875);
+			GlStateManager.translate(-0.49, 0.03125, d-0.46875);
 			GlStateManager.scale(0.98, 1, 1);
 			long angle = System.currentTimeMillis() / 8 % 360;
 			if (!Minecraft.getMinecraft().isGamePaused()) GlStateManager.rotate(angle, -1, 0, 0);

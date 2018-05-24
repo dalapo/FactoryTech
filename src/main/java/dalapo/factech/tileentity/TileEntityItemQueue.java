@@ -5,6 +5,8 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
+import dalapo.factech.helper.FacBlockHelper;
+import dalapo.factech.helper.Logger;
 import dalapo.factech.render.tesr.TesrElevator.TESRELEV;
 import dalapo.factech.tileentity.automation.TileEntityElevator;
 import net.minecraft.entity.item.EntityItem;
@@ -14,28 +16,28 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class TileEntityItemQueue extends TileEntityBase implements ITickable
 {
-	protected static int CAPACITY = 20;
 	protected static boolean canItemsBePushed = true;
 	
 	private int ticks = 0;
 	
 	protected LinkedList<ItemStack> stacks = new LinkedList<ItemStack>(); // But not a stack of stacks!
 	protected LinkedList<ItemStack> scheduled = new LinkedList<ItemStack>();
-	protected TileEntityItemQueue cachedTarget;
+	private BlockPos targetPos;
 	@SideOnly(Side.CLIENT)
 	private ItemStack legacy = ItemStack.EMPTY;
 	
-	protected abstract void cacheTileEntity();
+	public abstract BlockPos getTarget();
 	protected abstract void ejectItem(ItemStack toEject);
 	
 	public TileEntityItemQueue()
 	{
-		for (int i=0; i<CAPACITY; i++)
+		for (int i=0; i<getCapacity(); i++)
 		{
 			stacks.addFirst(ItemStack.EMPTY);
 		}
@@ -49,7 +51,8 @@ public abstract class TileEntityItemQueue extends TileEntityBase implements ITic
 	@Override
 	public void onLoad()
 	{
-		cacheTileEntity();
+		super.onLoad();
+		targetPos = getTarget();
 	}
 	
 	public LinkedList<ItemStack> getStacks(TESRELEV auth)
@@ -77,6 +80,7 @@ public abstract class TileEntityItemQueue extends TileEntityBase implements ITic
 	
 	public void scheduleItemStack(ItemStack itemstack)
 	{
+		Logger.info(pos + ": scheduling ItemStack " + itemstack);
 		scheduled.add(itemstack);
 	}
 	
@@ -89,9 +93,12 @@ public abstract class TileEntityItemQueue extends TileEntityBase implements ITic
 		ItemStack toEject = stacks.remove();
 		if (!toEject.isEmpty())
 		{
-			if (cachedTarget != null)
+			TileEntity te = world.getTileEntity(targetPos);
+			if (te instanceof TileEntityItemQueue)
 			{
-				cachedTarget.scheduleItemStack(toEject);
+				((TileEntityItemQueue)te).scheduleItemStack(toEject);
+				FacBlockHelper.updateBlock(world, pos);
+				FacBlockHelper.updateBlock(world, targetPos);
 			}
 			else if (!world.isRemote)
 			{
@@ -132,8 +139,19 @@ public abstract class TileEntityItemQueue extends TileEntityBase implements ITic
 			stacks.add(new ItemStack((NBTTagCompound)tag));
 		}
 	}
+	
+	@Override
+	public void invalidate()
+	{
+		for (ItemStack is : stacks)
+		{
+			if (!world.isRemote && !is.isEmpty()) world.spawnEntity(new EntityItem(world, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, is));
+		}
+		super.invalidate();
+	}
+	
 	public int getCapacity()
 	{
-		return CAPACITY;
+		return 20;
 	}
 }

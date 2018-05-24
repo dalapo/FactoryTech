@@ -4,11 +4,16 @@ import org.lwjgl.opengl.GL11;
 
 import dalapo.factech.helper.FacGuiHelper;
 import dalapo.factech.helper.FacRenderHelper;
+import dalapo.factech.helper.Logger;
 import dalapo.factech.init.BlockRegistry;
 import dalapo.factech.reference.StateList;
 import dalapo.factech.render.tesr.IAnimatedModel;
 import dalapo.factech.render.tesr.TesrAnimatedModel;
 import dalapo.factech.tileentity.TileEntityAnimatedModel;
+import dalapo.factech.tileentity.automation.TileEntityConveyor;
+import dalapo.factech.tileentity.automation.TileEntityElevator;
+import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -26,6 +31,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -35,7 +41,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockConveyor extends BlockDirectional implements IAnimatedModel
+public class BlockConveyor extends BlockDirectional // implements IAnimatedModel
 {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.125, 1.0);
 	public BlockConveyor(Material materialIn, String name, boolean locked) {
@@ -73,6 +79,13 @@ public class BlockConveyor extends BlockDirectional implements IAnimatedModel
 	}
 	
 	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos fromPos)
+	{
+		TileEntityConveyor conveyor = (TileEntityConveyor)world.getTileEntity(pos);
+		conveyor.onLoad();
+	}
+	
+	@Override
 	public boolean isBlockNormalCube(IBlockState state)
 	{
 		return false;
@@ -80,34 +93,40 @@ public class BlockConveyor extends BlockDirectional implements IAnimatedModel
 	
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
     {
-        if (entity instanceof EntityItem)
-        {
-          	EnumFacing facing = world.getBlockState(pos).getValue(StateList.directions);
-	    	((EntityItem)entity).setNoDespawn();
-	    	switch (facing)
-	    	{
-	    	case WEST:
-	    		entity.motionX = 0.1;
-	    		entity.posZ = pos.getZ() + 0.5;
-	    		break;
-	    	case EAST:
-	    		entity.motionX = -0.1;
-	    		entity.posZ = pos.getZ() + 0.5;
-	    		break;
-	    	case SOUTH:
-	    		entity.motionZ = -0.1;
-	    		entity.posX = pos.getX() + 0.5;
-	    		break;
-	    	case NORTH:
-	    		entity.motionZ = 0.1;
-	    		entity.posX = pos.getX() + 0.5;
-	    		break;
-	    		default:
-	    			entity.motionX = 0.0;
-	    			entity.motionZ = 0.0;
-	    	}
-	    	entity.posY = pos.getY() + 0.125;
-        }
+		if (entity.posY % 1 < 0.25)
+		{
+			if (entity instanceof EntityItem && !entity.isDead)
+			{
+				entity.setDead();
+				ItemStack is = ((EntityItem)entity).getItem();
+				TileEntityConveyor te = (TileEntityConveyor)world.getTileEntity(pos);
+				te.scheduleItemStack(is);
+			}
+			
+	        if (entity instanceof EntityLivingBase && !entity.isSneaking())
+	        {
+	          	EnumFacing facing = world.getBlockState(pos).getValue(StateList.directions);
+		    	// Need to add/subtract motion instead of setting it
+		    	switch (facing)
+		    	{
+		    	case WEST:
+		    		entity.motionX = 0.1;
+		    		break;
+		    	case EAST:
+		    		entity.motionX = -0.1;
+		    		break;
+		    	case SOUTH:
+		    		entity.motionZ = -0.1;
+		    		break;
+		    	case NORTH:
+		    		entity.motionZ = 0.1;
+		    		break;
+		    		default:
+		    			entity.motionX = 0.0;
+		    			entity.motionZ = 0.0;
+		    	}
+	        }
+		}
     }
 	
 	@Override
@@ -127,9 +146,17 @@ public class BlockConveyor extends BlockDirectional implements IAnimatedModel
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack itemstack)
 	{
 		super.onBlockPlacedBy(world, pos, state, placer, itemstack);
-		world.addTileEntity(createTileEntity(world, state));
+		Logger.info(world.getBlockState(pos).getValue(StateList.directions));
+		world.setTileEntity(pos, new TileEntityConveyor());
 	}
 	
+	@Override
+	public TileEntity createTileEntity(World world, IBlockState state)
+	{
+		return new TileEntityConveyor();
+	}
+	
+	/*
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void animate(TesrAnimatedModel callback, TileEntityAnimatedModel te, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
@@ -173,4 +200,5 @@ public class BlockConveyor extends BlockDirectional implements IAnimatedModel
 		GlStateManager.disableLighting();
 		GlStateManager.popMatrix();
 	}
+	*/
 }
