@@ -107,5 +107,6 @@ Many dimensions are known to exist, beyond the one commonly called home: a super
 $page
 This device, when it receives a Redstone signal, will transport any items it contains to the dimension it is attuned to. They will appear in the target dimension at the same coordinates as they originated in, factoring in any geometric differences (for example, how 1 meter in the Nether equals 8 meters in the Overworld).
 $page
-Chrous Fruit is necessary to teleport the items, and the machine will consume one piece of fruit for every eight items it transports. Attuning the wormhole is a simple matter of crafting a Tuning Fork in the target dimension and right-clicking the Wormhole with it.
-$end 
+Chorus Fruit is necessary to teleport the items, and the machine will consume one piece of fruit for every eight items it transports. Attuning the wormhole is a simple matter of crafting a Tuning Fork in the target dimension and right-clicking the Wormhole with it.
+$end
+$title Function Generator

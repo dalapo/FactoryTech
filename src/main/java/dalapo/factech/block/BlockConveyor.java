@@ -95,7 +95,7 @@ public class BlockConveyor extends BlockDirectional // implements IAnimatedModel
     {
 		if (entity.posY % 1 < 0.25)
 		{
-			if (entity instanceof EntityItem && !entity.isDead)
+			if (entity instanceof EntityItem && !entity.isDead && ((EntityItem)entity).getAge() >= 2)
 			{
 				entity.setDead();
 				ItemStack is = ((EntityItem)entity).getItem();

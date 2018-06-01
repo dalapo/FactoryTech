@@ -99,9 +99,9 @@ public class BlockBase extends Block {
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos fromPos)
 	{
 		TileEntity te = world.getTileEntity(pos);
-		if (te != null && te instanceof ActionOnRedstone)
+		if (te != null && world.isBlockPowered(pos) && te instanceof ActionOnRedstone)
 		{
-			((ActionOnRedstone)te).onRedstoneSignal(world.isBlockPowered(pos));
+			((ActionOnRedstone)te).onRedstoneSignal(world.isBlockPowered(pos), EnumFacing.getFacingFromVector(pos.getX()-fromPos.getX(), pos.getY()-fromPos.getY(), pos.getZ()-fromPos.getZ()));
 		}
 	}
 	
@@ -109,7 +109,7 @@ public class BlockBase extends Block {
 	public void breakBlock(World world, BlockPos pos, IBlockState state)
 	{
 		TileEntity te = world.getTileEntity(pos);
-		if (te != null) te.invalidate();
+//		if (te != null) te.invalidate(); // apparently already called
 		if (te instanceof TileEntityBasicInventory)
 		{
 			for (int i=0; i<((TileEntityBasicInventory)te).getSizeInventory(); i++)

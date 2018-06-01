@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockInventorySensor extends BlockInventoryDirectional
+public class BlockInventorySensor extends BlockDirectionalTile
 {
 	public static final PropertyBool POWERED = PropertyBool.create("powered");
 	

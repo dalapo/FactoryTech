@@ -57,7 +57,7 @@ public class TileEntitySequencePlacer extends TileEntityBasicInventory implement
 	}
 
 	@Override
-	public void onRedstoneSignal(boolean signal) {
+	public void onRedstoneSignal(boolean signal, EnumFacing side) {
 		if (world.isBlockPowered(getPos()))
 		{
 			if (!isPowered)

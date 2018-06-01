@@ -4,7 +4,6 @@ import java.util.function.Predicate;
 
 import javax.annotation.Nonnull;
 
-import dalapo.factech.auxiliary.BinaryPredicate;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;

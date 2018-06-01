@@ -7,26 +7,26 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public enum PartList {
-	SAW("sawblade", "Saw Blade", 0, true, 0.5, 1.0, 1.5, 1.75),
-	GEAR("gear", "Gear", 1, true, 0.5, 1.0, 1.5, 1.75),
-	WIRE("wire", "Wire", 2, false, 1.0, 1.5),
-	BLADE("blade", "Cutting Blade", 3, true, 0.5, 1.0, 1.5),
+	SAW("sawblade", "Saw Blade", 0, true, new double[] {0.5, 1.0, 1.5, 1.75}, new double[] {0.5, 1.0, 1.2, 1.5}),
+	GEAR("gear", "Gear", 1, true,  new double[] {0.5, 1.0, 1.5, 1.75}, new double[] {0.75, 1.0, 1.2, 1.3}),
+	WIRE("wire", "Wire", 2, false,  new double[] {1.0, 1.5}, new double[] {1.0, 1.2}),
+	BLADE("blade", "Cutting Blade", 3, true,  new double[] {0.5, 1.0, 1.5}, new double[] {0.5, 1.0, 1.5}),
 	MIXER("mixer", "Mixing Blades"),
 	SHAFT("shaft", "Shaft", 11, false, 1.0),
-	MOTOR("motor", "Motor", 10, false, 1.0, 1.67, 2),
-	DRILL("drill", "Drillbit", 4, true, 0.5, 1.0, 1.75),
-	HEATELEM("heat_element", "Heating Element", 5, false, 1.0, 1.67),
-	CIRCUIT_0("circuit_1", "Circuit (1)", 6, false, 1.0, 1.67),
-	CIRCUIT_1("circuit_2", "Circuit (2)", 6, false, 1.0, 1.67),
-	CIRCUIT_2("circuit_3", "Circuit (3)", 6, false, 1.0, 1.67),
-	CIRCUIT_3("circuit_4", "Circuit (4)", 6, false, 1.0, 1.67),
+	MOTOR("motor", "Motor", 10, false,  new double[] {1.0, 1.33, 1.67}, new double[] {1.0, 1.67, 2}),
+	DRILL("drill", "Drillbit", 4, true,  new double[] {0.5, 1.0, 1.4}, new double[] {0.5, 1.0, 1.6}),
+	HEATELEM("heat_element", "Heating Element", 5, false,  new double[] {1.0, 2.0}, new double[] {1.0, 1.2}),
+	CIRCUIT_0("circuit_1", "Circuit (1)", 6, false,  new double[] {1.0, 1.67}, new double[] {1.0, 1.33}),
+	CIRCUIT_1("circuit_2", "Circuit (2)", 6, false,  new double[] {1.0, 1.67}, new double[] {1.0, 1.33}),
+	CIRCUIT_2("circuit_3", "Circuit (3)", 6, false,  new double[] {1.0, 1.67}, new double[] {1.0, 1.33}),
+	CIRCUIT_3("circuit_4", "Circuit (4)", 6, false,  new double[] {1.0, 1.67}, new double[] {1.0, 1.33}),
 	MAGNET("magnet", "Magnet", Items.IRON_INGOT, 1, 0),
-	BATTERY("battery", "Battery", 7, false, 1.0, 2.0),
+	BATTERY("battery", "Battery", 7, false,  new double[] {1.0, 2.0}, new double[] {1.0, 1.15}),
 	LENS("lens", "Focusing Lens"),
 	PISTON("piston", "Integrated Piston", 8, false, 1.0),
 	CORE("core", "Energy Core", 9, false, 1.0),
 	MESH("mesh", "Wooden Mesh", Items.STICK, 4, 0),
-	NOT_A_PART("DNE", "DNE", -1, false, new double[] {});
+	NOT_A_PART("DNE", "DNE", -1, false, new double[] {}, new double[] {});
 	
 	String name;
 	String displayName;
@@ -37,6 +37,7 @@ public enum PartList {
 	boolean hasCustomSalvage = false;
 	boolean hasBadVariant = false;
 	double[] lifetimes; // lifetimes[0] should always be 1
+	double[] speeds; // Required: speeds.length == lifetimes.length == numVariants
 	
 	public String getName()
 	{
@@ -109,6 +110,11 @@ public enum PartList {
 		return lifetimes[quality];
 	}
 	
+	public double getSpeedModifier(int quality)
+	{
+		return speeds[quality];
+	}
+	
 	public static int getItemDamage(PartList id, int quality)
 	{
 		return id.getFloor() + quality;
@@ -154,7 +160,14 @@ public enum PartList {
 		salvageMeta = salvageId;
 		numVariants = lifetimes.length;
 		this.lifetimes = lifetimes;
+		this.speeds = lifetimes;
 		this.displayName = displayName;
 		this.hasBadVariant = hasBadVariant;
+	}
+	
+	private PartList(String str, String displayName, int salvageId, boolean hasBadVariant, double[] lifetimes, double[] speeds)
+	{
+		this(str, displayName, salvageId, hasBadVariant, lifetimes);
+		this.speeds = speeds;
 	}
 }

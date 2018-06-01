@@ -8,7 +8,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockBlockBreaker extends BlockInventoryDirectional
+public class BlockBlockBreaker extends BlockDirectionalTile
 {
 
 	public BlockBlockBreaker(Material materialIn, String name, String teid, boolean locked)

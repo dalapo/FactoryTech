@@ -39,7 +39,7 @@ public class Agitator
 	}
 	
 	@ZenMethod
-	public static void removeRecipe(IItemStack item, ILiquidStack fluid)
+	public static void removeRecipe(@Optional IItemStack item, @Optional ILiquidStack fluid)
 	{
 		CraftTweakerAPI.apply(new Remove(FacCraftTweakerHelper.toStack(fluid), FacCraftTweakerHelper.toStack(item)));
 	}

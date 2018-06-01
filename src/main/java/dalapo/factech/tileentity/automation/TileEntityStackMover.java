@@ -41,7 +41,7 @@ public class TileEntityStackMover extends TileEntityBase implements ActionOnReds
 		super();
 	}
 	
-	public void onRedstoneSignal(boolean isSignal) // Called when a block adjacent to the TE updates.
+	public void onRedstoneSignal(boolean isSignal, EnumFacing side) // Called when a block adjacent to the TE updates.
 	{
 		if (world.isBlockPowered(pos))
 		{

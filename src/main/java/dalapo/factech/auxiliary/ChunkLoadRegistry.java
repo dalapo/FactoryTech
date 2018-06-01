@@ -80,7 +80,6 @@ public class ChunkLoadRegistry implements LoadingCallback
 	
 	public Ticket loadChunks(PosWithDimension pos, List<ChunkWithDimension> chunks)
 	{
-		Logger.info("Entered loadChunks with pos " + pos);
 		Ticket ticket = ticketMap.get(pos);
 		if (ticket == null)
 		{
@@ -98,24 +97,17 @@ public class ChunkLoadRegistry implements LoadingCallback
 	public void unloadChunks(PosWithDimension pos)
 	{
 		Ticket ticket = ticketMap.remove(pos);
-		if (ticket == null)
-		{
-			Logger.warn("Null ticket. Full ticket list: " + ticketMap.toString());
-		}
-		Logger.info("Unloading chunks " + ticket.getChunkList());
 		ForgeChunkManager.releaseTicket(ticket);
 	}
 	
 	public void forceChunks(List<ChunkWithDimension> chunks, Ticket ticket)
 	{
-		Logger.info("Entered forceChunks: " + chunks);
 		ImmutableSet<ChunkPos> toLoad = ticket.getChunkList();
 		
 		for (ChunkPos coord : toLoad)
 		{
 			if (!chunks.contains(coord))
 			{
-				Logger.info("Unforcing chunk " + coord);
 				ForgeChunkManager.unforceChunk(ticket, coord);
 			}
 		}
@@ -123,7 +115,6 @@ public class ChunkLoadRegistry implements LoadingCallback
 		{
 			if (!toLoad.contains(coord))
 			{
-				Logger.info("Forcing chunk " + coord);
 				ForgeChunkManager.forceChunk(ticket, coord);
 			}
 		}

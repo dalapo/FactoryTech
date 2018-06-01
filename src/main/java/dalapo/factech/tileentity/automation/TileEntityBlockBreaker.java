@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 
@@ -31,7 +32,7 @@ public class TileEntityBlockBreaker extends TileEntityBase implements ActionOnRe
 	}
 	
 	@Override
-	public void onRedstoneSignal(boolean isSignal)
+	public void onRedstoneSignal(boolean isSignal, EnumFacing side)
 	{
 		if (world.isBlockPowered(pos) && !continuous)
 		{

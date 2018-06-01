@@ -42,11 +42,12 @@ public class TileEntityCircuitScribe extends TileEntityBasicProcessor {
 	@Override
 	public void getHasWork()
 	{
-		if (getInput(0).getItem().equals(ItemRegistry.circuitIntermediate) &&
-				getInput(0).getItemDamage() == 8 &&
-				pattern != -1 && 
-				(getOutput().isEmpty() || (getOutput().getItem() == ItemRegistry.circuitIntermediate && getOutput().getItemDamage() == pattern && getOutput().getCount() <= 64))) hasWork = true;
-		else hasWork = !hasBadParts();
+		if (!hasBadParts() &&
+			getInput(0).getItem().equals(ItemRegistry.circuitIntermediate) &&
+			getInput(0).getItemDamage() == 8 &&
+			pattern != -1 && 
+			(getOutput().isEmpty() || (getOutput().getItem() == ItemRegistry.circuitIntermediate && getOutput().getItemDamage() == pattern && getOutput().getCount() <= 64))) hasWork = true;
+		else hasWork = false;
 	}
 
 	@Override

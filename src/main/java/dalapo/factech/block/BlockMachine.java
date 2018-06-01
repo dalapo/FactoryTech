@@ -37,7 +37,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMachine extends BlockInventoryDirectional {
+public class BlockMachine extends BlockDirectionalTile
+{
 
 	private int GuiId;
 	private boolean hasObjModel;

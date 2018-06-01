@@ -4,6 +4,7 @@ import static dalapo.factech.FactoryTech.DEBUG_PACKETS;
 
 import java.util.List;
 
+import dalapo.factech.helper.FacBlockHelper;
 import dalapo.factech.helper.FacMathHelper;
 import dalapo.factech.helper.FacTileHelper;
 import dalapo.factech.helper.Logger;
@@ -59,22 +60,42 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 	
 	private void moveEntity(EntityItem ei, EnumFacing direction)
 	{
+		ei.motionX = 0;
+		ei.motionY = 0;
+		ei.motionZ = 0;
 		switch(direction)
 		{
 		case SOUTH:
-			ei.move(MoverType.PISTON, 0, 0, 1);
+			ei.posZ += 1;
 			break;
 		case WEST:
-			ei.move(MoverType.PISTON, -1, 0, 0);
+			ei.posX -= 1;
 			break;
 		case NORTH:
-			ei.move(MoverType.PISTON, 0, 0, -1);
+			ei.posZ -= 1;
 			break;
 		case EAST:
-			ei.move(MoverType.PISTON, 1, 0, 0);
+			ei.posX += 1;
 			break;
 			default:
 				// No-op
+		}
+	}
+	
+	private EntityItem getEntity(ItemStack is, EnumFacing direction)
+	{
+		switch(direction)
+		{
+		case SOUTH:
+			return new EntityItem(world, pos.getX(), pos.getY(), pos.getZ()+2.5, is);
+		case WEST:
+			return new EntityItem(world, pos.getX()-2.5, pos.getY(), pos.getZ(), is);
+		case NORTH:
+			return new EntityItem(world, pos.getX(), pos.getY(), pos.getZ()-2.5, is);
+		case EAST:
+			return new EntityItem(world, pos.getX()+2.5, pos.getY(), pos.getZ(), is);
+			default:
+				return new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), is);
 		}
 	}
 	private void pushEntities(EnumFacing direction)
@@ -107,10 +128,13 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 		if (!is.isEmpty() && isItemInFilter(is))
 		{
 			is = te.yank(te.getCapacity() / 2);
-			EntityItem ei = new EntityItem(world, te.getPos().getX(), te.getPos().getY(), te.getPos().getZ(), is);
-			moveEntity(ei, direction);
+			EntityItem ei = getEntity(is, direction);
+			ei.motionX = 0;
+			ei.motionY = 0;
+			ei.motionZ = 0;
 			world.spawnEntity(ei);
 		}
+		FacBlockHelper.updateBlock(world, te.getPos());
 	}
 	
 	@Override
@@ -119,7 +143,7 @@ public class TileEntityItemPusher extends TileEntityBasicInventory implements IT
 		EnumFacing direction = world.getBlockState(getPos()).getValue(StateList.directions);
 		TileEntity te = world.getTileEntity(FacMathHelper.withOffset(pos, direction));
 		
-		if (te instanceof TileEntityItemQueue)
+		if (te instanceof TileEntityItemQueue && !world.isRemote)
 		{
 			pushQueue((TileEntityItemQueue)te, direction);
 		}

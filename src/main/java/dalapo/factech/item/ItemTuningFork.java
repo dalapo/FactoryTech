@@ -33,7 +33,7 @@ public class ItemTuningFork extends ItemBase
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer ep, EnumHand hand)
 	{
 		ItemStack is = ep.getHeldItem(hand);
-		if (!world.isRemote)
+		if (!world.isRemote && !ep.isSneaking())
 		{
 			if (!is.hasTagCompound())
 			{
@@ -50,7 +50,7 @@ public class ItemTuningFork extends ItemBase
 	public EnumActionResult onItemUse(EntityPlayer ep, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 		ItemStack fork = ep.getHeldItem(hand);
-		if (fork.hasTagCompound() && world.getTileEntity(pos) instanceof TileEntityPlaneShifter)
+		if (!world.isRemote && fork.hasTagCompound() && world.getTileEntity(pos) instanceof TileEntityPlaneShifter)
 		{
 			TileEntityPlaneShifter te = (TileEntityPlaneShifter)world.getTileEntity(pos);
 			te.changeDimension(fork.getTagCompound().getInteger("id"));

@@ -59,7 +59,6 @@ public class TileRegistry {
 		GameRegistry.registerTileEntity(TileEntityWoodcutter.class, "woodcutter");
 		GameRegistry.registerTileEntity(TileEntityIonDisperser.class, "iondisperser");
 		GameRegistry.registerTileEntity(TileEntityTeslaCoil.class, "teslacoil");
-		GameRegistry.registerTileEntity(TileEntityMechArm.class, "mecharm");
 		GameRegistry.registerTileEntity(TileEntitySequencePlacer.class, "sequenceplacer");
 		GameRegistry.registerTileEntity(TileEntityTank.class, "tank");
 		GameRegistry.registerTileEntity(TileEntityTemperer.class, "temperer");

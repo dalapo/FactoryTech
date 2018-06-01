@@ -17,25 +17,25 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockInventoryDirectional extends BlockDirectional implements ITileEntityProvider {
+public class BlockDirectionalTile extends BlockDirectional implements ITileEntityProvider {
 
 	protected boolean canBeRotated = false;
 	protected String tile;
 	private int gui;
 	
-	public BlockInventoryDirectional(Material material, String name, String teid, boolean locked, int gui)
+	public BlockDirectionalTile(Material material, String name, String teid, boolean locked, int gui)
 	{
 		super(material, name, locked);
 		tile = teid;
 		this.gui = gui;
 	}
-	public BlockInventoryDirectional(Material materialIn, String name, String teid, boolean locked) {
+	public BlockDirectionalTile(Material materialIn, String name, String teid, boolean locked) {
 		super(materialIn, name, locked);
 		tile = teid;
 		gui = -1;
 	}
 	
-	public BlockInventoryDirectional enableRotating()
+	public BlockDirectionalTile enableRotating()
 	{
 		canBeRotated = true;
 		return this;

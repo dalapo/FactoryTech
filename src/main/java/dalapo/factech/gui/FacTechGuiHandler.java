@@ -12,7 +12,6 @@ import dalapo.factech.tileentity.automation.TileEntityFilterMover;
 import dalapo.factech.tileentity.automation.TileEntityInventorySensor;
 import dalapo.factech.tileentity.automation.TileEntityItemPusher;
 import dalapo.factech.tileentity.automation.TileEntityItemRedis;
-import dalapo.factech.tileentity.automation.TileEntityMechArm;
 import dalapo.factech.tileentity.automation.TileEntitySequencePlacer;
 import dalapo.factech.tileentity.specialized.TileEntityAutoCrafter;
 import dalapo.factech.tileentity.specialized.TileEntityCircuitScribe;
@@ -53,8 +52,7 @@ public class FacTechGuiHandler implements IGuiHandler {
 		}
 		else if (ID == 5)
 		{
-			TileEntityMechArm te = (TileEntityMechArm)world.getTileEntity(new BlockPos(x, y, z));
-			return new ContainerBasicInventory(1, 1, te, player.inventory);
+			// IT'S FREE REAL ESTATE
 		}
 		else if (ID == 7)
 		{
@@ -115,8 +113,7 @@ public class FacTechGuiHandler implements IGuiHandler {
 		}
 		else if (ID == 5)
 		{
-			TileEntityMechArm te = (TileEntityMechArm)world.getTileEntity(new BlockPos(x, y, z));
-			return new GuiBasicInventory(new ContainerBasicInventory(1, 1, te, player.inventory), player.inventory, "energizer_gui", te);
+			// IT'S FREE REAL ESTATE
 		}
 		else if (ID == 6)
 		{

@@ -15,6 +15,7 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import java.util.List;
 
+import dalapo.factech.FactoryTech;
 import dalapo.factech.tileentity.*;
 import dalapo.factech.tileentity.automation.*;
 import dalapo.factech.tileentity.specialized.*;
@@ -110,8 +111,6 @@ public class FacTileHelper {
 			return new TileEntityTeslaCoil();
 		case "iondisperser":
 			return new TileEntityIonDisperser();
-		case "mecharm":
-			return new TileEntityMechArm();
 		case "sequenceplacer":
 			return new TileEntitySequencePlacer();
 		case "tankblock":

@@ -193,8 +193,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 				if (slot != -1)
 				{
 					int tier = PartList.getQualityFromDamage(getStackInSlot(slot).getItemDamage());
-					double quality = partsNeeded[i].getPartID().getLifetimeModifier(tier);
-					partsNeeded[i].reset(quality);
+					partsNeeded[i].reset(tier);
 					partsGot[i] = 1;
 					// TODO: PSEUDOCODE
 					// If the part being replenished is a crappy one (Stone), set partsGot to something else
@@ -300,7 +299,10 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 			adjustedOptime *= 1.25;
 			break;
 		}
-		if (hasBadParts) adjustedOptime *= 2;
+		for (MachinePart p : partsNeeded)
+		{
+			adjustedOptime *= p.getSpeed(); // Temporary, will deassociate lifetime with speed eventually
+		}
 		return adjustedOptime;
 	}
 	
@@ -433,19 +435,6 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 		}
 		return parts;
 	}
-	/*
-	public void sendInfoPacket(EntityPlayer ep)
-	{
-		MachineInfoPacket packet = new MachineInfoPacket(this);
-		PacketHandler.sendToPlayer(packet, (EntityPlayerMP)ep);
-	}
-	
-	public void sendInfoPacket()
-	{
-		MachineInfoPacket packet = new MachineInfoPacket(this);
-		PacketHandler.sendToServer(packet);
-	}
-	*/
 		
 	protected void setOutput(int slot, ItemStack is)
 	{
@@ -710,7 +699,7 @@ public abstract class TileEntityMachine extends TileEntityBasicInventory impleme
 	protected abstract boolean performAction();
 	
 	/**
-	 * Returns the time taken for the machine to complete an operation.
+	 * Returns the time taken for the machine to complete an operation, without any modifiers.
 	 * @return Operation time in ticks
 	 */
 	public abstract int getOpTime();

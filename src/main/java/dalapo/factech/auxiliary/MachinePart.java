@@ -16,6 +16,7 @@ public class MachinePart
 	public PartList id;
 	private ItemStack depleted;
 	private double quality = 1.0;
+	private double speed = 1.0;
 	
 	private TileEntityMachine parent;
 	private int numOperations = 0;
@@ -71,6 +72,16 @@ public class MachinePart
 		return salvageChance;
 	}
 	
+	public double getQuality()
+	{
+		return quality;
+	}
+	
+	public double getSpeed()
+	{
+		return speed;
+	}
+	
 	public MachinePart(TileEntityMachine parent, ItemStack is, PartList part, float base, float inc, float chance, int numOperations)
 	{
 		this(part, is.copy(), base, inc, chance, numOperations);
@@ -103,11 +114,12 @@ public class MachinePart
 		return id;
 	}
 	
-	public void reset(double quality)
+	public void reset(int variant)
 	{
 //		Logger.info("Resetting part " + id + " to quality " + quality);
 		numOperations = 0;
-		this.quality = quality;
+		this.quality = this.id.getLifetimeModifier(variant);
+		this.speed = this.id.getSpeedModifier(variant);
 		curBreakChance = baseBreakChance;
 		if (id.hasBadVariant() && quality < 1.0) isCrappy = true;
 		else isCrappy = false;

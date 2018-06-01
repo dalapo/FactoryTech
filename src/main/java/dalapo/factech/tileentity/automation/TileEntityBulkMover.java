@@ -42,7 +42,7 @@ public class TileEntityBulkMover extends TileEntityBasicInventory implements ISi
 		setDisplayName("Filter");
 	}
 	
-	public void onRedstoneSignal(boolean isSignal) // Called when a block adjacent to the TE updates.
+	public void onRedstoneSignal(boolean isSignal, EnumFacing side) // Called when a block adjacent to the TE updates.
 	{
 		if (world.isBlockPowered(pos))
 		{

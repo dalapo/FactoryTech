@@ -36,7 +36,7 @@ public class TileEntityFilterMover extends TileEntityBasicInventory implements I
 		super("stackmover", 9);
 	}
 	
-	public void onRedstoneSignal(boolean isSignal) // Called when a block adjacent to the TE updates.
+	public void onRedstoneSignal(boolean isSignal, EnumFacing side) // Called when a block adjacent to the TE updates.
 	{
 		if (world.isBlockPowered(pos))
 		{

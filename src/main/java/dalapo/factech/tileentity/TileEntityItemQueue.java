@@ -80,7 +80,7 @@ public abstract class TileEntityItemQueue extends TileEntityBase implements ITic
 	
 	public void scheduleItemStack(ItemStack itemstack)
 	{
-		Logger.info(pos + ": scheduling ItemStack " + itemstack);
+//		Logger.info(pos + ": scheduling ItemStack " + itemstack);
 		scheduled.add(itemstack);
 	}
 	
@@ -97,8 +97,8 @@ public abstract class TileEntityItemQueue extends TileEntityBase implements ITic
 			if (te instanceof TileEntityItemQueue)
 			{
 				((TileEntityItemQueue)te).scheduleItemStack(toEject);
-				FacBlockHelper.updateBlock(world, pos);
-				FacBlockHelper.updateBlock(world, targetPos);
+//				FacBlockHelper.updateBlock(world, pos);
+//				FacBlockHelper.updateBlock(world, targetPos);
 			}
 			else if (!world.isRemote)
 			{

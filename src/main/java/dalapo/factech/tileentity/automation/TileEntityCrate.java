@@ -3,6 +3,7 @@ package dalapo.factech.tileentity.automation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import dalapo.factech.helper.Logger;
 import dalapo.factech.tileentity.TileEntityBasicInventory;
 
 public class TileEntityCrate extends TileEntityBasicInventory
@@ -12,7 +13,7 @@ public class TileEntityCrate extends TileEntityBasicInventory
 		super("crate", 18);
 		setDisplayName("Crate");
 	}
-
+	
 	@Override
 	public int getField(int id)
 	{

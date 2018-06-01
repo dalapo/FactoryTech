@@ -15,7 +15,7 @@ import dalapo.factech.block.BlockElevator;
 import dalapo.factech.block.BlockFan;
 import dalapo.factech.block.BlockFluidGiver;
 import dalapo.factech.block.BlockHatch;
-import dalapo.factech.block.BlockInventoryDirectional;
+import dalapo.factech.block.BlockDirectionalTile;
 import dalapo.factech.block.BlockInventorySensor;
 import dalapo.factech.block.BlockItemRedis;
 import dalapo.factech.block.BlockMachine;
@@ -26,7 +26,7 @@ import dalapo.factech.block.BlockPipe;
 import dalapo.factech.block.BlockRSNotifier;
 import dalapo.factech.block.BlockScaffold;
 import dalapo.factech.block.BlockSmokestack;
-import dalapo.factech.block.BlockInventoryDirectional;
+import dalapo.factech.block.BlockDirectionalTile;
 import dalapo.factech.block.BlockTENoDir;
 import dalapo.factech.block.BlockTank;
 import dalapo.factech.helper.Logger;
@@ -44,10 +44,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockRegistry {
 	public static List<BlockBase> blocks = new ArrayList<BlockBase>();
 	
-	public static BlockInventoryDirectional stackmover;
-	public static BlockInventoryDirectional filtermover;
-	public static BlockInventoryDirectional bulkmover;
-	public static BlockInventoryDirectional autopuller;
+	public static BlockDirectionalTile stackmover;
+	public static BlockDirectionalTile filtermover;
+	public static BlockDirectionalTile bulkmover;
+	public static BlockDirectionalTile autopuller;
 	public static BlockConveyor conveyor;
 	public static BlockFan fan;
 	public static BlockBottomHatch bottomHatch;
@@ -55,10 +55,10 @@ public class BlockRegistry {
 	public static BlockPipe pipe;
 	public static BlockTENoDir itemRedis;
 	public static BlockTENoDir tank;
-	public static BlockInventoryDirectional fluidPuller;
+	public static BlockDirectionalTile fluidPuller;
 	public static BlockFluidGiver fluidDebug;
-	public static BlockInventoryDirectional itemPusher;
-	public static BlockInventoryDirectional sequenceplacer;
+	public static BlockDirectionalTile itemPusher;
+	public static BlockDirectionalTile sequenceplacer;
 	public static BlockBase redNotifier;
 	public static BlockBlockBreaker blockbreaker;
 	public static BlockInventorySensor invSensor;
@@ -119,12 +119,12 @@ public class BlockRegistry {
 		Logger.info("Entered BlockRegistry.init");
 		
 		// Automation
-		blocks.add(stackmover = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.WOOD, "stackmover", "stackmover", false, -1).setHasInformation());
-		blocks.add(filtermover = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "filtermover", "filtermover", false, 12).setHasInformation());
-		blocks.add(bulkmover = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "bulkmover", "bulkmover", false, 1).setHasInformation());
-		blocks.add(autopuller = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "autopuller", "autopuller", false).enableRotating().setHasInformation());
-		blocks.add(itemPusher = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "itempusher", "itempusher", true, 13).setHasInformation());
-		blocks.add(sequenceplacer = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.WOOD, "sequenceplacer", "sequenceplacer", false, 9).setHasInformation());
+		blocks.add(stackmover = (BlockDirectionalTile) new BlockDirectionalTile(Material.WOOD, "stackmover", "stackmover", false, -1).setHasInformation());
+		blocks.add(filtermover = (BlockDirectionalTile) new BlockDirectionalTile(Material.IRON, "filtermover", "filtermover", false, 12).setHasInformation());
+		blocks.add(bulkmover = (BlockDirectionalTile) new BlockDirectionalTile(Material.IRON, "bulkmover", "bulkmover", false, 1).setHasInformation());
+		blocks.add(autopuller = (BlockDirectionalTile) new BlockDirectionalTile(Material.IRON, "autopuller", "autopuller", false).enableRotating().setHasInformation());
+		blocks.add(itemPusher = (BlockDirectionalTile) new BlockDirectionalTile(Material.IRON, "itempusher", "itempusher", true, 13).setHasInformation());
+		blocks.add(sequenceplacer = (BlockDirectionalTile) new BlockDirectionalTile(Material.WOOD, "sequenceplacer", "sequenceplacer", false, 9).setHasInformation());
 //		blocks.add(exactComparator = new BlockComparatorExact(Material.CIRCUITS, "comparatorEx"));
 		blocks.add(watercollector = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "watercollector").setHasInformation().setHardness(2F));
 		blocks.add(crate = (BlockTENoDir) new BlockTENoDir(Material.WOOD, "crate", 7).setHasInformation().setHardness(2F));
@@ -138,7 +138,7 @@ public class BlockRegistry {
 		blocks.add(invSensor = (BlockInventorySensor)new BlockInventorySensor(Material.IRON, "inventorysensor", "inventorysensor", false, 11).setHasInformation().setHardness(2F));
 		blocks.add(interceptor = (BlockTENoDir)new BlockTENoDir(Material.IRON, "interceptor", 1).setHasInformation().setHardness(2F));
 		blocks.add(elevator = new BlockElevator(Material.IRON, "realelevator"));
-//		blocks.add(mecharm = new BlockInventoryDirectional(Material.IRON, "mecharm", "mecharm", false, 5));
+//		blocks.add(mecharm = new BlockDirectionalTile(Material.IRON, "mecharm", "mecharm", false, 5));
 		
 		// Machines
 		blocks.add(oredrill = (BlockMachine) new BlockMachine(Material.IRON, "oredrill", "oredrill", 0).setHasInformation());
@@ -152,7 +152,7 @@ public class BlockRegistry {
 		blocks.add(crucible = (BlockMachine) new BlockMachine(Material.IRON, "crucible", "crucible", 0).setHasInformation());
 		blocks.add(compressionChamber = (BlockMachine) new BlockMachine(Material.IRON, "compressor", "compressor", 0).setHasInformation());
 //		blocks.add(fluidDebug = new BlockFluidGiver(Material.ROCK, "fluiddebug"));
-		blocks.add(fluidPuller = (BlockInventoryDirectional) new BlockInventoryDirectional(Material.IRON, "fluidpuller", "fluidpuller", false).enableRotating().setHasInformation());
+		blocks.add(fluidPuller = (BlockDirectionalTile) new BlockDirectionalTile(Material.IRON, "fluidpuller", "fluidpuller", false).enableRotating().setHasInformation());
 		blocks.add(grindstone = (BlockMachine) new BlockMachine(Material.IRON, "grindstone", "grindstone", 0).setHasInformation());
 		blocks.add(centrifuge = (BlockMachine) new BlockMachine(Material.IRON, "centrifuge", "centrifuge", 0).setHasInformation());
 		blocks.add(magCentrifuge = (BlockMachine) new BlockMachine(Material.IRON, "magcent", "magcent", 0).setHasInformation());
@@ -189,7 +189,7 @@ public class BlockRegistry {
 		blocks.add(decorative_metal = (BlockMetal)new BlockMetal(Material.IRON, "metal").setHardness(3.0F).setResistance(12.0F));
 		blocks.add(scaffold = (BlockBase)new BlockScaffold(Material.IRON, "scaffold"));
 		blocks.add(decocoil = new BlockDecoCoil(Material.IRON, "decocoil"));
-		blocks.add(planeShifter = new BlockTENoDir(Material.IRON, "planeshifter"));
+		blocks.add(planeShifter = new BlockTENoDir(Material.IRON, "planeshifter", 1));
 	}
 
 	@SideOnly(Side.CLIENT)
